@@ -10,11 +10,12 @@
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
 		A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC91A3BACBA006F7ECD /* therewhere.xcdatamodeld */; };
 		A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DD11A3BACBA006F7ECD /* Images.xcassets */; };
-		A6A27DD51A3BACBA006F7ECD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DD31A3BACBA006F7ECD /* LaunchScreen.xib */; };
 		A6A27DE11A3BACBA006F7ECD /* therewhereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DE01A3BACBA006F7ECD /* therewhereTests.swift */; };
-		A6A27DF81A3DDFFA006F7ECD /* Login.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DF71A3DDFFA006F7ECD /* Login.xib */; };
-		A6A27DFA1A3DE009006F7ECD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DF91A3DE009006F7ECD /* LoginViewController.swift */; };
-		A6A27DFC1A3DE0EB006F7ECD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */; };
+		A6A27E0F1A3E11FC006F7ECD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */; };
+		A6A27E601A3E3124006F7ECD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */; };
+		A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E5D1A3E3124006F7ECD /* LoginViewController.swift */; };
+		A6A27E621A3E3124006F7ECD /* InviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E5E1A3E3124006F7ECD /* InviteFriendsViewController.xib */; };
+		A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,14 +34,15 @@
 		A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6A27DCA1A3BACBA006F7ECD /* therewhere.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = therewhere.xcdatamodel; sourceTree = "<group>"; };
 		A6A27DD11A3BACBA006F7ECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		A6A27DD41A3BACBA006F7ECD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		A6A27DDA1A3BACBA006F7ECD /* therewhereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = therewhereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A27DDF1A3BACBA006F7ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6A27DE01A3BACBA006F7ECD /* therewhereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhereTests.swift; sourceTree = "<group>"; };
 		A6A27DF41A3DDBDA006F7ECD /* TW.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = TW.playground; sourceTree = "<group>"; };
-		A6A27DF71A3DDFFA006F7ECD /* Login.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Login.xib; sourceTree = "<group>"; };
-		A6A27DF91A3DE009006F7ECD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		A6A27E5D1A3E3124006F7ECD /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A6A27E5E1A3E3124006F7ECD /* InviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendsViewController.xib; sourceTree = "<group>"; };
+		A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,14 +85,15 @@
 		A6A27DC41A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXGroup;
 			children = (
+				A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */,
+				A6A27E5D1A3E3124006F7ECD /* LoginViewController.swift */,
+				A6A27E5E1A3E3124006F7ECD /* InviteFriendsViewController.xib */,
+				A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */,
 				A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */,
 				A6A27DD11A3BACBA006F7ECD /* Images.xcassets */,
-				A6A27DD31A3BACBA006F7ECD /* LaunchScreen.xib */,
 				A6A27DC91A3BACBA006F7ECD /* therewhere.xcdatamodeld */,
 				A6A27DC51A3BACBA006F7ECD /* Supporting Files */,
 				A6A27DF41A3DDBDA006F7ECD /* TW.playground */,
-				A6A27DF71A3DDFFA006F7ECD /* Login.xib */,
-				A6A27DF91A3DE009006F7ECD /* LoginViewController.swift */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -200,10 +203,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A27DD51A3BACBA006F7ECD /* LaunchScreen.xib in Resources */,
-				A6A27DFC1A3DE0EB006F7ECD /* Default-568h@2x.png in Resources */,
+				A6A27E0F1A3E11FC006F7ECD /* Default-568h@2x.png in Resources */,
+				A6A27E621A3E3124006F7ECD /* InviteFriendsViewController.xib in Resources */,
 				A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */,
-				A6A27DF81A3DDFFA006F7ECD /* Login.xib in Resources */,
+				A6A27E601A3E3124006F7ECD /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,9 +224,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A27DFA1A3DE009006F7ECD /* LoginViewController.swift in Sources */,
+				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
+				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,17 +248,6 @@
 			targetProxy = A6A27DDB1A3BACBA006F7ECD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		A6A27DD31A3BACBA006F7ECD /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A6A27DD41A3BACBA006F7ECD /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		A6A27DE21A3BACBA006F7ECD /* Debug */ = {

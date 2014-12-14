@@ -6,9 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="therewhere" customModuleProvider="target">
             <connections>
-                <outlet property="loginButton" destination="UPZ-Bo-kbU" id="EeE-mJ-LLH"/>
-                <outlet property="logoPinImage" destination="Dkp-g7-Zjh" id="fE3-a2-y7p"/>
-                <outlet property="view" destination="iN0-l3-epB" id="iG3-OK-5iw"/>
+                <outlet property="view" destination="iN0-l3-epB" id="lUY-Kr-mjN"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -22,7 +20,7 @@
                         <color key="titleColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="login:" destination="-1" eventType="touchUpInside" id="HKG-Jo-bQf"/>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="4CW-bo-YP7"/>
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo Pin" translatesAutoresizingMaskIntoConstraints="NO" id="Dkp-g7-Zjh">
