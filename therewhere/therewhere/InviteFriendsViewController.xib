@@ -6,45 +6,47 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InviteFriendsViewController" customModule="therewhere" customModuleProvider="target">
             <connections>
-                <outlet property="addSomeFreindsLabel" destination="ddx-63-hvb" id="inT-xI-LbY"/>
-                <outlet property="nextButton" destination="k9i-xe-jZC" id="GgC-Lb-iao"/>
-                <outlet property="tableView" destination="M1z-R5-AsS" id="GhX-Kl-PnI"/>
-                <outlet property="view" destination="Fj0-av-oVD" id="bYz-zg-7Gs"/>
+                <outlet property="tableView" destination="rwZ-cE-0SZ" id="Gzq-w9-dLI"/>
+                <outlet property="view" destination="iN0-l3-epB" id="CeR-6f-L2n"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Invite friends background" translatesAutoresizingMaskIntoConstraints="NO" id="Fj0-av-oVD">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Invite friends background" translatesAutoresizingMaskIntoConstraints="NO" id="6xF-Tg-8My">
+                    <rect key="frame" x="0.0" y="0.0" width="325" height="568"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k9i-xe-jZC">
-                    <rect key="frame" x="305" y="35" width="62" height="44"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add some friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ds-TK-PCE">
+                    <rect key="frame" x="66" y="118" width="188" height="38"/>
+                    <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcW-k0-ppQ">
+                    <rect key="frame" x="266" y="41" width="46" height="30"/>
                     <state key="normal" title="Next">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="next:" destination="-1" eventType="touchUpInside" id="jlf-1x-fnT"/>
+                        <action selector="next:" destination="-1" eventType="touchUpInside" id="WRe-eE-fNW"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add some friends!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ddx-63-hvb">
-                    <rect key="frame" x="46" y="147" width="282" height="70"/>
-                    <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="28"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                    <color key="shadowColor" white="0.77556818181818177" alpha="1" colorSpace="calibratedWhite"/>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="M1z-R5-AsS">
-                    <rect key="frame" x="88" y="246" width="188" height="334"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rwZ-cE-0SZ">
+                    <rect key="frame" x="25" y="174" width="269" height="338"/>
+                    <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="eaY-CA-s32"/>
+                        <outlet property="delegate" destination="-1" id="q8j-RS-3mL"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <point key="canvasLocation" x="279" y="270"/>
         </view>
     </objects>
     <resources>
