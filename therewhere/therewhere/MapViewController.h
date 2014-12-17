@@ -11,5 +11,7 @@
 
 @interface MapViewController : UIViewController
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
-
+@property (strong, nonatomic) UIView* master;
+@property (strong, nonatomic) UILabel* aView;
+@property (strong, nonatomic) UILabel* aView2;
 @end

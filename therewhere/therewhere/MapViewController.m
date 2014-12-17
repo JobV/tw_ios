@@ -18,7 +18,7 @@
 @end
 
 @implementation MapViewController
-
+@synthesize master,aView,aView2;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -115,14 +115,11 @@
    //     ((UILabel*)view).text = [NSString stringWithFormat:@"%d", index];
    //     return view;
    // }
-    UIView* master;
-    UILabel *aView;
-    UILabel *aView2;
     
     if(view){
         [view viewWithTag:1].backgroundColor =
             [UIColor colorWithPatternImage:[UIImage imageNamed:@"darth"]];
-//        ((UILabel*)[view viewWithTag:2]).text = @"vader";
+            //((UILabel*)[view viewWithTag:2]).text = @"vader";
         return view;
     }
     
