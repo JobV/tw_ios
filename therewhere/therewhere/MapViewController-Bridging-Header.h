@@ -9,5 +9,6 @@
 #ifndef therewhere_MapViewController_Bridging_Header_h
 #define therewhere_MapViewController_Bridging_Header_h
 
+#import "MapViewController.h"
 
 #endif

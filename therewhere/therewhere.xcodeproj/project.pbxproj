@@ -17,6 +17,10 @@
 		A6A27E621A3E3124006F7ECD /* InviteFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E5E1A3E3124006F7ECD /* InviteFriendsViewController.xib */; };
 		A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */; };
 		A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */; };
+		A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */; };
+		A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */; };
+		A6A27E741A3FA064006F7ECD /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E721A3FA064006F7ECD /* MapViewController.m */; };
+		A6A27E751A3FA064006F7ECD /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E731A3FA064006F7ECD /* MapViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +49,14 @@
 		A6A27E5E1A3E3124006F7ECD /* InviteFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InviteFriendsViewController.xib; sourceTree = "<group>"; };
 		A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteFriendsViewController.swift; sourceTree = "<group>"; };
 		A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A6A27E6D1A3F933B006F7ECD /* LTInfiniteScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTInfiniteScrollView.h; sourceTree = "<group>"; };
+		A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTInfiniteScrollView.m; sourceTree = "<group>"; };
+		A6A27E701A3F9775006F7ECD /* LTInfiniteScrollView-Bridging-Header.h.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LTInfiniteScrollView-Bridging-Header.h.h"; sourceTree = "<group>"; };
+		A6A27E711A3FA064006F7ECD /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A6A27E721A3FA064006F7ECD /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A6A27E731A3FA064006F7ECD /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		A6A27E761A3FA227006F7ECD /* MapViewController-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MapViewController-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +81,7 @@
 		A6A27DB91A3BACBA006F7ECD = {
 			isa = PBXGroup;
 			children = (
+				A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */,
 				A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */,
 				A6A27DC41A3BACBA006F7ECD /* therewhere */,
 				A6A27DDD1A3BACBA006F7ECD /* therewhereTests */,
@@ -87,6 +101,7 @@
 		A6A27DC41A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXGroup;
 			children = (
+				A6A27E6C1A3F9304006F7ECD /* Lib */,
 				A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */,
 				A6A27E5D1A3E3124006F7ECD /* LoginViewController.swift */,
 				A6A27E5E1A3E3124006F7ECD /* InviteFriendsViewController.xib */,
@@ -97,6 +112,10 @@
 				A6A27DC51A3BACBA006F7ECD /* Supporting Files */,
 				A6A27DF41A3DDBDA006F7ECD /* TW.playground */,
 				A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */,
+				A6A27E711A3FA064006F7ECD /* MapViewController.h */,
+				A6A27E721A3FA064006F7ECD /* MapViewController.m */,
+				A6A27E731A3FA064006F7ECD /* MapViewController.xib */,
+				A6A27E761A3FA227006F7ECD /* MapViewController-Bridging-Header.h */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -124,6 +143,16 @@
 				A6A27DDF1A3BACBA006F7ECD /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A6A27E6C1A3F9304006F7ECD /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				A6A27E6D1A3F933B006F7ECD /* LTInfiniteScrollView.h */,
+				A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */,
+				A6A27E701A3F9775006F7ECD /* LTInfiniteScrollView-Bridging-Header.h.h */,
+			);
+			name = Lib;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +238,7 @@
 				A6A27E0F1A3E11FC006F7ECD /* Default-568h@2x.png in Resources */,
 				A6A27E621A3E3124006F7ECD /* InviteFriendsViewController.xib in Resources */,
 				A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */,
+				A6A27E751A3FA064006F7ECD /* MapViewController.xib in Resources */,
 				A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */,
 				A6A27E601A3E3124006F7ECD /* LoginViewController.xib in Resources */,
 			);
@@ -229,9 +259,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
+				A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
+				A6A27E741A3FA064006F7ECD /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,6 +372,7 @@
 				INFOPLIST_FILE = therewhere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/marcelolebre/Development/there where/tw_ios/therewhere/therewhere/MapViewController-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -350,6 +383,7 @@
 				INFOPLIST_FILE = therewhere/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/marcelolebre/Development/there where/tw_ios/therewhere/therewhere/MapViewController-Bridging-Header.h";
 			};
 			name = Release;
 		};
