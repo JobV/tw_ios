@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface MainMapViewController : UIViewController
 - (IBAction)interItemButton:(id)sender;
@@ -18,6 +19,7 @@
 - (IBAction)contact:(id)sender;
 - (void)disableButtons;
 - (void)enableButtons;
+@property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 
 @end

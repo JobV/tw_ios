@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		243DF93FE8BA7A76FF543014 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF65D6121955B183D4DD6F1 /* libPods.a */; };
+		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
 		A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC91A3BACBA006F7ECD /* therewhere.xcdatamodeld */; };
 		A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DD11A3BACBA006F7ECD /* Images.xcassets */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF65D6121955B183D4DD6F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A6A27DC21A3BACBA006F7ECD /* therewhere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = therewhere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A27DC61A3BACBA006F7ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = therewhere/Info.plist; sourceTree = SOURCE_ROOT; };
 		A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = therewhere/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -74,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */,
 				A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */,
 				243DF93FE8BA7A76FF543014 /* libPods.a in Frameworks */,
 			);
@@ -92,6 +95,7 @@
 		9A611F3EB53A77AF75A9865E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */,
 				3CF65D6121955B183D4DD6F1 /* libPods.a */,
 			);
 			name = Frameworks;

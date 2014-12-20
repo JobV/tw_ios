@@ -8,15 +8,23 @@
 
 #import "MainMapViewController.h"
 #import "AKPickerView.h"
+#import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 
-@interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate>
+@interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
+    CLLocationManager *locationManager;
+}
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
 @end
 
 @implementation MainMapViewController
 @synthesize navigateButton, meetButton, contactButton;
+@synthesize mapView;
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pickerView = [[AKPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-75, self.view.bounds.size.width, 75)];
@@ -41,7 +49,20 @@
                     @"Fukuoka",
                     @"Shizuoka"];
     */
+    
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    
+    [locationManager requestWhenInUseAuthorization];
+    
+    [mapView setShowsUserLocation:YES];
+    [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
     [self.pickerView reloadData];
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,10 +144,23 @@
     contactButton.hidden = false;
     navigateButton.hidden = false;
 }
+/* Map Related */
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
+    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+
+    MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 250, 250);
+    [mapView setRegion:region animated:YES];
+}
+
+/* User actions */
 - (IBAction)meet:(id)sender {
 }
 - (IBAction)navigate:(id)sender {
 }
 - (IBAction)contact:(id)sender {
 }
+
+
 @end

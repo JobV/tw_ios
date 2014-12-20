@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainMapViewController">
             <connections>
                 <outlet property="contactButton" destination="LHf-gH-vG0" id="AtW-ho-VM5"/>
+                <outlet property="mapView" destination="SIG-YC-Nxm" id="whk-aD-e9X"/>
                 <outlet property="meetButton" destination="32F-Y6-NAk" id="45p-fL-tR0"/>
                 <outlet property="navigateButton" destination="20u-MV-Yzw" id="XS2-dA-bES"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
