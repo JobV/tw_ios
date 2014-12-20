@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainMapViewController">
             <connections>
+                <outlet property="contactButton" destination="LHf-gH-vG0" id="AtW-ho-VM5"/>
+                <outlet property="meetButton" destination="32F-Y6-NAk" id="45p-fL-tR0"/>
+                <outlet property="navigateButton" destination="20u-MV-Yzw" id="XS2-dA-bES"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,7 +22,7 @@
                 </mapView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phY-M0-w8b">
                     <rect key="frame" x="0.0" y="488" width="320" height="80"/>
-                    <color key="backgroundColor" white="1" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="1" alpha="0.5" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
@@ -31,6 +34,36 @@
                     </state>
                     <connections>
                         <action selector="interItemButton:" destination="-1" eventType="touchUpInside" id="xjS-xO-oQ3"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="32F-Y6-NAk">
+                    <rect key="frame" x="91" y="513" width="35" height="30"/>
+                    <state key="normal" title="meet">
+                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="meet:" destination="-1" eventType="touchUpInside" id="oE7-lT-yU1"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20u-MV-Yzw">
+                    <rect key="frame" x="152" y="513" width="76" height="30"/>
+                    <state key="normal" title="navigate to">
+                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="navigate:" destination="-1" eventType="touchUpInside" id="all-Dl-6s2"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LHf-gH-vG0">
+                    <rect key="frame" x="255" y="513" width="52" height="30"/>
+                    <state key="normal" title="contact">
+                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="contact:" destination="-1" eventType="touchUpInside" id="4ZR-R6-BSo"/>
                     </connections>
                 </button>
             </subviews>

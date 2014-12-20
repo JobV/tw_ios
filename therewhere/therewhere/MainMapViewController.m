@@ -16,7 +16,7 @@
 @end
 
 @implementation MainMapViewController
-
+@synthesize navigateButton, meetButton, contactButton;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pickerView = [[AKPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-75, self.view.bounds.size.width, 75)];
@@ -98,10 +98,35 @@
 */
 
 - (IBAction)interItemButton:(id)sender {
-    self.pickerView.interitemSpacing = self.pickerView.interitemSpacing == 2.5 ? (self.view.bounds.size.width-90) : 2.5;
-    self.pickerView.userInteractionEnabled = self.pickerView.userInteractionEnabled? NO:YES;
+    self.pickerView.interitemSpacing =
+        self.pickerView.interitemSpacing == 2.5 ?
+        (self.view.bounds.size.width-90) : 2.5;
+    
+    if (self.pickerView.userInteractionEnabled) {
+        [self enableButtons];
+        self.pickerView.userInteractionEnabled = NO;
+    }else{
+        [self disableButtons];
+        self.pickerView.userInteractionEnabled = YES;
+    }
+    
     [self.pickerView reloadData];
     
-    //[self.pickerView setUserInteractionEnabled:NO];
+}
+- (void) disableButtons {
+    meetButton.hidden = true;
+    contactButton.hidden = true;
+    navigateButton.hidden = true;
+}
+- (void) enableButtons {
+    meetButton.hidden = false;
+    contactButton.hidden = false;
+    navigateButton.hidden = false;
+}
+- (IBAction)meet:(id)sender {
+}
+- (IBAction)navigate:(id)sender {
+}
+- (IBAction)contact:(id)sender {
 }
 @end

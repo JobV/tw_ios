@@ -10,5 +10,14 @@
 
 @interface MainMapViewController : UIViewController
 - (IBAction)interItemButton:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *meetButton;
+- (IBAction)meet:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *navigateButton;
+- (IBAction)navigate:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *contactButton;
+- (IBAction)contact:(id)sender;
+- (void)disableButtons;
+- (void)enableButtons;
+
 
 @end
