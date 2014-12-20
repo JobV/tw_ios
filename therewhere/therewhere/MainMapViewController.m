@@ -19,14 +19,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pickerView = [[AKPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-175, self.view.bounds.size.width, 175)];
-    NSLog(@"X: %f",   self.view.bounds.origin.x);
-    NSLog(@"Y: %f",   self.view.bounds.origin.x);
-    NSLog(@"Width: %f",   self.view.bounds.size.width);
-    NSLog(@"Height: %f",   self.view.bounds.size.height);
+    self.pickerView = [[AKPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-75, self.view.bounds.size.width, 75)];
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [self.pickerView setTag:1];
     [self.view addSubview:self.pickerView];
 
     self.pickerView.interitemSpacing = 2.5;
@@ -82,7 +79,7 @@
 - (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
 {
  //   NSLog(@"%@", self.titles[item]);
-    NSLog(@"hadoken");
+//   [self.pickerView reloadData];
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -100,4 +97,11 @@
 }
 */
 
+- (IBAction)interItemButton:(id)sender {
+    self.pickerView.interitemSpacing = self.pickerView.interitemSpacing == 2.5 ? (self.view.bounds.size.width-90) : 2.5;
+    self.pickerView.userInteractionEnabled = self.pickerView.userInteractionEnabled? NO:YES;
+    [self.pickerView reloadData];
+    
+    //[self.pickerView setUserInteractionEnabled:NO];
+}
 @end

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MainMapViewController : UIViewController
+- (IBAction)interItemButton:(id)sender;
 
 @end

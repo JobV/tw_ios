@@ -77,7 +77,7 @@
 	maskLayer.locations = @[@0.0, @0.33, @0.66, @1.0];
 	maskLayer.startPoint = CGPointMake(0.0, 0.0);
 	maskLayer.endPoint = CGPointMake(1.0, 0.0);
-	self.collectionView.layer.mask = maskLayer;
+	//self.collectionView.layer.mask = maskLayer;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -261,8 +261,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	AKCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AKCollectionViewCell class])
-																		   forIndexPath:indexPath];
+	AKCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([AKCollectionViewCell class]) forIndexPath:indexPath];
 
 	if ([self.dataSource respondsToSelector:@selector(pickerView:titleForItem:)]) {
 		NSString *title = [self.dataSource pickerView:self titleForItem:indexPath.item];
@@ -273,8 +272,10 @@
 		cell.font = self.font;
 		cell.highlightedFont = self.highlightedFont;
 	} else if ([self.dataSource respondsToSelector:@selector(pickerView:imageForItem:)]) {
-		cell.imageView.image = [self.dataSource pickerView:self imageForItem:indexPath.item];
+        cell.imageView.frame = CGRectMake(0, 0, 70, 70);
+        cell.imageView.image = [self.dataSource pickerView:self imageForItem:indexPath.item];
         
+        cell.imageView.contentMode = UIViewContentModeScaleAspectFill;
         cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width / 2;
         cell.imageView.clipsToBounds = YES;
         
@@ -295,6 +296,7 @@
 	} else if ([self.dataSource respondsToSelector:@selector(pickerView:imageForItem:)]) {
 		UIImage *image = [self.dataSource pickerView:self imageForItem:indexPath.item];
 		size.width += image.size.width;
+//        NSLog(@"Size: %f", size.width);
 	}
 	return size;
 }
@@ -323,6 +325,11 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
 	[self selectItem:indexPath.item animated:YES];
+//    NSLog(@"hadoken");
+    
+  
+    //  [self.view addSubview:self.pickerView];
+
 }
 
 #pragma mark -
@@ -382,7 +389,7 @@
 	
 	self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
 	self.imageView.backgroundColor = [UIColor clearColor];
-	self.imageView.contentMode = UIViewContentModeCenter;
+//	self.imageView.contentMode = UIViewContentModeCenter;
 	self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     
