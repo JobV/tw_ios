@@ -1,7 +1,3 @@
-platform :<#ios#>, "8.0"
+platform :ios, "8.0"
 
-pod "<#PodName#>"
-
-target :<#TargetName#>Tests, :exclusive => true do
-  # pod 'Kiwi'
-end
+pod "AKPickerView", :git => "https://github.com/Akkyie/AKPickerView.git"

@@ -33,7 +33,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     ]
     
     @IBAction func next(sender: AnyObject) {
-        var controller = MapViewController(nibName:"MapViewController", bundle:nil)
+        var controller = MainMapViewController(nibName:"MainMapViewController", bundle:nil)
+
+//        var controller = MainMapViewController(nibName:"MainMapViewController", bundle:nil)
         self.presentViewController(controller, animated: true, completion: nil)
     }
     
