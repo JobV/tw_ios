@@ -380,7 +380,7 @@
 	self.label.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
 	[self.contentView addSubview:self.label];
 	
-	self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 200, 75, 75)];
+	self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 70, 70)];
 	self.imageView.backgroundColor = [UIColor clearColor];
 	self.imageView.contentMode = UIViewContentModeCenter;
 	self.imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;

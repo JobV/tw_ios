@@ -19,15 +19,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.pickerView = [[AKPickerView alloc] initWithFrame:self.view.bounds];
+    self.pickerView = [[AKPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-175, self.view.bounds.size.width, 175)];
+    NSLog(@"X: %f",   self.view.bounds.origin.x);
+    NSLog(@"Y: %f",   self.view.bounds.origin.x);
+    NSLog(@"Width: %f",   self.view.bounds.size.width);
+    NSLog(@"Height: %f",   self.view.bounds.size.height);
     self.pickerView.delegate = self;
     self.pickerView.dataSource = self;
     self.pickerView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.pickerView];
 
-//    self.pickerView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20];
-//    self.pickerView.highlightedFont = [UIFont fontWithName:@"HelveticaNeue" size:20];
-    self.pickerView.interitemSpacing = 20.0;
+    self.pickerView.interitemSpacing = 2.5;
     self.pickerView.fisheyeFactor = 0.001;
     self.pickerView.pickerViewStyle = AKPickerViewStyleFlat;
     
@@ -80,6 +82,7 @@
 - (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
 {
  //   NSLog(@"%@", self.titles[item]);
+    NSLog(@"hadoken");
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
