@@ -9,4 +9,7 @@
 
 ### Marcelo van der Lebre <marcelo.lebre@gmail.com>
 
-Woot Woot!!!
+## iOS Project Documentation
+* On tw_ios you can find the ios project for therewere
+* This project uses cocoapods, hence, to open it with XCode, select .workspace instead of .xcodeproj so that libs can be correctly loaded
+

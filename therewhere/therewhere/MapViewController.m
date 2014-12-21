@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    
+
     UIBlurEffect * effect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
     UIVisualEffectView * viewWithBlurredBackground = [[UIVisualEffectView alloc] initWithEffect:effect];
     UIVisualEffectView * viewInducingVibrancy = [[UIVisualEffectView alloc] initWithEffect:effect]; // must be the same effect as the blur view
@@ -31,6 +31,7 @@
     // Set the text and the position of your label
     [viewInducingVibrancy.contentView addSubview:vibrantLabel];
     [self.view addSubview:viewInducingVibrancy];
+
 }
 
 -(void) viewWillAppear:(BOOL)animated{

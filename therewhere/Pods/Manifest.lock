@@ -1,0 +1,19 @@
+PODS:
+  - AKPickerView (0.2.1)
+
+DEPENDENCIES:
+  - AKPickerView (from `https://github.com/Akkyie/AKPickerView.git`)
+
+EXTERNAL SOURCES:
+  AKPickerView:
+    :git: https://github.com/Akkyie/AKPickerView.git
+
+CHECKOUT OPTIONS:
+  AKPickerView:
+    :commit: 478409c78209e2b56ec3754a913818c94cad0c5a
+    :git: https://github.com/Akkyie/AKPickerView.git
+
+SPEC CHECKSUMS:
+  AKPickerView: 289778437a149ba32ef72dbbaaddf4af51dd4b37
+
+COCOAPODS: 0.35.0
