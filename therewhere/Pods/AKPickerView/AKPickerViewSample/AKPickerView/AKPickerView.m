@@ -68,16 +68,17 @@
 	self.intercepter.delegate = self.delegate;
 	self.collectionView.delegate = self.intercepter;
 
-	CAGradientLayer *maskLayer = [CAGradientLayer layer];
-	maskLayer.frame = self.collectionView.bounds;
-	maskLayer.colors = @[(id)[[UIColor clearColor] CGColor],
-						 (id)[[UIColor blackColor] CGColor],
-						 (id)[[UIColor blackColor] CGColor],
-						 (id)[[UIColor clearColor] CGColor],];
-	maskLayer.locations = @[@0.0, @0.33, @0.66, @1.0];
-	maskLayer.startPoint = CGPointMake(0.0, 0.0);
-	maskLayer.endPoint = CGPointMake(1.0, 0.0);
-	//self.collectionView.layer.mask = maskLayer;
+//	CAGradientLayer *maskLayer = [CAGradientLayer layer];
+//	maskLayer.frame = self.collectionView.bounds;
+//	maskLayer.colors = @[(id)[[UIColor clearColor] CGColor],
+//						 (id)[[UIColor blackColor] CGColor],
+//						 (id)[[UIColor blackColor] CGColor],
+//						 (id)[[UIColor clearColor] CGColor],];
+//  maskLayer.locations = @[@0.0, @0.33, @0.66, @1.0];
+//  maskLayer.startPoint = CGPointMake(0.0, 0.0);
+//  maskLayer.endPoint = CGPointMake(1.0, 0.0);
+//  self.collectionView.layer.mask = maskLayer;
+    
 }
 
 - (id)initWithFrame:(CGRect)frame
