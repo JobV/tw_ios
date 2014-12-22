@@ -15,15 +15,18 @@
 
 @interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
+    
 }
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
+
 @end
 
 @implementation MainMapViewController
 @synthesize navigateButton, meetButton, contactButton;
 @synthesize mapView;
-
+static UIView *mainView;
+static UIImageView* imgView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,7 +64,8 @@
     [mapView setShowsUserLocation:YES];
     [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
     [self.pickerView reloadData];
-    
+    mainView = [[UIView alloc]init];
+    mainView = self.view;
 
 }
 
@@ -95,11 +99,43 @@
 	return image;
  }
 
++ (void) contactUser{
+    imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, mainView.bounds.size.width-75, 70, 70)];
+    imgView.image = [UIImage imageNamed:@"darth"];
+    imgView.contentMode = UIViewContentModeScaleAspectFill;
+    imgView.layer.cornerRadius = imgView.frame.size.width / 2;
+    imgView.clipsToBounds = YES;
+    imgView.layer.borderWidth = 3.0f;
+    imgView.layer.borderColor = [UIColor whiteColor].CGColor;
+    [imgView setTag:10];
+    [self changeView];
+}
 
+- (void) changeView{
+    if (self.pickerView.userInteractionEnabled) {
+        [self enableButtons];
+        self.pickerView.userInteractionEnabled = NO;
+        [self.view addSubview:imgView];
+        self.pickerView.hidden = YES;
+    }else{
+        [self disableButtons];
+        self.pickerView.hidden = NO;
+        self.pickerView.userInteractionEnabled = YES;
+        UIView *img;
+        if((img = [self.view viewWithTag:10]) != nil) {
+            [img removeFromSuperview];
+        }
+    }
+}
 
 - (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
 {
- //   NSLog(@"%@", self.titles[item]);
+    
+    //    self.pickerView.interitemSpacing =
+    //        self.pickerView.interitemSpacing == 2.5 ?
+    //        (self.view.bounds.size.width-90) : 2.5;
+    
+   
 //   [self.pickerView reloadData];
 }
 
@@ -119,19 +155,37 @@
 */
 
 - (IBAction)interItemButton:(id)sender {
-    self.pickerView.interitemSpacing =
-        self.pickerView.interitemSpacing == 2.5 ?
-        (self.view.bounds.size.width-90) : 2.5;
+    UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-75, 70, 70)];
+    imgView.image = [UIImage imageNamed:@"darth"];
+    imgView.contentMode = UIViewContentModeScaleAspectFill;
+    imgView.layer.cornerRadius = imgView.frame.size.width / 2;
+    imgView.clipsToBounds = YES;
+    imgView.layer.borderWidth = 3.0f;
+    imgView.layer.borderColor = [UIColor whiteColor].CGColor;
+    [imgView setTag:10];
+    
+    
+ 
+//    self.pickerView.interitemSpacing =
+//        self.pickerView.interitemSpacing == 2.5 ?
+//        (self.view.bounds.size.width-90) : 2.5;
     
     if (self.pickerView.userInteractionEnabled) {
         [self enableButtons];
         self.pickerView.userInteractionEnabled = NO;
+        [self.view addSubview:imgView];
+        self.pickerView.hidden = YES;
     }else{
         [self disableButtons];
+        self.pickerView.hidden = NO;
         self.pickerView.userInteractionEnabled = YES;
+        UIView *img;
+        if((img = [self.view viewWithTag:10]) != nil) {
+            [img removeFromSuperview];
+        }
     }
     
-    [self.pickerView reloadData];
+ //   [self.pickerView reloadData];
     
 }
 - (void) disableButtons {

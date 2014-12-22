@@ -1,3 +1,4 @@
 platform :ios, "8.0"
 
-pod "AKPickerView", :git => "https://github.com/Akkyie/AKPickerView.git"
+#pod "AKPickerView", :git => "https://github.com/Akkyie/AKPickerView.git"
+pod "MKMapView-ZoomLevel"

@@ -1,19 +1,10 @@
 PODS:
-  - AKPickerView (0.2.1)
+  - MKMapView-ZoomLevel (1.1.0)
 
 DEPENDENCIES:
-  - AKPickerView (from `https://github.com/Akkyie/AKPickerView.git`)
-
-EXTERNAL SOURCES:
-  AKPickerView:
-    :git: https://github.com/Akkyie/AKPickerView.git
-
-CHECKOUT OPTIONS:
-  AKPickerView:
-    :commit: 478409c78209e2b56ec3754a913818c94cad0c5a
-    :git: https://github.com/Akkyie/AKPickerView.git
+  - MKMapView-ZoomLevel
 
 SPEC CHECKSUMS:
-  AKPickerView: 289778437a149ba32ef72dbbaaddf4af51dd4b37
+  MKMapView-ZoomLevel: 16d7a0269bbb08b62c3e62c5b6f617b2ce469d8a
 
 COCOAPODS: 0.35.0
