@@ -15,15 +15,18 @@
 
 @interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
+    
 }
 @property (nonatomic, strong) AKPickerView *pickerView;
 @property (nonatomic, strong) NSArray *titles;
+
 @end
 
 @implementation MainMapViewController
 @synthesize navigateButton, meetButton, contactButton;
 @synthesize mapView;
-
+static UIView *mainView;
+static UIImageView* imgView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -65,11 +68,27 @@
 
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:touch.view];
+    if(location.x<self.view.bounds.size.width && location.y<80 ){
+        //  here dismiss your view
+//        NSLog(@"awesome touch");
+         NSLog(@"don't touch me there");
+
+    }else{
+       
+        [AKPickerView showScrollView];
+    }
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickerView
+- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickeNSLogrView
 {
     return 10;
 }
@@ -99,7 +118,12 @@
 
 - (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
 {
- //   NSLog(@"%@", self.titles[item]);
+    
+    //    self.pickerView.interitemSpacing =
+    //        self.pickerView.interitemSpacing == 2.5 ?
+    //        (self.view.bounds.size.width-90) : 2.5;
+    
+   
 //   [self.pickerView reloadData];
 }
 
@@ -118,49 +142,15 @@
 }
 */
 
-- (IBAction)interItemButton:(id)sender {
-    self.pickerView.interitemSpacing =
-        self.pickerView.interitemSpacing == 2.5 ?
-        (self.view.bounds.size.width-90) : 2.5;
-    
-    if (self.pickerView.userInteractionEnabled) {
-        [self enableButtons];
-        self.pickerView.userInteractionEnabled = NO;
-    }else{
-        [self disableButtons];
-        self.pickerView.userInteractionEnabled = YES;
-    }
-    
-    [self.pickerView reloadData];
-    
-}
-- (void) disableButtons {
-    meetButton.hidden = true;
-    contactButton.hidden = true;
-    navigateButton.hidden = true;
-}
-- (void) enableButtons {
-    meetButton.hidden = false;
-    contactButton.hidden = false;
-    navigateButton.hidden = false;
-}
 /* Map Related */
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
-    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-
+    //NSLog(@"Updating location: %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 250, 250);
     [mapView setRegion:region animated:YES];
 }
 
-/* User actions */
-- (IBAction)meet:(id)sender {
-}
-- (IBAction)navigate:(id)sender {
-}
-- (IBAction)contact:(id)sender {
-}
 
 
 @end

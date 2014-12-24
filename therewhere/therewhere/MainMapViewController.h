@@ -10,15 +10,13 @@
 #import <MapKit/MapKit.h>
 
 @interface MainMapViewController : UIViewController
-- (IBAction)interItemButton:(id)sender;
-@property (strong, nonatomic) IBOutlet UIButton *meetButton;
 - (IBAction)meet:(id)sender;
+@property (strong, nonatomic) IBOutlet UIButton *meetButton;
 @property (strong, nonatomic) IBOutlet UIButton *navigateButton;
-- (IBAction)navigate:(id)sender;
 @property (strong, nonatomic) IBOutlet UIButton *contactButton;
+
+- (IBAction)navigate:(id)sender;
 - (IBAction)contact:(id)sender;
-- (void)disableButtons;
-- (void)enableButtons;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 
