@@ -64,8 +64,23 @@ static UIImageView* imgView;
     [mapView setShowsUserLocation:YES];
     [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
     [self.pickerView reloadData];
-    mainView = [[UIView alloc]init];
-    mainView = self.view;
+    
+
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
+    
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInView:touch.view];
+    if(location.x<self.view.bounds.size.width && location.y<80 ){
+        //  here dismiss your view
+//        NSLog(@"awesome touch");
+         NSLog(@"don't touch me there");
+
+    }else{
+       
+        [AKPickerView showScrollView];
+    }
 
 }
 
@@ -73,7 +88,7 @@ static UIImageView* imgView;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickerView
+- (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickeNSLogrView
 {
     return 10;
 }
@@ -99,34 +114,7 @@ static UIImageView* imgView;
 	return image;
  }
 
-+ (void) contactUser{
-    imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, mainView.bounds.size.width-75, 70, 70)];
-    imgView.image = [UIImage imageNamed:@"darth"];
-    imgView.contentMode = UIViewContentModeScaleAspectFill;
-    imgView.layer.cornerRadius = imgView.frame.size.width / 2;
-    imgView.clipsToBounds = YES;
-    imgView.layer.borderWidth = 3.0f;
-    imgView.layer.borderColor = [UIColor whiteColor].CGColor;
-    [imgView setTag:10];
-    [self changeView];
-}
 
-- (void) changeView{
-    if (self.pickerView.userInteractionEnabled) {
-        [self enableButtons];
-        self.pickerView.userInteractionEnabled = NO;
-        [self.view addSubview:imgView];
-        self.pickerView.hidden = YES;
-    }else{
-        [self disableButtons];
-        self.pickerView.hidden = NO;
-        self.pickerView.userInteractionEnabled = YES;
-        UIView *img;
-        if((img = [self.view viewWithTag:10]) != nil) {
-            [img removeFromSuperview];
-        }
-    }
-}
 
 - (void)pickerView:(AKPickerView *)pickerView didSelectItem:(NSInteger)item
 {
@@ -154,67 +142,15 @@ static UIImageView* imgView;
 }
 */
 
-- (IBAction)interItemButton:(id)sender {
-    UIImageView* imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-75, 70, 70)];
-    imgView.image = [UIImage imageNamed:@"darth"];
-    imgView.contentMode = UIViewContentModeScaleAspectFill;
-    imgView.layer.cornerRadius = imgView.frame.size.width / 2;
-    imgView.clipsToBounds = YES;
-    imgView.layer.borderWidth = 3.0f;
-    imgView.layer.borderColor = [UIColor whiteColor].CGColor;
-    [imgView setTag:10];
-    
-    
- 
-//    self.pickerView.interitemSpacing =
-//        self.pickerView.interitemSpacing == 2.5 ?
-//        (self.view.bounds.size.width-90) : 2.5;
-    
-    if (self.pickerView.userInteractionEnabled) {
-        [self enableButtons];
-        self.pickerView.userInteractionEnabled = NO;
-        [self.view addSubview:imgView];
-        self.pickerView.hidden = YES;
-    }else{
-        [self disableButtons];
-        self.pickerView.hidden = NO;
-        self.pickerView.userInteractionEnabled = YES;
-        UIView *img;
-        if((img = [self.view viewWithTag:10]) != nil) {
-            [img removeFromSuperview];
-        }
-    }
-    
- //   [self.pickerView reloadData];
-    
-}
-- (void) disableButtons {
-    meetButton.hidden = true;
-    contactButton.hidden = true;
-    navigateButton.hidden = true;
-}
-- (void) enableButtons {
-    meetButton.hidden = false;
-    contactButton.hidden = false;
-    navigateButton.hidden = false;
-}
 /* Map Related */
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    NSLog(@"OldLocation %f %f", oldLocation.coordinate.latitude, oldLocation.coordinate.longitude);
-    NSLog(@"NewLocation %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
-
+    //NSLog(@"Updating location: %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
+    
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 250, 250);
     [mapView setRegion:region animated:YES];
 }
 
-/* User actions */
-- (IBAction)meet:(id)sender {
-}
-- (IBAction)navigate:(id)sender {
-}
-- (IBAction)contact:(id)sender {
-}
 
 
 @end

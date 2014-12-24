@@ -9,7 +9,7 @@
 #import "AKPickerView.h"
 #import "MainMapViewController.h"
 #import <Availability.h>
-
+#import "therewhere-Swift.h"
 @class AKCollectionViewLayout;
 
 @protocol AKCollectionViewLayoutDelegate <NSObject>
@@ -33,7 +33,7 @@
 @end
 
 @interface AKPickerView () <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, AKCollectionViewLayoutDelegate>
-@property (nonatomic, strong) UICollectionView *collectionView;
+
 @property (nonatomic, assign) NSUInteger selectedItem;
 @property (nonatomic, strong) AKPickerViewDelegateIntercepter *intercepter;
 - (CGFloat)offsetForItem:(NSUInteger)item;
@@ -42,7 +42,8 @@
 @end
 
 @implementation AKPickerView
-
+static UICollectionView *collectionView;
+static UIView *friendActionView;
 - (void)initialize
 {
 	self.font = self.font ?: [UIFont fontWithName:@"HelveticaNeue-Light" size:20];
@@ -51,25 +52,71 @@
 	self.highlightedTextColor = self.highlightedTextColor ?: [UIColor blackColor];
 	self.pickerViewStyle = self.pickerViewStyle ?: AKPickerViewStyle3D;
 
-	[self.collectionView removeFromSuperview];
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.bounds
+	[collectionView removeFromSuperview];
+    collectionView = [[UICollectionView alloc] initWithFrame:self.bounds
                                              collectionViewLayout:[self collectionViewLayout]];
-	self.collectionView.showsHorizontalScrollIndicator = NO;
-	self.collectionView.backgroundColor = [UIColor clearColor];
-	self.collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
-	self.collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	self.collectionView.dataSource = self;
-	[self.collectionView registerClass:[AKCollectionViewCell class]
+	collectionView.showsHorizontalScrollIndicator = NO;
+	collectionView.backgroundColor = [UIColor clearColor];
+	collectionView.decelerationRate = UIScrollViewDecelerationRateFast;
+	collectionView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+	collectionView.dataSource = self;
+	[collectionView registerClass:[AKCollectionViewCell class]
 			forCellWithReuseIdentifier:NSStringFromClass([AKCollectionViewCell class])];
-	[self addSubview:self.collectionView];
+	[self addSubview:collectionView];
 
 	self.intercepter = [AKPickerViewDelegateIntercepter new];
 	self.intercepter.pickerView = self;
 	self.intercepter.delegate = self.delegate;
-	self.collectionView.delegate = self.intercepter;
+	collectionView.delegate = self.intercepter;
+    
+    friendActionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, collectionView.bounds.size.width, 80)];
 
+    
+    int heightOffset = 55;
+    int buttonHeight = collectionView.bounds.size.height-heightOffset;
+    
+    UIImageView* friendPhotoView = [[UIImageView alloc] initWithFrame:CGRectMake(0, collectionView.bounds.size.height-75, 70, 70)];
+    friendPhotoView.image = [UIImage imageNamed:@"darth"];
+    friendPhotoView.contentMode = UIViewContentModeScaleAspectFill;
+    friendPhotoView.layer.cornerRadius = friendPhotoView.frame.size.width / 2;
+    friendPhotoView.clipsToBounds = YES;
+    friendPhotoView.layer.borderWidth = 3.0f;
+    friendPhotoView.layer.borderColor = [UIColor whiteColor].CGColor;
+    [friendPhotoView setTag:10];
+    
+    UIButton *meetButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [meetButton addTarget:self action:@selector(meetFriend)
+         forControlEvents:UIControlEventTouchUpInside];
+    [meetButton setTitle:@"meet" forState:UIControlStateNormal];
+    
+    meetButton.frame = CGRectMake(80.0, buttonHeight, 50, 30.0);
+    
+    
+    UIButton *callButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [callButton addTarget:self action:@selector(callFriend)
+         forControlEvents:UIControlEventTouchUpInside];
+    [callButton setTitle:@"call" forState:UIControlStateNormal];
+    callButton.frame = CGRectMake(150.0, buttonHeight, 50, 30.0);
+    
+    UIButton *navigateButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [navigateButton addTarget:self action:@selector(navigateToFriend)
+             forControlEvents:UIControlEventTouchUpInside];
+    [navigateButton setTitle:@"navigate" forState:UIControlStateNormal];
+    navigateButton.frame = CGRectMake(240.0, buttonHeight, 60, 30.0);
+    
+    
+    
+    
+    [friendActionView addSubview:meetButton];
+    [friendActionView addSubview:callButton];
+    [friendActionView addSubview:navigateButton];
+    [friendActionView addSubview:friendPhotoView];
+    friendActionView.hidden = true;
+    [self addSubview:friendActionView];
 //	CAGradientLayer *maskLayer = [CAGradientLayer layer];
-//	maskLayer.frame = self.collectionView.bounds;
+//	maskLayer.frame = collectionView.bounds;
 //	maskLayer.colors = @[(id)[[UIColor clearColor] CGColor],
 //						 (id)[[UIColor blackColor] CGColor],
 //						 (id)[[UIColor blackColor] CGColor],
@@ -77,7 +124,7 @@
 //  maskLayer.locations = @[@0.0, @0.33, @0.66, @1.0];
 //  maskLayer.startPoint = CGPointMake(0.0, 0.0);
 //  maskLayer.endPoint = CGPointMake(1.0, 0.0);
-//  self.collectionView.layer.mask = maskLayer;
+//  collectionView.layer.mask = maskLayer;
     
 }
 
@@ -101,7 +148,7 @@
 
 - (void)dealloc
 {
-	self.collectionView.delegate = nil;
+	collectionView.delegate = nil;
 }
 
 #pragma mark -
@@ -109,13 +156,13 @@
 - (void)layoutSubviews
 {
 	[super layoutSubviews];
-    self.collectionView.collectionViewLayout = [self collectionViewLayout];
+    collectionView.collectionViewLayout = [self collectionViewLayout];
 	[self scrollToItem:self.selectedItem animated:NO];
-	self.collectionView.layer.mask.frame = self.collectionView.bounds;
+	collectionView.layer.mask.frame = collectionView.bounds;
 
 	CATransform3D transform = CATransform3DIdentity;
 	transform.m34 = -MAX(MIN(self.fisheyeFactor, 1.0), 0.0);
-	self.collectionView.layer.sublayerTransform = transform;
+	collectionView.layer.sublayerTransform = transform;
 }
 
 - (CGSize)intrinsicContentSize
@@ -125,7 +172,7 @@
 
 - (CGPoint)contentOffset
 {
-    return self.collectionView.contentOffset;
+    return collectionView.contentOffset;
 }
 
 #pragma mark -
@@ -166,8 +213,8 @@
 - (void)reloadData
 {
 	[self invalidateIntrinsicContentSize];
-	[self.collectionView.collectionViewLayout invalidateLayout];
-	[self.collectionView reloadData];
+	[collectionView.collectionViewLayout invalidateLayout];
+	[collectionView reloadData];
 	dispatch_async(dispatch_get_main_queue(), ^{
 		[self selectItem:self.selectedItem animated:NO];
 	});
@@ -178,14 +225,14 @@
 	CGFloat offset = 0.0;
 	for (NSInteger i = 0; i < item; i++) {
 		NSIndexPath *_indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-		AKCollectionViewCell *cell = (AKCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:_indexPath];
+		AKCollectionViewCell *cell = (AKCollectionViewCell *)[collectionView cellForItemAtIndexPath:_indexPath];
 		offset += cell.bounds.size.width;
 	}
 
 	NSIndexPath *firstIndexPath = [NSIndexPath indexPathForItem:0 inSection:0];
-	CGSize firstSize = [self.collectionView cellForItemAtIndexPath:firstIndexPath].bounds.size;
+	CGSize firstSize = [collectionView cellForItemAtIndexPath:firstIndexPath].bounds.size;
 	NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForItem:item inSection:0];
-	CGSize selectedSize = [self.collectionView cellForItemAtIndexPath:selectedIndexPath].bounds.size;
+	CGSize selectedSize = [collectionView cellForItemAtIndexPath:selectedIndexPath].bounds.size;
 	offset -= (firstSize.width - selectedSize.width) / 2;
 
 	return offset;
@@ -195,13 +242,13 @@
 {
 	switch (self.pickerViewStyle) {
 		case AKPickerViewStyleFlat: {
-			[self.collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]
+			[collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]
 										atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
 												animated:animated];
 			break;
 		}
 		case AKPickerViewStyle3D: {
-			[self.collectionView setContentOffset:CGPointMake([self offsetForItem:item], self.collectionView.contentOffset.y)
+			[collectionView setContentOffset:CGPointMake([self offsetForItem:item], collectionView.contentOffset.y)
 										 animated:animated];
 			break;
 		}
@@ -211,7 +258,7 @@
 
 - (void)selectItem:(NSUInteger)item animated:(BOOL)animated
 {
-	[self.collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]
+	[collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]
 									  animated:animated
 								scrollPosition:UICollectionViewScrollPositionNone];
 	[self scrollToItem:item animated:animated];
@@ -226,17 +273,17 @@
 {
 	switch (self.pickerViewStyle) {
 		case AKPickerViewStyleFlat: {
-			CGPoint center = [self convertPoint:self.collectionView.center toView:self.collectionView];
-			NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:center];
+			CGPoint center = [self convertPoint:collectionView.center toView:collectionView];
+			NSIndexPath *indexPath = [collectionView indexPathForItemAtPoint:center];
 			[self selectItem:indexPath.item animated:YES];
 			break;
 		}
 		case AKPickerViewStyle3D: {
 			if ([self.dataSource numberOfItemsInPickerView:self]) {
-				for (NSUInteger i = 0; i < [self collectionView:self.collectionView numberOfItemsInSection:0]; i++) {
+				for (NSUInteger i = 0; i < [self collectionView:collectionView numberOfItemsInSection:0]; i++) {
 					NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
-					AKCollectionViewCell *cell = (AKCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:indexPath];
-					if ([self offsetForItem:i] + cell.bounds.size.width / 2 > self.collectionView.contentOffset.x) {
+					AKCollectionViewCell *cell = (AKCollectionViewCell *)[collectionView cellForItemAtIndexPath:indexPath];
+					if ([self offsetForItem:i] + cell.bounds.size.width / 2 > collectionView.contentOffset.x) {
 						[self selectItem:i animated:YES];
 						break;
 					}
@@ -325,15 +372,36 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    
 	[self selectItem:indexPath.item animated:YES];
-//    NSLog(@"hadoken");
+    collectionView.hidden = true;
     
-    [MainMapViewController contactUser];
-    
-    [self reloadData];
-  
-    //  [self.view addSubview:self.pickerView];
+//    [self addSubview:friendActionView];
+//    friendActionView.hidden=false;
+   // self.hidden= false;
+    friendActionView.hidden = false;
 
+}
+
+- (void) navigateToFriend{
+    NSLog(@"navigate to friend");
+}
+
+- (void) callFriend{
+    NSLog(@"call friend");
+}
+- (void) meetFriend{
+    NSLog(@"meet friend");
+}
+
++ (void) showScrollView{
+    collectionView.hidden=false;
+    [self dismissFriendActionView];
+}
++ (void) dismissFriendActionView{
+//    friendActionView.hidden=true;
+    
+    friendActionView.hidden = true;
 }
 
 #pragma mark -
@@ -362,7 +430,7 @@
 	[CATransaction begin];
 	[CATransaction setValue:(id)kCFBooleanTrue
 					 forKey:kCATransactionDisableActions];
-	self.collectionView.layer.mask.frame = self.collectionView.bounds;
+	collectionView.layer.mask.frame = collectionView.bounds;
 	[CATransaction commit];
 }
 
@@ -454,7 +522,7 @@
 
 - (void)prepareLayout
 {
-	CGRect visibleRect = (CGRect){self.collectionView.contentOffset, self.collectionView.bounds.size};
+	CGRect visibleRect = (CGRect){collectionView.contentOffset, collectionView.bounds.size};
 	self.midX = CGRectGetMidX(visibleRect);
 	self.width = CGRectGetWidth(visibleRect) / 2;
 	self.maxAngle = M_PI_2;
@@ -498,8 +566,8 @@
 		}
 		case AKPickerViewStyle3D: {
 			NSMutableArray *attributes = [NSMutableArray array];
-			if ([self.collectionView numberOfSections]) {
-				for (NSInteger i = 0; i < [self.collectionView numberOfItemsInSection:0]; i++) {
+			if ([collectionView numberOfSections]) {
+				for (NSInteger i = 0; i < [collectionView numberOfItemsInSection:0]; i++) {
 					NSIndexPath *indexPath = [NSIndexPath indexPathForItem:i inSection:0];
 					[attributes addObject:[self layoutAttributesForItemAtIndexPath:indexPath]];
 				}
