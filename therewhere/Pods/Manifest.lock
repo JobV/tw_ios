@@ -25,6 +25,7 @@ PODS:
   - CocoaLumberjack/Core (1.9.2)
   - CocoaLumberjack/Extensions (1.9.2):
     - CocoaLumberjack/Core
+  - Kiwi (2.3.1)
   - Mantle (1.5.1):
     - Mantle/extobjc (= 1.5.1)
   - Mantle/extobjc (1.5.1)
@@ -53,12 +54,14 @@ PODS:
     - Rest2Mobile/Logging
 
 DEPENDENCIES:
+  - Kiwi
   - MKMapView-ZoomLevel
   - Rest2Mobile (~> 1.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
   CocoaLumberjack: 205769c032b5fef85b92472046bcc8b7e7c8a817
+  Kiwi: 73e1400209055ee9c8ba78c6012b6b642d0fb9f7
   Mantle: d7c5ac734579ec751c58fecbf56189853056c58c
   MKMapView-ZoomLevel: 16d7a0269bbb08b62c3e62c5b6f617b2ce469d8a
   Rest2Mobile: 53d92bfc8a64cf2bd46c3b8ce3c3ab494b85b14e

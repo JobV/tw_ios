@@ -11,7 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import "Location.h"
 
 @interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
@@ -149,6 +149,9 @@ static UIImageView* imgView;
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 250, 250);
     [mapView setRegion:region animated:YES];
+    
+    
+    SetLocationRequest *setLocation =
 }
 
 

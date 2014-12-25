@@ -66,6 +66,12 @@
 #define COCOAPODS_VERSION_MINOR_CocoaLumberjack_Extensions 9
 #define COCOAPODS_VERSION_PATCH_CocoaLumberjack_Extensions 2
 
+// Kiwi
+#define COCOAPODS_POD_AVAILABLE_Kiwi
+#define COCOAPODS_VERSION_MAJOR_Kiwi 2
+#define COCOAPODS_VERSION_MINOR_Kiwi 3
+#define COCOAPODS_VERSION_PATCH_Kiwi 1
+
 // MKMapView-ZoomLevel
 #define COCOAPODS_POD_AVAILABLE_MKMapView_ZoomLevel
 #define COCOAPODS_VERSION_MAJOR_MKMapView_ZoomLevel 1
