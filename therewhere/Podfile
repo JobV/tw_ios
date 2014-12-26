@@ -2,5 +2,5 @@ platform :ios, "8.0"
 
 #pod "AKPickerView", :git => "https://github.com/Akkyie/AKPickerView.git"
 pod "MKMapView-ZoomLevel"
-pod 'Rest2Mobile', '~> 1.1'
-pod 'Kiwi'
+#pod 'Rest2Mobile', '~> 1.1'
+pod 'RestKit', '~> 0.20.0'

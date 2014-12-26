@@ -1,1 +1,0 @@
-../../../Rest2Mobile/Rest2Mobile/Controller/Configuration/MMControllerConfigurationRegistry.h
