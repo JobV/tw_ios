@@ -11,7 +11,10 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-
+#import <RestKit/RestKit.h>
+#import "SetLocationRequest.h"
+#import "SetLocationResponse.h"
+#import "Location.h"
 
 @interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
@@ -57,9 +60,10 @@ static UIImageView* imgView;
     locationManager.delegate = self;
     locationManager.distanceFilter = kCLDistanceFilterNone;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager requestWhenInUseAuthorization];
     [locationManager startUpdatingLocation];
     
-    [locationManager requestWhenInUseAuthorization];
+    
     
     [mapView setShowsUserLocation:YES];
     [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
@@ -145,10 +149,15 @@ static UIImageView* imgView;
 /* Map Related */
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    //NSLog(@"Updating location: %f %f", newLocation.coordinate.latitude, newLocation.coordinate.longitude);
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 250, 250);
     [mapView setRegion:region animated:YES];
+
+    Location *location = [[Location alloc] init];
+    [location setLocation:newLocation.coordinate userID:1];
+    
+ //   CLLocationCoordinate2D loc = [location getLocation:1];
+;
 }
 
 

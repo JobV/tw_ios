@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		72C89832FE686A6316297784 /* libPods-therewhereTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */; };
 		7898CAEBBBE8B26126DD38E4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF65D6121955B183D4DD6F1 /* libPods.a */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */; };
@@ -24,6 +25,11 @@
 		A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */; };
 		A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AD39001A44E44C0003B146 /* MainMapViewController.m */; };
 		A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6AD39011A44E44C0003B146 /* MainMapViewController.xib */; };
+		A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */; };
+		A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */; };
+		A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B991A4ED9A100E6082D /* TWAPIManager.m */; };
+		A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B9C1A4EDEC900E6082D /* Location.m */; };
+		A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96BA01A4F037000E6082D /* GetLocationResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,9 +42,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A6E61BC31A4CD6EF001D14FF /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		2E06A3150E354D5784A8B902 /* Pods-therewhereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.release.xcconfig"; sourceTree = "<group>"; };
+		35FCC4F3EA593EC02F95A2A8 /* Pods-therewhereTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF65D6121955B183D4DD6F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-therewhereTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
 		A68BAEE11A478B9A00EC8B7E /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
@@ -65,6 +86,16 @@
 		A6AD38FF1A44E44C0003B146 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMapViewController.h; path = therewhere/MainMapViewController.h; sourceTree = SOURCE_ROOT; };
 		A6AD39001A44E44C0003B146 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMapViewController.m; path = therewhere/MainMapViewController.m; sourceTree = SOURCE_ROOT; };
 		A6AD39011A44E44C0003B146 /* MainMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMapViewController.xib; path = therewhere/MainMapViewController.xib; sourceTree = SOURCE_ROOT; };
+		A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationResponse.h; sourceTree = "<group>"; };
+		A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationResponse.m; sourceTree = "<group>"; };
+		A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationRequest.m; sourceTree = "<group>"; };
+		A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationRequest.h; sourceTree = "<group>"; };
+		A6E96B991A4ED9A100E6082D /* TWAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAPIManager.m; sourceTree = "<group>"; };
+		A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWAPIManager.h; sourceTree = "<group>"; };
+		A6E96B9C1A4EDEC900E6082D /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		A6E96B9E1A4EDED200E6082D /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		A6E96B9F1A4F035400E6082D /* GetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetLocationResponse.h; sourceTree = "<group>"; };
+		A6E96BA01A4F037000E6082D /* GetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocationResponse.m; sourceTree = "<group>"; };
 		C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,17 +114,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72C89832FE686A6316297784 /* libPods-therewhereTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		88687B969CD63F2D979A74F9 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		9A611F3EB53A77AF75A9865E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */,
 				3CF65D6121955B183D4DD6F1 /* libPods.a */,
+				A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,6 +163,7 @@
 		A6A27DC41A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXGroup;
 			children = (
+				A6E96B8D1A4DFBE500E6082D /* Rest API */,
 				A6A27E6C1A3F9304006F7ECD /* Lib */,
 				A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */,
 				A6A27E5D1A3E3124006F7ECD /* LoginViewController.swift */,
@@ -140,7 +181,7 @@
 				A6A53A2B1A44E91500238E20 /* MainMapViewController-Bridging-Header.h */,
 			);
 			path = therewhere;
-			sourceTree = SOURCE_ROOT;
+			sourceTree = "<group>";
 		};
 		A6A27DC51A3BACBA006F7ECD /* Supporting Files */ = {
 			isa = PBXGroup;
@@ -155,6 +196,7 @@
 			children = (
 				A6A27DE01A3BACBA006F7ECD /* therewhereTests.swift */,
 				A6A27DDE1A3BACBA006F7ECD /* Supporting Files */,
+				C495B0859FC631B3D1AF4A12 /* r2m */,
 			);
 			path = therewhereTests;
 			sourceTree = "<group>";
@@ -179,13 +221,56 @@
 			name = Lib;
 			sourceTree = "<group>";
 		};
+		A6E96B8D1A4DFBE500E6082D /* Rest API */ = {
+			isa = PBXGroup;
+			children = (
+				A6E96B981A4ED89200E6082D /* Controller */,
+				A6E96B971A4ED87700E6082D /* Classes */,
+			);
+			name = "Rest API";
+			sourceTree = "<group>";
+		};
+		A6E96B971A4ED87700E6082D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */,
+				A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */,
+				A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */,
+				A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */,
+				A6E96B9F1A4F035400E6082D /* GetLocationResponse.h */,
+				A6E96BA01A4F037000E6082D /* GetLocationResponse.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		A6E96B981A4ED89200E6082D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A6E96B991A4ED9A100E6082D /* TWAPIManager.m */,
+				A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */,
+				A6E96B9C1A4EDEC900E6082D /* Location.m */,
+				A6E96B9E1A4EDED200E6082D /* Location.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		B7C985CD860FB96A49D44150 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */,
 				C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */,
+				35FCC4F3EA593EC02F95A2A8 /* Pods-therewhereTests.debug.xcconfig */,
+				2E06A3150E354D5784A8B902 /* Pods-therewhereTests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		C495B0859FC631B3D1AF4A12 /* r2m */ = {
+			isa = PBXGroup;
+			children = (
+				88687B969CD63F2D979A74F9 /* Controllers */,
+			);
+			path = r2m;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +285,7 @@
 				A6A27DBF1A3BACBA006F7ECD /* Frameworks */,
 				A6A27DC01A3BACBA006F7ECD /* Resources */,
 				75741CADC8244B33FC5D0475 /* Copy Pods Resources */,
+				A6E61BC31A4CD6EF001D14FF /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -214,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6A27DE71A3BACBA006F7ECD /* Build configuration list for PBXNativeTarget "therewhereTests" */;
 			buildPhases = (
+				C3A1D74A8AAB399AF8C4E5FF /* Check Pods Manifest.lock */,
 				A6A27DD61A3BACBA006F7ECD /* Sources */,
 				A6A27DD71A3BACBA006F7ECD /* Frameworks */,
 				A6A27DD81A3BACBA006F7ECD /* Resources */,
+				38A3EF7A8C47E75240CF5A80 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -304,6 +392,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		38A3EF7A8C47E75240CF5A80 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		75741CADC8244B33FC5D0475 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -319,6 +422,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C3A1D74A8AAB399AF8C4E5FF /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -326,13 +444,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */,
+				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */,
+				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
+				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
 				A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
 				A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */,
+				A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +513,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -427,6 +551,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -440,12 +565,23 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos8.0]" = "$(inherited)";
 				INFOPLIST_FILE = therewhere/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
 					"\"QuartzCore\"",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "therewhere/MainMapViewController-Bridging-Header.h";
@@ -458,12 +594,22 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = therewhere/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-framework",
 					"\"QuartzCore\"",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "therewhere/MainMapViewController-Bridging-Header.h";
@@ -472,11 +618,14 @@
 		};
 		A6A27DE81A3BACBA006F7ECD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(DEVELOPER_DIR)/Platforms/iPhoneOS.platform/Developer/Library/Frameworks",
+					"$(PROJECT_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -484,23 +633,35 @@
 				);
 				INFOPLIST_FILE = therewhereTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/therewhere.app/therewhere";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
 		A6A27DE91A3BACBA006F7ECD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = therewhereTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/build/Debug-iphoneos",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/therewhere.app/therewhere";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};

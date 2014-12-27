@@ -1,0 +1,26 @@
++Name setLocation
++Request
+POST http://localhost:3000/api/v1/location
+
+
++Body
+
+{
+"id": 1,
+"x": "2.0",
+"y": "2.0",
+"z": "2.0",
+"m": "2.0"
+}
+
+
++Response
+
++Body
+{
+  "created_at" : "2014-12-26T19:54:19.353Z",
+  "id" : 19,
+  "user_id" : 1,
+  "updated_at" : "2014-12-26T19:54:19.353Z",
+  "longlat" : "POINT (2.0 2.0 2.0 2.0)"
+}

@@ -1,0 +1,25 @@
++Name createUser
++Request
+POST http://localhost:3000/api/v1/users
+
+
++Body
+
+{
+"first_name": "job",
+"last_name": "lebre",
+"email": "joblebre@maca.jp"
+}
+
+
++Response
+
++Body
+{
+  "email" : "joblebre@maca.jp",
+  "id" : 1,
+  "last_name" : "lebre",
+  "updated_at" : "2014-12-25T00:17:48.326Z",
+  "first_name" : "job",
+  "created_at" : "2014-12-25T00:17:48.326Z"
+}

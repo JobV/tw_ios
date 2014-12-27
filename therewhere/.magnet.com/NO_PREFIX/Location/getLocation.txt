@@ -1,0 +1,22 @@
++Name getLocation
++Request
+GET http://localhost:3000/api/v1/location/{userID}
+
+
++Body
+
+{
+"id":"1"
+}
+
+
++Response
+
++Body
+
+{
+"y" : 3,
+"z" : 4,
+"x" : 2,
+"m" : 5
+}

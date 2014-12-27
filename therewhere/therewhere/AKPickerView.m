@@ -115,6 +115,7 @@ static UIView *friendActionView;
     [friendActionView addSubview:friendPhotoView];
     friendActionView.hidden = true;
     [self addSubview:friendActionView];
+    
 //	CAGradientLayer *maskLayer = [CAGradientLayer layer];
 //	maskLayer.frame = collectionView.bounds;
 //	maskLayer.colors = @[(id)[[UIColor clearColor] CGColor],
