@@ -18,7 +18,9 @@
 
 ### REST API
 
-The rest api uses restkit pod to consume and populate the twapi
-* Rest API Folder has two folders
-** Controller - Object related controllers (Location, User, etc.)
-** Classes - Objects to which controllers map rest requests and responses
+The rest api uses restkit pod to consume and populate the twapi.
+
+Rest API Folder has two folders.
+
+* Controller - Object related controllers (Location, User, etc.)
+* Classes - Objects to which controllers map rest requests and responses
