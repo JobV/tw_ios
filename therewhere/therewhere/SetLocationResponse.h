@@ -10,8 +10,8 @@
 #define therewhere_LocationResponse_h
 
 @interface SetLocationResponse : NSObject
-@property (nonatomic, assign) int *locationID;
-@property (nonatomic, assign) int *userID;
+@property (nonatomic, assign) int locationID;
+@property (nonatomic, assign) int userID;
 @property (nonatomic, copy)  NSString *longlat;
 @property (nonatomic, copy)  NSString *created_at;
 @property (nonatomic, copy)  NSString *updated_at;

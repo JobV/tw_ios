@@ -29,6 +29,7 @@
 		A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */; };
 		A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B991A4ED9A100E6082D /* TWAPIManager.m */; };
 		A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B9C1A4EDEC900E6082D /* Location.m */; };
+		A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96BA01A4F037000E6082D /* GetLocationResponse.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,8 @@
 		A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWAPIManager.h; sourceTree = "<group>"; };
 		A6E96B9C1A4EDEC900E6082D /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		A6E96B9E1A4EDED200E6082D /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		A6E96B9F1A4F035400E6082D /* GetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetLocationResponse.h; sourceTree = "<group>"; };
+		A6E96BA01A4F037000E6082D /* GetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocationResponse.m; sourceTree = "<group>"; };
 		C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -234,6 +237,8 @@
 				A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */,
 				A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */,
 				A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */,
+				A6E96B9F1A4F035400E6082D /* GetLocationResponse.h */,
+				A6E96BA01A4F037000E6082D /* GetLocationResponse.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -439,6 +444,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */,
 				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */,

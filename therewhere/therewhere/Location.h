@@ -13,7 +13,7 @@
 
 @interface Location : NSObject
 - (NSDate *) setLocation: (CLLocationCoordinate2D) coordinate userID:(int)userID;
-- (CLLocationCoordinate2D) getLocation: (int) userID;
+- (CLLocationCoordinate2D ) getLocation: (int) userID;
 
 @end
 
