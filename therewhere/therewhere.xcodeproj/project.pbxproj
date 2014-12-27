@@ -7,15 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		190FCE8F69DC4D5A7BCE0BF9 /* CreateUserResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD752A077A676360F52C6BE /* CreateUserResult.m */; };
-		1DBE52E221F3D96249EDB43C /* LocationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 47B8ADE109667B038A9CAE43 /* LocationResult.m */; };
-		2CAB5C7131CECD68D802278A /* GetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B132123E55E49F8B018B8F3B /* GetLocationRequest.m */; };
-		31292EB9C767A0580C236B49 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 889ED0E8E5CE2166CBBF2900 /* User.m */; };
-		332ECE631E151A3DFC65BC62 /* SetLocationResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A913C686FE3811A5438031A /* SetLocationResult.m */; };
-		410A826D222699F52622CA4E /* CreateUserRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 49276F7C474B309261CA8D5C /* CreateUserRequest.m */; };
 		72C89832FE686A6316297784 /* libPods-therewhereTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */; };
 		7898CAEBBBE8B26126DD38E4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF65D6121955B183D4DD6F1 /* libPods.a */; };
-		9EEE76B63C808039A1ED339B /* UserResult.m in Sources */ = {isa = PBXBuildFile; fileRef = F206D53549ABB20F27025E09 /* UserResult.m */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */; };
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
@@ -32,8 +25,10 @@
 		A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */; };
 		A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AD39001A44E44C0003B146 /* MainMapViewController.m */; };
 		A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6AD39011A44E44C0003B146 /* MainMapViewController.xib */; };
-		B00465F85D27753228B82AF8 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = B03302CA4EDF6AC4A3FDEC1C /* Location.m */; };
-		E80DB24B6FD2561290A87B63 /* SetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 002CA3B93049A4EAF48719EA /* SetLocationRequest.m */; };
+		A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */; };
+		A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */; };
+		A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B991A4ED9A100E6082D /* TWAPIManager.m */; };
+		A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B9C1A4EDEC900E6082D /* Location.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,22 +54,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		002CA3B93049A4EAF48719EA /* SetLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationRequest.m; sourceTree = "<group>"; };
 		00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		034D516B941424B8D6370C15 /* SetLocationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetLocationRequest.h; sourceTree = "<group>"; };
 		2E06A3150E354D5784A8B902 /* Pods-therewhereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.release.xcconfig"; sourceTree = "<group>"; };
-		2E1969C49A3A97AE318C4CD9 /* SetLocationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetLocationResult.h; sourceTree = "<group>"; };
 		35FCC4F3EA593EC02F95A2A8 /* Pods-therewhereTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF65D6121955B183D4DD6F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		42C52E7DCC467219BDC8BE3F /* CreateUserResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateUserResult.h; sourceTree = "<group>"; };
-		47B8ADE109667B038A9CAE43 /* LocationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationResult.m; sourceTree = "<group>"; };
-		49276F7C474B309261CA8D5C /* CreateUserRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateUserRequest.m; sourceTree = "<group>"; };
-		4992727A161AE101650CEC0A /* CreateUserRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateUserRequest.h; sourceTree = "<group>"; };
-		5B7EC1327345A5B8A69A8D14 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		6DD752A077A676360F52C6BE /* CreateUserResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateUserResult.m; sourceTree = "<group>"; };
-		7A913C686FE3811A5438031A /* SetLocationResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationResult.m; sourceTree = "<group>"; };
-		889ED0E8E5CE2166CBBF2900 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		929E8878672244035EC292F8 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-therewhereTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
@@ -102,13 +85,15 @@
 		A6AD38FF1A44E44C0003B146 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMapViewController.h; path = therewhere/MainMapViewController.h; sourceTree = SOURCE_ROOT; };
 		A6AD39001A44E44C0003B146 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMapViewController.m; path = therewhere/MainMapViewController.m; sourceTree = SOURCE_ROOT; };
 		A6AD39011A44E44C0003B146 /* MainMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMapViewController.xib; path = therewhere/MainMapViewController.xib; sourceTree = SOURCE_ROOT; };
-		B03302CA4EDF6AC4A3FDEC1C /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		B132123E55E49F8B018B8F3B /* GetLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocationRequest.m; sourceTree = "<group>"; };
-		BFE42C84710067314E4E3272 /* LocationResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationResult.h; sourceTree = "<group>"; };
+		A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationResponse.h; sourceTree = "<group>"; };
+		A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationResponse.m; sourceTree = "<group>"; };
+		A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationRequest.m; sourceTree = "<group>"; };
+		A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationRequest.h; sourceTree = "<group>"; };
+		A6E96B991A4ED9A100E6082D /* TWAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAPIManager.m; sourceTree = "<group>"; };
+		A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWAPIManager.h; sourceTree = "<group>"; };
+		A6E96B9C1A4EDEC900E6082D /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		A6E96B9E1A4EDED200E6082D /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		CB36B6652A098112FA1E51AA /* GetLocationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetLocationRequest.h; sourceTree = "<group>"; };
-		E7C16E4FE4864F80C4ADDB70 /* UserResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserResult.h; sourceTree = "<group>"; };
-		F206D53549ABB20F27025E09 /* UserResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,31 +118,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		218AFE300E78C4268142E173 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				5B7EC1327345A5B8A69A8D14 /* User.h */,
-				889ED0E8E5CE2166CBBF2900 /* User.m */,
-				929E8878672244035EC292F8 /* Location.h */,
-				B03302CA4EDF6AC4A3FDEC1C /* Location.m */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		88687B969CD63F2D979A74F9 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		8BFCF597C62B12F6396B57C5 /* r2m */ = {
-			isa = PBXGroup;
-			children = (
-				218AFE300E78C4268142E173 /* Controllers */,
-				C2D9838873EB1BB164D50892 /* Nodes */,
-			);
-			path = r2m;
 			sourceTree = "<group>";
 		};
 		9A611F3EB53A77AF75A9865E /* Frameworks */ = {
@@ -195,6 +160,7 @@
 		A6A27DC41A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXGroup;
 			children = (
+				A6E96B8D1A4DFBE500E6082D /* Rest API */,
 				A6A27E6C1A3F9304006F7ECD /* Lib */,
 				A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */,
 				A6A27E5D1A3E3124006F7ECD /* LoginViewController.swift */,
@@ -210,7 +176,6 @@
 				A6AD39001A44E44C0003B146 /* MainMapViewController.m */,
 				A6AD39011A44E44C0003B146 /* MainMapViewController.xib */,
 				A6A53A2B1A44E91500238E20 /* MainMapViewController-Bridging-Header.h */,
-				8BFCF597C62B12F6396B57C5 /* r2m */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -253,6 +218,37 @@
 			name = Lib;
 			sourceTree = "<group>";
 		};
+		A6E96B8D1A4DFBE500E6082D /* Rest API */ = {
+			isa = PBXGroup;
+			children = (
+				A6E96B981A4ED89200E6082D /* Controller */,
+				A6E96B971A4ED87700E6082D /* Classes */,
+			);
+			name = "Rest API";
+			sourceTree = "<group>";
+		};
+		A6E96B971A4ED87700E6082D /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */,
+				A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */,
+				A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */,
+				A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		A6E96B981A4ED89200E6082D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A6E96B991A4ED9A100E6082D /* TWAPIManager.m */,
+				A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */,
+				A6E96B9C1A4EDEC900E6082D /* Location.m */,
+				A6E96B9E1A4EDED200E6082D /* Location.h */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		B7C985CD860FB96A49D44150 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,27 +258,6 @@
 				2E06A3150E354D5784A8B902 /* Pods-therewhereTests.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		C2D9838873EB1BB164D50892 /* Nodes */ = {
-			isa = PBXGroup;
-			children = (
-				4992727A161AE101650CEC0A /* CreateUserRequest.h */,
-				49276F7C474B309261CA8D5C /* CreateUserRequest.m */,
-				42C52E7DCC467219BDC8BE3F /* CreateUserResult.h */,
-				6DD752A077A676360F52C6BE /* CreateUserResult.m */,
-				E7C16E4FE4864F80C4ADDB70 /* UserResult.h */,
-				F206D53549ABB20F27025E09 /* UserResult.m */,
-				CB36B6652A098112FA1E51AA /* GetLocationRequest.h */,
-				B132123E55E49F8B018B8F3B /* GetLocationRequest.m */,
-				034D516B941424B8D6370C15 /* SetLocationRequest.h */,
-				002CA3B93049A4EAF48719EA /* SetLocationRequest.m */,
-				2E1969C49A3A97AE318C4CD9 /* SetLocationResult.h */,
-				7A913C686FE3811A5438031A /* SetLocationResult.m */,
-				BFE42C84710067314E4E3272 /* LocationResult.h */,
-				47B8ADE109667B038A9CAE43 /* LocationResult.m */,
-			);
-			path = Nodes;
 			sourceTree = "<group>";
 		};
 		C495B0859FC631B3D1AF4A12 /* r2m */ = {
@@ -464,22 +439,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */,
+				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
+				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
 				A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
 				A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */,
-				31292EB9C767A0580C236B49 /* User.m in Sources */,
-				410A826D222699F52622CA4E /* CreateUserRequest.m in Sources */,
-				190FCE8F69DC4D5A7BCE0BF9 /* CreateUserResult.m in Sources */,
-				9EEE76B63C808039A1ED339B /* UserResult.m in Sources */,
-				B00465F85D27753228B82AF8 /* Location.m in Sources */,
-				2CAB5C7131CECD68D802278A /* GetLocationRequest.m in Sources */,
-				E80DB24B6FD2561290A87B63 /* SetLocationRequest.m in Sources */,
-				332ECE631E151A3DFC65BC62 /* SetLocationResult.m in Sources */,
-				1DBE52E221F3D96249EDB43C /* LocationResult.m in Sources */,
+				A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

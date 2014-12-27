@@ -11,10 +11,10 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "Location.h"
-#import "GetLocationRequest.h"
+#import <RestKit/RestKit.h>
 #import "SetLocationRequest.h"
-#import "SetLocationResult.h"
+#import "SetLocationResponse.h"
+#import "Location.h"
 
 @interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
@@ -153,31 +153,10 @@ static UIImageView* imgView;
     
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 250, 250);
     [mapView setRegion:region animated:YES];
-    
+
     Location *location = [[Location alloc] init];
-    
-    // FIXME: Set the input parameter(s)
-    SetLocationRequest *locationRequest;
-    locationRequest.magnetId = 1;
-    locationRequest.x = [NSString stringWithFormat:@"%f", newLocation.coordinate.longitude];
-    locationRequest.y = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
-    locationRequest.z = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
-    locationRequest.m = [NSString stringWithFormat:@"%f", newLocation.coordinate.latitude];
-
-    //    NSError *error;
-
-
-    [location setLocation:locationRequest
-             success:^(SetLocationResult *response){
-                 NSLog(@"Created at: %@ ", response.created_at);
-             }
-             failure:^(NSError *error){
-                 NSLog(@"error: %@ ", error.description);
-             }];
-//    [location setLocation:<#(SetLocationRequest *)#> success:<#^(SetLocationResult *response)success#> failure:<#^(NSError *error)failure#>];
-    
-    
-
+    NSDate *date = [location setLocation:newLocation.coordinate userID:1];
+    NSLog(@"Created at ::: %@", date );
 }
 
 
