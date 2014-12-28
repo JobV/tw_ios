@@ -32,7 +32,7 @@ static GetLocationResponse *locationResponse;
 
 -(id)init {
     if ( self = [super init] ) {
-        restPath = @"/api/v1/location";
+        restPath = @"/api/v1/users";
         statusCodes = RKStatusCodeIndexSetForClass(RKStatusCodeClassSuccessful); // Anything in 2xx
         
         rkmanager = [RKObjectManager managerWithBaseURL:[NSURL URLWithString:[TWAPIManager twAPI_ip]]];
@@ -84,13 +84,18 @@ static GetLocationResponse *locationResponse;
     setLocationRequest.x = [[NSNumber numberWithDouble:coordinate.longitude] stringValue];
     setLocationRequest.y = [[NSNumber numberWithDouble:coordinate.latitude] stringValue];;
 
+    NSString *requestURL = [[[[[TWAPIManager twAPI_ip]
+                               stringByAppendingString: restPath]
+                              stringByAppendingString: @"/"]
+                             stringByAppendingString: [@(userID) stringValue]]
+                            stringByAppendingString:@"/location"];
     // POST to create
-    [rkmanager postObject:setLocationRequest path:restPath
+    [rkmanager postObject:setLocationRequest path:requestURL
                parameters:nil
                   success:^(RKObjectRequestOperation *operation, RKMappingResult *result) {
                       SetLocationResponse *locationResponse = [result firstObject];
                       created_date = locationResponse.created_at;
-                      NSLog(@"id: %d", locationResponse.userID);
+                      //NSLog(@"id: %d", locationResponse.userID);
                   }
                   failure:nil];
     date = [dateFormat dateFromString:created_date];
@@ -116,10 +121,11 @@ static GetLocationResponse *locationResponse;
                                                 keyPath:nil
                                                 statusCodes:statusCodes];
     
-    NSString *requestURL = [[[[TWAPIManager twAPI_ip]
+    NSString *requestURL = [[[[[TWAPIManager twAPI_ip]
                               stringByAppendingString: restPath]
                               stringByAppendingString: @"/"]
-                              stringByAppendingString: [@(userID) stringValue]];
+                              stringByAppendingString: [@(userID) stringValue]]
+                              stringByAppendingString:@"/location"];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
     

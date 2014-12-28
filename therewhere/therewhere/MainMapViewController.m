@@ -156,7 +156,7 @@ static UIImageView* imgView;
     Location *location = [[Location alloc] init];
     [location setLocation:newLocation.coordinate userID:1];
     
- //   CLLocationCoordinate2D loc = [location getLocation:1];
+    CLLocationCoordinate2D loc = [location getLocation:1];
 ;
 }
 
