@@ -11,5 +11,6 @@
 
 #import "MainMapViewController.h"
 
+#import <Mixpanel.h>
 
 #endif

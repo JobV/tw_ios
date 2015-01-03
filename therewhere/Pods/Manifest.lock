@@ -1,5 +1,8 @@
 PODS:
   - AFNetworking (1.3.4)
+  - Mixpanel (2.6.2):
+    - Mixpanel/MPCategoryHelpers (= 2.6.2)
+  - Mixpanel/MPCategoryHelpers (2.6.2)
   - MKMapView-ZoomLevel (1.1.0)
   - RestKit (0.20.3):
     - RestKit/Core (= 0.20.3)
@@ -20,11 +23,13 @@ PODS:
   - TransitionKit (1.1.1)
 
 DEPENDENCIES:
+  - Mixpanel
   - MKMapView-ZoomLevel
   - RestKit (~> 0.20.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 80c4e0652b08eb34e25b9c0ff3c82556fe5967b4
+  Mixpanel: c075cedebda3328ce1ee29a18429e265ce967cd8
   MKMapView-ZoomLevel: 16d7a0269bbb08b62c3e62c5b6f617b2ce469d8a
   RestKit: 7f9490e709ee745e166c4d2aa7a8d132831275b0
   SOCKit: d8d0dd3688ae1026c12367570da8fa8e1a6980fb
