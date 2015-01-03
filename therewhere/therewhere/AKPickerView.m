@@ -262,7 +262,6 @@ static UIView *friendActionView;
 	[collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]
 									  animated:animated
 								scrollPosition:UICollectionViewScrollPositionNone];
-	[self scrollToItem:item animated:animated];
 
 	self.selectedItem = item;
 
