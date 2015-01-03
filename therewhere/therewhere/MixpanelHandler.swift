@@ -12,6 +12,7 @@ struct MixpanelHandler{
     static let mixpanel = Mixpanel.sharedInstanceWithToken(mixpanelToken)
     
     static func userOpensApplication() {
-        mixpanel.track("{User:new}")
+        mixpanel.track("{user:application_openned}")
+        println("Mixpanel: User has openned the application")
     }
 }
