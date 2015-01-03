@@ -239,6 +239,7 @@ static UIView *friendActionView;
 	return offset;
 }
 
+// Not used by TW
 - (void)scrollToItem:(NSUInteger)item animated:(BOOL)animated
 {
 	switch (self.pickerViewStyle) {
