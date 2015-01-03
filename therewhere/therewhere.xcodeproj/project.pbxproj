@@ -10,6 +10,8 @@
 		72C89832FE686A6316297784 /* libPods-therewhereTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */; };
 		7898CAEBBBE8B26126DD38E4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF65D6121955B183D4DD6F1 /* libPods.a */; };
 		A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A69F1A58303800D4D992 /* MixpanelHandler.swift */; };
+		A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */; };
+		A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */; };
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
@@ -64,6 +66,8 @@
 		A608A6961A580A7D00D4D992 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		A608A69E1A581F9300D4D992 /* Mixpanel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-Bridging-Header.h"; sourceTree = "<group>"; };
 		A608A69F1A58303800D4D992 /* MixpanelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelHandler.swift; sourceTree = "<group>"; };
+		A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
+		A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendProfileViewController.xib; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
 		A68BAEE11A478B9A00EC8B7E /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				A6A53A2B1A44E91500238E20 /* MainMapViewController-Bridging-Header.h */,
 				A608A69E1A581F9300D4D992 /* Mixpanel-Bridging-Header.h */,
 				A608A69F1A58303800D4D992 /* MixpanelHandler.swift */,
+				A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */,
+				A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -367,6 +373,7 @@
 			files = (
 				A6A27E0F1A3E11FC006F7ECD /* Default-568h@2x.png in Resources */,
 				A6A27E621A3E3124006F7ECD /* InviteFriendsViewController.xib in Resources */,
+				A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */,
 				A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */,
 				A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */,
 				A6A27E601A3E3124006F7ECD /* LoginViewController.xib in Resources */,
@@ -453,6 +460,7 @@
 			files = (
 				A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */,
 				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
+				A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */,
 				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
