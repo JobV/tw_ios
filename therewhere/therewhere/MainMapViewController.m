@@ -67,10 +67,13 @@ static UIImageView* imgView;
     
     [mapView setShowsUserLocation:YES];
     [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
+    
+    
     [self.pickerView reloadData];
     
-
-}
+    // Create content and menu controllers
+    //
+   }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
     

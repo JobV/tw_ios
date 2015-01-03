@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		72C89832FE686A6316297784 /* libPods-therewhereTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */; };
 		7898CAEBBBE8B26126DD38E4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF65D6121955B183D4DD6F1 /* libPods.a */; };
+		A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A69F1A58303800D4D992 /* MixpanelHandler.swift */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */; };
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
@@ -60,6 +61,9 @@
 		35FCC4F3EA593EC02F95A2A8 /* Pods-therewhereTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3CF65D6121955B183D4DD6F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-therewhereTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A608A6961A580A7D00D4D992 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		A608A69E1A581F9300D4D992 /* Mixpanel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-Bridging-Header.h"; sourceTree = "<group>"; };
+		A608A69F1A58303800D4D992 /* MixpanelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelHandler.swift; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
 		A68BAEE11A478B9A00EC8B7E /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
@@ -131,6 +135,7 @@
 		9A611F3EB53A77AF75A9865E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A608A6961A580A7D00D4D992 /* Accelerate.framework */,
 				A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */,
 				3CF65D6121955B183D4DD6F1 /* libPods.a */,
 				A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */,
@@ -179,6 +184,8 @@
 				A6AD39001A44E44C0003B146 /* MainMapViewController.m */,
 				A6AD39011A44E44C0003B146 /* MainMapViewController.xib */,
 				A6A53A2B1A44E91500238E20 /* MainMapViewController-Bridging-Header.h */,
+				A608A69E1A581F9300D4D992 /* Mixpanel-Bridging-Header.h */,
+				A608A69F1A58303800D4D992 /* MixpanelHandler.swift */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -451,6 +458,7 @@
 				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
 				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
 				A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */,
+				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
