@@ -79,13 +79,7 @@ static UIImageView* imgView;
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:touch.view];
-    if(location.x<self.view.bounds.size.width && location.y<80 ){
-        //  here dismiss your view
-//        NSLog(@"awesome touch");
-         NSLog(@"don't touch me there");
-
-    }else{
-       
+    if( location.x < self.view.bounds.size.width && location.y < 80 ){
         [AKPickerView showScrollView];
     }
 
