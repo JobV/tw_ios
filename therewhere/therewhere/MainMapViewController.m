@@ -15,6 +15,7 @@
 #import "SetLocationRequest.h"
 #import "SetLocationResponse.h"
 #import "Location.h"
+#import "therewhere-Swift.h"
 
 @interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
@@ -28,9 +29,17 @@
 @implementation MainMapViewController
 @synthesize navigateButton, meetButton, contactButton;
 @synthesize mapView;
-static UIView *mainView;
-static UIImageView* imgView;
 
+static Boolean buttonVisibility;
+static NSString *friendName;
+static NSString *friendID;
+static UIButton *friendProfileButton;
+
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:true];
+    self.navigationController.navigationBarHidden = true;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pickerView = [[AKPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-75, self.view.bounds.size.width, 75)];
@@ -43,6 +52,9 @@ static UIImageView* imgView;
     self.pickerView.interitemSpacing = 2.5;
     self.pickerView.fisheyeFactor = 0.001;
     self.pickerView.pickerViewStyle = AKPickerViewStyleFlat;
+
+
+
     
  /*   self.titles = @[@"Tokyo",
                     @"Kanagawa",
@@ -68,6 +80,23 @@ static UIImageView* imgView;
     [mapView setShowsUserLocation:YES];
     [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
     
+    friendProfileButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [friendProfileButton addTarget:self action:@selector(showFriendProfile)
+                  forControlEvents:UIControlEventTouchUpInside];
+    [friendProfileButton setTitle:@"Job" forState:UIControlStateNormal];
+    friendProfileButton.frame = CGRectMake(245.0, 60, 65, 65);
+    friendProfileButton.layer.cornerRadius = friendProfileButton.frame.size.width / 2;;
+    friendProfileButton.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    [friendProfileButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    friendProfileButton.layer.shadowRadius = 3.0f;
+    friendProfileButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    friendProfileButton.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    friendProfileButton.layer.shadowOpacity = 0.5f;
+    friendProfileButton.layer.masksToBounds = NO;
+    friendProfileButton.hidden = true;
+    
+    [self.view addSubview:friendProfileButton];
     
     [self.pickerView reloadData];
     
@@ -75,19 +104,18 @@ static UIImageView* imgView;
     //
    }
 
+- (void) showFriendProfile{
+    FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
+    [self.navigationController pushViewController:fpvc animated:YES];
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:touch.view];
-    if(location.x<self.view.bounds.size.width && location.y<80 ){
-        //  here dismiss your view
-//        NSLog(@"awesome touch");
-         NSLog(@"don't touch me there");
-
-    }else{
-       
-        [AKPickerView showScrollView];
-    }
+    NSLog(@"location.y: %f", location.y);
+    [AKPickerView showScrollView];
+    friendProfileButton.hidden = true;
 
 }
 
@@ -98,6 +126,10 @@ static UIImageView* imgView;
 - (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickeNSLogrView
 {
     return 10;
+}
+
++ (void) showFriendProfileButton {
+    friendProfileButton.hidden = false;
 }
 
 /*
@@ -165,4 +197,9 @@ static UIImageView* imgView;
 
 
 
+/*- (IBAction)friendProfile:(id)sender {
+    FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
+    [self.navigationController pushViewController:fpvc animated:YES];
+}
+ */
 @end

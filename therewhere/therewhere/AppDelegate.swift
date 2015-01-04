@@ -23,10 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
-            window.backgroundColor = UIColor.whiteColor()
-            window.makeKeyAndVisible()
-            window.rootViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
+        //    window.backgroundColor = UIColor.whiteColor()
+       //     window.makeKeyAndVisible()
+            
+            
+                
+                var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
+                
+                var navigationController = UINavigationController(rootViewController: loginviewcontroller)
+                window.rootViewController = navigationController
+                window.backgroundColor = UIColor.whiteColor()
+                window.makeKeyAndVisible()
         }
+
+        
+          //  window.rootViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
+        
         return true
     }
 

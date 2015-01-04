@@ -34,14 +34,15 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBAction func next(sender: AnyObject) {
         var controller = MainMapViewController(nibName:"MainMapViewController", bundle:nil)
-
 //        var controller = MainMapViewController(nibName:"MainMapViewController", bundle:nil)
-        self.presentViewController(controller, animated: true, completion: nil)
+//        self.presentViewController(controller, animated: true, completion: nil)
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.navigationBarHidden = true;
+
         var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         
         tableView.registerNib(nib, forCellReuseIdentifier: "customCell")

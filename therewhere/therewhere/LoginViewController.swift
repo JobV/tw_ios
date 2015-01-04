@@ -12,10 +12,13 @@ class LoginViewController: UIViewController {
 
     @IBAction func login(sender: UIButton) {
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
-        self.presentViewController(controller, animated: true, completion: nil)
+        //self.presentViewController(controller, animated: true, completion: nil)
+        
+        navigationController?.pushViewController(controller, animated: true)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBarHidden = true;
 
         // Do any additional setup after loading the view.
     }
