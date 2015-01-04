@@ -15,6 +15,7 @@
 #import "SetLocationRequest.h"
 #import "SetLocationResponse.h"
 #import "Location.h"
+#import "therewhere-Swift.h"
 
 @interface MainMapViewController () <AKPickerViewDataSource, AKPickerViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate>{
     CLLocationManager *locationManager;
@@ -30,7 +31,10 @@
 @synthesize mapView;
 static UIView *mainView;
 static UIImageView* imgView;
-
+-(void) viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:true];
+    self.navigationController.navigationBarHidden = true;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.pickerView = [[AKPickerView alloc] initWithFrame:CGRectMake(0, self.view.bounds.size.height-75, self.view.bounds.size.width, 75)];
@@ -43,6 +47,7 @@ static UIImageView* imgView;
     self.pickerView.interitemSpacing = 2.5;
     self.pickerView.fisheyeFactor = 0.001;
     self.pickerView.pickerViewStyle = AKPickerViewStyleFlat;
+    
     
  /*   self.titles = @[@"Tokyo",
                     @"Kanagawa",
@@ -165,4 +170,12 @@ static UIImageView* imgView;
 
 
 
+- (IBAction)friendProfile:(id)sender {
+    FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
+//    [self presentViewController:fpvc animated:false completion:nil];
+   // [self.navigationController pushViewController:fpvc animated:true];
+   
+    [self.navigationController pushViewController:fpvc animated:YES];
+    NSLog(@"fuck");
+}
 @end

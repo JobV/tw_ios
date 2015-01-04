@@ -14,6 +14,8 @@
 @property (strong, nonatomic) IBOutlet UIButton *meetButton;
 @property (strong, nonatomic) IBOutlet UIButton *navigateButton;
 @property (strong, nonatomic) IBOutlet UIButton *contactButton;
+@property (strong, nonatomic) IBOutlet UIButton *friendProfile;
+- (IBAction)friendProfile:(id)sender;
 
 - (IBAction)navigate:(id)sender;
 - (IBAction)contact:(id)sender;

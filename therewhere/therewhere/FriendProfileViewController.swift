@@ -8,8 +8,8 @@
 
 import UIKit
 
-class FriendProfileViewController: UIViewController {
-    @IBOutlet var profileImage: UIImageView!
+@objc class FriendProfileViewController: UIViewController {
+    @IBOutlet  var profileImage: UIImageView!
     @IBOutlet var profileName: UILabel!
     @IBOutlet var profileLocation: UILabel!
     
@@ -31,16 +31,16 @@ class FriendProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        cell.imageView.layer.cornerRadius = cell.imageView.frame.size.width / 2;
-        profileImage.layer.cornerRadius = profileImage.layer.frame.size.width/2;
- //       cell.imageView.clipsToBounds = YES;
-        profileImage.clipsToBounds = true;
-  //      cell.imageView.layer.borderWidth = 3.0f;
-        profileImage.layer.borderWidth = 3.0;
-   //     cell.imageView.layer.borderColor = [UIColor whiteColor].CGColor;
-        profileImage.layer.borderColor = UIColor.whiteColor().CGColor
-        // Do any additional setup after loading the view.
+        navigationController?.navigationBarHidden = false;
+//        self.profileImage.layer.cornerRadius = profileImage.layer.frame.size.width/2;
+//
+//        self.profileImage.clipsToBounds = true;
+//
+//        self.profileImage.layer.borderWidth = 3.0;
+//        self.profileImage.layer.borderColor = UIColor.whiteColor().CGColor
+
     }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
