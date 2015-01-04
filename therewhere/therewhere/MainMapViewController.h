@@ -15,10 +15,11 @@
 @property (strong, nonatomic) IBOutlet UIButton *navigateButton;
 @property (strong, nonatomic) IBOutlet UIButton *contactButton;
 @property (strong, nonatomic) IBOutlet UIButton *friendProfile;
-- (IBAction)friendProfile:(id)sender;
 
 - (IBAction)navigate:(id)sender;
 - (IBAction)contact:(id)sender;
+- (void) showFriendProfile;
++ (void) showFriendProfileButton;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
 

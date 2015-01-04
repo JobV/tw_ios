@@ -29,8 +29,12 @@
 @implementation MainMapViewController
 @synthesize navigateButton, meetButton, contactButton;
 @synthesize mapView;
-static UIView *mainView;
-static UIImageView* imgView;
+
+static Boolean buttonVisibility;
+static NSString *friendName;
+static NSString *friendID;
+static UIButton *friendProfileButton;
+
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:true];
     self.navigationController.navigationBarHidden = true;
@@ -73,6 +77,17 @@ static UIImageView* imgView;
     [mapView setShowsUserLocation:YES];
     [mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
     
+    friendProfileButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [friendProfileButton addTarget:self action:@selector(showFriendProfile)
+                  forControlEvents:UIControlEventTouchUpInside];
+    [friendProfileButton setTitle:@"Job" forState:UIControlStateNormal];
+    friendProfileButton.frame = CGRectMake(250.0, 60, 65, 65);
+    friendProfileButton.layer.cornerRadius = friendProfileButton.frame.size.width / 2;;
+    friendProfileButton.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    
+    
+    [self.view addSubview:friendProfileButton];
     
     [self.pickerView reloadData];
     
@@ -80,19 +95,17 @@ static UIImageView* imgView;
     //
    }
 
+- (void) showFriendProfile{
+
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInView:touch.view];
-    if(location.x<self.view.bounds.size.width && location.y<80 ){
-        //  here dismiss your view
-//        NSLog(@"awesome touch");
-         NSLog(@"don't touch me there");
-
-    }else{
-       
-        [AKPickerView showScrollView];
-    }
+    NSLog(@"location.y: %f", location.y);
+    [AKPickerView showScrollView];
+    friendProfileButton.hidden = true;
 
 }
 
@@ -103,6 +116,10 @@ static UIImageView* imgView;
 - (NSUInteger)numberOfItemsInPickerView:(AKPickerView *)pickeNSLogrView
 {
     return 10;
+}
+
++ (void) showFriendProfileButton {
+    friendProfileButton.hidden = false;
 }
 
 /*
@@ -170,12 +187,9 @@ static UIImageView* imgView;
 
 
 
-- (IBAction)friendProfile:(id)sender {
+/*- (IBAction)friendProfile:(id)sender {
     FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
-//    [self presentViewController:fpvc animated:false completion:nil];
-   // [self.navigationController pushViewController:fpvc animated:true];
-   
     [self.navigationController pushViewController:fpvc animated:YES];
-    NSLog(@"fuck");
 }
+ */
 @end

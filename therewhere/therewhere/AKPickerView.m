@@ -106,26 +106,15 @@ static UIView *friendActionView;
     [navigateButton setTitle:@"navigate" forState:UIControlStateNormal];
     navigateButton.frame = CGRectMake(240.0, buttonHeight, 60, 30.0);
     
-    
-    
-    
     [friendActionView addSubview:meetButton];
     [friendActionView addSubview:callButton];
     [friendActionView addSubview:navigateButton];
     [friendActionView addSubview:friendPhotoView];
+    
+   
+    
     friendActionView.hidden = true;
     [self addSubview:friendActionView];
-    
-//	CAGradientLayer *maskLayer = [CAGradientLayer layer];
-//	maskLayer.frame = collectionView.bounds;
-//	maskLayer.colors = @[(id)[[UIColor clearColor] CGColor],
-//						 (id)[[UIColor blackColor] CGColor],
-//						 (id)[[UIColor blackColor] CGColor],
-//						 (id)[[UIColor clearColor] CGColor],];
-//  maskLayer.locations = @[@0.0, @0.33, @0.66, @1.0];
-//  maskLayer.startPoint = CGPointMake(0.0, 0.0);
-//  maskLayer.endPoint = CGPointMake(1.0, 0.0);
-//  collectionView.layer.mask = maskLayer;
     
 }
 
@@ -381,6 +370,7 @@ static UIView *friendActionView;
 //    friendActionView.hidden=false;
    // self.hidden= false;
     friendActionView.hidden = false;
+    [MainMapViewController showFriendProfileButton];
 
 }
 
@@ -394,6 +384,7 @@ static UIView *friendActionView;
 - (void) meetFriend{
     NSLog(@"meet friend");
 }
+
 
 + (void) showScrollView{
     collectionView.hidden=false;
