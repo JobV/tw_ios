@@ -32,12 +32,12 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBarHidden = false;
-//        self.profileImage.layer.cornerRadius = profileImage.layer.frame.size.width/2;
+       self.profileImage.layer.cornerRadius = profileImage.layer.frame.size.width/2;
+
+        self.profileImage.clipsToBounds = true;
 //
-//        self.profileImage.clipsToBounds = true;
-//
-//        self.profileImage.layer.borderWidth = 3.0;
-//        self.profileImage.layer.borderColor = UIColor.whiteColor().CGColor
+        self.profileImage.layer.borderWidth = 3.0;
+        self.profileImage.layer.borderColor = UIColor.whiteColor().CGColor
 
     }
     
