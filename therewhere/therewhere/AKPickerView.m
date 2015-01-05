@@ -228,30 +228,11 @@ static UIView *friendActionView;
 	return offset;
 }
 
-- (void)scrollToItem:(NSUInteger)item animated:(BOOL)animated
-{
-	switch (self.pickerViewStyle) {
-		case AKPickerViewStyleFlat: {
-			[collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]
-										atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
-												animated:animated];
-			break;
-		}
-		case AKPickerViewStyle3D: {
-			[collectionView setContentOffset:CGPointMake([self offsetForItem:item], collectionView.contentOffset.y)
-										 animated:animated];
-			break;
-		}
-		default: break;
-	}
-}
-
 - (void)selectItem:(NSUInteger)item animated:(BOOL)animated
 {
 	[collectionView selectItemAtIndexPath:[NSIndexPath indexPathForItem:item inSection:0]
 									  animated:animated
 								scrollPosition:UICollectionViewScrollPositionNone];
-	[self scrollToItem:item animated:animated];
 
 	self.selectedItem = item;
 
