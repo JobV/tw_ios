@@ -147,7 +147,6 @@ static UIView *friendActionView;
 {
 	[super layoutSubviews];
     collectionView.collectionViewLayout = [self collectionViewLayout];
-	[self scrollToItem:self.selectedItem animated:NO];
 	collectionView.layer.mask.frame = collectionView.bounds;
 
 	CATransform3D transform = CATransform3DIdentity;
