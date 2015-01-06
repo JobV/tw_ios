@@ -12,12 +12,12 @@
 		A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A69F1A58303800D4D992 /* MixpanelHandler.swift */; };
 		A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */; };
 		A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */; };
+		A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */; };
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
 		A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC91A3BACBA006F7ECD /* therewhere.xcdatamodeld */; };
 		A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DD11A3BACBA006F7ECD /* Images.xcassets */; };
-		A6A27DE11A3BACBA006F7ECD /* therewhereTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DE01A3BACBA006F7ECD /* therewhereTests.swift */; };
 		A6A27E0F1A3E11FC006F7ECD /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */; };
 		A6A27E601A3E3124006F7ECD /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */; };
 		A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E5D1A3E3124006F7ECD /* LoginViewController.swift */; };
@@ -36,6 +36,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A608A6AF1A5C8A5D00D4D992 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A6A27DBA1A3BACBA006F7ECD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A6A27DC11A3BACBA006F7ECD;
+			remoteInfo = therewhere;
+		};
 		A6A27DDB1A3BACBA006F7ECD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A6A27DBA1A3BACBA006F7ECD /* Project object */;
@@ -68,6 +75,9 @@
 		A608A69F1A58303800D4D992 /* MixpanelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelHandler.swift; sourceTree = "<group>"; };
 		A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
 		A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendProfileViewController.xib; sourceTree = "<group>"; };
+		A608A6A91A5C8A5D00D4D992 /* therewhere Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "therewhere Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A608A6AC1A5C8A5D00D4D992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhere_Tests.swift; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
 		A68BAEE11A478B9A00EC8B7E /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
@@ -77,8 +87,6 @@
 		A6A27DCA1A3BACBA006F7ECD /* therewhere.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = therewhere.xcdatamodel; path = therewhere/therewhere.xcdatamodeld/therewhere.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		A6A27DD11A3BACBA006F7ECD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = therewhere/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		A6A27DDA1A3BACBA006F7ECD /* therewhereTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = therewhereTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A6A27DDF1A3BACBA006F7ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A6A27DE01A3BACBA006F7ECD /* therewhereTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhereTests.swift; sourceTree = "<group>"; };
 		A6A27DF41A3DDBDA006F7ECD /* TW.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; name = TW.playground; path = therewhere/TW.playground; sourceTree = SOURCE_ROOT; };
 		A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LoginViewController.xib; path = therewhere/LoginViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -108,6 +116,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A608A6A61A5C8A5D00D4D992 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6A27DBF1A3BACBA006F7ECD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -129,13 +144,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		88687B969CD63F2D979A74F9 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 		9A611F3EB53A77AF75A9865E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,13 +155,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A608A6AA1A5C8A5D00D4D992 /* therewhere Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */,
+				A608A6AB1A5C8A5D00D4D992 /* Supporting Files */,
+			);
+			path = "therewhere Tests";
+			sourceTree = "<group>";
+		};
+		A608A6AB1A5C8A5D00D4D992 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A608A6AC1A5C8A5D00D4D992 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		A6A27DB91A3BACBA006F7ECD = {
 			isa = PBXGroup;
 			children = (
 				A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */,
 				A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */,
 				A6A27DC41A3BACBA006F7ECD /* therewhere */,
-				A6A27DDD1A3BACBA006F7ECD /* therewhereTests */,
+				A608A6AA1A5C8A5D00D4D992 /* therewhere Tests */,
 				A6A27DC31A3BACBA006F7ECD /* Products */,
 				B7C985CD860FB96A49D44150 /* Pods */,
 				9A611F3EB53A77AF75A9865E /* Frameworks */,
@@ -165,6 +190,7 @@
 			children = (
 				A6A27DC21A3BACBA006F7ECD /* therewhere.app */,
 				A6A27DDA1A3BACBA006F7ECD /* therewhereTests.xctest */,
+				A608A6A91A5C8A5D00D4D992 /* therewhere Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,24 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				A6A27DC61A3BACBA006F7ECD /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		A6A27DDD1A3BACBA006F7ECD /* therewhereTests */ = {
-			isa = PBXGroup;
-			children = (
-				A6A27DE01A3BACBA006F7ECD /* therewhereTests.swift */,
-				A6A27DDE1A3BACBA006F7ECD /* Supporting Files */,
-				C495B0859FC631B3D1AF4A12 /* r2m */,
-			);
-			path = therewhereTests;
-			sourceTree = "<group>";
-		};
-		A6A27DDE1A3BACBA006F7ECD /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				A6A27DDF1A3BACBA006F7ECD /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -278,17 +286,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		C495B0859FC631B3D1AF4A12 /* r2m */ = {
-			isa = PBXGroup;
-			children = (
-				88687B969CD63F2D979A74F9 /* Controllers */,
-			);
-			path = r2m;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A608A6A81A5C8A5D00D4D992 /* therewhere Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A608A6B31A5C8A5D00D4D992 /* Build configuration list for PBXNativeTarget "therewhere Tests" */;
+			buildPhases = (
+				A608A6A51A5C8A5D00D4D992 /* Sources */,
+				A608A6A61A5C8A5D00D4D992 /* Frameworks */,
+				A608A6A71A5C8A5D00D4D992 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A608A6B01A5C8A5D00D4D992 /* PBXTargetDependency */,
+			);
+			name = "therewhere Tests";
+			productName = "therewhere Tests";
+			productReference = A608A6A91A5C8A5D00D4D992 /* therewhere Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		A6A27DC11A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A6A27DE41A3BACBA006F7ECD /* Build configuration list for PBXNativeTarget "therewhere" */;
@@ -338,6 +356,10 @@
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = therewhereinc;
 				TargetAttributes = {
+					A608A6A81A5C8A5D00D4D992 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = A6A27DC11A3BACBA006F7ECD;
+					};
 					A6A27DC11A3BACBA006F7ECD = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
@@ -362,11 +384,19 @@
 			targets = (
 				A6A27DC11A3BACBA006F7ECD /* therewhere */,
 				A6A27DD91A3BACBA006F7ECD /* therewhereTests */,
+				A608A6A81A5C8A5D00D4D992 /* therewhere Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A608A6A71A5C8A5D00D4D992 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6A27DC01A3BACBA006F7ECD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -454,6 +484,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A608A6A51A5C8A5D00D4D992 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A6A27DBE1A3BACBA006F7ECD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -479,13 +517,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6A27DE11A3BACBA006F7ECD /* therewhereTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A608A6B01A5C8A5D00D4D992 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A6A27DC11A3BACBA006F7ECD /* therewhere */;
+			targetProxy = A608A6AF1A5C8A5D00D4D992 /* PBXContainerItemProxy */;
+		};
 		A6A27DDC1A3BACBA006F7ECD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A6A27DC11A3BACBA006F7ECD /* therewhere */;
@@ -494,6 +536,40 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A608A6B11A5C8A5D00D4D992 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "therewhere Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/therewhere.app/therewhere";
+			};
+			name = Debug;
+		};
+		A608A6B21A5C8A5D00D4D992 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "therewhere Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/therewhere.app/therewhere";
+			};
+			name = Release;
+		};
 		A6A27DE21A3BACBA006F7ECD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -684,6 +760,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A608A6B31A5C8A5D00D4D992 /* Build configuration list for PBXNativeTarget "therewhere Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A608A6B11A5C8A5D00D4D992 /* Debug */,
+				A608A6B21A5C8A5D00D4D992 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		A6A27DBD1A3BACBA006F7ECD /* Build configuration list for PBXProject "therewhere" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

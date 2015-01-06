@@ -1,15 +1,15 @@
 //
-//  therewhereTests.swift
-//  therewhereTests
+//  therewhere_Tests.swift
+//  therewhere Tests
 //
-//  Created by Marcelo Lebre on 12/12/14.
-//  Copyright (c) 2014 therewhereinc. All rights reserved.
+//  Created by Marcelo Lebre on 06/01/15.
+//  Copyright (c) 2015 therewhereinc. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class therewhereTests: XCTestCase {
+class therewhere_Tests: XCTestCase {
     
     override func setUp() {
         super.setUp()
