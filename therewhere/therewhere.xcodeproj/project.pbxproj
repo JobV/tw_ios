@@ -12,6 +12,9 @@
 		A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */; };
 		A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */; };
 		A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */; };
+		A680A39B1A5DE1270035B685 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39A1A5DE1270035B685 /* User.swift */; };
+		A680A39E1A5DE3E00035B685 /* CreateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39D1A5DE3E00035B685 /* CreateUserRequest.swift */; };
+		A680A3A01A5DE3ED0035B685 /* CreateUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */; };
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
@@ -24,7 +27,6 @@
 		A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */; };
 		A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */; };
 		A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */; };
-		A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */; };
 		A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AD39001A44E44C0003B146 /* MainMapViewController.m */; };
 		A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6AD39011A44E44C0003B146 /* MainMapViewController.xib */; };
 		A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */; };
@@ -70,6 +72,11 @@
 		A608A6A91A5C8A5D00D4D992 /* therewhere Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "therewhere Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A608A6AC1A5C8A5D00D4D992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhere_Tests.swift; sourceTree = "<group>"; };
+		A680A39A1A5DE1270035B685 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		A680A39C1A5DE1C80035B685 /* TWAPIManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TWAPIManager-Bridging-Header.h"; sourceTree = "<group>"; };
+		A680A39D1A5DE3E00035B685 /* CreateUserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserRequest.swift; sourceTree = "<group>"; };
+		A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserResponse.swift; sourceTree = "<group>"; };
+		A680A3A31A5DE6790035B685 /* RestKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RestKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
 		A68BAEE11A478B9A00EC8B7E /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
@@ -86,9 +93,6 @@
 		A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InviteFriendsViewController.swift; path = therewhere/InviteFriendsViewController.swift; sourceTree = SOURCE_ROOT; };
 		A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = therewhere/CustomTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		A6A27E6D1A3F933B006F7ECD /* LTInfiniteScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LTInfiniteScrollView.h; path = therewhere/LTInfiniteScrollView.h; sourceTree = SOURCE_ROOT; };
-		A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LTInfiniteScrollView.m; path = therewhere/LTInfiniteScrollView.m; sourceTree = SOURCE_ROOT; };
-		A6A27E701A3F9775006F7ECD /* LTInfiniteScrollView-Bridging-Header.h.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "LTInfiniteScrollView-Bridging-Header.h.h"; path = "therewhere/LTInfiniteScrollView-Bridging-Header.h.h"; sourceTree = SOURCE_ROOT; };
 		A6A53A2B1A44E91500238E20 /* MainMapViewController-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MainMapViewController-Bridging-Header.h"; path = "therewhere/MainMapViewController-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		A6AD38FF1A44E44C0003B146 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMapViewController.h; path = therewhere/MainMapViewController.h; sourceTree = SOURCE_ROOT; };
 		A6AD39001A44E44C0003B146 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMapViewController.m; path = therewhere/MainMapViewController.m; sourceTree = SOURCE_ROOT; };
@@ -200,6 +204,7 @@
 				A608A69F1A58303800D4D992 /* MixpanelHandler.swift */,
 				A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */,
 				A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */,
+				A680A3A31A5DE6790035B685 /* RestKit-Bridging-Header.h */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -217,9 +222,6 @@
 			children = (
 				A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */,
 				A68BAEE11A478B9A00EC8B7E /* AKPickerView.h */,
-				A6A27E6D1A3F933B006F7ECD /* LTInfiniteScrollView.h */,
-				A6A27E6E1A3F933B006F7ECD /* LTInfiniteScrollView.m */,
-				A6A27E701A3F9775006F7ECD /* LTInfiniteScrollView-Bridging-Header.h.h */,
 			);
 			name = Lib;
 			sourceTree = "<group>";
@@ -242,6 +244,8 @@
 				A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */,
 				A6E96B9F1A4F035400E6082D /* GetLocationResponse.h */,
 				A6E96BA01A4F037000E6082D /* GetLocationResponse.m */,
+				A680A39D1A5DE3E00035B685 /* CreateUserRequest.swift */,
+				A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -253,6 +257,8 @@
 				A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */,
 				A6E96B9C1A4EDEC900E6082D /* Location.m */,
 				A6E96B9E1A4EDED200E6082D /* Location.h */,
+				A680A39A1A5DE1270035B685 /* User.swift */,
+				A680A39C1A5DE1C80035B685 /* TWAPIManager-Bridging-Header.h */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -420,13 +426,15 @@
 				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
 				A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
-				A6A27E6F1A3F933B006F7ECD /* LTInfiniteScrollView.m in Sources */,
 				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
+				A680A3A01A5DE3ED0035B685 /* CreateUserResponse.swift in Sources */,
 				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
+				A680A39B1A5DE1270035B685 /* User.swift in Sources */,
 				A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */,
 				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
+				A680A39E1A5DE3E00035B685 /* CreateUserRequest.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
 				A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */,
 				A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */,
@@ -626,6 +634,7 @@
 				A608A6B21A5C8A5D00D4D992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A6A27DBD1A3BACBA006F7ECD /* Build configuration list for PBXProject "therewhere" */ = {
 			isa = XCConfigurationList;
