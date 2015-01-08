@@ -11,6 +11,9 @@ import UIKit
 class LoginViewController: UIViewController {
 
     @IBAction func login(sender: UIButton) {
+        var user = User()
+        user.createUser("marcelo", lastName: "lebre", phoneNumber: "0101010106", email: "youwish6@sup.com")
+        
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         //self.presentViewController(controller, animated: true, completion: nil)
         

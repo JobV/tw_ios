@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CreateUserResponse {
+class CreateUserResponse: NSObject {
     var userID = String();
     var firstName = String();
     var lastName = String();

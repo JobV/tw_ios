@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CreateUserRequest {
+class CreateUserRequest: NSObject {
     var firstName = String();
     var lastName = String();
     var email = String();
