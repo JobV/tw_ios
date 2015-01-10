@@ -19,7 +19,7 @@ class User: NSObject {
         var date = ""
         
         var createUserResponseMapping = RKObjectMapping(forClass: CreateUserResponse.self);
-        
+
         createUserResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
             "first_name":"firstName",
             "last_name":"lastName",
@@ -35,7 +35,11 @@ class User: NSObject {
             method: RKRequestMethod.Any,
             pathPattern: nil,
             keyPath: nil,
-            statusCodes: Response.statusCodes);
+            statusCodes: nil);
+        
+        
+        
+        
         
         var createUserRequestMapping = RKObjectMapping.requestMapping()
         
@@ -50,7 +54,9 @@ class User: NSObject {
         var createUserRequestDecriptor = RKRequestDescriptor(
             mapping: createUserRequestMapping,
             objectClass: CreateUserRequest.self,
-            rootKeyPath: nil)
+            rootKeyPath: nil,
+            method:RKRequestMethod.Any)
+
         
         
         var url = NSURL(string: TWAPIManager.twAPI_ip())
@@ -74,20 +80,21 @@ class User: NSObject {
         rkmanager.postObject(createUserRequest,
             path: requestUrl,
             parameters:nil,
-            success:nil,
+            success:{ RKObjectRequestOperation, thismappingResult in
+                Response.mappingResult = thismappingResult
+                NSLog(String(Response.mappingResult.count() ))
+            },
             failure:{ operation, error in
                 NSLog("What do you mean by 'there is no coffee?'")
             }
             
         )
         
-      //  rkmanager.postObject(<#object: AnyObject!#>, path: <#String!#>, parameters: <#[NSObject : AnyObject]!#>, success:// <#((RKObjectRequestOperation!, RKMappingResult!) -> Void)!##(RKObjectRequestOperation!, RKMappingResult!) -> Void#>, failure: <#((RKObjectRequestOperation!, NSError!) -> Void)!##(RKObjectRequestOperation!, NSError!) -> Void#>)
         
         rkmanager.removeRequestDescriptor(createUserRequestDecriptor)
         rkmanager.removeResponseDescriptor(createUserResponseDecriptor)
-        
 
         
-        return createUserResponse.createdAt
+        return "a"
     }
 }
