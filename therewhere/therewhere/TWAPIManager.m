@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "TWAPIManager.h"
-static NSString *twAPI_ip = @"http://192.168.1.11:3000";
+static NSString *twAPI_ip = @"http://192.168.1.68:3000";
 
 @implementation TWAPIManager
 +(NSString*)twAPI_ip {return twAPI_ip;}

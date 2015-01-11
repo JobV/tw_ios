@@ -11,9 +11,12 @@ import UIKit
 class LoginViewController: UIViewController {
 
     @IBAction func login(sender: UIButton) {
-        var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
-        //self.presentViewController(controller, animated: true, completion: nil)
+        var user = User()
+        user.createUser("marcelo", lastName: "lebre", phoneNumber: "3", email: "youwish3@sup.com")
         
+        var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
+//        //self.presentViewController(controller, animated: true, completion: nil)
+//        
         navigationController?.pushViewController(controller, animated: true)
     }
     override func viewDidLoad() {
