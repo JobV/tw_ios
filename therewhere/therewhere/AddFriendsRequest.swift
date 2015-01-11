@@ -7,3 +7,6 @@
 //
 
 import Foundation
+class AddFriendsRequest: NSObject {
+    var phoneNumberArray: [String] = [];
+}

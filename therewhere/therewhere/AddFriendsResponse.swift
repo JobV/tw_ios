@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+class AddFriendsResponse: NSObject {
+    var totalFriendsCount = Int()
+}

@@ -29,6 +29,9 @@
 		A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */; };
 		A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AD39001A44E44C0003B146 /* MainMapViewController.m */; };
 		A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6AD39011A44E44C0003B146 /* MainMapViewController.xib */; };
+		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
+		A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */; };
+		A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */; };
 		A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */; };
 		A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */; };
 		A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B991A4ED9A100E6082D /* TWAPIManager.m */; };
@@ -97,6 +100,9 @@
 		A6AD38FF1A44E44C0003B146 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMapViewController.h; path = therewhere/MainMapViewController.h; sourceTree = SOURCE_ROOT; };
 		A6AD39001A44E44C0003B146 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMapViewController.m; path = therewhere/MainMapViewController.m; sourceTree = SOURCE_ROOT; };
 		A6AD39011A44E44C0003B146 /* MainMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMapViewController.xib; path = therewhere/MainMapViewController.xib; sourceTree = SOURCE_ROOT; };
+		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
+		A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsRequest.swift; sourceTree = "<group>"; };
+		A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsResponse.swift; sourceTree = "<group>"; };
 		A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationResponse.h; sourceTree = "<group>"; };
 		A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationResponse.m; sourceTree = "<group>"; };
 		A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationRequest.m; sourceTree = "<group>"; };
@@ -246,6 +252,8 @@
 				A6E96BA01A4F037000E6082D /* GetLocationResponse.m */,
 				A680A39D1A5DE3E00035B685 /* CreateUserRequest.swift */,
 				A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */,
+				A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */,
+				A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -259,6 +267,7 @@
 				A6E96B9E1A4EDED200E6082D /* Location.h */,
 				A680A39A1A5DE1270035B685 /* User.swift */,
 				A680A39C1A5DE1C80035B685 /* TWAPIManager-Bridging-Header.h */,
+				A6E6D2B01A62C8BF002C0655 /* Friends.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -425,12 +434,15 @@
 				A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */,
 				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
 				A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */,
+				A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */,
+				A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
 				A680A3A01A5DE3ED0035B685 /* CreateUserResponse.swift in Sources */,
 				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
 				A680A39B1A5DE1270035B685 /* User.swift in Sources */,
 				A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */,
+				A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */,
 				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
