@@ -17,7 +17,6 @@ class User: NSObject {
     
     func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) {
 
-
         var createUserResponseMapping = RKObjectMapping(forClass: CreateUserResponse.self);
 
         createUserResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
@@ -91,5 +90,68 @@ class User: NSObject {
         rkmanager.removeRequestDescriptor(createUserRequestDecriptor)
         rkmanager.removeResponseDescriptor(createUserResponseDecriptor)
 
+    }
+    
+    func addFriends(phoneNumberArray: [String]) {
+        var addFriendsResponseMapping = RKObjectMapping(forClass: AddFriendsResponse.self);
+        
+        addFriendsResponseMapping.addAttributeMappingsFromDictionary(["total_friends_count":"totalFriendsCount"]);
+        
+        
+        var addFriendsResponseDecriptor = RKResponseDescriptor(
+            mapping: addFriendsResponseMapping,
+            method: RKRequestMethod.Any,
+            pathPattern: nil,
+            keyPath: nil,
+            statusCodes: nil);
+        
+        
+        var addFriendsRequestMapping = RKObjectMapping.requestMapping()
+        
+        addFriendsRequestMapping.addAttributeMappingsFromDictionary(["phoneNumberArray":"phone_nrs"]);
+        
+        var addFriendsRequestDecriptor = RKRequestDescriptor(
+            mapping: addFriendsRequestMapping,
+            objectClass: AddFriendsRequest.self,
+            rootKeyPath: nil,
+            method:RKRequestMethod.Any)
+        
+        var url = NSURL(string: TWAPIManager.twAPI_ip())
+        var rkmanager = RKObjectManager(baseURL:url)
+        
+        rkmanager.addRequestDescriptor(addFriendsRequestDecriptor)
+        rkmanager.addResponseDescriptor(addFriendsResponseDecriptor)
+        
+        var addFriendsRequest = AddFriendsRequest()
+        addFriendsRequest.phoneNumberArray = phoneNumberArray
+        
+        var addFriendsResponse = AddFriendsResponse()
+        
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends"
+        
+        var rkMappingResult = RKMappingResult()
+        var requestOperation = RKObjectRequestOperation()
+        var response = AddFriendsResponse()
+        
+        rkmanager.postObject(addFriendsRequest,
+            path: requestUrl,
+            parameters:nil,
+            success:{ requestOperation, rkMappingResult in
+                response = rkMappingResult.firstObject() as AddFriendsResponse
+            },
+            failure:{ operation, error in
+                NSLog("Broomshakalaka all over again..")
+            }
+        )
+        
+        rkmanager.removeRequestDescriptor(addFriendsRequestDecriptor)
+        rkmanager.removeResponseDescriptor(addFriendsResponseDecriptor)
+
+    }
+    
+    func getFriends() -> [String] {
+        var phoneNumberArray: [String] = ["1", "2"]
+        
+        return phoneNumberArray
     }
 }

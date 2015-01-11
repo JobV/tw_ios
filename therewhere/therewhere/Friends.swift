@@ -7,3 +7,15 @@
 //
 
 import Foundation
+class Friends: NSObject {
+
+    func addFriends(phoneNumberArray: [String]) {
+        
+    }
+    
+    func getFriends() -> [String] {
+        var phoneNumberArray: [String] = ["1", "2"]
+        
+        return phoneNumberArray
+    }
+}
