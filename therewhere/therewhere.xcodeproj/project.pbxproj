@@ -32,6 +32,9 @@
 		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
 		A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */; };
 		A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */; };
+		A6E6D2B71A62E65D002C0655 /* GetFriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B61A62E65D002C0655 /* GetFriendsRequest.swift */; };
+		A6E6D2B91A62E669002C0655 /* GetFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B81A62E669002C0655 /* GetFriendsResponse.swift */; };
+		A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2BA1A62EA0E002C0655 /* Friend.swift */; };
 		A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */; };
 		A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */; };
 		A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B991A4ED9A100E6082D /* TWAPIManager.m */; };
@@ -103,6 +106,9 @@
 		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsRequest.swift; sourceTree = "<group>"; };
 		A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsResponse.swift; sourceTree = "<group>"; };
+		A6E6D2B61A62E65D002C0655 /* GetFriendsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFriendsRequest.swift; sourceTree = "<group>"; };
+		A6E6D2B81A62E669002C0655 /* GetFriendsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFriendsResponse.swift; sourceTree = "<group>"; };
+		A6E6D2BA1A62EA0E002C0655 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationResponse.h; sourceTree = "<group>"; };
 		A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationResponse.m; sourceTree = "<group>"; };
 		A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationRequest.m; sourceTree = "<group>"; };
@@ -254,6 +260,9 @@
 				A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */,
 				A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */,
 				A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */,
+				A6E6D2B61A62E65D002C0655 /* GetFriendsRequest.swift */,
+				A6E6D2B81A62E669002C0655 /* GetFriendsResponse.swift */,
+				A6E6D2BA1A62EA0E002C0655 /* Friend.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -437,10 +446,12 @@
 				A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */,
 				A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
+				A6E6D2B71A62E65D002C0655 /* GetFriendsRequest.swift in Sources */,
 				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
 				A680A3A01A5DE3ED0035B685 /* CreateUserResponse.swift in Sources */,
 				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
 				A680A39B1A5DE1270035B685 /* User.swift in Sources */,
+				A6E6D2B91A62E669002C0655 /* GetFriendsResponse.swift in Sources */,
 				A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */,
 				A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */,
 				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
@@ -450,6 +461,7 @@
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
 				A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */,
 				A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */,
+				A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

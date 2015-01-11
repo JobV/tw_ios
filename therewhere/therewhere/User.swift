@@ -152,6 +152,54 @@ class User: NSObject {
     func getFriends() -> [String] {
         var phoneNumberArray: [String] = ["1", "2"]
         
+        var getFriendsResponseMapping = RKObjectMapping(forClass: Friend.self);
+        
+        getFriendsResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
+            "first_name":"firstName",
+            "last_name":"lastName",
+            "email":"email",
+            "phone_nr":"phoneNumber"
+            ]);
+        
+        
+        var getFriendsResponseDecriptor = RKResponseDescriptor(
+            mapping: getFriendsResponseMapping,
+            method: RKRequestMethod.Any,
+            pathPattern: nil,
+            keyPath: nil,
+            statusCodes: nil);
+        
+        
+        var url = NSURL(string: TWAPIManager.twAPI_ip())
+        var rkmanager = RKObjectManager(baseURL:url)
+        
+        rkmanager.addResponseDescriptor(getFriendsResponseDecriptor)
+        
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends"
+        
+        var urlPath = NSURL(string: requestUrl)
+        var urlRequest = NSURLRequest(URL: urlPath!)
+        
+        var operation = RKObjectRequestOperation(request:urlRequest, responseDescriptors: [getFriendsResponseDecriptor])
+        
+        var rkMappingResult = RKMappingResult()
+        
+        var response = Friend()
+
+        
+        operation.setCompletionBlockWithSuccess({operation, rkMappingResult in
+                for object in rkMappingResult.array(){
+                    response = object as Friend
+                    println(response.userID)
+
+                }
+            }, failure: { operation, error in
+                NSLog("Broomshakalaka all over again..")
+            })
+
+
+        operation.start()
+        
         return phoneNumberArray
     }
 }
