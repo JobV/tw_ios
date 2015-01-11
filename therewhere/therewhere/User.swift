@@ -10,14 +10,14 @@ import Foundation
 class User: NSObject {
     
     struct Response {
-        static var operation = RKObjectRequestOperation()
-        static var mappingResult = RKMappingResult()
+        static var requestOperation = RKObjectRequestOperation()
+        static var rkMappingResult = RKMappingResult()
         static var statusCodes = RKStatusCodeIndexSetForClass(UInt(RKStatusCodeClassSuccessful));
     }
     
-    func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) -> String {
-        var date = ""
-        
+    func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) {
+
+
         var createUserResponseMapping = RKObjectMapping(forClass: CreateUserResponse.self);
 
         createUserResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
@@ -36,9 +36,6 @@ class User: NSObject {
             pathPattern: nil,
             keyPath: nil,
             statusCodes: nil);
-        
-        
-        
         
         
         var createUserRequestMapping = RKObjectMapping.requestMapping()
@@ -75,26 +72,24 @@ class User: NSObject {
         
         var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users"
         
-
+        var rkMappingResult = RKMappingResult()
+        var requestOperation = RKObjectRequestOperation()
+        var response = CreateUserResponse()
         
         rkmanager.postObject(createUserRequest,
             path: requestUrl,
             parameters:nil,
-            success:{ RKObjectRequestOperation, thismappingResult in
-                Response.mappingResult = thismappingResult
-                NSLog(String(Response.mappingResult.count() ))
+            success:{ requestOperation, rkMappingResult in
+                response = rkMappingResult.firstObject() as CreateUserResponse
+                var id = response.userID;
             },
             failure:{ operation, error in
-                NSLog("What do you mean by 'there is no coffee?'")
+                NSLog("Broomshakalaka all over again..")
             }
-            
         )
-        
         
         rkmanager.removeRequestDescriptor(createUserRequestDecriptor)
         rkmanager.removeResponseDescriptor(createUserResponseDecriptor)
 
-        
-        return "a"
     }
 }

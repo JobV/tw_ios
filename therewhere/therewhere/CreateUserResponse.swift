@@ -9,7 +9,7 @@
 import Foundation
 
 class CreateUserResponse: NSObject {
-    var userID = NSNumber();
+    var userID = Int();
     var firstName = String();
     var lastName = String();
     var email = String();

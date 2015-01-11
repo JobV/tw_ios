@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func login(sender: UIButton) {
         var user = User()
-        user.createUser("marcelo", lastName: "lebre", phoneNumber: "1", email: "youwish1@sup.com")
+        user.createUser("marcelo", lastName: "lebre", phoneNumber: "3", email: "youwish3@sup.com")
         
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
 //        //self.presentViewController(controller, animated: true, completion: nil)
