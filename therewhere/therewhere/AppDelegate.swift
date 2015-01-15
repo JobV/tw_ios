@@ -25,8 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let window = window {
         //    window.backgroundColor = UIColor.whiteColor()
        //     window.makeKeyAndVisible()
-            
-            
                 
                 var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
                 

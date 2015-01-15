@@ -15,6 +15,7 @@ class User: NSObject {
         static var statusCodes = RKStatusCodeIndexSetForClass(UInt(RKStatusCodeClassSuccessful));
     }
     
+    
     func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) {
 
         var createUserResponseMapping = RKObjectMapping(forClass: CreateUserResponse.self);
@@ -149,8 +150,87 @@ class User: NSObject {
 
     }
     
-    func getFriends() -> [String] {
-        var phoneNumberArray: [String] = ["1", "2"]
+    func getFriends() -> [(String,Int)] {
+        var phoneNumberArray : [(String, Int)] = []
+        
+        var getFriendsResponseMapping = RKObjectMapping(forClass: Friend.self);
+        
+        getFriendsResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
+            "first_name":"firstName",
+            "last_name":"lastName",
+            "email":"email",
+            "phone_nr":"phoneNumber"
+            ]);
+        
+        
+        var getFriendsResponseDecriptor = RKResponseDescriptor(
+            mapping: getFriendsResponseMapping,
+            method: RKRequestMethod.Any,
+            pathPattern: nil,
+            keyPath: nil,
+            statusCodes: nil);
+        
+        
+        var url = NSURL(string: TWAPIManager.twAPI_ip())
+        var rkmanager = RKObjectManager(baseURL:url)
+        
+        rkmanager.addResponseDescriptor(getFriendsResponseDecriptor)
+        
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends"
+        
+        var urlPath = NSURL(string: requestUrl)
+        var urlRequest = NSURLRequest(URL: urlPath!)
+        
+        var operation = RKObjectRequestOperation(request:urlRequest, responseDescriptors: [getFriendsResponseDecriptor])
+        
+        var rkMappingResult = RKMappingResult()
+        
+        var response = Friend()
+
+        
+//        operation.setCompletionBlockWithSuccess({operation, rkMappingResult in
+//                for object in rkMappingResult.array(){
+//                    response = object as Friend
+//                    var fullName = response.firstName+" "+response.lastName
+//                    var friendID:String = toString(response.userID)
+//                    let friendTuple:(String, Int) = (fullName, response.userID)
+//                    phoneNumberArray.append(friendTuple)
+//                }
+//            }, failure: { operation, error in
+//                NSLog("Broomshakalaka all over again..")
+//            })
+//       
+//        operation.start()
+        
+//        rkmanager.postObject(addFriendsRequest,
+//            path: requestUrl,
+//            parameters:nil,
+//            success:{ requestOperation, rkMappingResult in
+//                response = rkMappingResult.firstObject() as AddFriendsResponse
+//            },
+//            failure:{ operation, error in
+//                NSLog("Broomshakalaka all over again..")
+//            }
+//        )
+        rkmanager.getObjectsAtPath(
+            requestUrl,
+            parameters: nil,
+            success:{ operation, rkMappingResult in
+                var friends = Friends()
+
+                for object in rkMappingResult.array(){
+                    response = object as Friend
+                    var fullName = response.firstName+" "+response.lastName
+                    var friendID:String = toString(response.userID)
+                    let friendTuple:(String, Int) = (fullName, response.userID)
+                    friends.phoneNumberArray.append(friendTuple)
+                    
+                    NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
+                }
+            },
+            failure:{ operation, error in
+                NSLog("Broomshakalaka all over again..")
+            })
         
         return phoneNumberArray
     }

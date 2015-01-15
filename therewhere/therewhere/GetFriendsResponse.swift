@@ -1,5 +1,5 @@
 //
-//  Friends.swift
+//  GetFriendsResponse.swift
 //  therewhere
 //
 //  Created by Marcelo Lebre on 11/01/15.
@@ -7,6 +7,6 @@
 //
 
 import Foundation
-class Friends: NSObject {
-    var phoneNumberArray : [(String, Int)] = []
+class GetFriendsResponse: NSObject {
+    var friendArray : [Friend] = []
 }
