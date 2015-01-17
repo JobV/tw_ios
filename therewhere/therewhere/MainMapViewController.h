@@ -19,6 +19,7 @@
 - (IBAction)navigate:(id)sender;
 - (IBAction)contact:(id)sender;
 - (void) showFriendProfile;
+- (void) showUserProfile;
 + (void) showFriendProfileButton;
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 
