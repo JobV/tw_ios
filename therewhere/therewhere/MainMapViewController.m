@@ -130,7 +130,10 @@ static UIButton *friendProfileButton, *userProfile;
 - (void) showUserProfile{
 //    FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
 //    [self.navigationController pushViewController:fpvc animated:YES];
-    NSLog(@"Woot");
+
+    UserProfileViewController *upvc = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:upvc animated:YES];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
@@ -176,6 +179,7 @@ static UIButton *friendProfileButton, *userProfile;
 
 	return image;
  }
+
 
 
 

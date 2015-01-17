@@ -29,6 +29,8 @@
 		A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */; };
 		A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AD39001A44E44C0003B146 /* MainMapViewController.m */; };
 		A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6AD39011A44E44C0003B146 /* MainMapViewController.xib */; };
+		A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */; };
+		A6D620431A6AA58600DB7B20 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */; };
 		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
 		A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */; };
 		A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */; };
@@ -103,6 +105,8 @@
 		A6AD38FF1A44E44C0003B146 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMapViewController.h; path = therewhere/MainMapViewController.h; sourceTree = SOURCE_ROOT; };
 		A6AD39001A44E44C0003B146 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMapViewController.m; path = therewhere/MainMapViewController.m; sourceTree = SOURCE_ROOT; };
 		A6AD39011A44E44C0003B146 /* MainMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMapViewController.xib; path = therewhere/MainMapViewController.xib; sourceTree = SOURCE_ROOT; };
+		A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsRequest.swift; sourceTree = "<group>"; };
 		A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsResponse.swift; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 				A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */,
 				A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */,
 				A680A3A31A5DE6790035B685 /* RestKit-Bridging-Header.h */,
+				A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */,
+				A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -389,6 +395,7 @@
 				A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */,
 				A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */,
 				A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */,
+				A6D620431A6AA58600DB7B20 /* UserProfileViewController.xib in Resources */,
 				A6A27E601A3E3124006F7ECD /* LoginViewController.xib in Resources */,
 				A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */,
 			);
@@ -446,6 +453,7 @@
 				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
 				A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */,
 				A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */,
+				A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */,
 				A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A6E6D2B71A62E65D002C0655 /* GetFriendsRequest.swift in Sources */,
