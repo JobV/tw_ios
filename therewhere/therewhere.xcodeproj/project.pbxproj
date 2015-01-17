@@ -31,6 +31,9 @@
 		A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6AD39011A44E44C0003B146 /* MainMapViewController.xib */; };
 		A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */; };
 		A6D620431A6AA58600DB7B20 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */; };
+		A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620451A6ABC2200DB7B20 /* UserProfile.swift */; };
+		A6D620481A6ABEAB00DB7B20 /* GetUserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620471A6ABEAB00DB7B20 /* GetUserInfoResponse.swift */; };
+		A6D6204A1A6AC77500DB7B20 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620491A6AC77500DB7B20 /* UserObject.swift */; };
 		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
 		A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */; };
 		A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */; };
@@ -107,6 +110,9 @@
 		A6AD39011A44E44C0003B146 /* MainMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMapViewController.xib; path = therewhere/MainMapViewController.xib; sourceTree = SOURCE_ROOT; };
 		A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
+		A6D620451A6ABC2200DB7B20 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		A6D620471A6ABEAB00DB7B20 /* GetUserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserInfoResponse.swift; sourceTree = "<group>"; };
+		A6D620491A6AC77500DB7B20 /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsRequest.swift; sourceTree = "<group>"; };
 		A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsResponse.swift; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 		A6A27DC41A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXGroup;
 			children = (
+				A6D620441A6ABC0100DB7B20 /* Models */,
 				A6E96B8D1A4DFBE500E6082D /* Rest API */,
 				A6A27E6C1A3F9304006F7ECD /* Lib */,
 				A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */,
@@ -244,6 +251,14 @@
 			name = Lib;
 			sourceTree = "<group>";
 		};
+		A6D620441A6ABC0100DB7B20 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A6D620451A6ABC2200DB7B20 /* UserProfile.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		A6E96B8D1A4DFBE500E6082D /* Rest API */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +284,8 @@
 				A6E6D2B61A62E65D002C0655 /* GetFriendsRequest.swift */,
 				A6E6D2B81A62E669002C0655 /* GetFriendsResponse.swift */,
 				A6E6D2BA1A62EA0E002C0655 /* Friend.swift */,
+				A6D620471A6ABEAB00DB7B20 /* GetUserInfoResponse.swift */,
+				A6D620491A6AC77500DB7B20 /* UserObject.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -450,7 +467,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */,
+				A6D620481A6ABEAB00DB7B20 /* GetUserInfoResponse.swift in Sources */,
 				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
+				A6D6204A1A6AC77500DB7B20 /* UserObject.swift in Sources */,
 				A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */,
 				A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */,
 				A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */,
@@ -469,6 +488,7 @@
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
 				A680A39E1A5DE3E00035B685 /* CreateUserRequest.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
+				A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */,
 				A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */,
 				A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */,
 				A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */,

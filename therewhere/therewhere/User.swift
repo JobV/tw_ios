@@ -187,31 +187,6 @@ class User: NSObject {
         
         var response = Friend()
 
-        
-//        operation.setCompletionBlockWithSuccess({operation, rkMappingResult in
-//                for object in rkMappingResult.array(){
-//                    response = object as Friend
-//                    var fullName = response.firstName+" "+response.lastName
-//                    var friendID:String = toString(response.userID)
-//                    let friendTuple:(String, Int) = (fullName, response.userID)
-//                    phoneNumberArray.append(friendTuple)
-//                }
-//            }, failure: { operation, error in
-//                NSLog("Broomshakalaka all over again..")
-//            })
-//       
-//        operation.start()
-        
-//        rkmanager.postObject(addFriendsRequest,
-//            path: requestUrl,
-//            parameters:nil,
-//            success:{ requestOperation, rkMappingResult in
-//                response = rkMappingResult.firstObject() as AddFriendsResponse
-//            },
-//            failure:{ operation, error in
-//                NSLog("Broomshakalaka all over again..")
-//            }
-//        )
         rkmanager.getObjectsAtPath(
             requestUrl,
             parameters: nil,
@@ -234,4 +209,57 @@ class User: NSObject {
         
         return phoneNumberArray
     }
+    
+    func getUserInfo(){
+        
+        var getUserInfoResponseMapping = RKObjectMapping(forClass: UserObject.self);
+        
+        getUserInfoResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
+            "first_name":"firstName",
+            "last_name":"lastName",
+            "email":"email",
+            "phone_nr":"phoneNumber"
+            ]);
+        
+        
+        var getUserInfoResponseDecriptor = RKResponseDescriptor(
+            mapping: getUserInfoResponseMapping,
+            method: RKRequestMethod.Any,
+            pathPattern: nil,
+            keyPath: nil,
+            statusCodes: nil);
+        
+        
+        var url = NSURL(string: TWAPIManager.twAPI_ip())
+        var rkmanager = RKObjectManager(baseURL:url)
+        
+        rkmanager.addResponseDescriptor(getUserInfoResponseDecriptor)
+        
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/1"
+        
+        var urlPath = NSURL(string: requestUrl)
+        var urlRequest = NSURLRequest(URL: urlPath!)
+        
+        var operation = RKObjectRequestOperation(request:urlRequest, responseDescriptors: [getUserInfoResponseDecriptor])
+        
+        var rkMappingResult = RKMappingResult()
+        
+        var response = UserObject()
+        var userProfile = UserProfile.sharedInstance
+        
+        rkmanager.getObjectsAtPath(
+            requestUrl,
+            parameters: nil,
+            success:{ operation, rkMappingResult in
+                response = rkMappingResult.firstObject() as UserObject
+                userProfile.userID = response.userID
+                userProfile.firstName = response.firstName + response.lastName
+                userProfile.email = response.email
+            },
+            failure:{ operation, error in
+                NSLog("Broomshakalaka all over again..")
+        })
+    
+    }
+
 }

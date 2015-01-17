@@ -8,7 +8,6 @@
             <connections>
                 <outlet property="changeUserProfilePhotoButton" destination="h6G-Xp-O4V" id="z97-Cp-I9e"/>
                 <outlet property="userProfileImage" destination="xKv-Jp-2ZU" id="7DC-d3-hVU"/>
-                <outlet property="userProfileLocation" destination="ASH-U7-Q76" id="8m6-be-GsN"/>
                 <outlet property="userProfileName" destination="V9P-B7-QnS" id="QoN-7I-v7Y"/>
                 <outlet property="userVisibilitySwitch" destination="ZDf-vI-VVy" id="Uh8-3I-LXa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,12 +21,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="darth" translatesAutoresizingMaskIntoConstraints="NO" id="xKv-Jp-2ZU">
                     <rect key="frame" x="83" y="66" width="154" height="151"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9P-B7-QnS">
-                    <rect key="frame" x="139" y="250" width="46" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZDf-vI-VVy">
                     <rect key="frame" x="37" y="375" width="246" height="29"/>
                     <segments>
@@ -36,7 +29,7 @@
                         <segment title="Invisible"/>
                     </segments>
                     <connections>
-                        <action selector="userVisibilitySwitch:" destination="-1" eventType="valueChanged" id="LMg-E9-T5f"/>
+                        <action selector="userVisibilitySwitch:" destination="-1" eventType="valueChanged" id="KGX-d2-Pzf"/>
                     </connections>
                 </segmentedControl>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sharing:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zqj-oR-02m">
@@ -51,8 +44,8 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASH-U7-Q76">
-                    <rect key="frame" x="129" y="286" width="67" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9P-B7-QnS">
+                    <rect key="frame" x="83" y="250" width="154" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
