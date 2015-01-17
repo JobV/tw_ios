@@ -33,7 +33,7 @@
 static Boolean buttonVisibility;
 static NSString *friendName;
 static NSString *friendID;
-static UIButton *friendProfileButton;
+static UIButton *friendProfileButton, *userProfile;
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:true];
@@ -98,6 +98,24 @@ static UIButton *friendProfileButton;
     
     [self.view addSubview:friendProfileButton];
     
+    userProfile = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+    [userProfile addTarget:self action:@selector(showUserProfile)
+                  forControlEvents:UIControlEventTouchUpInside];
+    [userProfile setTitle:@"You!" forState:UIControlStateNormal];
+    userProfile.frame = CGRectMake(10.0, 60, 65, 65);
+    userProfile.layer.cornerRadius = friendProfileButton.frame.size.width / 2;;
+    userProfile.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    [userProfile setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    userProfile.layer.shadowRadius = 3.0f;
+    userProfile.layer.shadowColor = [UIColor blackColor].CGColor;
+    userProfile.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    userProfile.layer.shadowOpacity = 0.5f;
+    userProfile.layer.masksToBounds = NO;
+    
+    [self.view addSubview:userProfile];
+    
+    
     [self.pickerView reloadData];
     
     // Create content and menu controllers
@@ -107,6 +125,15 @@ static UIButton *friendProfileButton;
 - (void) showFriendProfile{
     FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
     [self.navigationController pushViewController:fpvc animated:YES];
+}
+
+- (void) showUserProfile{
+//    FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
+//    [self.navigationController pushViewController:fpvc animated:YES];
+
+    UserProfileViewController *upvc = [[UserProfileViewController alloc] initWithNibName:@"UserProfileViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:upvc animated:YES];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
@@ -152,6 +179,7 @@ static UIButton *friendProfileButton;
 
 	return image;
  }
+
 
 
 
