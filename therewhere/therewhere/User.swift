@@ -216,7 +216,7 @@ class User: NSObject {
     }
     
     func getUserInfo(){
-        var your_id = "1"
+        var id = UserProfile.sharedInstance.getUserID()
         
         var getUserInfoResponseMapping = RKObjectMapping(forClass: UserObject.self);
         
@@ -241,7 +241,7 @@ class User: NSObject {
         
         rkmanager.addResponseDescriptor(getUserInfoResponseDecriptor)
         
-        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+your_id
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+id
         
         var urlPath = NSURL(string: requestUrl)
         var urlRequest = NSURLRequest(URL: urlPath!)

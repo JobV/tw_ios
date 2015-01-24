@@ -11,9 +11,11 @@ import UIKit
 class LoginViewController: UIViewController {
 
     @IBAction func login(sender: UIButton) {
+        // === SET YOUR ID ===
         var userProfile = UserProfile.sharedInstance
+        userProfile.userID = 2
+        // ===================
         var user = User()
-        userProfile.userID = 1
         user.getUserInfo()
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
