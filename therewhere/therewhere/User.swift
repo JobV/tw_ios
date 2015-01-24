@@ -94,6 +94,8 @@ class User: NSObject {
     }
     
     func addFriends(phoneNumberArray: [String]) {
+        var id = UserProfile.sharedInstance.getUserID()
+        
         var addFriendsResponseMapping = RKObjectMapping(forClass: AddFriendsResponse.self);
         
         addFriendsResponseMapping.addAttributeMappingsFromDictionary(["total_friends_count":"totalFriendsCount"]);
@@ -127,8 +129,8 @@ class User: NSObject {
         addFriendsRequest.phoneNumberArray = phoneNumberArray
         
         var addFriendsResponse = AddFriendsResponse()
-        
-        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends"
+
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+id+"/friends"
         
         var rkMappingResult = RKMappingResult()
         var requestOperation = RKObjectRequestOperation()
@@ -151,6 +153,9 @@ class User: NSObject {
     }
     
     func getFriends() -> [(String,Int)] {
+
+        var id = UserProfile.sharedInstance.getUserID()
+        
         var phoneNumberArray : [(String, Int)] = []
         
         var getFriendsResponseMapping = RKObjectMapping(forClass: Friend.self);
@@ -176,7 +181,7 @@ class User: NSObject {
         
         rkmanager.addResponseDescriptor(getFriendsResponseDecriptor)
         
-        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends"
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+id+"/friends"
         
         var urlPath = NSURL(string: requestUrl)
         var urlRequest = NSURLRequest(URL: urlPath!)
@@ -211,6 +216,7 @@ class User: NSObject {
     }
     
     func getUserInfo(){
+        var your_id = "1"
         
         var getUserInfoResponseMapping = RKObjectMapping(forClass: UserObject.self);
         
@@ -235,7 +241,7 @@ class User: NSObject {
         
         rkmanager.addResponseDescriptor(getUserInfoResponseDecriptor)
         
-        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/1"
+        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+your_id
         
         var urlPath = NSURL(string: requestUrl)
         var urlRequest = NSURLRequest(URL: urlPath!)
@@ -253,6 +259,7 @@ class User: NSObject {
             success:{ operation, rkMappingResult in
                 response = rkMappingResult.firstObject() as UserObject
                 userProfile.userID = response.userID
+                NSLog("HERE'S YOUR USER ID: %d", userProfile.userID)
                 userProfile.firstName = response.firstName + response.lastName
                 userProfile.email = response.email
             },

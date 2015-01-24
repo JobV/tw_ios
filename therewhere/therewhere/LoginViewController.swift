@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
         var userProfile = UserProfile.sharedInstance
         var user = User()
+        userProfile.userID = 1
         user.getUserInfo()
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
