@@ -10,35 +10,26 @@ import Foundation
 import UIKit
 
 class CustomTableViewCell : UITableViewCell {
-    @IBOutlet var backgroundImage: UIImageView?
     @IBOutlet var titleLabel: UILabel?
     
     func loadItem(#title: String, image: String) {
-        backgroundImage?.image = UIImage(named: "Logo Pin" )
+//        backgroundImage?.image = UIImage(named: "Logo Pin" )
         titleLabel?.text = title
     }
 }
 
 class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet var nextButton: UIButton!
     
     @IBOutlet
     var tableView: UITableView!
-    //    var items: [(String, String)] = [
-    //        ("Marcelo Lebre", "Logo Pin"),
-    //        ("Job van der Voort", "Logo Pin"),
-    //        ("Carla Matos", "Logo Pin"),
-    //        ("Rita Loureiro", "Logo Pin"),
-    //        ("Maçã Rocks", "Logo Pin")
-    //    ]
     
     var items: [(String, String)] = []
     var friendArray:[(String,Int)] = []
     
     @IBAction func next(sender: AnyObject) {
         var controller = MainMapViewController(nibName:"MainMapViewController", bundle:nil)
-        //        var controller = MainMapViewController(nibName:"MainMapViewController", bundle:nil)
-        //        self.presentViewController(controller, animated: true, completion: nil)
         navigationController?.pushViewController(controller, animated: true)
     }
     
@@ -73,6 +64,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         
         tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
+        
+//        nextButton.frame = CGRectMake(245.0, 60, 65, 65)
+        nextButton.layer.cornerRadius = nextButton.frame.size.width / 2
+        nextButton.layer.shadowRadius = 3.0
+        nextButton.layer.shadowColor = UIColor.blackColor().CGColor
+        nextButton.layer.shadowOffset = CGSizeMake(0,1.0)
+        nextButton.layer.shadowOpacity = 0.5
+        nextButton.layer.masksToBounds = false
     }
     
     
@@ -97,6 +96,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         println("You selected cell #\(indexPath.row)!")
     }
     
-    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
     
 }

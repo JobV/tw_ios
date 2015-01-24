@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
         var user = User()
         user.getUserInfo()
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
+        
 //        //self.presentViewController(controller, animated: true, completion: nil)
 //        
         navigationController?.pushViewController(controller, animated: true)
