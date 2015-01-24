@@ -11,3 +11,13 @@ Rest API Folder has two folders.
 
 * Controller - Object related controllers (Location, User, etc.)
 * Classes - Objects to which controllers map rest requests and responses
+
+## SET YOUR ID MANUALLY
+- at LoginViewController change the user you want to impersonate by setting manually the userID var:
+
+```swift
+// === SET YOUR ID ===    
+var userProfile = UserProfile.sharedInstance    
+userProfile.userID = 1    
+// ===================
+```

@@ -33,7 +33,7 @@
 static Boolean buttonVisibility;
 static NSString *friendName;
 static NSString *friendID;
-static UIButton *friendProfileButton, *userProfile;
+static UIButton *friendProfileButton, *userProfile, *goBackToListButton;
 
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:true];
@@ -98,22 +98,39 @@ static UIButton *friendProfileButton, *userProfile;
     
     [self.view addSubview:friendProfileButton];
     
-    userProfile = [UIButton buttonWithType:UIButtonTypeSystem];
+    goBackToListButton = [UIButton buttonWithType:UIButtonTypeSystem];
     
-    [userProfile addTarget:self action:@selector(showUserProfile)
+    [goBackToListButton addTarget:self action:@selector(goBackToList)
                   forControlEvents:UIControlEventTouchUpInside];
-    [userProfile setTitle:@"You!" forState:UIControlStateNormal];
-    userProfile.frame = CGRectMake(10.0, 60, 65, 65);
-    userProfile.layer.cornerRadius = friendProfileButton.frame.size.width / 2;;
-    userProfile.layer.backgroundColor = [UIColor whiteColor].CGColor;
-    [userProfile setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    userProfile.layer.shadowRadius = 3.0f;
-    userProfile.layer.shadowColor = [UIColor blackColor].CGColor;
-    userProfile.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
-    userProfile.layer.shadowOpacity = 0.5f;
-    userProfile.layer.masksToBounds = NO;
+    [goBackToListButton setTitle:@"list" forState:UIControlStateNormal];
+    goBackToListButton.frame = CGRectMake(10.0, 60, 65, 65);
+    goBackToListButton.layer.cornerRadius = goBackToListButton.frame.size.width / 2;;
+    goBackToListButton.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    [goBackToListButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    goBackToListButton.layer.shadowRadius = 3.0f;
+    goBackToListButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    goBackToListButton.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+    goBackToListButton.layer.shadowOpacity = 0.5f;
+    goBackToListButton.layer.masksToBounds = NO;
     
-    [self.view addSubview:userProfile];
+    [self.view addSubview:goBackToListButton];
+    
+//    userProfile = [UIButton buttonWithType:UIButtonTypeSystem];
+    
+//    [userProfile addTarget:self action:@selector(showUserProfile)
+//                  forControlEvents:UIControlEventTouchUpInside];
+//    [userProfile setTitle:@"You!" forState:UIControlStateNormal];
+//    userProfile.frame = CGRectMake(10.0, 60, 65, 65);
+//    userProfile.layer.cornerRadius = friendProfileButton.frame.size.width / 2;;
+//    userProfile.layer.backgroundColor = [UIColor whiteColor].CGColor;
+//    [userProfile setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//    userProfile.layer.shadowRadius = 3.0f;
+//    userProfile.layer.shadowColor = [UIColor blackColor].CGColor;
+//    userProfile.layer.shadowOffset = CGSizeMake(0.0f, 1.0f);
+//    userProfile.layer.shadowOpacity = 0.5f;
+//    userProfile.layer.masksToBounds = NO;
+//    
+//    [self.view addSubview:userProfile];
     
     
     [self.pickerView reloadData];
@@ -125,6 +142,10 @@ static UIButton *friendProfileButton, *userProfile;
 - (void) showFriendProfile{
     FriendProfileViewController *fpvc = [[FriendProfileViewController alloc] initWithNibName:@"FriendProfileViewController" bundle:nil];
     [self.navigationController pushViewController:fpvc animated:YES];
+}
+
+- (void) goBackToList{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) showUserProfile{
