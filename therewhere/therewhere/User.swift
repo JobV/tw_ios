@@ -11,13 +11,6 @@ import Alamofire
 import SwiftyJSON
 class User: NSObject {
     
-//    struct Response {
-//        static var requestOperation = RKObjectRequestOperation()
-//        static var rkMappingResult = RKMappingResult()
-//        static var statusCodes = RKStatusCodeIndexSetForClass(UInt(RKStatusCodeClassSuccessful));
-//    }
-//    
-//    
 //    func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) {
 //
 //        var createUserResponseMapping = RKObjectMapping(forClass: CreateUserResponse.self);
@@ -153,70 +146,6 @@ class User: NSObject {
 //        rkmanager.removeResponseDescriptor(addFriendsResponseDecriptor)
 //
 //    }
-//    
-//    func getFriends() -> [(String,Int)] {
-//
-//        var id = UserProfile.sharedInstance.getUserID()
-//        
-//        var phoneNumberArray : [(String, Int)] = []
-//        
-//        var getFriendsResponseMapping = RKObjectMapping(forClass: Friend.self);
-//        
-//        getFriendsResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
-//            "first_name":"firstName",
-//            "last_name":"lastName",
-//            "email":"email",
-//            "phone_nr":"phoneNumber"
-//            ]);
-//        
-//        
-//        var getFriendsResponseDecriptor = RKResponseDescriptor(
-//            mapping: getFriendsResponseMapping,
-//            method: RKRequestMethod.Any,
-//            pathPattern: nil,
-//            keyPath: nil,
-//            statusCodes: nil);
-//        
-//        
-//        var url = NSURL(string: TWAPIManager.twAPI_ip())
-//        var rkmanager = RKObjectManager(baseURL:url)
-//        
-//        rkmanager.addResponseDescriptor(getFriendsResponseDecriptor)
-//        
-//        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+id+"/friends"
-//        
-//        var urlPath = NSURL(string: requestUrl)
-//        var urlRequest = NSURLRequest(URL: urlPath!)
-//        
-//        var operation = RKObjectRequestOperation(request:urlRequest, responseDescriptors: [getFriendsResponseDecriptor])
-//        
-//        var rkMappingResult = RKMappingResult()
-//        
-//        var response = Friend()
-//
-//        rkmanager.getObjectsAtPath(
-//            requestUrl,
-//            parameters: nil,
-//            success:{ operation, rkMappingResult in
-//                var friends = Friends()
-//
-//                for object in rkMappingResult.array(){
-//                    response = object as Friend
-//                    var fullName = response.firstName+" "+response.lastName
-//                    var friendID:String = toString(response.userID)
-//                    let friendTuple:(String, Int) = (fullName, response.userID)
-//                    friends.phoneNumberArray.append(friendTuple)
-//                    
-//                    NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
-//                }
-//            },
-//            failure:{ operation, error in
-//                NSLog("Broomshakalaka all over again..")
-//            })
-//        
-//        return phoneNumberArray
-//    }
-//
     
     func getUserInfo ()-> (Bool){
         var result = true
@@ -264,6 +193,22 @@ class User: NSObject {
                         friends.phoneNumberArray.append(friendTuple)
                     }
                     NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
+                }
+        }
+        return result
+    }
+    
+    func addFriends(phoneNumberArray: [String]) -> Bool{
+        var result = true
+        
+        let parameters = [
+            "phone_nrs": phoneNumberArray
+        ]
+        
+        Alamofire.request(.POST, TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends", parameters: parameters, encoding: .JSON)
+            .response { (request, response, _, error) in
+                if(error != nil){
+                    result = false
                 }
         }
         return result

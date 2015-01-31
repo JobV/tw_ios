@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
         // ===================
         var user = User()
         user.getUserInfo()
+        user.addFriends(["333333333","4444444444"])
         
         var meetups = Meetups()
      //   meetups.getMeetupRequests();
