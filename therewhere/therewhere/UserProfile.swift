@@ -22,11 +22,7 @@ import UIKit
         return Static.instance!
     }
     
-    func getUserID() ->(String){
-        return (userID as NSNumber).stringValue;
-    }
-    
-    var userID = Int();
+    var userID = String();
     var firstName = String();
     var lastName = String();
     var email = String();

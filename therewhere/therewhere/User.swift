@@ -87,68 +87,12 @@ class User: NSObject {
 //        rkmanager.removeResponseDescriptor(createUserResponseDecriptor)
 //
 //    }
-//    
-//    func addFriends(phoneNumberArray: [String]) {
-//        var id = UserProfile.sharedInstance.getUserID()
-//        
-//        var addFriendsResponseMapping = RKObjectMapping(forClass: AddFriendsResponse.self);
-//        
-//        addFriendsResponseMapping.addAttributeMappingsFromDictionary(["total_friends_count":"totalFriendsCount"]);
-//        
-//        
-//        var addFriendsResponseDecriptor = RKResponseDescriptor(
-//            mapping: addFriendsResponseMapping,
-//            method: RKRequestMethod.Any,
-//            pathPattern: nil,
-//            keyPath: nil,
-//            statusCodes: nil);
-//        
-//        
-//        var addFriendsRequestMapping = RKObjectMapping.requestMapping()
-//        
-//        addFriendsRequestMapping.addAttributeMappingsFromDictionary(["phoneNumberArray":"phone_nrs"]);
-//        
-//        var addFriendsRequestDecriptor = RKRequestDescriptor(
-//            mapping: addFriendsRequestMapping,
-//            objectClass: AddFriendsRequest.self,
-//            rootKeyPath: nil,
-//            method:RKRequestMethod.Any)
-//        
-//        var url = NSURL(string: TWAPIManager.twAPI_ip())
-//        var rkmanager = RKObjectManager(baseURL:url)
-//        
-//        rkmanager.addRequestDescriptor(addFriendsRequestDecriptor)
-//        rkmanager.addResponseDescriptor(addFriendsResponseDecriptor)
-//        
-//        var addFriendsRequest = AddFriendsRequest()
-//        addFriendsRequest.phoneNumberArray = phoneNumberArray
-//        
-//        var addFriendsResponse = AddFriendsResponse()
 //
-//        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+id+"/friends"
-//        
-//        var rkMappingResult = RKMappingResult()
-//        var requestOperation = RKObjectRequestOperation()
-//        var response = AddFriendsResponse()
-//        
-//        rkmanager.postObject(addFriendsRequest,
-//            path: requestUrl,
-//            parameters:nil,
-//            success:{ requestOperation, rkMappingResult in
-//                response = rkMappingResult.firstObject() as AddFriendsResponse
-//            },
-//            failure:{ operation, error in
-//                NSLog("Broomshakalaka all over again..")
-//            }
-//        )
-//        
-//        rkmanager.removeRequestDescriptor(addFriendsRequestDecriptor)
-//        rkmanager.removeResponseDescriptor(addFriendsResponseDecriptor)
-//
-//    }
     
     func getUserInfo ()-> (Bool){
         var result = true
+        let url = TWAPIManager.twAPI_ip()+"/api/v1/users/"+UserProfile.sharedInstance.userID
+        
         Alamofire.request(.GET, TWAPIManager.twAPI_ip()+"/api/v1/users/1")
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
@@ -162,7 +106,7 @@ class User: NSObject {
                     var json = JSON(json!)
                     var userProfile = UserProfile.sharedInstance
                     
-                    userProfile.userID = json["id"].int!
+                    userProfile.userID = json["id"].string!
                     userProfile.firstName = json["first_name"].string!
                     userProfile.lastName = json["last_name"].string!
                     userProfile.email = json["email"].string!
@@ -174,7 +118,9 @@ class User: NSObject {
     
     func getFriends()-> (Bool){
         var result = true
-        Alamofire.request(.GET, TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends")
+        let url = TWAPIManager.twAPI_ip()+"/api/v1/users/"+UserProfile.sharedInstance.userID+"/friends"
+        
+        Alamofire.request(.GET, url)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
@@ -185,8 +131,8 @@ class User: NSObject {
                 else {
                     NSLog("REST: getFriends")
                     var json = JSON(json!)
-
                     var friends = Friends()
+                    
                     for (index: String, subJson: JSON) in json {
                         var fullName = subJson["first_name"].string! + " " + subJson["last_name"].string!
                         let friendTuple:(String, Int) = (fullName, subJson["id"].int!)
@@ -200,17 +146,39 @@ class User: NSObject {
     
     func addFriends(phoneNumberArray: [String]) -> Bool{
         var result = true
-        
+        var user = UserProfile.sharedInstance
         let parameters = [
             "phone_nrs": phoneNumberArray
         ]
         
-        Alamofire.request(.POST, TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends", parameters: parameters, encoding: .JSON)
+        let url = TWAPIManager.twAPI_ip()+"/api/v1/users/"+user.userID+"/friends"
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .response { (request, response, _, error) in
                 if(error != nil){
                     result = false
                 }
         }
+        return result
+    }
+    
+    func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) -> Bool {
+        var result = true
+        let url = TWAPIManager.twAPI_ip()+"/api/v1/users/"
+        let parameters = [
+            "first_name":firstName,
+            "last_name":lastName,
+            "phone_nr":phoneNumber,
+            "email":email
+        ]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+            .response { (request, response, _, error) in
+                if(error != nil){
+                    result = false
+                }
+        }
+        
         return result
     }
 

@@ -13,12 +13,13 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
         // === SET YOUR ID ===
         var userProfile = UserProfile.sharedInstance
-        userProfile.userID = 2
+        userProfile.userID = "1"
         // ===================
         var user = User()
-        user.getUserInfo()
-        user.addFriends(["333333333","4444444444"])
-        
+        //user.getUserInfo()
+        //user.addFriends(["333333333","4444444444"])
+        //user.createUser("firstname", lastName: "lastname", phoneNumber: "333333333", email: "email@email.com")
+
         var meetups = Meetups()
      //   meetups.getMeetupRequests();
         
