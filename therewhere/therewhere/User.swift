@@ -216,84 +216,57 @@ class User: NSObject {
 //        
 //        return phoneNumberArray
 //    }
-//    
-//    func getUserInfo(){
-//        var id = UserProfile.sharedInstance.getUserID()
-//        
-//        var getUserInfoResponseMapping = RKObjectMapping(forClass: UserObject.self);
-//        
-//        getUserInfoResponseMapping.addAttributeMappingsFromDictionary(["id":"userID",
-//            "first_name":"firstName",
-//            "last_name":"lastName",
-//            "email":"email",
-//            "phone_nr":"phoneNumber"
-//            ]);
-//        
-//        
-//        var getUserInfoResponseDecriptor = RKResponseDescriptor(
-//            mapping: getUserInfoResponseMapping,
-//            method: RKRequestMethod.Any,
-//            pathPattern: nil,
-//            keyPath: nil,
-//            statusCodes: nil);
-//        
-//        
-//        var url = NSURL(string: TWAPIManager.twAPI_ip())
-//        var rkmanager = RKObjectManager(baseURL:url)
-//        
-//        rkmanager.addResponseDescriptor(getUserInfoResponseDecriptor)
-//        
-//        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+id
-//        
-//        var urlPath = NSURL(string: requestUrl)
-//        var urlRequest = NSURLRequest(URL: urlPath!)
-//        
-//        var operation = RKObjectRequestOperation(request:urlRequest, responseDescriptors: [getUserInfoResponseDecriptor])
-//        
-//        var rkMappingResult = RKMappingResult()
-//        
-//        var response = UserObject()
-//        var userProfile = UserProfile.sharedInstance
-//        
-//        rkmanager.getObjectsAtPath(
-//            requestUrl,
-//            parameters: nil,
-//            success:{ operation, rkMappingResult in
-//                response = rkMappingResult.firstObject() as UserObject
-//                userProfile.userID = response.userID
-//                userProfile.firstName = response.firstName + response.lastName
-//                userProfile.email = response.email
-//            },
-//            failure:{ operation, error in
-//                NSLog("Broomshakalaka all over again..")
-//        })
-//    
-//    }
+//
     
-    func getUserInfo ()-> (String){
-        
+    func getUserInfo ()-> (Bool){
+        var result = true
         Alamofire.request(.GET, TWAPIManager.twAPI_ip()+"/api/v1/users/1")
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
                     println(req)
                     println(res)
+                    result = false
                 }
                 else {
                     NSLog("REST: getUserInfo")
                     var json = JSON(json!)
-                    
                     var userProfile = UserProfile.sharedInstance
+                    
                     userProfile.userID = json["id"].int!
                     userProfile.firstName = json["first_name"].string!
                     userProfile.lastName = json["last_name"].string!
                     userProfile.email = json["email"].string!
                     userProfile.phoneNumber = json["phone_nr"].string!
-                    
-                    
                 }
         }
-        return "a"
+        return result
+    }
+    
+    func getFriends()-> (Bool){
+        var result = true
+        Alamofire.request(.GET, TWAPIManager.twAPI_ip()+"/api/v1/users/1/friends")
+            .responseJSON { (req, res, json, error) in
+                if(error != nil) {
+                    NSLog("Error: \(error)")
+                    println(req)
+                    println(res)
+                    result=false
+                }
+                else {
+                    NSLog("REST: getFriends")
+                    var json = JSON(json!)
+
+                    var friends = Friends()
+                    for (index: String, subJson: JSON) in json {
+                        var fullName = subJson["first_name"].string! + " " + subJson["last_name"].string!
+                        let friendTuple:(String, Int) = (fullName, subJson["id"].int!)
+                        friends.phoneNumberArray.append(friendTuple)
+                    }
+                    NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
+                }
+        }
+        return result
     }
 
 }
