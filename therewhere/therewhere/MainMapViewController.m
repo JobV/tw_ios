@@ -11,9 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import <RestKit/RestKit.h>
-#import "SetLocationRequest.h"
-#import "SetLocationResponse.h"
+
 #import "Location.h"
 #import "therewhere-Swift.h"
 

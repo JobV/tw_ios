@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
         user.getUserInfo()
         
         var meetups = Meetups()
-        meetups.getMeetupRequests();
+     //   meetups.getMeetupRequests();
         
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         

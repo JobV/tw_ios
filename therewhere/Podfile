@@ -6,3 +6,4 @@ pod "MKMapView-ZoomLevel"
 pod 'RestKit', '~> 0.20.0'
 pod 'SwiftyJSON', '2.1.3'
 pod 'Mixpanel'
+pod 'Alamofire', '~> 1.1'

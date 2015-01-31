@@ -42,7 +42,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             object: nil)
 
         var user = User()
-        friendArray = user.getFriends()
+       // friendArray = user.getFriends()
         
     }
     func handleGetFriendsNotification( note: NSNotification){
