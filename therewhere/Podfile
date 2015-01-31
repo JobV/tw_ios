@@ -4,4 +4,5 @@ platform :ios, "8.0"
 pod "MKMapView-ZoomLevel"
 #pod 'Rest2Mobile', '~> 1.1'
 pod 'RestKit', '~> 0.20.0'
+pod 'SwiftyJSON', '2.1.3'
 pod 'Mixpanel'

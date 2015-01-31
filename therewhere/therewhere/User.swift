@@ -259,7 +259,6 @@ class User: NSObject {
             success:{ operation, rkMappingResult in
                 response = rkMappingResult.firstObject() as UserObject
                 userProfile.userID = response.userID
-                NSLog("HERE'S YOUR USER ID: %d", userProfile.userID)
                 userProfile.firstName = response.firstName + response.lastName
                 userProfile.email = response.email
             },
