@@ -11,7 +11,6 @@
 //#import <RestKit/RestKit.h>
 
 #import "Location.h"
-#import "TWAPIManager.h"
 static NSString *created_date;
 @implementation Location{
 //    RKObjectMapping *setLocationResponseMapping;

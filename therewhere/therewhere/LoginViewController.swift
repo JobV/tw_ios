@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
         var userProfile = UserProfile.sharedInstance
         userProfile.userID = "1"
         // ===================
+        
         var user = User()
         //user.getUserInfo()
         //user.addFriends(["333333333","4444444444"])
