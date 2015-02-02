@@ -18,13 +18,15 @@ class LoginViewController: UIViewController {
         
         var user = User()
         var friends = Friends()
-        friends.getLocation("1")
-        friends.getLocation("2")
+//        friends.getLocation("1")
+//        friends.getLocation("2")
         //user.getUserInfo()
         //user.addFriends(["333333333","4444444444"])
         //user.createUser("firstname", lastName: "lastname", phoneNumber: "333333333", email: "email@email.com")
-
         var meetups = Meetups()
+        meetups.requestMeetup("2")
+        meetups.getPendingMeetups()
+
      //   meetups.getMeetupRequests();
         
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)

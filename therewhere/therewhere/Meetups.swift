@@ -7,60 +7,63 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
+
 class Meetups: NSObject {
     
-//    struct Response {
-//        static var requestOperation = RKObjectRequestOperation()
-//        static var rkMappingResult = RKMappingResult()
-//        static var statusCodes = RKStatusCodeIndexSetForClass(UInt(RKStatusCodeClassSuccessful));
-//    }
-//    
-//    func getMeetupRequests() -> (Int) {
-//        
-//        var id = UserProfile.sharedInstance.getUserID()
-//                
-//        var getMeetupsResponseMapping = RKObjectMapping(forClass: Meetup.self);
-//        
-//        getMeetupsResponseMapping.addAttributeMappingsFromDictionary(["friend_id":"friendID",
-//            "meetup_id":"meetupID",
-//            "created_date":"createdDate"
-//            ]);
-//        
-//        
-//        var getMeetupsResponseDecriptor = RKResponseDescriptor(
-//            mapping: getMeetupsResponseMapping,
-//            method: RKRequestMethod.Any,
-//            pathPattern: nil,
-//            keyPath: nil,
-//            statusCodes: nil);
-//        
-//        
-//        var url = NSURL(string: TWAPIManager.twAPI_ip())
-//        var rkmanager = RKObjectManager(baseURL:url)
-//        
-//        rkmanager.addResponseDescriptor(getMeetupsResponseDecriptor)
-//        
-//        var requestUrl =  TWAPIManager.twAPI_ip()+"/api/v1/users/"+id+"/meetups"
-//        
-//        var urlPath = NSURL(string: requestUrl)
-//        var urlRequest = NSURLRequest(URL: urlPath!)
-//        
-//        var operation = RKObjectRequestOperation(request:urlRequest, responseDescriptors: [getMeetupsResponseDecriptor])
-//        
-//        var rkMappingResult = RKMappingResult()
-//        
-//        var response = Meetup()
-//        
-//        rkmanager.getObjectsAtPath(
-//            requestUrl,
-//            parameters: nil,
-//            success:{ operation, rkMappingResult in
-//                println(rkMappingResult.array().count)
-//            },
-//            failure:{ operation, error in
-//                NSLog("Broomshakalaka all over again..")
-//        })
-//        
-//        return 1
-//    }
+    func getPendingMeetups(){
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+UserProfile.sharedInstance.userID+"/meetups"
+
+        Alamofire.request(.GET, url)
+            .responseJSON { (req, res, json, error) in
+                if(error != nil) {
+                    NSLog("Error: \(error)")
+                    println(req)
+                    println(res)
+                }
+                else {
+                    NSLog("REST: get pending meetups")
+                    var json = JSON(json!)
+                    
+                    if json["received"].count == 0 {
+                        println("no pending received meetups!")
+                    }else{
+                        var count = json["received"].count
+                        println("received \(count) meetup requests!")
+                    }
+                    
+                    if json["sent"].count == 0 {
+                        println("no pending sent meetups!")
+                    }else{
+                        var count = json["sent"].count
+                        println("sent \(count) meetup requests!")
+                    }
+                    
+                
+                    
+                }
+        }
+    }
+    func requestMeetup(friendID: String){
+        var user = UserProfile.sharedInstance
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups"
+        let parameters = [
+            "friend_id": friendID
+        ]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+            .responseJSON { (request, response, json, error) in
+                if(error != nil){
+                }else{
+                    NSLog("REST: created friend request meetups")
+                    var json = JSON(json!)
+                    if json["success"]{
+                        println("created friend request")
+                    }
+                    
+                }
+        }
+
+    }
 }
