@@ -22,9 +22,9 @@ userProfile.userID = 1
 // ===================
 ```
 
-## SET YOUR APP SERVER ADDRESS
+## SET YOUR APP SERVER ADDRESS  
 - APIConnectionManager.swift is where the address is being hardcoded, to change server addresses simply change the ip
-- 
+
 ```swift
 import Foundation    
 class APIConnectionManager: NSObject {    
