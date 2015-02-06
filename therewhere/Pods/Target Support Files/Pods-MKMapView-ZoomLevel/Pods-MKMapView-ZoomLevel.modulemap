@@ -1,0 +1,6 @@
+framework module MKMapView_ZoomLevel {
+  umbrella header "Pods-MKMapView-ZoomLevel-umbrella.h"
+
+  export *
+  module * { export * }
+}

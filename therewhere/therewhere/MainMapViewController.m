@@ -11,9 +11,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import <RestKit/RestKit.h>
-#import "SetLocationRequest.h"
-#import "SetLocationResponse.h"
+
 #import "Location.h"
 #import "therewhere-Swift.h"
 
@@ -237,11 +235,16 @@ static UIButton *friendProfileButton, *userProfile, *goBackToListButton;
     MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 250, 250);
     [mapView setRegion:region animated:YES];
 
-    Location *location = [[Location alloc] init];
-    [location setLocation:newLocation.coordinate userID:1];
+//    Location *location = [[Location alloc] init];
+//    [location setLocation:newLocation.coordinate userID:1];
     
-    CLLocationCoordinate2D loc = [location getLocation:1];
-;
+    User *user = [[User alloc] init];
+    [user setLocation:newLocation.coordinate];
+    
+    
+    
+   // CLLocationCoordinate2D loc = [location getLocation:1];
+
 }
 
 

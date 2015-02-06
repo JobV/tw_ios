@@ -13,14 +13,24 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
         // === SET YOUR ID ===
         var userProfile = UserProfile.sharedInstance
-        userProfile.userID = 2
+        userProfile.userID = "1"
         // ===================
+        
         var user = User()
-        user.getUserInfo()
+        var friends = Friends()
+//        friends.getLocation("1")
+//        friends.getLocation("2")
+        //user.getUserInfo()
+        //user.addFriends(["333333333","4444444444"])
+        //user.createUser("firstname", lastName: "lastname", phoneNumber: "333333333", email: "email@email.com")
+        var meetups = Meetups()
+        meetups.requestMeetup("2")
+        meetups.getPendingMeetups()
+
+     //   meetups.getMeetupRequests();
+        
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
-//        //self.presentViewController(controller, animated: true, completion: nil)
-//        
         navigationController?.pushViewController(controller, animated: true)
     }
     override func viewDidLoad() {

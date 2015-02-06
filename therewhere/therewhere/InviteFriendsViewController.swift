@@ -42,7 +42,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             object: nil)
 
         var user = User()
-        friendArray = user.getFriends()
+        user.getFriends()
         
     }
     func handleGetFriendsNotification( note: NSNotification){
@@ -64,7 +64,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         
         tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
-        
+        tableView.rowHeight = 44
 //        nextButton.frame = CGRectMake(245.0, 60, 65, 65)
         nextButton.layer.cornerRadius = nextButton.frame.size.width / 2
         nextButton.layer.shadowRadius = 3.0

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Mixpanel
+
 struct MixpanelHandler{
     static let mixpanelToken = "6ae05520085a72b10108fbae93cad415"
     static let mixpanel = Mixpanel.sharedInstanceWithToken(mixpanelToken)

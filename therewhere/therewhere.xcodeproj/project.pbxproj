@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7898CAEBBBE8B26126DD38E4 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CF65D6121955B183D4DD6F1 /* libPods.a */; };
 		A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A69F1A58303800D4D992 /* MixpanelHandler.swift */; };
 		A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */; };
 		A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */; };
 		A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */; };
 		A680A39B1A5DE1270035B685 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39A1A5DE1270035B685 /* User.swift */; };
-		A680A39E1A5DE3E00035B685 /* CreateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39D1A5DE3E00035B685 /* CreateUserRequest.swift */; };
-		A680A3A01A5DE3ED0035B685 /* CreateUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */; };
+		A694670B1A7552280038880D /* Meetups.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694670A1A7552280038880D /* Meetups.swift */; };
+		A694670D1A7557660038880D /* Meetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = A694670C1A7557660038880D /* Meetup.swift */; };
 		A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */; };
 		A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6A27DC91A3BACBA006F7ECD /* therewhere.xcdatamodeld */; };
 		A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6A27DD11A3BACBA006F7ECD /* Images.xcassets */; };
@@ -27,24 +26,16 @@
 		A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A27E5F1A3E3124006F7ECD /* InviteFriendsViewController.swift */; };
 		A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */; };
 		A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */; };
+		A6AB41241A7D82CA000CD00D /* APIConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AB41231A7D82CA000CD00D /* APIConnectionManager.swift */; };
 		A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A6AD39001A44E44C0003B146 /* MainMapViewController.m */; };
 		A6AD39031A44E44C0003B146 /* MainMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6AD39011A44E44C0003B146 /* MainMapViewController.xib */; };
 		A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */; };
 		A6D620431A6AA58600DB7B20 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */; };
 		A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620451A6ABC2200DB7B20 /* UserProfile.swift */; };
-		A6D620481A6ABEAB00DB7B20 /* GetUserInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620471A6ABEAB00DB7B20 /* GetUserInfoResponse.swift */; };
-		A6D6204A1A6AC77500DB7B20 /* UserObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620491A6AC77500DB7B20 /* UserObject.swift */; };
 		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
-		A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */; };
-		A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */; };
-		A6E6D2B71A62E65D002C0655 /* GetFriendsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B61A62E65D002C0655 /* GetFriendsRequest.swift */; };
-		A6E6D2B91A62E669002C0655 /* GetFriendsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B81A62E669002C0655 /* GetFriendsResponse.swift */; };
 		A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2BA1A62EA0E002C0655 /* Friend.swift */; };
-		A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */; };
-		A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */; };
-		A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B991A4ED9A100E6082D /* TWAPIManager.m */; };
 		A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B9C1A4EDEC900E6082D /* Location.m */; };
-		A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96BA01A4F037000E6082D /* GetLocationResponse.m */; };
+		DB89EF2464061B2AC7821EFA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3BC44142672406518B3731 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,9 +62,9 @@
 
 /* Begin PBXFileReference section */
 		00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		1A3BC44142672406518B3731 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E06A3150E354D5784A8B902 /* Pods-therewhereTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.release.xcconfig"; sourceTree = "<group>"; };
 		35FCC4F3EA593EC02F95A2A8 /* Pods-therewhereTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.debug.xcconfig"; sourceTree = "<group>"; };
-		3CF65D6121955B183D4DD6F1 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-therewhereTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A608A6961A580A7D00D4D992 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		A608A69E1A581F9300D4D992 /* Mixpanel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -84,13 +75,12 @@
 		A608A6AC1A5C8A5D00D4D992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhere_Tests.swift; sourceTree = "<group>"; };
 		A680A39A1A5DE1270035B685 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A680A39C1A5DE1C80035B685 /* TWAPIManager-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TWAPIManager-Bridging-Header.h"; sourceTree = "<group>"; };
-		A680A39D1A5DE3E00035B685 /* CreateUserRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserRequest.swift; sourceTree = "<group>"; };
-		A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateUserResponse.swift; sourceTree = "<group>"; };
 		A680A3A31A5DE6790035B685 /* RestKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RestKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68BAEE01A478B9A00EC8B7E /* AKPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AKPickerView.m; sourceTree = "<group>"; };
 		A68BAEE11A478B9A00EC8B7E /* AKPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AKPickerView.h; sourceTree = "<group>"; };
+		A694670A1A7552280038880D /* Meetups.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meetups.swift; sourceTree = "<group>"; };
+		A694670C1A7557660038880D /* Meetup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meetup.swift; sourceTree = "<group>"; };
 		A6A27DC21A3BACBA006F7ECD /* therewhere.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = therewhere.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6A27DC61A3BACBA006F7ECD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = therewhere/Info.plist; sourceTree = SOURCE_ROOT; };
 		A6A27DC71A3BACBA006F7ECD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = therewhere/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -105,30 +95,17 @@
 		A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = therewhere/CustomTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A6A53A2B1A44E91500238E20 /* MainMapViewController-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "MainMapViewController-Bridging-Header.h"; path = "therewhere/MainMapViewController-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		A6AB41231A7D82CA000CD00D /* APIConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConnectionManager.swift; sourceTree = "<group>"; };
 		A6AD38FF1A44E44C0003B146 /* MainMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMapViewController.h; path = therewhere/MainMapViewController.h; sourceTree = SOURCE_ROOT; };
 		A6AD39001A44E44C0003B146 /* MainMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMapViewController.m; path = therewhere/MainMapViewController.m; sourceTree = SOURCE_ROOT; };
 		A6AD39011A44E44C0003B146 /* MainMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MainMapViewController.xib; path = therewhere/MainMapViewController.xib; sourceTree = SOURCE_ROOT; };
 		A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		A6D620451A6ABC2200DB7B20 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		A6D620471A6ABEAB00DB7B20 /* GetUserInfoResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserInfoResponse.swift; sourceTree = "<group>"; };
-		A6D620491A6AC77500DB7B20 /* UserObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserObject.swift; sourceTree = "<group>"; };
 		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
-		A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsRequest.swift; sourceTree = "<group>"; };
-		A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFriendsResponse.swift; sourceTree = "<group>"; };
-		A6E6D2B61A62E65D002C0655 /* GetFriendsRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFriendsRequest.swift; sourceTree = "<group>"; };
-		A6E6D2B81A62E669002C0655 /* GetFriendsResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFriendsResponse.swift; sourceTree = "<group>"; };
 		A6E6D2BA1A62EA0E002C0655 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationResponse.h; sourceTree = "<group>"; };
-		A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationResponse.m; sourceTree = "<group>"; };
-		A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetLocationRequest.m; sourceTree = "<group>"; };
-		A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SetLocationRequest.h; sourceTree = "<group>"; };
-		A6E96B991A4ED9A100E6082D /* TWAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAPIManager.m; sourceTree = "<group>"; };
-		A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWAPIManager.h; sourceTree = "<group>"; };
 		A6E96B9C1A4EDEC900E6082D /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		A6E96B9E1A4EDED200E6082D /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
-		A6E96B9F1A4F035400E6082D /* GetLocationResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetLocationResponse.h; sourceTree = "<group>"; };
-		A6E96BA01A4F037000E6082D /* GetLocationResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetLocationResponse.m; sourceTree = "<group>"; };
 		C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,7 +123,7 @@
 			files = (
 				A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */,
 				A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */,
-				7898CAEBBBE8B26126DD38E4 /* libPods.a in Frameworks */,
+				DB89EF2464061B2AC7821EFA /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,8 +135,8 @@
 			children = (
 				A608A6961A580A7D00D4D992 /* Accelerate.framework */,
 				A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */,
-				3CF65D6121955B183D4DD6F1 /* libPods.a */,
 				A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */,
+				1A3BC44142672406518B3731 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -271,21 +248,8 @@
 		A6E96B971A4ED87700E6082D /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A6E96B911A4DFDAE00E6082D /* SetLocationResponse.h */,
-				A6E96B921A4DFDBE00E6082D /* SetLocationResponse.m */,
-				A6E96B941A4DFE5900E6082D /* SetLocationRequest.m */,
-				A6E96B961A4DFE6700E6082D /* SetLocationRequest.h */,
-				A6E96B9F1A4F035400E6082D /* GetLocationResponse.h */,
-				A6E96BA01A4F037000E6082D /* GetLocationResponse.m */,
-				A680A39D1A5DE3E00035B685 /* CreateUserRequest.swift */,
-				A680A39F1A5DE3ED0035B685 /* CreateUserResponse.swift */,
-				A6E6D2B21A62CCE6002C0655 /* AddFriendsRequest.swift */,
-				A6E6D2B41A62CCF6002C0655 /* AddFriendsResponse.swift */,
-				A6E6D2B61A62E65D002C0655 /* GetFriendsRequest.swift */,
-				A6E6D2B81A62E669002C0655 /* GetFriendsResponse.swift */,
 				A6E6D2BA1A62EA0E002C0655 /* Friend.swift */,
-				A6D620471A6ABEAB00DB7B20 /* GetUserInfoResponse.swift */,
-				A6D620491A6AC77500DB7B20 /* UserObject.swift */,
+				A694670C1A7557660038880D /* Meetup.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -293,13 +257,12 @@
 		A6E96B981A4ED89200E6082D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A6E96B991A4ED9A100E6082D /* TWAPIManager.m */,
-				A6E96B9B1A4ED9C600E6082D /* TWAPIManager.h */,
 				A6E96B9C1A4EDEC900E6082D /* Location.m */,
 				A6E96B9E1A4EDED200E6082D /* Location.h */,
 				A680A39A1A5DE1270035B685 /* User.swift */,
-				A680A39C1A5DE1C80035B685 /* TWAPIManager-Bridging-Header.h */,
 				A6E6D2B01A62C8BF002C0655 /* Friends.swift */,
+				A694670A1A7552280038880D /* Meetups.swift */,
+				A6AB41231A7D82CA000CD00D /* APIConnectionManager.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -346,6 +309,7 @@
 				A6A27DC01A3BACBA006F7ECD /* Resources */,
 				75741CADC8244B33FC5D0475 /* Copy Pods Resources */,
 				A6E61BC31A4CD6EF001D14FF /* CopyFiles */,
+				92FAC687D02C65CCE70CEEC3 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -451,6 +415,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		92FAC687D02C65CCE70CEEC3 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -466,31 +445,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A6E96BA11A4F037000E6082D /* GetLocationResponse.m in Sources */,
-				A6D620481A6ABEAB00DB7B20 /* GetUserInfoResponse.swift in Sources */,
-				A6E96B951A4DFE5900E6082D /* SetLocationRequest.m in Sources */,
-				A6D6204A1A6AC77500DB7B20 /* UserObject.swift in Sources */,
 				A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */,
-				A6E6D2B31A62CCE6002C0655 /* AddFriendsRequest.swift in Sources */,
 				A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */,
-				A6E6D2B51A62CCF6002C0655 /* AddFriendsResponse.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
-				A6E6D2B71A62E65D002C0655 /* GetFriendsRequest.swift in Sources */,
-				A6E96B931A4DFDBE00E6082D /* SetLocationResponse.m in Sources */,
-				A680A3A01A5DE3ED0035B685 /* CreateUserResponse.swift in Sources */,
+				A694670D1A7557660038880D /* Meetup.swift in Sources */,
 				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
 				A680A39B1A5DE1270035B685 /* User.swift in Sources */,
-				A6E6D2B91A62E669002C0655 /* GetFriendsResponse.swift in Sources */,
 				A6AD39021A44E44C0003B146 /* MainMapViewController.m in Sources */,
 				A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */,
+				A6AB41241A7D82CA000CD00D /* APIConnectionManager.swift in Sources */,
 				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
+				A694670B1A7552280038880D /* Meetups.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
-				A680A39E1A5DE3E00035B685 /* CreateUserRequest.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
 				A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */,
 				A68BAEE21A478B9A00EC8B7E /* AKPickerView.m in Sources */,
-				A6E96B9A1A4ED9A100E6082D /* TWAPIManager.m in Sources */,
 				A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

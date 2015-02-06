@@ -21,3 +21,13 @@ var userProfile = UserProfile.sharedInstance
 userProfile.userID = 1    
 // ===================
 ```
+
+## SET YOUR APP SERVER ADDRESS  
+- APIConnectionManager.swift is where the address is being hardcoded, to change server addresses simply change the ip
+
+```swift
+import Foundation    
+class APIConnectionManager: NSObject {    
+    class var serverAddress: String { return "http://192.168.1.68:3000" }    
+}    
+```
