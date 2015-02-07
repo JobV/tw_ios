@@ -11,10 +11,14 @@ import UIKit
 
 class CustomTableViewCell : UITableViewCell {
     @IBOutlet var titleLabel: UILabel?
+    @IBOutlet weak var meetupicon: UIImageView!
     
-    func loadItem(#title: String, image: String) {
-//        backgroundImage?.image = UIImage(named: "Logo Pin" )
+    func loadItem(#title: String, id: Int) {
         titleLabel?.text = title
+    }
+    
+    func sentMeetUp(){
+        meetupicon.hidden = false
     }
 }
 
@@ -25,7 +29,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet
     var tableView: UITableView!
     
-    var items: [(String, String)] = []
+    var items: [(String, Int)] = []
     var friendArray:[(String,Int)] = []
     
     @IBAction func next(sender: AnyObject) {
@@ -50,7 +54,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         println("starting update")
         items.removeAll(keepCapacity: false)
         for (name, id) in friends.phoneNumberArray{
-            items.append(name, "Logo Pin")
+            items.append(name, id)
             println(name)
         }
         tableView.reloadData()
@@ -64,8 +68,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         
         tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
-        tableView.rowHeight = 44
-//        nextButton.frame = CGRectMake(245.0, 60, 65, 65)
+        tableView.rowHeight = 60
+//nextButton.frame = CGRectMake(245.0, 60, 65, 65)
         nextButton.layer.cornerRadius = nextButton.frame.size.width / 2
         nextButton.layer.shadowRadius = 3.0
         nextButton.layer.shadowColor = UIColor.blackColor().CGColor
@@ -84,16 +88,24 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
         
         // this is how you extract values from a tuple
-        var (title, image) = items[indexPath.row]
+        var (title, id) = items[indexPath.row]
         
-        cell.loadItem(title: title, image: image)
+        cell.loadItem(title: title, id: id)
         
         return cell
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        println("You selected cell #\(indexPath.row)!")
+        
+        var meetups = Meetups()
+        meetups.requestMeetup(String(self.items[indexPath.row].1))
+        println("sending...")
+        
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
+        cell.backgroundColor = UIColor.mp_lightEffectColor()
+        cell.sentMeetUp()
+
     }
     
     override func prefersStatusBarHidden() -> Bool {
