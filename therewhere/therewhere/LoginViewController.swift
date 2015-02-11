@@ -18,14 +18,12 @@ class LoginViewController: UIViewController {
         
         var user = User()
         var friends = Friends()
-//        friends.getLocation("1")
-//        friends.getLocation("2")
+        //friends.getLocation("1")
+        //friends.getLocation("2")
         //user.getUserInfo()
         //user.addFriends(["333333333","4444444444"])
         //user.createUser("firstname", lastName: "lastname", phoneNumber: "333333333", email: "email@email.com")
-        var meetups = Meetups()
-        meetups.requestMeetup("2")
-        meetups.getPendingMeetups()
+
 
      //   meetups.getMeetupRequests();
         
@@ -45,15 +43,5 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
