@@ -13,13 +13,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Marcelo Lebre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-1q-ppv">
-                        <rect key="frame" x="36" y="17" width="197" height="21"/>
+                        <rect key="frame" x="36" y="19" width="197" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="meetupicon" translatesAutoresizingMaskIntoConstraints="NO" id="2Dj-bG-PMZ">
-                        <rect key="frame" x="231" y="13" width="30" height="30"/>
+                        <rect key="frame" x="236" y="21" width="20" height="20"/>
                         <color key="tintColor" red="0.67467619243421051" green="0.67208588449331741" blue="0.9205106160287081" alpha="1" colorSpace="calibratedRGB"/>
                     </imageView>
                 </subviews>
