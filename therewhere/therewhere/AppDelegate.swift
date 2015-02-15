@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftyJSON
 
 
 @UIApplicationMain
@@ -24,8 +25,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // somewhere when your app starts up
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
-        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
-        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+//        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
+//        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+
+        
+        let acceptAction = UIMutableUserNotificationAction()
+        acceptAction.identifier = "accept"
+        acceptAction.destructive = false
+        acceptAction.title = "accept"
+        acceptAction.activationMode = .Background
+        acceptAction.authenticationRequired = false
+        
+        let declineAction = UIMutableUserNotificationAction()
+        declineAction.identifier = "decline"
+        declineAction.destructive = false
+        declineAction.title = "decline"
+        declineAction.activationMode = .Background
+        declineAction.authenticationRequired = false
+        
+        let delayAction = UIMutableUserNotificationAction()
+        delayAction.identifier = "delay"
+        delayAction.destructive = false
+        delayAction.title = "delay"
+        delayAction.activationMode = .Background
+        delayAction.authenticationRequired = false
+        
+        let category = UIMutableUserNotificationCategory()
+        category.identifier = "meetup"
+        category.setActions([acceptAction, declineAction], forContext: .Minimal)
+        category.setActions([acceptAction, declineAction, delayAction], forContext: .Default)
+        
+        let requestedTypes = UIUserNotificationType.Alert | .Sound
+        let categories = NSSet(object: category)
+        let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settingsRequest)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
@@ -39,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 window.backgroundColor = UIColor.whiteColor()
                 window.makeKeyAndVisible()
         }
-
         
           //  window.rootViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
         
@@ -79,6 +111,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
         println("Couldn't register: \(error)")
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+//        println(userInfo["friend_id"])
+
+        var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
+        
+        var navigationController = UINavigationController(rootViewController: inviteviewcontroller)
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        if let window = window {
+            window.rootViewController = navigationController
+            window.backgroundColor = UIColor.whiteColor()
+            window.makeKeyAndVisible()
+        }
+        
+        var aps = userInfo["aps"] as NSDictionary
+        var msg = aps["alert"] as String
+
+        
+        let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
+        window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        
+        completionHandler(UIBackgroundFetchResult.NewData)
     }
 
     // MARK: - Core Data stack
