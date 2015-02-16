@@ -66,4 +66,25 @@ class Meetups: NSObject {
         }
 
     }
+    func acceptMeetup(friendID: String){
+        var user = UserProfile.sharedInstance
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/accept"
+        let parameters = [
+            "friend_id": friendID
+        ]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+            .responseJSON { (request, response, json, error) in
+                if(error != nil){
+                }else{
+                    NSLog("REST: accepted friend request meetup")
+                    var json = JSON(json!)
+                    if json["success"]{
+                        println("accepted friend request")
+                    }
+                    
+                }
+        }
+        
+    }
 }

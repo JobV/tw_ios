@@ -128,15 +128,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var aps = userInfo["aps"] as NSDictionary
         var msg = aps["alert"] as String
-
-        
+      
         let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: nil))
+        let acceptActionHandler = { (action:UIAlertAction!) -> Void in
+            var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+            var meetup = Meetups()
+            meetup.acceptMeetup(toString(friend_id))
+        }
+        
+        
+        alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
         alert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
         window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         
         completionHandler(UIBackgroundFetchResult.NewData)
     }
+ 
 
     // MARK: - Core Data stack
 
