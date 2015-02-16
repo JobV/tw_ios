@@ -39,7 +39,11 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notification:", name:"meetup", object: nil)
+
+        var userProfile = UserProfile.sharedInstance
+        userProfile.userID = "1"
+
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
@@ -62,6 +66,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     override func viewDidLoad() {
+
+
         super.viewDidLoad()
         navigationController?.navigationBarHidden = true;
         
@@ -78,7 +84,13 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         nextButton.layer.masksToBounds = false
     }
     
-    
+    func notification(userInfo: NSDictionary){
+        println("Woot")
+        var alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.items.count;
@@ -100,7 +112,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         var meetups = Meetups()
         meetups.requestMeetup(String(self.items[indexPath.row].1))
-        println("sending...")
+        println("sending meetup request")
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
         cell.backgroundColor = UIColor.mp_lightEffectColor()
