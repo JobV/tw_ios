@@ -102,6 +102,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         // this is how you extract values from a tuple
         var (title, id) = items[indexPath.row]
         
+        
         cell.loadItem(title: title, id: id)
         
         return cell
@@ -115,7 +116,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         println("sending meetup request")
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
-        cell.backgroundColor = UIColor.mp_lightEffectColor()
+        cell.backgroundColor = getRandomColor()
         cell.sentMeetUp()
 
     }
@@ -123,5 +124,18 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    func getRandomColor() -> UIColor{
+        
+        var randomRed:CGFloat = CGFloat(drand48())
+        
+        var randomGreen:CGFloat = CGFloat(drand48())
+        
+        var randomBlue:CGFloat = CGFloat(drand48())
+        
+        return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: 1.0)
+        
+    }
+
     
 }
