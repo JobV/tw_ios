@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import MapKit
+
 @objc class User: NSObject {
         
     func getUserInfo ()-> (Bool){

@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import MapKit
+import UIKit
 
 class Friends: NSObject {
     var phoneNumberArray : [(String, Int)] = []

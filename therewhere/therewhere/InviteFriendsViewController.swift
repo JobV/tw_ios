@@ -12,9 +12,14 @@ import UIKit
 class CustomTableViewCell : UITableViewCell {
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet weak var meetupicon: UIImageView!
+    @IBOutlet var meetupStatus: UILabel!
     
     func loadItem(#title: String, id: Int) {
         titleLabel?.text = title
+    }
+    
+    func updateMeetupStatus(status:String){
+        meetupStatus.text = status
     }
     
     func sentMeetUp(){
@@ -34,6 +39,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notification:", name:"meetup", object: nil)
+        navigationController?.navigationBarHidden = true;
 
         var userProfile = UserProfile.sharedInstance
         userProfile.userID = "1"
@@ -99,6 +105,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
         cell.sentMeetUp()
+        cell.updateMeetupStatus("P")
+        var controller = MapViewController(nibName:"MapViewController",bundle:nil)
+        
+        navigationController?.pushViewController(controller, animated: true)
 
     }
     
