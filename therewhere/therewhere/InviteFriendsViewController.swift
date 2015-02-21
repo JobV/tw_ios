@@ -100,13 +100,16 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
+        var (title, id) = items[indexPath.row]
         var meetups = Meetups()
         meetups.requestMeetup(String(self.items[indexPath.row].1))
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
         cell.sentMeetUp()
         cell.updateMeetupStatus("P")
+        
         var controller = MapViewController(nibName:"MapViewController",bundle:nil)
+        controller.setColor(getRandomColor(countElements(title)))
         
         navigationController?.pushViewController(controller, animated: true)
 

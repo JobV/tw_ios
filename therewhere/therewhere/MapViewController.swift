@@ -9,6 +9,10 @@
 import UIKit
 
 class MapViewController: UIViewController {
+
+    @IBOutlet
+    var buttonColor: UIColor? = UIColor.greenColor()
+    
     @IBOutlet var callButton: UIButton!
     @IBAction func callButton(sender: AnyObject) {
     }
@@ -21,10 +25,22 @@ class MapViewController: UIViewController {
     @IBAction func navigateButton(sender: AnyObject) {
     }
     
+    func setColor(color:UIColor){
+        println(color)
+        buttonColor = color
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBarHidden = false;
-
+        callButton.backgroundColor = buttonColor
+        stopButton.backgroundColor = buttonColor
+        navigateButton.backgroundColor = buttonColor
+        if(buttonColor == UIColor.whiteColor()){
+            callButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+            stopButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+            navigateButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        }
         // Do any additional setup after loading the view.
     }
 
