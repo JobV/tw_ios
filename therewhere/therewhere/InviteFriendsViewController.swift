@@ -13,6 +13,7 @@ class CustomTableViewCell : UITableViewCell {
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet weak var meetupicon: UIImageView!
     @IBOutlet var meetupStatus: UILabel!
+    var status: String = "idle"
     
     func loadItem(#title: String, id: Int) {
         titleLabel?.text = title
@@ -20,6 +21,7 @@ class CustomTableViewCell : UITableViewCell {
     
     func updateMeetupStatus(status:String){
         meetupStatus.text = status
+        self.status = status;
     }
     
     func sentMeetUp(){
@@ -105,14 +107,25 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         meetups.requestMeetup(String(self.items[indexPath.row].1))
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
-        cell.sentMeetUp()
-        cell.updateMeetupStatus("P")
-        
-        var controller = MapViewController(nibName:"MapViewController",bundle:nil)
-        controller.setColor(getRandomColor(countElements(title)))
-        
-        navigationController?.pushViewController(controller, animated: true)
-
+        switch cell.status {
+            case "idle":
+                cell.sentMeetUp()
+                cell.updateMeetupStatus("waitingFriendReply")
+            case "inmeetup":
+                var controller = MapViewController(nibName:"MapViewController",bundle:nil)
+                controller.setColor(getRandomColor(countElements(title)))
+                navigationController?.pushViewController(controller, animated: true)
+            case "waitingFriendReply":
+                println("waitingFriendReply")
+            case "waitingYourReply":
+                cell.updateMeetupStatus("inmeetup")
+            default:
+                let alertController = UIAlertController(title: "Hey!",
+                                                        message: "Nothing to do :)",
+                                                        preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     override func prefersStatusBarHidden() -> Bool {
