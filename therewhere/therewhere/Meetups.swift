@@ -39,9 +39,6 @@ class Meetups: NSObject {
                         var count = json["sent"].count
                         println("sent \(count) meetup requests!")
                     }
-                    
-                
-                    
                 }
         }
     }
@@ -61,7 +58,6 @@ class Meetups: NSObject {
                     if json["success"]{
                         println("created friend request")
                     }
-                    
                 }
         }
 
@@ -82,14 +78,12 @@ class Meetups: NSObject {
                     if json["success"]{
                         println("accepted friend request")
                     }
-                    
                 }
         }
-        
     }
-    func refuseToMeetup(friendID: String){
+    func declineToMeetup(friendID: String){
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/refuse"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/decline"
         let parameters = [
             "friend_id": friendID
         ]
@@ -98,15 +92,13 @@ class Meetups: NSObject {
             .responseJSON { (request, response, json, error) in
                 if(error != nil){
                 }else{
-                    NSLog("REST: refused meetup with friend")
+                    NSLog("REST: declined meetup with friend")
                     var json = JSON(json!)
                     if json["success"]{
-                        println("accepted friend request")
+                        println("declined friend request")
                     }
-                    
                 }
         }
-        
     }
 
 }

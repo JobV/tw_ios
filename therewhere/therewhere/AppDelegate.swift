@@ -114,8 +114,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-//        println(userInfo["friend_id"])
-
+        println("received notification")
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
         var navigationController = UINavigationController(rootViewController: inviteviewcontroller)
@@ -126,19 +125,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.makeKeyAndVisible()
         }
         
+        var action = userInfo["action"] as NSNumber!
         var aps = userInfo["aps"] as NSDictionary
         var msg = aps["alert"] as String
-      
         let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
-        let acceptActionHandler = { (action:UIAlertAction!) -> Void in
-            var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
-            var meetup = Meetups()
-            meetup.acceptMeetup(toString(friend_id))
+        
+        switch action {
+            case 1:
+                let acceptActionHandler = { (action:UIAlertAction!) -> Void in
+                    var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                    var meetup = Meetups()
+                    meetup.acceptMeetup(toString(friend_id))
+                }
+                
+                let declineActionHandler = { (action:UIAlertAction!) -> Void in
+                    var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                    var meetup = Meetups()
+                    meetup.declineToMeetup(toString(friend_id))
+                }
+                
+                alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
+                alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
+                alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
+            case 2:
+                alert.addAction(UIAlertAction(title: "Cool!", style: .Default, handler: nil))
+                alert.addAction(UIAlertAction(title: "Show me!", style: .Default, handler: nil))
+            case 3:
+                alert.addAction(UIAlertAction(title: "oh :/!", style: .Default, handler: nil))
+            default:
+                println("nothing to be done")
         }
         
-        
-        alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Destructive, handler: nil))
+
         window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         
         completionHandler(UIBackgroundFetchResult.NewData)
