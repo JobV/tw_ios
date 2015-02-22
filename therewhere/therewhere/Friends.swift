@@ -13,7 +13,7 @@ import MapKit
 import UIKit
 
 class Friends: NSObject {
-    var phoneNumberArray : [(String, Int)] = []
+    var phoneNumberArray : [(String, Int, String)] = []
     
     func getLocation(friendID : String){
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+friendID+"/location"

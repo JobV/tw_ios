@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
 //        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-
         
         let acceptAction = UIMutableUserNotificationAction()
         acceptAction.identifier = "accept"
@@ -118,7 +117,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
         var navigationController = UINavigationController(rootViewController: inviteviewcontroller)
+        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
         if let window = window {
             window.rootViewController = navigationController
             window.backgroundColor = UIColor.whiteColor()
@@ -143,13 +144,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     var meetup = Meetups()
                     meetup.declineToMeetup(toString(friend_id))
                 }
-                
                 alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
                 alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
                 alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
             case 2:
                 alert.addAction(UIAlertAction(title: "Cool!", style: .Default, handler: nil))
-                alert.addAction(UIAlertAction(title: "Show me!", style: .Default, handler: nil))
             case 3:
                 alert.addAction(UIAlertAction(title: "oh :/!", style: .Default, handler: nil))
             default:
