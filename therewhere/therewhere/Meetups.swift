@@ -42,13 +42,13 @@ class Meetups: NSObject {
                 }
         }
     }
-    func requestMeetup(friendID: String){
+    func requestMeetup(friendID: String)->Bool{
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups"
         let parameters = [
             "friend_id": friendID
         ]
-        
+        var success:Bool = false
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .responseJSON { (request, response, json, error) in
                 if(error != nil){
@@ -56,11 +56,11 @@ class Meetups: NSObject {
                     NSLog("REST: created friend request meetups")
                     var json = JSON(json!)
                     if json["success"]{
-                        println("created friend request")
+                        success = true
                     }
                 }
         }
-
+        return success
     }
     func acceptMeetup(friendID: String){
         var user = UserProfile.sharedInstance
@@ -100,5 +100,26 @@ class Meetups: NSObject {
                 }
         }
     }
+    
+    func terminateMeetup(friendID: String){
+        var user = UserProfile.sharedInstance
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/terminate"
+        let parameters = [
+            "friend_id": friendID
+        ]
+        
+        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+            .responseJSON { (request, response, json, error) in
+                if(error != nil){
+                }else{
+                    NSLog("REST: terminate meetup with friend")
+                    var json = JSON(json!)
+                    if json["success"]{
+                        println("terminated friend meetup")
+                    }
+                }
+        }
+    }
+
 
 }
