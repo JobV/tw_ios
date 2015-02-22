@@ -19,6 +19,21 @@ class MapViewController: UIViewController {
     
     @IBOutlet var stopButton: UIButton!
     @IBAction func stopButton(sender: AnyObject) {
+        
+        let alertController = UIAlertController(title: "Meetup!",
+            message: "Terminate Meetup?",
+            preferredStyle: UIAlertControllerStyle.Alert)
+        
+        let terminateActionHandler = { (action:UIAlertAction!) -> Void in
+            var meetup = Meetups()
+            meetup.terminateMeetup(String(self.mapFriendID))
+            self.navigationController?.popViewControllerAnimated(true)
+        }
+        
+        alertController.addAction(UIAlertAction(title: "Not yet", style: UIAlertActionStyle.Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Yeah!", style: UIAlertActionStyle.Destructive, handler: terminateActionHandler))
+        self.presentViewController(alertController, animated: true, completion: nil)
+        
     }
 
     @IBOutlet var navigateButton: UIButton!
@@ -26,10 +41,14 @@ class MapViewController: UIViewController {
     }
     
     func setColor(color:UIColor){
-        println(color)
         buttonColor = color
     }
     
+    func setFriendID(friendID:Int){
+        mapFriendID = friendID
+    }
+    
+    var mapFriendID:Int = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBarHidden = false;

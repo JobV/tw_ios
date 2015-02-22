@@ -118,9 +118,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             case "accepted":
                 var controller = MapViewController(nibName:"MapViewController",bundle:nil)
                 controller.setColor(getRandomColor(countElements(title)))
+                controller.setFriendID(self.items[indexPath.row].1)
                 navigationController?.pushViewController(controller, animated: true)
             case "pending":
-                println("waitingFriendReply")
+                let alertController = UIAlertController(title: "Meetup!",
+                    message: "Your friend was already notified, just wait :)",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
             case "waitingYourReply":
                 cell.updateMeetupStatus("inmeetup")
             default:
