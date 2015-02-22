@@ -9,6 +9,8 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import MapKit
+
 @objc class User: NSObject {
         
     func getUserInfo ()-> (Bool){
@@ -57,7 +59,7 @@ import SwiftyJSON
                     
                     for (index: String, subJson: JSON) in json {
                         var fullName = subJson["first_name"].string! + " " + subJson["last_name"].string!
-                        let friendTuple:(String, Int) = (fullName, subJson["id"].int!)
+                        let friendTuple:(String, Int, String) = (fullName, subJson["id"].int!, subJson["status_with_friend"].string! )
                         friends.phoneNumberArray.append(friendTuple)
                     }
                     NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)

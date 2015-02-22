@@ -12,9 +12,18 @@ import UIKit
 class CustomTableViewCell : UITableViewCell {
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet weak var meetupicon: UIImageView!
+    @IBOutlet var meetupStatus: UILabel!
+    var status: String = "idle"
     
-    func loadItem(#title: String, id: Int) {
+    func loadItem(#title: String, id: Int, status: String) {
         titleLabel?.text = title
+        meetupStatus.text = status
+        self.status = status
+    }
+    
+    func updateMeetupStatus(status:String){
+        meetupStatus.text = status
+        self.status = status;
     }
     
     func sentMeetUp(){
@@ -27,13 +36,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet
     var tableView: UITableView!
     
-    var items: [(String, Int)] = []
-    var friendArray:[(String,Int)] = []
+    var items: [(String, Int, String)] = []
+    var friendArray:[(String,Int, String)] = []
     var colorArray = [UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(),UIColor.darkGrayColor(), UIColor.grayColor(),UIColor.greenColor(), UIColor.lightGrayColor(), UIColor.magentaColor(), UIColor.orangeColor(),UIColor.purpleColor(),UIColor.redColor(),UIColor.whiteColor(), UIColor.yellowColor()]
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "notification:", name:"meetup", object: nil)
+        navigationController?.navigationBarHidden = true;
 
         var userProfile = UserProfile.sharedInstance
         userProfile.userID = "1"
@@ -45,14 +55,15 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
 
         var user = User()
         user.getFriends()
+        tableView.reloadData()
         
     }
     func handleGetFriendsNotification( note: NSNotification){
         var friends = note.object as Friends
         println("starting update")
         items.removeAll(keepCapacity: false)
-        for (name, id) in friends.phoneNumberArray{
-            items.append(name, id)
+        for (name, id, status) in friends.phoneNumberArray{
+            items.append(name, id, status)
             println(name)
         }
         tableView.reloadData()
@@ -83,10 +94,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
         
         // this is how you extract values from a tuple
-        var (title, id) = items[indexPath.row]
+        var (title, id, status) = items[indexPath.row]
         
         cell.contentView.backgroundColor = getRandomColor(countElements(title))
-        cell.loadItem(title: title, id: id)
+        cell.loadItem(title: title, id: id, status: status)
         
         return cell
     }
@@ -94,12 +105,31 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var meetups = Meetups()
-        meetups.requestMeetup(String(self.items[indexPath.row].1))
+        var (title, id, status) = items[indexPath.row]
+        
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
-        cell.sentMeetUp()
-
+        println("cell status: \(cell.status)")
+        switch cell.status {
+            case "ready":
+                var meetups = Meetups()
+                var result = meetups.requestMeetup(String(self.items[indexPath.row].1))
+                cell.updateMeetupStatus("pending")
+            case "accepted":
+                var controller = MapViewController(nibName:"MapViewController",bundle:nil)
+                controller.setColor(getRandomColor(countElements(title)))
+                navigationController?.pushViewController(controller, animated: true)
+            case "pending":
+                println("waitingFriendReply")
+            case "waitingYourReply":
+                cell.updateMeetupStatus("inmeetup")
+            default:
+                let alertController = UIAlertController(title: "Hey!",
+                                                        message: "Nothing to do :)",
+                                                        preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(alertController, animated: true, completion: nil)
+        }
     }
     
     override func prefersStatusBarHidden() -> Bool {
