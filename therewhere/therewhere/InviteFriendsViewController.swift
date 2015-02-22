@@ -78,6 +78,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
         tableView.rowHeight = 60
+        
+        var user = User()
+        user.getFriends()
+        tableView.reloadData()
     }
     
     func notification(userInfo: NSDictionary){
@@ -134,6 +138,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                                                         preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
+                var user = User()
+                user.getFriends()
+                tableView.reloadData()
         }
     }
     
