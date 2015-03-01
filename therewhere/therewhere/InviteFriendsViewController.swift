@@ -123,6 +123,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 var controller = MapViewController(nibName:"MapViewController",bundle:nil)
                 controller.setColor(getRandomColor(countElements(title)))
                 controller.setFriendID(self.items[indexPath.row].1)
+                controller.setFriendName(self.items[indexPath.row].0)
                 navigationController?.pushViewController(controller, animated: true)
             case "pending":
                 let alertController = UIAlertController(title: "Meetup!",

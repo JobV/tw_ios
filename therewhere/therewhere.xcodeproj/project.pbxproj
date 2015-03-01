@@ -33,7 +33,6 @@
 		A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620451A6ABC2200DB7B20 /* UserProfile.swift */; };
 		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
 		A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2BA1A62EA0E002C0655 /* Friend.swift */; };
-		A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = A6E96B9C1A4EDEC900E6082D /* Location.m */; };
 		DB89EF2464061B2AC7821EFA /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A3BC44142672406518B3731 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -99,8 +98,6 @@
 		A6D620451A6ABC2200DB7B20 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A6E6D2BA1A62EA0E002C0655 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
-		A6E96B9C1A4EDEC900E6082D /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
-		A6E96B9E1A4EDED200E6082D /* Location.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -240,8 +237,6 @@
 		A6E96B981A4ED89200E6082D /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A6E96B9C1A4EDEC900E6082D /* Location.m */,
-				A6E96B9E1A4EDED200E6082D /* Location.h */,
 				A680A39A1A5DE1270035B685 /* User.swift */,
 				A6E6D2B01A62C8BF002C0655 /* Friends.swift */,
 				A694670A1A7552280038880D /* Meetups.swift */,
@@ -432,7 +427,6 @@
 				A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A694670D1A7557660038880D /* Meetup.swift in Sources */,
-				A6E96B9D1A4EDEC900E6082D /* Location.m in Sources */,
 				A680A39B1A5DE1270035B685 /* User.swift in Sources */,
 				A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */,
 				A6AB41241A7D82CA000CD00D /* APIConnectionManager.swift in Sources */,

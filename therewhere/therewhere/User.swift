@@ -111,12 +111,11 @@ import MapKit
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/location"
         let parameters = [
-            "x": coordinate.longitude,
-            "y": coordinate.latitude,
+            "x": coordinate.latitude,
+            "y": coordinate.longitude,
             "z": 0,
             "m": 0
         ]
-        
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
