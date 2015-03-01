@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import MapKit
 
-class MapViewController: UIViewController {
+class MapViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet
     var buttonColor: UIColor? = UIColor.greenColor()
-    
+    let locationManager = CLLocationManager()
+
     @IBOutlet var callButton: UIButton!
     @IBAction func callButton(sender: AnyObject) {
     }
@@ -49,6 +51,7 @@ class MapViewController: UIViewController {
     }
     
     var mapFriendID:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBarHidden = false;
@@ -60,15 +63,41 @@ class MapViewController: UIViewController {
             stopButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             navigateButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         }
-        // Do any additional setup after loading the view.
+        
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
     }
 
+    @IBOutlet var mapView: MKMapView!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
+    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
+        var locValue:CLLocationCoordinate2D = manager.location.coordinate
+        let location = locations.last as CLLocation
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        var dropPin = MKPointAnnotation()
+        dropPin.coordinate = locValue
+        dropPin.title = "You"
+        mapView.addAnnotation(dropPin)
+        self.mapView.setRegion(region, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 
