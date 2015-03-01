@@ -130,8 +130,28 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                     preferredStyle: UIAlertControllerStyle.Alert)
                 alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
                 self.presentViewController(alertController, animated: true, completion: nil)
-            case "waitingYourReply":
-                cell.updateMeetupStatus("inmeetup")
+            case "waiting":
+                var msg = "\(self.items[indexPath.row].0) wants to meet!"
+                let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
+                
+                let acceptActionHandler = { (action:UIAlertAction!) -> Void in
+                    var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
+                    var meetup = Meetups()
+                    meetup.acceptMeetup(toString(friend_id))
+                    cell.updateMeetupStatus("accepted")
+                }
+                
+                let declineActionHandler = { (action:UIAlertAction!) -> Void in
+                    var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
+                    var meetup = Meetups()
+                    meetup.declineToMeetup(toString(friend_id))
+                    cell.updateMeetupStatus("ready")
+                }
+                alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
+                alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
+                alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+            
             default:
                 let alertController = UIAlertController(title: "Hey!",
                                                         message: "Nothing to do :)",
