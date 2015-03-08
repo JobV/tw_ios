@@ -168,7 +168,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 tableView.reloadData()
         }
     }
+    @IBOutlet var refreshButton: UIButton!
     
+    @IBAction func refreshButton(sender: AnyObject) {
+        var user = User()
+        user.getFriends()
+        tableView.reloadData()
+        
+    }
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
