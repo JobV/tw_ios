@@ -28,7 +28,6 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="callButton:" destination="-1" eventType="touchUpInside" id="iMH-90-QxN"/>
                         <action selector="stopButton:" destination="-1" eventType="touchUpInside" id="0Ay-FK-KEt"/>
                     </connections>
                 </button>
