@@ -151,6 +151,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 alert.addAction(UIAlertAction(title: "Cool!", style: .Default, handler: nil))
             case 3:
                 alert.addAction(UIAlertAction(title: "oh :/!", style: .Default, handler: nil))
+            case 4:
+                alert.addAction(UIAlertAction(title: "Ok!", style: .Default, handler: nil))
             default:
                 println("nothing to be done")
         }

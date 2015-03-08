@@ -13,8 +13,11 @@ import MapKit
 import UIKit
 
 class Friends: NSObject {
-    var phoneNumberArray : [(String, Int, String)] = []
-    
+    var phoneNumberArray : [(String, Int, String, String)] = []
+    class Coordinates {
+        var latitude:CLLocationDegrees = 0.0
+        var longitude:CLLocationDegrees = 0.0
+    }
     func getLocation(friendID : String){
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+friendID+"/location"
 
@@ -30,9 +33,13 @@ class Friends: NSObject {
                     var json = JSON(json!)
 
                     if json["x"]&&json["y"] {
-                        var latitude :Double? = json["y"].double!
-                        var longitude :Double? = json["x"].double!
+                        var latitude :Double? = json["x"].double!
+                        var longitude :Double? = json["y"].double!
                         var coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+                        var friendCoordinates = Coordinates()
+                        friendCoordinates.latitude = coordinate.latitude
+                        friendCoordinates.longitude = coordinate.longitude
+                        NSNotificationCenter.defaultCenter().postNotificationName("friendLocationUpdate", object: nil, userInfo:["location":friendCoordinates])
                     }else{
                         println("no location available! sorry mate ")
                     }
