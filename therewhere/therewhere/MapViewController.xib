@@ -38,6 +38,9 @@
                     <state key="normal" title="Call">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="callFriendButton:" destination="-1" eventType="touchUpInside" id="WNv-c5-eaH"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-Ng-yo4">
                     <rect key="frame" x="160" y="449" width="160" height="60"/>

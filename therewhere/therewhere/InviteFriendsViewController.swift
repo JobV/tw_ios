@@ -36,7 +36,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet
     var tableView: UITableView!
     
-    var items: [(String, Int, String)] = []
+    var items: [(String, Int, String, String)] = []
     var friendArray:[(String,Int, String)] = []
     var colorArray = [UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(),UIColor.darkGrayColor(), UIColor.grayColor(),UIColor.greenColor(), UIColor.lightGrayColor(), UIColor.magentaColor(), UIColor.orangeColor(),UIColor.purpleColor(),UIColor.redColor(),UIColor.whiteColor(), UIColor.yellowColor()]
     
@@ -62,9 +62,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var friends = note.object as Friends
         println("starting update")
         items.removeAll(keepCapacity: false)
-        for (name, id, status) in friends.phoneNumberArray{
-            items.append(name, id, status)
-            println(name)
+        for (name, id, status, phoneNumber) in friends.phoneNumberArray{
+            items.append(name, id, status, phoneNumber)
         }
         tableView.reloadData()
     }
@@ -98,7 +97,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
         
         // this is how you extract values from a tuple
-        var (title, id, status) = items[indexPath.row]
+        var (title, id, status, phoneNumber) = items[indexPath.row]
         
         cell.contentView.backgroundColor = getRandomColor(countElements(title))
         cell.loadItem(title: title, id: id, status: status)
@@ -109,7 +108,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
-        var (title, id, status) = items[indexPath.row]
+        var (title, id, status, phoneNumber) = items[indexPath.row]
         
         
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
@@ -124,6 +123,13 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 controller.setColor(getRandomColor(countElements(title)))
                 controller.setFriendID(self.items[indexPath.row].1)
                 controller.setFriendName(self.items[indexPath.row].0)
+                
+                var friend = FriendProfile()
+                friend.friendID = self.items[indexPath.row].1
+                friend.firstName = self.items[indexPath.row].0
+                friend.phoneNumber = self.items[indexPath.row].3
+                
+                controller.setFriendProfile(friend)
                 navigationController?.pushViewController(controller, animated: true)
             case "pending":
                 let alertController = UIAlertController(title: "Meetup!",

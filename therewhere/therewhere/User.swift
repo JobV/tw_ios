@@ -47,9 +47,6 @@ import MapKit
         Alamofire.request(.GET, url)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
                     result=false
                 }
                 else {
@@ -59,7 +56,7 @@ import MapKit
                     
                     for (index: String, subJson: JSON) in json {
                         var fullName = subJson["first_name"].string! + " " + subJson["last_name"].string!
-                        let friendTuple:(String, Int, String) = (fullName, subJson["id"].int!, subJson["status_with_friend"].string! )
+                        let friendTuple:(String, Int, String, String) = (fullName, subJson["id"].int!, subJson["status_with_friend"].string!, subJson["phone_nr"].string! )
                         friends.phoneNumberArray.append(friendTuple)
                     }
                     NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)

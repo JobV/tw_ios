@@ -11,6 +11,7 @@
 		A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */; };
 		A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */; };
 		A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */; };
+		A674F02F1AABB40500325CEF /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674F02E1AABB40500325CEF /* FriendProfile.swift */; };
 		A680A39B1A5DE1270035B685 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39A1A5DE1270035B685 /* User.swift */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68F6BC21A98EBCA00D252BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F6BC01A98EBCA00D252BB /* MapViewController.swift */; };
@@ -72,6 +73,7 @@
 		A608A6A91A5C8A5D00D4D992 /* therewhere Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "therewhere Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A608A6AC1A5C8A5D00D4D992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhere_Tests.swift; sourceTree = "<group>"; };
+		A674F02E1AABB40500325CEF /* FriendProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
 		A680A39A1A5DE1270035B685 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A680A3A31A5DE6790035B685 /* RestKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RestKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -212,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				A6D620451A6ABC2200DB7B20 /* UserProfile.swift */,
+				A674F02E1AABB40500325CEF /* FriendProfile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				A680A39B1A5DE1270035B685 /* User.swift in Sources */,
 				A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */,
 				A6AB41241A7D82CA000CD00D /* APIConnectionManager.swift in Sources */,
+				A674F02F1AABB40500325CEF /* FriendProfile.swift in Sources */,
 				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
 				A694670B1A7552280038880D /* Meetups.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,

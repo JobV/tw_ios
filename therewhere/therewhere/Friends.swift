@@ -13,7 +13,7 @@ import MapKit
 import UIKit
 
 class Friends: NSObject {
-    var phoneNumberArray : [(String, Int, String)] = []
+    var phoneNumberArray : [(String, Int, String, String)] = []
     class Coordinates {
         var latitude:CLLocationDegrees = 0.0
         var longitude:CLLocationDegrees = 0.0
