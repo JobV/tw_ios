@@ -121,8 +121,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             case "accepted":
                 var controller = MapViewController(nibName:"MapViewController",bundle:nil)
                 controller.setColor(getRandomColor(countElements(title)))
-                controller.setFriendID(self.items[indexPath.row].1)
-                controller.setFriendName(self.items[indexPath.row].0)
                 
                 var friend = FriendProfile()
                 friend.friendID = self.items[indexPath.row].1

@@ -22,8 +22,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet var navigateButton: UIButton!
     @IBOutlet var stopButton: UIButton!
     var friendProfile = FriendProfile()
-    var mapFriendID:Int = 0
-    var mapFriendName:String = ""
     var myTimer = NSTimer()
     var showDirection:Bool = false
     @IBOutlet var mapView: MKMapView!
@@ -52,7 +50,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let terminateActionHandler = { (action:UIAlertAction!) -> Void in
             var meetup = Meetups()
-            meetup.terminateMeetup(String(self.mapFriendID))
+            meetup.terminateMeetup(String(self.friendProfile.friendID))
             self.navigationController?.popViewControllerAnimated(true)
             self.myTimer.invalidate()
         }
@@ -78,12 +76,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         buttonColor = color
     }
     
-    func setFriendID(friendID:Int){
-        mapFriendID = friendID
-    }
-    func setFriendName(friendName:String){
-        mapFriendName = friendName
-    }
+
     func setFriendProfile(friend:FriendProfile){
         friendProfile = friend
     }
@@ -162,7 +155,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         friendLocation = coordinate
         if(!(friendLocation.longitude == 0 && friendLocation.latitude == 0)){
             friendPin.coordinate = friendLocation
-            friendPin.title = mapFriendName
+            friendPin.title = friendProfile.firstName
             mapView.removeAnnotation(friendPin)
             mapView.addAnnotation(friendPin)
             
@@ -186,7 +179,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func updateLocation(){
-        var friendID = String(mapFriendID)
+        var friendID = String(friendProfile.friendID)
         var friends = Friends()
         friends.getLocation(friendID)
     }
@@ -196,9 +189,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let identifier = "my_location"
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
         if pinView == nil {
-            //println("Pinview was nil")
-            
-            //Create a plain MKAnnotationView if using a custom image...
+
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
 
             pinView!.canShowCallout = true
