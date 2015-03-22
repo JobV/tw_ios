@@ -8,5 +8,5 @@
 
 import Foundation
 class APIConnectionManager: NSObject {
-    class var serverAddress: String { return "http://192.168.1.6:3000" }
+    class var serverAddress: String { return "http://192.168.1.68:3000" }
 }

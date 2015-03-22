@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 import SwiftyJSON
 
-
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -21,12 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         MixpanelHandler.userOpensApplication()
-
+        
         // somewhere when your app starts up
         UIApplication.sharedApplication().registerForRemoteNotifications()
-        
-//        let settings = UIUserNotificationSettings(forTypes: .Alert, categories: nil)
-//        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         
         let acceptAction = UIMutableUserNotificationAction()
         acceptAction.identifier = "accept"
@@ -59,42 +55,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories)
         UIApplication.sharedApplication().registerUserNotificationSettings(settingsRequest)
         
+        // Whenever a person opens app, check for a cached session
+        //        if (FBSession.activeSession().state == FBSessionState.CreatedTokenLoaded) {
+        //            FBSession.openActiveSessionWithReadPermissions(["public_profile", "email", "user_friends"], allowLoginUI: false, completionHandler: { (fbsession, fbsessionstate , error) -> Void in
+        //
+        //            })
+        //
+        //        }
+        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         if let window = window {
-        //    window.backgroundColor = UIColor.whiteColor()
-       //     window.makeKeyAndVisible()
-                
-                var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
-                
-                var navigationController = UINavigationController(rootViewController: loginviewcontroller)
-                window.rootViewController = navigationController
-                window.backgroundColor = UIColor.whiteColor()
-                window.makeKeyAndVisible()
+            var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
+            var navigationController = UINavigationController(rootViewController: loginviewcontroller)
+            
+            window.rootViewController = navigationController
+            window.backgroundColor = UIColor.whiteColor()
+            window.makeKeyAndVisible()
         }
-        
-          //  window.rootViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
         
         return true
     }
-
+    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
+        
+        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        return wasHandled
+    }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
-
+    
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
-
+    
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
@@ -105,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
         println("Got token data! \(deviceToken)")
-
+        
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
@@ -132,52 +137,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
         
         switch action {
-            case 1:
-                let acceptActionHandler = { (action:UIAlertAction!) -> Void in
-                    var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
-                    var meetup = Meetups()
-                    meetup.acceptMeetup(toString(friend_id))
-                }
+        case 1:
+            let acceptActionHandler = { (action:UIAlertAction!) -> Void in
+                var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                var meetup = Meetups()
+                meetup.acceptMeetup(toString(friend_id))
+            }
+            
+            let declineActionHandler = { (action:UIAlertAction!) -> Void in
+                var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                var meetup = Meetups()
+                meetup.declineToMeetup(toString(friend_id))
+            }
+            alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
+            alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
+            alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
+        case 2:
+            let viewMapActionHandler = { (action:UIAlertAction!) -> Void in
+                var controller = MapViewController(nibName:"MapViewController",bundle:nil)
                 
-                let declineActionHandler = { (action:UIAlertAction!) -> Void in
-                    var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
-                    var meetup = Meetups()
-                    meetup.declineToMeetup(toString(friend_id))
-                }
-                alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
-                alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
-                alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
-            case 2:
-                alert.addAction(UIAlertAction(title: "Cool!", style: .Default, handler: nil))
-            case 3:
-                alert.addAction(UIAlertAction(title: "oh :/!", style: .Default, handler: nil))
-            case 4:
-                alert.addAction(UIAlertAction(title: "Ok!", style: .Default, handler: nil))
-            default:
-                println("nothing to be done")
+                var friend = FriendProfile()
+                friend.friendID = userInfo["friend_id"] as Int
+                friend.firstName = "woot"
+                friend.phoneNumber = "913226179"
+                // controller.setColor(controller.getRandomColor(countElements(friend.firstName)))
+                controller.setFriendProfile(friend)
+                self.window?.rootViewController?.presentViewController(controller, animated: true, completion: nil)
+            }
+            alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: viewMapActionHandler))
+            
+            alert.addAction(UIAlertAction(title: "Cool!", style: .Default, handler: nil))
+        case 3:
+            alert.addAction(UIAlertAction(title: "oh :/!", style: .Default, handler: nil))
+        case 4:
+            alert.addAction(UIAlertAction(title: "Ok!", style: .Default, handler: nil))
+        default:
+            println("nothing to be done")
         }
         
-
+        
         window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         
         completionHandler(UIBackgroundFetchResult.NewData)
     }
- 
-
+    
+    
     // MARK: - Core Data stack
-
+    
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "tw.therewhere" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
         return urls[urls.count-1] as NSURL
-    }()
-
+        }()
+    
     lazy var managedObjectModel: NSManagedObjectModel = {
         // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
         let modelURL = NSBundle.mainBundle().URLForResource("therewhere", withExtension: "momd")!
         return NSManagedObjectModel(contentsOfURL: modelURL)!
-    }()
-
+        }()
+    
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
         // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         // Create the coordinator and store
@@ -200,8 +218,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return coordinator
-    }()
-
+        }()
+    
     lazy var managedObjectContext: NSManagedObjectContext? = {
         // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
         let coordinator = self.persistentStoreCoordinator
@@ -211,10 +229,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var managedObjectContext = NSManagedObjectContext()
         managedObjectContext.persistentStoreCoordinator = coordinator
         return managedObjectContext
-    }()
-
+        }()
+    
     // MARK: - Core Data Saving support
-
+    
     func saveContext () {
         if let moc = self.managedObjectContext {
             var error: NSError? = nil
@@ -226,6 +244,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
+    
 }
 

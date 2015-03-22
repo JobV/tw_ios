@@ -81,6 +81,21 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var user = User()
         user.getFriends()
         tableView.reloadData()
+        var friendlist = FriendList.sharedInstance
+            println(friendlist.friendList)
+        
+//        FBRequestConnection.startWithGraphPath("me", completionHandler: { (connection:FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
+//            if ((error) == nil) {
+//                // Sucess! Include your code to handle the results here
+//                println("user data: \(result)")
+//
+//            } else {
+//                println("error obtaining data")
+//
+//                // An error occurred, we need to handle the error
+//                // See: https://developers.facebook.com/docs/ios/errors
+//            }
+//        })
     }
     
     func notification(userInfo: NSDictionary){

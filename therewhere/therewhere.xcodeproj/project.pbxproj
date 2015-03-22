@@ -29,6 +29,9 @@
 		A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */; };
 		A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */; };
 		A6AB41241A7D82CA000CD00D /* APIConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AB41231A7D82CA000CD00D /* APIConnectionManager.swift */; };
+		A6BD3C691ABDF5D500B468B3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BD3C681ABDF5D500B468B3 /* FacebookSDK.framework */; };
+		A6BD3C6D1ABEE4DA00B468B3 /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD3C6C1ABEE4DA00B468B3 /* FacebookHandler.swift */; };
+		A6BD3C6F1ABEF9AF00B468B3 /* FriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD3C6E1ABEF9AF00B468B3 /* FriendList.swift */; };
 		A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */; };
 		A6D620431A6AA58600DB7B20 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */; };
 		A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620451A6ABC2200DB7B20 /* UserProfile.swift */; };
@@ -95,6 +98,10 @@
 		A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CustomTableViewCell.xib; path = therewhere/CustomTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A6AB41231A7D82CA000CD00D /* APIConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIConnectionManager.swift; sourceTree = "<group>"; };
+		A6BD3C681ABDF5D500B468B3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		A6BD3C6A1ABDF7D100B468B3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		A6BD3C6C1ABEE4DA00B468B3 /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
+		A6BD3C6E1ABEF9AF00B468B3 /* FriendList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendList.swift; sourceTree = "<group>"; };
 		A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		A6D620451A6ABC2200DB7B20 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
@@ -116,6 +123,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */,
+				A6BD3C691ABDF5D500B468B3 /* FacebookSDK.framework in Frameworks */,
 				A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */,
 				DB89EF2464061B2AC7821EFA /* Pods.framework in Frameworks */,
 			);
@@ -127,6 +135,7 @@
 		9A611F3EB53A77AF75A9865E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6BD3C681ABDF5D500B468B3 /* FacebookSDK.framework */,
 				A608A6961A580A7D00D4D992 /* Accelerate.framework */,
 				A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */,
 				A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */,
@@ -177,6 +186,7 @@
 		A6A27DC41A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXGroup;
 			children = (
+				A6BD3C6B1ABEE4BC00B468B3 /* Facebook */,
 				A6D620441A6ABC0100DB7B20 /* Models */,
 				A6E96B8D1A4DFBE500E6082D /* Rest API */,
 				A6A27E5C1A3E3124006F7ECD /* LoginViewController.xib */,
@@ -198,6 +208,7 @@
 				A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */,
 				A68F6BC01A98EBCA00D252BB /* MapViewController.swift */,
 				A68F6BC11A98EBCA00D252BB /* MapViewController.xib */,
+				A6BD3C6A1ABDF7D100B468B3 /* Bridging-Header.h */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -210,11 +221,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A6BD3C6B1ABEE4BC00B468B3 /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				A6BD3C6C1ABEE4DA00B468B3 /* FacebookHandler.swift */,
+			);
+			name = Facebook;
+			sourceTree = "<group>";
+		};
 		A6D620441A6ABC0100DB7B20 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				A6D620451A6ABC2200DB7B20 /* UserProfile.swift */,
 				A674F02E1AABB40500325CEF /* FriendProfile.swift */,
+				A6BD3C6E1ABEF9AF00B468B3 /* FriendList.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -437,9 +457,11 @@
 				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
 				A694670B1A7552280038880D /* Meetups.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
+				A6BD3C6F1ABEF9AF00B468B3 /* FriendList.swift in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
 				A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */,
+				A6BD3C6D1ABEE4DA00B468B3 /* FacebookHandler.swift in Sources */,
 				A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */,
 				A68F6BC21A98EBCA00D252BB /* MapViewController.swift in Sources */,
 			);
@@ -606,7 +628,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "therewhere/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -635,7 +657,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "therewhere/Bridging-Header.h";
 			};
 			name = Release;
 		};
