@@ -21,14 +21,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
         navigationController?.navigationBarHidden = true;
         fbloginView.delegate = self
         fbloginView.readPermissions = ["public_profile", "email", "user_friends"]
-        fbloginView.center = self.view.center
-        self.view.addSubview(fbloginView)
-
-        
-        
         
         // Do any additional setup after loading the view.
     }
+    
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         println("User Logged In")
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
