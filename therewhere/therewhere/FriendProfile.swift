@@ -9,6 +9,8 @@
 import UIKit
 
 class FriendProfile: NSObject {
+    // Friend Class representation
+    
     var friendID = Int();
     var firstName = String();
     var lastName = String();

@@ -12,7 +12,8 @@ import SwiftyJSON
 import MapKit
 
 @objc class User: NSObject {
-        
+    
+    // GET Method - Retrieves user info from the backend api
     func getUserInfo ()-> (Bool){
         var result = true
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+UserProfile.sharedInstance.userID
@@ -21,12 +22,9 @@ import MapKit
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
                     result = false
                 }
                 else {
-                    NSLog("REST: getUserInfo")
                     var json = JSON(json!)
                     var userProfile = UserProfile.sharedInstance
                     
@@ -40,6 +38,8 @@ import MapKit
         return result
     }
     
+    // GET Method - Retrieve user friends
+    // Internal notifiction is fired to notify end of list update
     func getFriends()-> (Bool){
         var result = true
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+UserProfile.sharedInstance.userID+"/friends"
@@ -47,28 +47,32 @@ import MapKit
         Alamofire.request(.GET, url)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
-                    result=false
+                    result = false
                 }
                 else {
-                    NSLog("REST: getFriends")
                     var json = JSON(json!)
                     var friends = Friends()
                     
                     for (index: String, subJson: JSON) in json {
                         var fullName = subJson["first_name"].string! + " " + subJson["last_name"].string!
-                        let friendTuple:(String, Int, String, String) = (fullName, subJson["id"].int!, subJson["status_with_friend"].string!, subJson["phone_nr"].string! )
+                        let friendTuple:(String, Int, String, String) =
+                        (fullName, subJson["id"].int!, subJson["status_with_friend"].string!, subJson["phone_nr"].string! )
+                        
                         friends.phoneNumberArray.append(friendTuple)
                     }
+                    
                     NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
                 }
         }
         return result
     }
     
+    // POST Method - Sends list of user's friends
     func addFriends(phoneNumberArray: [String]) -> Bool{
         var result = true
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/friends"
+        
         let parameters = [
             "phone_nrs": phoneNumberArray
         ]
@@ -79,9 +83,11 @@ import MapKit
                     result = false
                 }
         }
+        
         return result
     }
     
+    // POST Method - Create user
     func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) -> Bool {
         var result = true
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"
@@ -102,9 +108,9 @@ import MapKit
         return result
     }
     
+    // POST Method - Update user location
     func setLocation (coordinate: CLLocationCoordinate2D) -> (String) {
         var result = " "
-        
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/location"
         let parameters = [
@@ -113,26 +119,21 @@ import MapKit
             "z": 0,
             "m": 0
         ]
+        
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
-                    NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
                     result = "couldn't set location"
-                    
                 }
                 else {
-                    NSLog("REST: setLocation")
                     var json = JSON(json!)
                     var updatedDate = json["updated_at"].string!
+                    
                     result = updatedDate
-                    println("location updated at: \(result)")
                 }
         }
-
+        
         return result
     }
     
-
 }

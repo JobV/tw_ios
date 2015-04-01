@@ -9,6 +9,7 @@
 import UIKit
 
 @objc class UserProfile: NSObject {
+    // singleton instance - app can only have one UserProfile
     class var sharedInstance: UserProfile {
         struct Static {
             static var instance: UserProfile?
@@ -22,6 +23,7 @@ import UIKit
         return Static.instance!
     }
     
+    // user locally accessible attributes
     var userID = String();
     var firstName = String();
     var lastName = String();

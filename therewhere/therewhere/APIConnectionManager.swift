@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
 class APIConnectionManager: NSObject {
+    // Backend API Address
     class var serverAddress: String { return "http://192.168.1.68:3000" }
 }

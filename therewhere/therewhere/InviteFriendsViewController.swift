@@ -35,71 +35,64 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet
     var tableView: UITableView!
-    
     var items: [(String, Int, String, String)] = []
     var friendArray:[(String,Int, String)] = []
     var colorArray = [UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(),UIColor.darkGrayColor(), UIColor.grayColor(),UIColor.greenColor(), UIColor.lightGrayColor(), UIColor.magentaColor(), UIColor.orangeColor(),UIColor.purpleColor(),UIColor.redColor(),UIColor.whiteColor(), UIColor.yellowColor()]
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notification:", name:"meetup", object: nil)
-        navigationController?.navigationBarHidden = true;
-
+        
         var userProfile = UserProfile.sharedInstance
-        userProfile.userID = "1"
-
+        var user = User()
+        var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
+        
+        //Hide navigation controller bar
+        navigationController?.navigationBarHidden = true;
+        
+        //Register for meetup request notifications
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notification:", name:"meetup", object: nil)
+        
+        //Register for updating friends list notifications
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
             object: nil)
-
-        var user = User()
-        user.getFriends()
-        tableView.reloadData()
         
+        //Update list of friends
+        user.getFriends()
+        
+        //Specify custom row/cell properties
+        tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
+        tableView.rowHeight = 60
+        
+        //Reload table with new data
+        tableView.reloadData()
     }
-    func handleGetFriendsNotification( note: NSNotification){
-        var friends = note.object as Friends
-        println("starting update")
+    
+    func handleGetFriendsNotification(friends: NSNotification){
+
+        var friends = friends.object as Friends
+        
+        //Clear outdated friends' list
         items.removeAll(keepCapacity: false)
+
+        //Update list with new content
         for (name, id, status, phoneNumber) in friends.phoneNumberArray{
             items.append(name, id, status, phoneNumber)
         }
+        
+        //Reload table with new data
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBarHidden = true;
-        
-        var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
-        
-        tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
-        tableView.rowHeight = 60
-        
-        var user = User()
-        user.getFriends()
-        tableView.reloadData()
-        var friendlist = FriendList.sharedInstance
-            println(friendlist.friendList)
-        
-//        FBRequestConnection.startWithGraphPath("me", completionHandler: { (connection:FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
-//            if ((error) == nil) {
-//                // Sucess! Include your code to handle the results here
-//                println("user data: \(result)")
-//
-//            } else {
-//                println("error obtaining data")
-//
-//                // An error occurred, we need to handle the error
-//                // See: https://developers.facebook.com/docs/ios/errors
-//            }
-//        })
     }
     
     func notification(userInfo: NSDictionary){
         var alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
+        
         alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
     }
@@ -129,58 +122,58 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
         println("cell status: \(cell.status)")
         switch cell.status {
-            case "ready":
-                var meetups = Meetups()
-                var result = meetups.requestMeetup(String(self.items[indexPath.row].1))
-                cell.updateMeetupStatus("pending")
-            case "accepted":
-                var controller = MapViewController(nibName:"MapViewController",bundle:nil)
-                controller.setColor(getRandomColor(countElements(title)))
-                
-                var friend = FriendProfile()
-                friend.friendID = self.items[indexPath.row].1
-                friend.firstName = self.items[indexPath.row].0
-                friend.phoneNumber = self.items[indexPath.row].3
-                
-                controller.setFriendProfile(friend)
-                navigationController?.pushViewController(controller, animated: true)
-            case "pending":
-                let alertController = UIAlertController(title: "Meetup!",
-                    message: "Your friend was already notified, just wait :)",
-                    preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
-            case "waiting":
-                var msg = "\(self.items[indexPath.row].0) wants to meet!"
-                let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
-                
-                let acceptActionHandler = { (action:UIAlertAction!) -> Void in
-                    var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
-                    var meetup = Meetups()
-                    meetup.acceptMeetup(toString(friend_id))
-                    cell.updateMeetupStatus("accepted")
-                }
-                
-                let declineActionHandler = { (action:UIAlertAction!) -> Void in
-                    var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
-                    var meetup = Meetups()
-                    meetup.declineToMeetup(toString(friend_id))
-                    cell.updateMeetupStatus("ready")
-                }
-                alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
-                alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
-                alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
-                self.presentViewController(alert, animated: true, completion: nil)
+        case "ready":
+            var meetups = Meetups()
+            var result = meetups.requestMeetup(String(self.items[indexPath.row].1))
+            cell.updateMeetupStatus("pending")
+        case "accepted":
+            var controller = MapViewController(nibName:"MapViewController",bundle:nil)
+            controller.setColor(getRandomColor(countElements(title)))
             
-            default:
-                let alertController = UIAlertController(title: "Hey!",
-                                                        message: "Nothing to do :)",
-                                                        preferredStyle: UIAlertControllerStyle.Alert)
-                alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
-                self.presentViewController(alertController, animated: true, completion: nil)
-                var user = User()
-                user.getFriends()
-                tableView.reloadData()
+            var friend = FriendProfile()
+            friend.friendID = self.items[indexPath.row].1
+            friend.firstName = self.items[indexPath.row].0
+            friend.phoneNumber = self.items[indexPath.row].3
+            
+            controller.setFriendProfile(friend)
+            navigationController?.pushViewController(controller, animated: true)
+        case "pending":
+            let alertController = UIAlertController(title: "Meetup!",
+                message: "Your friend was already notified, just wait :)",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        case "waiting":
+            var msg = "\(self.items[indexPath.row].0) wants to meet!"
+            let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
+            
+            let acceptActionHandler = { (action:UIAlertAction!) -> Void in
+                var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
+                var meetup = Meetups()
+                meetup.acceptMeetup(toString(friend_id))
+                cell.updateMeetupStatus("accepted")
+            }
+            
+            let declineActionHandler = { (action:UIAlertAction!) -> Void in
+                var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
+                var meetup = Meetups()
+                meetup.declineToMeetup(toString(friend_id))
+                cell.updateMeetupStatus("ready")
+            }
+            alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
+            alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
+            alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            
+        default:
+            let alertController = UIAlertController(title: "Hey!",
+                message: "Nothing to do :)",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
+            var user = User()
+            user.getFriends()
+            tableView.reloadData()
         }
     }
     @IBOutlet var refreshButton: UIButton!
@@ -204,5 +197,5 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             return getRandomColor(nameSize-colorArray.count)
         }
     }
-
+    
 }

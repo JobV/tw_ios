@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+// Meetup representation
 class Meetup: NSObject {
     var friendID = Int();
     var meetupID = String();

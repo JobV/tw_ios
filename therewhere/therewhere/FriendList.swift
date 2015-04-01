@@ -9,6 +9,7 @@
 import UIKit
 
 @objc class FriendList: NSObject {
+    // List of Friends, this is a singleton instance, the can be only one
     class var sharedInstance: FriendList {
         struct Static {
             static var instance: FriendList?

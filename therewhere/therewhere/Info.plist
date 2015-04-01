@@ -39,6 +39,10 @@
 	<string>This application needs to access location features</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This application needs to access location features</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

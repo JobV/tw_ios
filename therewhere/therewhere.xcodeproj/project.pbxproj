@@ -338,6 +338,11 @@
 					A6A27DC11A3BACBA006F7ECD = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = ZQVN84AH54;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
