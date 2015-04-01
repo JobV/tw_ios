@@ -40,6 +40,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var friendArray:[(String,Int, String)] = []
     var colorArray = [UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(),UIColor.darkGrayColor(), UIColor.grayColor(),UIColor.greenColor(), UIColor.lightGrayColor(), UIColor.magentaColor(), UIColor.orangeColor(),UIColor.purpleColor(),UIColor.redColor(),UIColor.whiteColor(), UIColor.yellowColor()]
     
+    @IBAction func backButton(sender: AnyObject) {
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         

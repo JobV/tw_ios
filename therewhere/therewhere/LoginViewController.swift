@@ -12,8 +12,13 @@ import UIKit
 class LoginViewController: UIViewController, FBLoginViewDelegate{
     var fbloginView: FBLoginView = FBLoginView()
     
-    override func viewDidLoad() {
+    @IBAction func friendListButton(sender: AnyObject) {
+        var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
+        navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
 
         //hidding navigation bar
@@ -28,7 +33,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     // Callback function triggered when user successfully logs in
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
         navigationController?.pushViewController(controller, animated: true)
