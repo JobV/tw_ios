@@ -40,23 +40,23 @@ import MapKit
     
     // GET Method - Retrieve user friends
     // Internal notifiction is fired to notify end of list update
-    func getFriends()-> (Bool){
-        var result = true
+    func getFriends(){
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+UserProfile.sharedInstance.userID+"/friends"
         
         Alamofire.request(.GET, url)
+            .validate(statusCode: 200..<300)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
-                    result = false
+                    NSLog("error: getFriends unsuccessful")
                 }
                 else {
                     var json = JSON(json!)
                     var friends = Friends()
                     
                     for (index: String, subJson: JSON) in json {
+                        
                         var fullName = subJson["first_name"].string! + " " + subJson["last_name"].string!
-                        let friendTuple:(String, Int, String, String) =
-                        (fullName, subJson["id"].int!, subJson["status_with_friend"].string!, subJson["phone_nr"].string! )
+                        let friendTuple:(String, Int, String, String) = (fullName, subJson["id"].int!, subJson["status_with_friend"].string!, subJson["phone_nr"].string! )
                         
                         friends.phoneNumberArray.append(friendTuple)
                     }
@@ -64,7 +64,6 @@ import MapKit
                     NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
                 }
         }
-        return result
     }
     
     // POST Method - Sends list of user's friends

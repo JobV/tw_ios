@@ -33,9 +33,9 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="fullNameLabel" destination="LKe-1q-ppv" id="IvY-wu-aGP"/>
                 <outlet property="meetupStatus" destination="h7i-KT-akX" id="Uvb-gM-pvn"/>
                 <outlet property="meetupicon" destination="2Dj-bG-PMZ" id="xZT-7P-yU8"/>
-                <outlet property="titleLabel" destination="LKe-1q-ppv" id="N5b-FR-JQ3"/>
             </connections>
             <point key="canvasLocation" x="232" y="188"/>
         </tableViewCell>

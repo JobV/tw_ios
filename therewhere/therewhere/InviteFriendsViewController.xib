@@ -6,7 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InviteFriendsViewController" customModule="therewhere" customModuleProvider="target">
             <connections>
-                <outlet property="refreshButton" destination="fbh-aw-ubb" id="9g0-8K-QNB"/>
                 <outlet property="tableView" destination="rwZ-cE-0SZ" id="Gzq-w9-dLI"/>
                 <outlet property="view" destination="iN0-l3-epB" id="CeR-6f-L2n"/>
             </connections>

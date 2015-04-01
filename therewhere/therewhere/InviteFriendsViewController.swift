@@ -10,15 +10,14 @@ import Foundation
 import UIKit
 
 class CustomTableViewCell : UITableViewCell {
-    @IBOutlet var titleLabel: UILabel?
     @IBOutlet weak var meetupicon: UIImageView!
     @IBOutlet var meetupStatus: UILabel!
-    @IBOutlet var refreshButton: UIButton!
+    @IBOutlet var fullNameLabel: UILabel!
     
     var status: String = "idle"
     
-    func loadItem(#title: String, id: Int, status: String) {
-        titleLabel?.text = title
+    func loadItem(#fullName: String, id: Int, status: String) {
+        fullNameLabel?.text = fullName
         meetupStatus.text = status
         self.status = status
     }
@@ -58,6 +57,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             object: nil)
         
         //Update list of friends
+        userProfile.userID = "1"
         user.getFriends()
         
         //Specify custom row/cell properties
@@ -98,10 +98,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
         
         // this is how you extract values from a tuple
-        var (title, id, status, phoneNumber) = items[indexPath.row]
+        var (fullName, id, status, phoneNumber) = items[indexPath.row]
         
-        cell.contentView.backgroundColor = getRandomColor(countElements(title))
-        cell.loadItem(title: title, id: id, status: status)
+        cell.contentView.backgroundColor = getRandomColor(countElements(fullName))
+        cell.loadItem(fullName: fullName, id: id, status: status)
         
         return cell
     }
@@ -178,10 +178,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
             
             self.presentViewController(alertController, animated: true, completion: nil)
-            
         }
     }
-    
     
     // Explicitly update friends list
     @IBAction func refreshButton(sender: AnyObject) {

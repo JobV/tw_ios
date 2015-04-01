@@ -16,7 +16,7 @@ import UIKit
     //    var handler = FacebookHandler()
     //    handler.getFriends("/me/friends")
     
-    func getFriends (path: String) {
+    func getFacebookFriends (path: String) {
         FBRequestConnection.startWithGraphPath(path, completionHandler: { (connection:FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if ((error) == nil) {
                 var resultdict = result as NSDictionary
@@ -32,7 +32,7 @@ import UIKit
                     if(nextURL != nil ){
                         var nextPathSize = distance(nextURL.startIndex, nextURL.endIndex)
                         var nextURLPath = nextURL[advance(nextURL.startIndex, 31)...advance(nextURL.startIndex, nextPathSize-1)]
-                        self.getFriends(nextURLPath)
+                        self.getFacebookFriends(nextURLPath)
                     }
                 }
             } else {
