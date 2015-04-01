@@ -11,4 +11,6 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 
+#import <Mixpanel.h>
+
 #endif

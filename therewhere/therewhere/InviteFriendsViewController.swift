@@ -13,6 +13,8 @@ class CustomTableViewCell : UITableViewCell {
     @IBOutlet var titleLabel: UILabel?
     @IBOutlet weak var meetupicon: UIImageView!
     @IBOutlet var meetupStatus: UILabel!
+    @IBOutlet var refreshButton: UIButton!
+    
     var status: String = "idle"
     
     func loadItem(#title: String, id: Int, status: String) {
@@ -49,9 +51,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         //Hide navigation controller bar
         navigationController?.navigationBarHidden = true;
         
-        //Register for meetup request notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "notification:", name:"meetup", object: nil)
-        
         //Register for updating friends list notifications
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
@@ -87,14 +86,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    }
-    
-    func notification(userInfo: NSDictionary){
-        var alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.Alert)
-        
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.Default, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,6 +93,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+
+        //Use custom cell
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
         
         // this is how you extract values from a tuple
@@ -117,33 +110,42 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var (title, id, status, phoneNumber) = items[indexPath.row]
-        
-        
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
-        println("cell status: \(cell.status)")
+
         switch cell.status {
         case "ready":
+            // when cell status is "ready" a request meetup will be sent to selected friend
             var meetups = Meetups()
             var result = meetups.requestMeetup(String(self.items[indexPath.row].1))
-            cell.updateMeetupStatus("pending")
-        case "accepted":
-            var controller = MapViewController(nibName:"MapViewController",bundle:nil)
-            controller.setColor(getRandomColor(countElements(title)))
             
+            cell.updateMeetupStatus("pending")
+            
+        case "accepted":
+            // when cell status is "accepted" selecting this friend cell will open map with locations
+            var controller = MapViewController(nibName:"MapViewController",bundle:nil)
             var friend = FriendProfile()
+            
             friend.friendID = self.items[indexPath.row].1
             friend.firstName = self.items[indexPath.row].0
             friend.phoneNumber = self.items[indexPath.row].3
             
+            controller.setColor(getRandomColor(countElements(title)))
             controller.setFriendProfile(friend)
+            
             navigationController?.pushViewController(controller, animated: true)
+            
         case "pending":
+            // when cell status is "pending" it means a request was already sent and you need to wait for the result
             let alertController = UIAlertController(title: "Meetup!",
                 message: "Your friend was already notified, just wait :)",
                 preferredStyle: UIAlertControllerStyle.Alert)
+            
             alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+            
             self.presentViewController(alertController, animated: true, completion: nil)
+            
         case "waiting":
+            // when cell status is "waiting" it means a friend sent you a request and you haven't responded yet
             var msg = "\(self.items[indexPath.row].0) wants to meet!"
             let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
             
@@ -160,30 +162,35 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 meetup.declineToMeetup(toString(friend_id))
                 cell.updateMeetupStatus("ready")
             }
+            
             alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
             alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
             alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
+            
             self.presentViewController(alert, animated: true, completion: nil)
             
         default:
+            //when there's no status defer to default
             let alertController = UIAlertController(title: "Hey!",
                 message: "Nothing to do :)",
                 preferredStyle: UIAlertControllerStyle.Alert)
+            
             alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+            
             self.presentViewController(alertController, animated: true, completion: nil)
-            var user = User()
-            user.getFriends()
-            tableView.reloadData()
+            
         }
     }
-    @IBOutlet var refreshButton: UIButton!
     
+    
+    // Explicitly update friends list
     @IBAction func refreshButton(sender: AnyObject) {
         var user = User()
+        
         user.getFriends()
         tableView.reloadData()
-        
     }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }

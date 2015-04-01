@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A69F1A58303800D4D992 /* MixpanelHandler.swift */; };
-		A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */; };
-		A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */; };
 		A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */; };
 		A674F02F1AABB40500325CEF /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674F02E1AABB40500325CEF /* FriendProfile.swift */; };
 		A680A39B1A5DE1270035B685 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39A1A5DE1270035B685 /* User.swift */; };
@@ -32,8 +30,6 @@
 		A6BD3C691ABDF5D500B468B3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BD3C681ABDF5D500B468B3 /* FacebookSDK.framework */; };
 		A6BD3C6D1ABEE4DA00B468B3 /* FacebookHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD3C6C1ABEE4DA00B468B3 /* FacebookHandler.swift */; };
 		A6BD3C6F1ABEF9AF00B468B3 /* FriendList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BD3C6E1ABEF9AF00B468B3 /* FriendList.swift */; };
-		A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */; };
-		A6D620431A6AA58600DB7B20 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */; };
 		A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620451A6ABC2200DB7B20 /* UserProfile.swift */; };
 		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
 		A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2BA1A62EA0E002C0655 /* Friend.swift */; };
@@ -69,16 +65,12 @@
 		35FCC4F3EA593EC02F95A2A8 /* Pods-therewhereTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-therewhereTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-therewhereTests/Pods-therewhereTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A247051A33CDAD91397266F3 /* libPods-therewhereTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-therewhereTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A608A6961A580A7D00D4D992 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		A608A69E1A581F9300D4D992 /* Mixpanel-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mixpanel-Bridging-Header.h"; sourceTree = "<group>"; };
 		A608A69F1A58303800D4D992 /* MixpanelHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelHandler.swift; sourceTree = "<group>"; };
-		A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfileViewController.swift; sourceTree = "<group>"; };
-		A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendProfileViewController.xib; sourceTree = "<group>"; };
 		A608A6A91A5C8A5D00D4D992 /* therewhere Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "therewhere Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A608A6AC1A5C8A5D00D4D992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhere_Tests.swift; sourceTree = "<group>"; };
 		A674F02E1AABB40500325CEF /* FriendProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
 		A680A39A1A5DE1270035B685 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		A680A3A31A5DE6790035B685 /* RestKit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RestKit-Bridging-Header.h"; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68F6BC01A98EBCA00D252BB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		A68F6BC11A98EBCA00D252BB /* MapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
@@ -102,8 +94,6 @@
 		A6BD3C6A1ABDF7D100B468B3 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		A6BD3C6C1ABEE4DA00B468B3 /* FacebookHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookHandler.swift; sourceTree = "<group>"; };
 		A6BD3C6E1ABEF9AF00B468B3 /* FriendList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendList.swift; sourceTree = "<group>"; };
-		A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
-		A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		A6D620451A6ABC2200DB7B20 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A6E6D2BA1A62EA0E002C0655 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
@@ -199,13 +189,7 @@
 				A6A27DC51A3BACBA006F7ECD /* Supporting Files */,
 				A6A27DF41A3DDBDA006F7ECD /* TW.playground */,
 				A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */,
-				A608A69E1A581F9300D4D992 /* Mixpanel-Bridging-Header.h */,
 				A608A69F1A58303800D4D992 /* MixpanelHandler.swift */,
-				A608A6A11A58A8C900D4D992 /* FriendProfileViewController.swift */,
-				A608A6A21A58A8C900D4D992 /* FriendProfileViewController.xib */,
-				A680A3A31A5DE6790035B685 /* RestKit-Bridging-Header.h */,
-				A6D620401A6AA58600DB7B20 /* UserProfileViewController.swift */,
-				A6D620411A6AA58600DB7B20 /* UserProfileViewController.xib */,
 				A68F6BC01A98EBCA00D252BB /* MapViewController.swift */,
 				A68F6BC11A98EBCA00D252BB /* MapViewController.xib */,
 				A6BD3C6A1ABDF7D100B468B3 /* Bridging-Header.h */,
@@ -379,11 +363,9 @@
 			files = (
 				A6A27E0F1A3E11FC006F7ECD /* Default-568h@2x.png in Resources */,
 				A6A27E621A3E3124006F7ECD /* InviteFriendsViewController.xib in Resources */,
-				A608A6A41A58A8C900D4D992 /* FriendProfileViewController.xib in Resources */,
 				A68F6BC31A98EBCA00D252BB /* MapViewController.xib in Resources */,
 				A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */,
 				A6A27E651A3E4640006F7ECD /* CustomTableViewCell.xib in Resources */,
-				A6D620431A6AA58600DB7B20 /* UserProfileViewController.xib in Resources */,
 				A6A27E601A3E3124006F7ECD /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -451,8 +433,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A608A6A31A58A8C900D4D992 /* FriendProfileViewController.swift in Sources */,
-				A6D620421A6AA58600DB7B20 /* UserProfileViewController.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
 				A694670D1A7557660038880D /* Meetup.swift in Sources */,
 				A680A39B1A5DE1270035B685 /* User.swift in Sources */,

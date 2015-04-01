@@ -18,12 +18,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var userPin = MKPointAnnotation()
     var friendPin = MKPointAnnotation()
     var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0)
+    var myTimer = NSTimer()
+    var showDirection:Bool = false
+    var friendProfile = FriendProfile()
+    var directionsRequest = MKDirectionsRequest()
+    var directions = MKDirections()
+    var myRoute : MKRoute?
+    
     @IBOutlet var callButton: UIButton!
     @IBOutlet var navigateButton: UIButton!
     @IBOutlet var stopButton: UIButton!
-    var friendProfile = FriendProfile()
-    var myTimer = NSTimer()
-    var showDirection:Bool = false
     @IBOutlet var mapView: MKMapView!
     
     @IBAction func callFriendButton(sender: AnyObject) {
@@ -38,8 +42,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         alertController.addAction(UIAlertAction(title: "Hum..nah", style: UIAlertActionStyle.Cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "Yes please", style: UIAlertActionStyle.Destructive, handler: callingActionHandler))
-        self.presentViewController(alertController, animated: true, completion: nil)
         
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func stopButton(sender: AnyObject) {
@@ -57,6 +61,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         alertController.addAction(UIAlertAction(title: "Not yet", style: UIAlertActionStyle.Cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "Yeah!", style: UIAlertActionStyle.Destructive, handler: terminateActionHandler))
+        
         self.presentViewController(alertController, animated: true, completion: nil)
         
     }
@@ -97,11 +102,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         callButton.backgroundColor = buttonColor
         stopButton.backgroundColor = buttonColor
         navigateButton.backgroundColor = buttonColor
+        
         if(buttonColor == UIColor.whiteColor()){
             callButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             stopButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             navigateButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         }
+        
         self.mapView.delegate = self
         
         // Ask for Authorisation from the User.
@@ -117,8 +124,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -126,17 +131,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     class CustomPointAnnotation: MKPointAnnotation {
         var imageName: String!
     }
-    var directionsRequest = MKDirectionsRequest()
-    var directions = MKDirections()
-    var myRoute : MKRoute?
+    
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue:CLLocationCoordinate2D = manager.location.coordinate
         let location = locations.last as CLLocation
-        
-        //        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        //        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-        
         var user = User()
+        
         user.setLocation(locValue)
         
         userPin.coordinate = locValue
@@ -144,23 +144,24 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
 
         mapView.removeAnnotation(userPin)
         mapView.addAnnotation(userPin)
-        
     }
     
     func updateFriendLocation(notification: NSNotification){
-        println("updating friend location")
-        let tmp : [NSObject : AnyObject] = notification.userInfo!
-        var coordinates = tmp["location"] as Friends.Coordinates
+        let notification_coordinates : [NSObject : AnyObject] = notification.userInfo!
+        var coordinates = notification_coordinates["location"] as Friends.Coordinates
         var coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
+        
         friendLocation = coordinate
+        
         if(!(friendLocation.longitude == 0 && friendLocation.latitude == 0)){
-            friendPin.coordinate = friendLocation
-            friendPin.title = friendProfile.firstName
-            mapView.removeAnnotation(friendPin)
-            mapView.addAnnotation(friendPin)
-            
             let markC1 = MKPlacemark(coordinate: userPin.coordinate, addressDictionary: nil)
             let markC2 = MKPlacemark(coordinate: friendLocation, addressDictionary: nil)
+            
+            friendPin.coordinate = friendLocation
+            friendPin.title = friendProfile.firstName
+            
+            mapView.removeAnnotation(friendPin)
+            mapView.addAnnotation(friendPin)
             
             directionsRequest.setSource(MKMapItem(placemark: markC1))
             directionsRequest.setDestination(MKMapItem(placemark: markC2))
@@ -174,13 +175,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     self.mapView.addOverlay(self.myRoute?.polyline)
                 }
             }
-            
         }
     }
     
     func updateLocation(){
         var friendID = String(friendProfile.friendID)
         var friends = Friends()
+        
         friends.getLocation(friendID)
     }
     
@@ -188,21 +189,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let identifier = "my_location"
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        
         if pinView == nil {
-
             pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-
             pinView!.canShowCallout = true
+            
             if pinView.annotation.title! == "You" {
                 pinView.image = UIImage(named: "location_green")
             }else{
                 pinView.image = UIImage(named: "location_blue")
             }
-
         }
         else {
-            //Unrelated to the image problem but...
-            //Update the annotation reference if re-using a view...
             pinView.annotation = annotation
         }
         
@@ -214,21 +212,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             var myLineRenderer = MKPolylineRenderer(polyline: myRoute?.polyline!)
             var color = UIColor.blueColor()
             var colorWithAlpha = color.colorWithAlphaComponent(0.5)
+            
             myLineRenderer.strokeColor = colorWithAlpha
             myLineRenderer.lineWidth = 3
+            
             return myLineRenderer
         }
         return nil
     }
-    
-    /*
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    }
-    */
     
 }

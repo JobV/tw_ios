@@ -17,11 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
         
         MixpanelHandler.userOpensApplication()
         
-        // somewhere when your app starts up
+        // Registering for notifications
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
         let acceptAction = UIMutableUserNotificationAction()
@@ -53,17 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let requestedTypes = UIUserNotificationType.Alert | .Sound
         let categories = NSSet(object: category)
         let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories)
+        
         UIApplication.sharedApplication().registerUserNotificationSettings(settingsRequest)
         
-        // Whenever a person opens app, check for a cached session
-        //        if (FBSession.activeSession().state == FBSessionState.CreatedTokenLoaded) {
-        //            FBSession.openActiveSessionWithReadPermissions(["public_profile", "email", "user_friends"], allowLoginUI: false, completionHandler: { (fbsession, fbsessionstate , error) -> Void in
-        //
-        //            })
-        //
-        //        }
-        
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
         if let window = window {
             var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
             var navigationController = UINavigationController(rootViewController: loginviewcontroller)
@@ -77,8 +70,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
-        
         var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        
         return wasHandled
     }
     
@@ -107,7 +100,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     // Push Notifications
-    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
         println("Got token data! \(deviceToken)")
         
@@ -117,10 +109,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("Couldn't register: \(error)")
     }
     
+    // Handle remote notifications
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        println("received notification")
+
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
-        
         var navigationController = UINavigationController(rootViewController: inviteviewcontroller)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -138,6 +130,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         switch action {
         case 1:
+            // Receive meetup request
             let acceptActionHandler = { (action:UIAlertAction!) -> Void in
                 var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
                 var meetup = Meetups()
@@ -152,21 +145,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
             alert.addAction(UIAlertAction(title: "Decline", style: .Destructive, handler: declineActionHandler))
             alert.addAction(UIAlertAction(title: "Delay", style: .Cancel, handler: nil))
+            
         case 2:
+            // Friend accepted a meetup request
             let viewMapActionHandler = { (action:UIAlertAction!) -> Void in
                 var controller = MapViewController(nibName:"MapViewController",bundle:nil)
-                
                 var friend = FriendProfile()
+                
                 friend.friendID = userInfo["friend_id"] as Int
                 friend.firstName = "woot"
                 friend.phoneNumber = "913226179"
-                // controller.setColor(controller.getRandomColor(countElements(friend.firstName)))
+                
                 controller.setFriendProfile(friend)
+                
                 self.window?.rootViewController?.presentViewController(controller, animated: true, completion: nil)
             }
-            alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: viewMapActionHandler))
             
+            alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: viewMapActionHandler))
             alert.addAction(UIAlertAction(title: "Cool!", style: .Default, handler: nil))
+            
         case 3:
             alert.addAction(UIAlertAction(title: "oh :/!", style: .Default, handler: nil))
         case 4:
@@ -174,7 +171,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         default:
             println("nothing to be done")
         }
-        
         
         window?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
         
