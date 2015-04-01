@@ -19,6 +19,7 @@ import MapKit
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+UserProfile.sharedInstance.userID
         
         Alamofire.request(.GET, url)
+            .validate(statusCode: 200..<300)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
@@ -77,6 +78,7 @@ import MapKit
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+            .validate(statusCode: 200..<300)
             .response { (request, response, _, error) in
                 if(error != nil){
                     result = false
@@ -98,6 +100,7 @@ import MapKit
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+            .validate(statusCode: 200..<300)
             .response { (request, response, _, error) in
                 if(error != nil){
                     result = false
@@ -120,6 +123,7 @@ import MapKit
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+            .validate(statusCode: 200..<300)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     result = "couldn't set location"
