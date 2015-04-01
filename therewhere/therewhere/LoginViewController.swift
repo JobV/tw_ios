@@ -8,40 +8,48 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
-
-    @IBAction func login(sender: UIButton) {
-        // === SET YOUR ID ===
-        var userProfile = UserProfile.sharedInstance
-        userProfile.userID = "1"
-        // ===================
+// Login view delegates
+class LoginViewController: UIViewController, FBLoginViewDelegate{
+    var fbloginView: FBLoginView = FBLoginView()
+    
+    override func viewDidLoad() {
         
-        var user = User()
-        var friends = Friends()
-        //friends.getLocation("1")
-        //friends.getLocation("2")
-        //user.getUserInfo()
-        //user.addFriends(["333333333","4444444444"])
-        //user.createUser("firstname", lastName: "lastname", phoneNumber: "333333333", email: "email@email.com")
+        super.viewDidLoad()
 
+        //hidding navigation bar
+        navigationController?.navigationBarHidden = true;
+        
+        fbloginView.delegate = self
+        fbloginView.readPermissions = ["public_profile", "email", "user_friends"]
+        fbloginView.center = self.view.center
 
-     //   meetups.getMeetupRequests();
+        self.view.addSubview(fbloginView)
+    }
+    
+    // Callback function triggered when user successfully logs in
+    func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
         
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
         navigationController?.pushViewController(controller, animated: true)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBarHidden = true;
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // Callback function triggered when user successfully logs out
+    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
+        println("User Logged Out")
     }
     
+    // Fetching user info callback post-login
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
+        var userProfile = UserProfile.sharedInstance
+        var token:String = FBSession.activeSession().accessTokenData.accessToken
+        
+        // Manually set user id
+        userProfile.userID = "1"
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
 }

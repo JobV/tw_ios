@@ -15,6 +15,5 @@ struct MixpanelHandler{
     
     static func userOpensApplication() {
         mixpanel.track("{user:application_openned}")
-        println("Mixpanel: User has openned the application")
     }
 }

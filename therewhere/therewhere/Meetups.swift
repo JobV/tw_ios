@@ -12,18 +12,16 @@ import SwiftyJSON
 
 class Meetups: NSObject {
     
+    // GET Method - Gets pending meetup requests
     func getPendingMeetups(){
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+UserProfile.sharedInstance.userID+"/meetups"
-
+        
         Alamofire.request(.GET, url)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
-                    println(req)
-                    println(res)
                 }
                 else {
-                    NSLog("REST: get pending meetups")
                     var json = JSON(json!)
                     
                     if json["received"].count == 0 {
@@ -42,19 +40,23 @@ class Meetups: NSObject {
                 }
         }
     }
+    
+    // POST Method - Creates meetup request with friend
     func requestMeetup(friendID: String)->Bool{
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups"
+        var success:Bool = false
         let parameters = [
             "friend_id": friendID
         ]
-        var success:Bool = false
+        
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .responseJSON { (request, response, json, error) in
                 if(error != nil){
+                    NSLog("Error: \(error)")
                 }else{
-                    NSLog("REST: created friend request meetups")
                     var json = JSON(json!)
+                    
                     if json["success"]{
                         success = true
                     }
@@ -62,6 +64,8 @@ class Meetups: NSObject {
         }
         return success
     }
+    
+    // POST Method - Accepts a meetup request
     func acceptMeetup(friendID: String){
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/accept"
@@ -72,15 +76,18 @@ class Meetups: NSObject {
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .responseJSON { (request, response, json, error) in
                 if(error != nil){
+                    NSLog("Error: \(error)")
                 }else{
-                    NSLog("REST: accepted friend request meetup")
                     var json = JSON(json!)
+                    
                     if json["success"]{
                         println("accepted friend request")
                     }
                 }
         }
     }
+    
+    // POST Method - Decline meetup request
     func declineToMeetup(friendID: String){
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/decline"
@@ -91,9 +98,10 @@ class Meetups: NSObject {
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .responseJSON { (request, response, json, error) in
                 if(error != nil){
+                    NSLog("Error: \(error)")
                 }else{
-                    NSLog("REST: declined meetup with friend")
                     var json = JSON(json!)
+                    
                     if json["success"]{
                         println("declined friend request")
                     }
@@ -101,6 +109,7 @@ class Meetups: NSObject {
         }
     }
     
+    // POST Method - Terminate meetup with a friend
     func terminateMeetup(friendID: String){
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/terminate"
@@ -111,15 +120,16 @@ class Meetups: NSObject {
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
             .responseJSON { (request, response, json, error) in
                 if(error != nil){
+                    NSLog("Error: \(error)")
                 }else{
-                    NSLog("REST: terminate meetup with friend")
                     var json = JSON(json!)
+                    
                     if json["success"]{
                         println("terminated friend meetup")
                     }
                 }
         }
     }
-
-
+    
+    
 }

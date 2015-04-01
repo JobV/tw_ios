@@ -7,7 +7,10 @@
 //
 
 import Foundation
+
+// Single friend attribute representation
 class Friend: NSObject {
+    
     var userID = Int();
     var firstName = String();
     var lastName = String();
