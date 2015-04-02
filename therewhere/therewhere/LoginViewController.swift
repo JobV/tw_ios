@@ -12,6 +12,7 @@ import UIKit
 class LoginViewController: UIViewController, FBLoginViewDelegate{
     var fbloginView: FBLoginView = FBLoginView()
     
+    @IBOutlet var fbButtonContainer: SpringView!
     @IBAction func friendListButton(sender: AnyObject) {
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
@@ -26,9 +27,10 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
         
         fbloginView.delegate = self
         fbloginView.readPermissions = ["public_profile", "email", "user_friends"]
-        fbloginView.center = self.view.center
-
-        self.view.addSubview(fbloginView)
+        
+        fbButtonContainer.animation = "slideDown"
+        fbButtonContainer.animate()
+        
     }
     
     // Callback function triggered when user successfully logs in
