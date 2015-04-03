@@ -11,6 +11,7 @@ import UIKit
 // Login view delegates
 class LoginViewController: UIViewController, FBLoginViewDelegate{
     var fbloginView: FBLoginView = FBLoginView()
+    var fbCounter = 0
     
     @IBAction func friendListButton(sender: AnyObject) {
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
@@ -20,40 +21,58 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fbCounter = 0
+        //Register for authentication notifications
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector:"authenticationHandler:",
+            name: "authenticationNotification",
+            object: nil)
+        
         //hidding navigation bar
         navigationController?.navigationBarHidden = true;
         
         fbloginView.delegate = self
-        fbloginView.readPermissions = ["public_profile", "email", "user_friends"]
+        fbloginView.readPermissions = ["public_profile", "email", "user_friends", "user_about_me", "user_activities"]
         fbloginView.center = self.view.center
-
+        
         self.view.addSubview(fbloginView)
     }
     
     // Callback function triggered when user successfully logs in
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
+        
+    }
+    
+    // Callback function triggered when user successfully logs out
+    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
+        var user = User()
+        user.logout()
+        fbCounter = 0
+    }
+    
+    // Fetching user info callback post-login
+    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
+        if(fbCounter == 0){
+            var userProfile = UserProfile.sharedInstance
+            var token:String = FBSession.activeSession().accessTokenData.accessToken
+            var userAPI = User()
+            
+            userProfile.firstName = user.first_name
+            userProfile.lastName = user.last_name
+            userProfile.email = user.objectForKey("email") as String
+            userAPI.authenticate(token)
+            fbCounter+=1
+        }
+    }
+    
+    func authenticationHandler(object: NSNotification){
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    // Callback function triggered when user successfully logs out
-    func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
-        println("User Logged Out")
-    }
-    
-    // Fetching user info callback post-login
-    func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
-        var userProfile = UserProfile.sharedInstance
-        var token:String = FBSession.activeSession().accessTokenData.accessToken
-        
-        // Manually set user id
-        userProfile.userID = "1"
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }

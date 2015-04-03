@@ -29,5 +29,5 @@ import UIKit
     var lastName = String();
     var email = String();
     var phoneNumber = String();
-    
+    var access_token = String();
 }
