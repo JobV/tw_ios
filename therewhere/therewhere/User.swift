@@ -35,6 +35,7 @@ import MapKit
                     userProfile.firstName = ""
                     userProfile.lastName = ""
                     userProfile.email = ""
+                    userProfile.access_token = ""
                 }
         }
     }
@@ -102,8 +103,12 @@ import MapKit
     // Internal notifiction is fired to notify end of list update
     func getFriends(){
         let url = APIConnectionManager.serverAddress+"/api/v1/users/friends"
+        var user = UserProfile.sharedInstance
+        let parameters = [
+            "token": user.access_token
+        ]
         
-        Alamofire.request(.GET, url)
+        Alamofire.request(.GET, url, parameters: parameters)
             .validate(statusCode: 200..<300)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
