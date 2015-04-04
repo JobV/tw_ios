@@ -101,8 +101,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Push Notifications
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
-        println("Got token data! \(deviceToken)")
+        // Transforming deviceToken from data to string type
+        var user = UserProfile.sharedInstance
+        var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
         
+        var deviceTokenString: String = ( deviceToken.description as NSString )
+            .stringByTrimmingCharactersInSet( characterSet )
+            .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
+        
+        user.deviceToken = deviceTokenString
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
