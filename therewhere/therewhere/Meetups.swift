@@ -14,9 +14,13 @@ class Meetups: NSObject {
     
     // GET Method - Gets pending meetup requests
     func getPendingMeetups(){
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+UserProfile.sharedInstance.userID+"/meetups"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/meetups"
+        var user = UserProfile.sharedInstance
+        let parameters = [
+            "token": user.access_token
+        ]
         
-        Alamofire.request(.GET, url)
+        Alamofire.request(.GET, url, parameters: parameters)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
@@ -44,10 +48,11 @@ class Meetups: NSObject {
     // POST Method - Creates meetup request with friend
     func requestMeetup(friendID: String)->Bool{
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/meetups"
         var success:Bool = false
         let parameters = [
-            "friend_id": friendID
+            "friend_id": friendID,
+            "token": user.access_token
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
@@ -68,9 +73,10 @@ class Meetups: NSObject {
     // POST Method - Accepts a meetup request
     func acceptMeetup(friendID: String){
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/accept"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/meetups/accept"
         let parameters = [
-            "friend_id": friendID
+            "friend_id": friendID,
+            "token": user.access_token
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
@@ -90,9 +96,10 @@ class Meetups: NSObject {
     // POST Method - Decline meetup request
     func declineToMeetup(friendID: String){
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/decline"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/meetups/decline"
         let parameters = [
-            "friend_id": friendID
+            "friend_id": friendID,
+            "token": user.access_token
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
@@ -112,9 +119,10 @@ class Meetups: NSObject {
     // POST Method - Terminate meetup with a friend
     func terminateMeetup(friendID: String){
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/meetups/terminate"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/meetups/terminate"
         let parameters = [
-            "friend_id": friendID
+            "friend_id": friendID,
+            "token": user.access_token
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)

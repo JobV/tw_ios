@@ -17,7 +17,6 @@ import MapKit
     func logout(){
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/auth/logout"
-        
         let parameters = [
             "token": user.access_token
         ]
@@ -74,12 +73,12 @@ import MapKit
     // GET Method - Retrieves user info from the backend api
     func getUserInfo(){
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/userInfo"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users"
         let parameters = [
             "token": user.access_token
         ]
         
-        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
+        Alamofire.request(.GET, url, parameters: parameters)
             .validate(statusCode: 200..<300)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
@@ -135,32 +134,12 @@ import MapKit
     func addFriends(phoneNumberArray: [String]) -> Bool{
         var result = true
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/friends"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/friends"
         
+      
         let parameters = [
-            "phone_nrs": phoneNumberArray
-        ]
-        
-        Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
-            .validate(statusCode: 200..<300)
-            .response { (request, response, _, error) in
-                if(error != nil){
-                    result = false
-                }
-        }
-        
-        return result
-    }
-    
-    // POST Method - Create user
-    func createUser(firstName:String, lastName:String, phoneNumber: String, email: String) -> Bool {
-        var result = true
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"
-        let parameters = [
-            "first_name":firstName,
-            "last_name":lastName,
-            "phone_nr":phoneNumber,
-            "email":email
+            "token": user.access_token,
+            "phone_nrs": phoneNumberArray as NSObject
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)
@@ -178,12 +157,13 @@ import MapKit
     func setLocation (coordinate: CLLocationCoordinate2D) -> (String) {
         var result = " "
         var user = UserProfile.sharedInstance
-        let url = APIConnectionManager.serverAddress+"/api/v1/users/"+user.userID+"/location"
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/location"
         let parameters = [
             "x": coordinate.latitude,
             "y": coordinate.longitude,
             "z": 0,
-            "m": 0
+            "m": 0,
+            "token": user.access_token as NSObject
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)

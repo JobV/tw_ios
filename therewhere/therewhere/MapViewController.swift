@@ -31,18 +31,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet var mapView: MKMapView!
     
     @IBAction func callFriendButton(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Calling Friend!",
-            message: "Do you want to call \(friendProfile.firstName)?",
-            preferredStyle: UIAlertControllerStyle.Alert)
+        var alertController = UIAlertController()
         
-        let callingActionHandler = { (action:UIAlertAction!) -> Void in
-            UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.friendProfile.phoneNumber)")!)
-            println("placing call")
+        if(self.friendProfile.phoneNumber != ""){
+            alertController = UIAlertController(title: "Calling Friend!",
+                message: "Do you want to call \(friendProfile.firstName)?",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let callingActionHandler = { (action:UIAlertAction!) -> Void in
+                UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.friendProfile.phoneNumber)")!)
+                println("placing call")
+            }
+            
+            alertController.addAction(UIAlertAction(title: "Hum..nah", style: UIAlertActionStyle.Cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Yes please", style: UIAlertActionStyle.Destructive, handler: callingActionHandler))
+            
+            
+        }else{
+            alertController = UIAlertController(title: "Calling Friend!",
+                message: "Sorry, your friend's number isn't available.",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
         }
-        
-        alertController.addAction(UIAlertAction(title: "Hum..nah", style: UIAlertActionStyle.Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Yes please", style: UIAlertActionStyle.Destructive, handler: callingActionHandler))
-        
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
@@ -63,17 +74,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         alertController.addAction(UIAlertAction(title: "Yeah!", style: UIAlertActionStyle.Destructive, handler: terminateActionHandler))
         
         self.presentViewController(alertController, animated: true, completion: nil)
-        
     }
-
+    
     @IBAction func navigateButton(sender: AnyObject) {
-        if showDirection {
-            showDirection = false
-            self.mapView.removeOverlay(self.myRoute?.polyline)
-        }
-        else{
-            showDirection = true
-            self.mapView.addOverlay(self.myRoute?.polyline)
+        if(self.myRoute? != nil){
+            if showDirection {
+                showDirection = false
+                self.mapView.removeOverlay(self.myRoute?.polyline)
+            }
+            else{
+                showDirection = true
+                self.mapView.addOverlay(self.myRoute?.polyline)
+            }
+        }else{
+            var alertController = UIAlertController(title: "Friend Location!",
+                message: "Sorry, your friend's location isn't available.",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alertController, animated: true, completion: nil)
         }
     }
     
@@ -81,11 +100,14 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         buttonColor = color
     }
     
-
+    
     func setFriendProfile(friend:FriendProfile){
         friendProfile = friend
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.myTimer.invalidate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -141,7 +163,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         userPin.coordinate = locValue
         userPin.title = "You"
-
+        
         mapView.removeAnnotation(userPin)
         mapView.addAnnotation(userPin)
     }
