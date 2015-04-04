@@ -1,4 +1,4 @@
-//
+
 //  LoginViewController.swift
 //  therewhere
 //
@@ -12,6 +12,7 @@ import UIKit
 class LoginViewController: UIViewController, FBLoginViewDelegate{
     var fbloginView: FBLoginView = FBLoginView()
     
+    @IBOutlet var loginBackground: UIImageView!
     @IBOutlet var fbButtonContainer: SpringView!
     @IBAction func friendListButton(sender: AnyObject) {
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
@@ -22,12 +23,14 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //hidding navigation bar
+        // hide navigation bar
         navigationController?.navigationBarHidden = true;
-        
+                
+        // Set FB settings
         fbloginView.delegate = self
         fbloginView.readPermissions = ["public_profile", "email", "user_friends"]
         
+        // Animate the FB login button falling down
         fbButtonContainer.animation = "slideDown"
         fbButtonContainer.animate()
         

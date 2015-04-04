@@ -7,6 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="therewhere" customModuleProvider="target">
             <connections>
                 <outlet property="fbButtonContainer" destination="MdP-mx-9SZ" id="pWd-3p-kFQ"/>
+                <outlet property="loginBackground" destination="rji-cJ-JkA" id="Vms-Da-feg"/>
                 <outlet property="view" destination="iN0-l3-epB" id="lUY-Kr-mjN"/>
             </connections>
         </placeholder>
@@ -24,6 +25,9 @@
                         <action selector="friendListButton:" destination="-1" eventType="touchUpInside" id="Mpm-qe-a8b"/>
                     </connections>
                 </button>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" image="5s" translatesAutoresizingMaskIntoConstraints="NO" id="rji-cJ-JkA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="580"/>
+                </imageView>
                 <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MdP-mx-9SZ" customClass="SpringView" customModule="therewhere" customModuleProvider="target">
                     <rect key="frame" x="8" y="400" width="304" height="68"/>
                     <subviews>
@@ -60,8 +64,15 @@
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.9960784912109375" green="0.9960784912109375" blue="0.99215692281723022" alpha="1" colorSpace="deviceRGB"/>
+            <constraints>
+                <constraint firstItem="rji-cJ-JkA" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cSZ-Mb-tj7"/>
+                <constraint firstItem="rji-cJ-JkA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="orw-jQ-EXX"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="353" y="343"/>
         </view>
     </objects>
+    <resources>
+        <image name="5s" width="320" height="568"/>
+    </resources>
 </document>
