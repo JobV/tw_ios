@@ -47,7 +47,8 @@ import MapKit
         
         let parameters = [
             "login" : user.email,
-            "oauth_token": oauth_token
+            "oauth_token": oauth_token,
+            "device_token": user.deviceToken
         ]
         
         Alamofire.request(.POST, url, parameters: parameters, encoding: .JSON)

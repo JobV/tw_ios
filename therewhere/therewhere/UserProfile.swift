@@ -30,4 +30,5 @@ import UIKit
     var email = String();
     var phoneNumber = String();
     var access_token = String();
+    var deviceToken = String();
 }
