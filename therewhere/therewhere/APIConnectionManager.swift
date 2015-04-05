@@ -10,5 +10,5 @@ import Foundation
 
 class APIConnectionManager: NSObject {
     // Backend API Address
-    class var serverAddress: String { return "http://192.168.1.69:3000" }
+    class var serverAddress: String { return "http://www.2me.io" }
 }

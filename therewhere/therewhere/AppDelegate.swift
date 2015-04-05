@@ -55,16 +55,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.sharedApplication().registerUserNotificationSettings(settingsRequest)
         
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        if let window = window {
-            var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
-            var navigationController = UINavigationController(rootViewController: loginviewcontroller)
-            
-            window.rootViewController = navigationController
-            window.backgroundColor = UIColor.whiteColor()
-            window.makeKeyAndVisible()
-        }
         
         return true
     }
@@ -110,6 +100,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
         
         user.deviceToken = deviceTokenString
+        
+        //only allow fb login to act after securing an APN token
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        if let window = window {
+            var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
+            var navigationController = UINavigationController(rootViewController: loginviewcontroller)
+            
+            window.rootViewController = navigationController
+            window.backgroundColor = UIColor.whiteColor()
+            window.makeKeyAndVisible()
+        }
+
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
