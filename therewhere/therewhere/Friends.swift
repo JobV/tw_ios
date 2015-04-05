@@ -34,9 +34,18 @@ class Friends: NSObject {
                     var json = JSON(json!)
                     
                     if json["x"]&&json["y"] {
-                        var latitude :Double? = json["x"].double!
-                        var longitude :Double? = json["y"].double!
-                        var coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+                        var latitude = 0.0
+                        var longitude = 0.0
+                        
+                        if var latitudeFromJson = json["x"].double{
+                            latitude = latitudeFromJson
+                        }
+                        
+                        if var longitudeFromJson = json["y"].double{
+                            longitude = longitudeFromJson
+                        }
+                        
+                        var coordinate = CLLocationCoordinate2DMake(latitude, longitude)
                         var friendCoordinates = Coordinates()
                         
                         friendCoordinates.latitude = coordinate.latitude
@@ -46,7 +55,6 @@ class Friends: NSObject {
                     }else{
                         println("no location available! sorry mate ")
                     }
-                    
                 }
         }
         

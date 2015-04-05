@@ -44,7 +44,7 @@ import MapKit
         var result = true
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/auth/login"
-        
+        NSLog("device :\(user.deviceToken)")
         let parameters = [
             "login" : user.email,
             "oauth_token": oauth_token,
@@ -59,13 +59,15 @@ import MapKit
                 }
                 else {
                     var json_response = JSON(json!)
-                    user.access_token = json_response["auth_token"].string!
+                    
+                    if let auth_token = json_response["auth_token"].string{
+                        user.access_token = auth_token
+                    }
                     
                     if(user.access_token != ""){
                         NSNotificationCenter.defaultCenter().postNotificationName("authenticationNotification", object: nil)
                     }
                 }
-                
         }
         
         return result
@@ -90,11 +92,25 @@ import MapKit
                     var json_response = JSON(json!)
                     var userProfile = UserProfile.sharedInstance
                     
-                    userProfile.userID = json_response["id"].string!
-                    userProfile.firstName = json_response["first_name"].string!
-                    userProfile.lastName = json_response["last_name"].string!
-                    userProfile.email = json_response["email"].string!
-                    userProfile.phoneNumber = json_response["phone_nr"].string!
+                    if var userID = json_response["id"].string{
+                        userProfile.userID = userID
+                    }
+                    
+                    if var firstName = json_response["first_name"].string{
+                        userProfile.firstName = firstName
+                    }
+
+                    if var lastName = json_response["last_name"].string{
+                        userProfile.lastName = lastName
+                    }
+                    
+                    if var email = json_response["email"].string{
+                        userProfile.email = email
+                    }
+
+                    if var phoneNumber = json_response["phone_nr"].string{
+                        userProfile.phoneNumber = phoneNumber
+                    }
                 }
         }
     }
@@ -119,9 +135,31 @@ import MapKit
                     var friends = Friends()
                     
                     for (index: String, subJson: JSON) in json {
+                        var fullName = ""
+                        var friendID = 0
+                        var statusWithFriend = ""
+                        var friendPhoneNr = ""
                         
-                        var fullName = subJson["first_name"].string! + " " + subJson["last_name"].string!
-                        let friendTuple:(String, Int, String, String) = (fullName, subJson["id"].int!, subJson["status_with_friend"].string!, subJson["phone_nr"].string! )
+                        if var firstName = subJson["first_name"].string{
+                            fullName = firstName
+                        }
+                        
+                        if var lastName = subJson["last_name"].string{
+                            fullName += " " + lastName
+                        }
+                        
+                        if var friendIDFromJson = subJson["id"].int{
+                            friendID = friendIDFromJson
+                        }
+                        if var statusWithFriendFromJson = subJson["status_with_friend"].string{
+                            statusWithFriend = statusWithFriendFromJson
+                        }
+                        
+                        if var friendPhoneNrFromJson = subJson["phone_nr"].string{
+                            friendPhoneNr = friendPhoneNrFromJson
+                        }
+
+                        let friendTuple:(String, Int, String, String) = (fullName, friendID, statusWithFriend, friendPhoneNr)
                         
                         friends.phoneNumberArray.append(friendTuple)
                     }
@@ -174,10 +212,7 @@ import MapKit
                     result = "couldn't set location"
                 }
                 else {
-                    var json = JSON(json!)
-                    var updatedDate = json["updated_at"].string!
                     
-                    result = updatedDate
                 }
         }
         

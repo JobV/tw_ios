@@ -61,7 +61,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             object: nil)
         
         //Update list of friends
-        userProfile.userID = "1"
         user.getFriends()
         
         //Specify custom row/cell properties

@@ -28,18 +28,22 @@ class Meetups: NSObject {
                 else {
                     var json = JSON(json!)
                     
-                    if json["received"].count == 0 {
-                        println("no pending received meetups!")
-                    }else{
-                        var count = json["received"].count
-                        println("received \(count) meetup requests!")
+                    if var received = json["received"].int{
+                        if received == 0 {
+                            println("no pending received meetups!")
+                        }else{
+                            var count = received
+                            println("received \(count) meetup requests!")
+                        }
                     }
                     
-                    if json["sent"].count == 0 {
-                        println("no pending sent meetups!")
-                    }else{
-                        var count = json["sent"].count
-                        println("sent \(count) meetup requests!")
+                    if var sent = json["sent"].int{
+                        if sent == 0 {
+                            println("no pending sent meetups!")
+                        }else{
+                            var count = sent
+                            println("sent \(count) meetup requests!")
+                        }
                     }
                 }
         }
@@ -62,8 +66,8 @@ class Meetups: NSObject {
                 }else{
                     var json = JSON(json!)
                     
-                    if json["success"]{
-                        success = true
+                    if var message = json["success"].string{
+                        println("created meetup")
                     }
                 }
         }
@@ -86,8 +90,8 @@ class Meetups: NSObject {
                 }else{
                     var json = JSON(json!)
                     
-                    if json["success"]{
-                        println("accepted friend request")
+                    if var message = json["success"].string{
+                        println("accepted meetup")
                     }
                 }
         }
@@ -109,8 +113,8 @@ class Meetups: NSObject {
                 }else{
                     var json = JSON(json!)
                     
-                    if json["success"]{
-                        println("declined friend request")
+                    if var message = json["success"].string{
+                        println("meetup declined")
                     }
                 }
         }
@@ -131,8 +135,7 @@ class Meetups: NSObject {
                     NSLog("Error: \(error)")
                 }else{
                     var json = JSON(json!)
-                    
-                    if json["success"]{
+                    if var message = json["success"].string{
                         println("terminated friend meetup")
                     }
                 }
