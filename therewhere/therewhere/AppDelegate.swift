@@ -171,8 +171,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 self.window?.rootViewController?.presentViewController(controller, animated: true, completion: nil)
             }
             
-            alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: viewMapActionHandler))
-            alert.addAction(UIAlertAction(title: "Cool!", style: .Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "View now", style: .Default, handler: viewMapActionHandler))
+            alert.addAction(UIAlertAction(title: "Later!", style: .Default, handler: nil))
             
         case 3:
             alert.addAction(UIAlertAction(title: "oh :/!", style: .Default, handler: nil))
