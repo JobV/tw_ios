@@ -23,6 +23,19 @@ import UIKit
         return Static.instance!
     }
     
+    func decreaseOnGoingMeetups(){
+        if(onGoingMeetups > 0){
+            onGoingMeetups -= 1
+        }
+        else{
+            onGoingMeetups = 0
+        }
+    }
+    
+    func incrementOnGoingMeetups(){
+        onGoingMeetups += 1
+    }
+    
     // user locally accessible attributes
     var userID = String();
     var firstName = String();
@@ -31,4 +44,5 @@ import UIKit
     var phoneNumber = String();
     var access_token = String();
     var deviceToken = String();
+    var onGoingMeetups = 0;
 }

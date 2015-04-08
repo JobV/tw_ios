@@ -44,7 +44,6 @@ import MapKit
         var result = true
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/auth/login"
-        NSLog("device :\(user.deviceToken)")
         let parameters = [
             "login" : user.email,
             "oauth_token": oauth_token,

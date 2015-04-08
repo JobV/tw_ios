@@ -65,6 +65,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         let terminateActionHandler = { (action:UIAlertAction!) -> Void in
             var meetup = Meetups()
+            
             meetup.terminateMeetup(String(self.friendProfile.friendID))
             self.navigationController?.popViewControllerAnimated(true)
             self.myTimer.invalidate()
@@ -156,11 +157,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue:CLLocationCoordinate2D = manager.location.coordinate
-        let location = locations.last as CLLocation
-        var user = User()
-        
-        user.setLocation(locValue)
-        
+//        let location = locations.last as CLLocation
+//        var user = User()
+//        
+//        user.setLocation(locValue)
+//        
         userPin.coordinate = locValue
         userPin.title = "You"
         

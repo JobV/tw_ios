@@ -41,6 +41,7 @@
 	<string>This application needs to access location features</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>location</string>
 		<string>remote-notification</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>

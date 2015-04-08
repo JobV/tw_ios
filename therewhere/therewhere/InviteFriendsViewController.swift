@@ -59,6 +59,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
             object: nil)
+        var meetups = Meetups()
+        meetups.getPendingMeetups()
         
         //Update list of friends
         user.getFriends()
