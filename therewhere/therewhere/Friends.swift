@@ -24,8 +24,12 @@ class Friends: NSObject {
     // Whenever friend location is received, a notification is sent, usually to the map view
     func getLocation(friendID : String){
         let url = APIConnectionManager.serverAddress+"/api/v1/users/"+friendID+"/location"
+        var user = UserProfile.sharedInstance
+        let parameters = [
+            "token": user.access_token
+        ]
         
-        Alamofire.request(.GET, url)
+        Alamofire.request(.GET, url, parameters: parameters)
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("Error: \(error)")
@@ -34,9 +38,18 @@ class Friends: NSObject {
                     var json = JSON(json!)
                     
                     if json["x"]&&json["y"] {
-                        var latitude :Double? = json["x"].double!
-                        var longitude :Double? = json["y"].double!
-                        var coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+                        var latitude = 0.0
+                        var longitude = 0.0
+                        
+                        if var latitudeFromJson = json["x"].double{
+                            latitude = latitudeFromJson
+                        }
+                        
+                        if var longitudeFromJson = json["y"].double{
+                            longitude = longitudeFromJson
+                        }
+                        
+                        var coordinate = CLLocationCoordinate2DMake(latitude, longitude)
                         var friendCoordinates = Coordinates()
                         
                         friendCoordinates.latitude = coordinate.latitude
@@ -46,7 +59,6 @@ class Friends: NSObject {
                     }else{
                         println("no location available! sorry mate ")
                     }
-                    
                 }
         }
         

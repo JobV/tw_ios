@@ -11,13 +11,13 @@ import UIKit
 // Login view delegates
 class LoginViewController: UIViewController, FBLoginViewDelegate{
     var fbloginView: FBLoginView = FBLoginView()
+    var fbCounter = 0
     
     @IBOutlet var loginBackground: UIImageView!
     @IBOutlet var fbButtonContainer: SpringView!
     @IBAction func friendListButton(sender: AnyObject) {
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
-        
-        navigationController?.pushViewController(controller, animated: true)
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -38,27 +38,38 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     // Callback function triggered when user successfully logs in
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
-        navigationController?.pushViewController(controller, animated: true)
     }
     
     // Callback function triggered when user successfully logs out
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
-        println("User Logged Out")
+        var user = User()
+        user.logout()
+        fbCounter = 0
     }
     
     // Fetching user info callback post-login
     func loginViewFetchedUserInfo(loginView : FBLoginView!, user: FBGraphUser){
-        var userProfile = UserProfile.sharedInstance
-        var token:String = FBSession.activeSession().accessTokenData.accessToken
-        
-        // Manually set user id
-        userProfile.userID = "1"
+        if(fbCounter == 0){
+            var userProfile = UserProfile.sharedInstance
+            var token:String = FBSession.activeSession().accessTokenData.accessToken
+            var userAPI = User()
+            
+            userProfile.firstName = user.first_name
+            userProfile.lastName = user.last_name
+            userProfile.email = user.objectForKey("email") as String
+            userAPI.authenticate(token)
+            fbCounter+=1
+        }
+    }
+    
+    func authenticationHandler(object: NSNotification){
+        var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
+        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
+    
 }

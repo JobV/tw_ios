@@ -41,7 +41,12 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var colorArray = [UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(),UIColor.darkGrayColor(), UIColor.grayColor(),UIColor.greenColor(), UIColor.lightGrayColor(), UIColor.magentaColor(), UIColor.orangeColor(),UIColor.purpleColor(),UIColor.redColor(),UIColor.whiteColor(), UIColor.yellowColor()]
     
     @IBAction func backButton(sender: AnyObject) {
-        navigationController?.popToRootViewControllerAnimated(true)
+        let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
+        self.presentViewController(loginViewController, animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,27 +54,21 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         var userProfile = UserProfile.sharedInstance
         var user = User()
-        var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         
-        //Hide navigation controller bar
-        navigationController?.navigationBarHidden = true;
+        var meetups = Meetups()
         
         //Register for updating friends list notifications
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
             object: nil)
+
+        meetups.getPendingMeetups()
         
         //Update list of friends
-        userProfile.userID = "1"
         user.getFriends()
         
-        //Specify custom row/cell properties
-        tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
-        tableView.rowHeight = 60
         
-        //Reload table with new data
-        tableView.reloadData()
     }
     
     func handleGetFriendsNotification(friends: NSNotification){
@@ -90,6 +89,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
+        //Specify custom row/cell properties
+        tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
+        tableView.rowHeight = 60
+        
+        //Reload table with new data
+        tableView.reloadData()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,10 +130,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             var result = meetups.requestMeetup(String(self.items[indexPath.row].1))
             
             cell.updateMeetupStatus("pending")
-            
         case "accepted":
             // when cell status is "accepted" selecting this friend cell will open map with locations
-            var controller = MapViewController(nibName:"MapViewController",bundle:nil)
+            var controller = MapViewController(nibName:"MapViewController", bundle:nil)
             var friend = FriendProfile()
             
             friend.friendID = self.items[indexPath.row].1
@@ -136,7 +142,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             controller.setColor(getRandomColor(countElements(title)))
             controller.setFriendProfile(friend)
             
-            navigationController?.pushViewController(controller, animated: true)
+            self.presentViewController(controller, animated: true, completion: nil)
             
         case "pending":
             // when cell status is "pending" it means a request was already sent and you need to wait for the result
