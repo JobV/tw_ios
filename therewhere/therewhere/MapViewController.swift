@@ -14,9 +14,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet
     var buttonColor: UIColor? = UIColor.greenColor()
-    let locationManager = CLLocationManager()
-    var userPin = MKPointAnnotation()
-    var friendPin = MKPointAnnotation()
+    var locationManager = CLLocationManager()
+    let userPin = MKPointAnnotation()
+    let friendPin = MKPointAnnotation()
     var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0)
     var myTimer = NSTimer()
     var showDirection:Bool = false
@@ -30,6 +30,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     
+    @IBAction func showFriendsList(sender: AnyObject) {
+        var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
+        
+        self.presentViewController(friendsViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func callFriendButton(sender: AnyObject) {
         var alertController = UIAlertController()
         
@@ -40,13 +46,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             let callingActionHandler = { (action:UIAlertAction!) -> Void in
                 UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.friendProfile.phoneNumber)")!)
-                println("placing call")
+                return Void()
             }
             
             alertController.addAction(UIAlertAction(title: "Hum..nah", style: UIAlertActionStyle.Cancel, handler: nil))
             alertController.addAction(UIAlertAction(title: "Yes please", style: UIAlertActionStyle.Destructive, handler: callingActionHandler))
-            
-            
         }else{
             alertController = UIAlertController(title: "Calling Friend!",
                 message: "Sorry, your friend's number isn't available.",
@@ -67,8 +71,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             var meetup = Meetups()
             
             meetup.terminateMeetup(String(self.friendProfile.friendID))
-            self.navigationController?.popViewControllerAnimated(true)
             self.myTimer.invalidate()
+            var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
+            self.presentViewController(friendsViewController, animated: true, completion: nil)
         }
         
         alertController.addAction(UIAlertAction(title: "Not yet", style: UIAlertActionStyle.Cancel, handler: nil))
@@ -106,13 +111,23 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         friendProfile = friend
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewDidDisappear(animated: Bool) {
+        super.viewWillDisappear(true)
         self.myTimer.invalidate()
+        self.mapView.removeFromSuperview()
+////        NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0 diskPath:nil];
+//        var sharedCache = NSURLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
+//        NSURLCache.setSharedURLCache(sharedCache)
+//        sharedCache.removeAllCachedResponses()
+//        
+//  //      [NSURLCache setSharedURLCache:sharedCache];
+//   //     [sharedCache release];
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.locationManager = CLLocationManager()
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"updateFriendLocation:",
             name: "friendLocationUpdate",
@@ -121,7 +136,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         myTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "updateLocation", userInfo: nil, repeats: true)
         myTimer.fire()
         
-        navigationController?.navigationBarHidden = false;
         callButton.backgroundColor = buttonColor
         stopButton.backgroundColor = buttonColor
         navigateButton.backgroundColor = buttonColor
@@ -157,11 +171,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue:CLLocationCoordinate2D = manager.location.coordinate
-//        let location = locations.last as CLLocation
-//        var user = User()
-//        
-//        user.setLocation(locValue)
-//        
+        
         userPin.coordinate = locValue
         userPin.title = "You"
         

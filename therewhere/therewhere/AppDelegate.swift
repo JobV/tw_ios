@@ -122,9 +122,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         if let window = window {
             var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
-            var navigationController = UINavigationController(rootViewController: loginviewcontroller)
             
-            window.rootViewController = navigationController
+            window.rootViewController = loginviewcontroller
             window.backgroundColor = UIColor.whiteColor()
             window.makeKeyAndVisible()
         }
@@ -138,12 +137,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
-        var navigationController = UINavigationController(rootViewController: inviteviewcontroller)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         if let window = window {
-            window.rootViewController = navigationController
+            window.rootViewController = inviteviewcontroller
             window.backgroundColor = UIColor.whiteColor()
             window.makeKeyAndVisible()
         }
@@ -223,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         completionHandler(UIBackgroundFetchResult.NewData)
     }
-    
+
     
     // MARK: - Core Data stack
     
