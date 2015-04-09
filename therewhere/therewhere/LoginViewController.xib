@@ -16,6 +16,9 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" image="5s" translatesAutoresizingMaskIntoConstraints="NO" id="rji-cJ-JkA">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="580"/>
+                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CYo-r8-OPZ">
                     <rect key="frame" x="229" y="520" width="71" height="30"/>
                     <state key="normal" title="friends list">
@@ -25,9 +28,6 @@
                         <action selector="friendListButton:" destination="-1" eventType="touchUpInside" id="Mpm-qe-a8b"/>
                     </connections>
                 </button>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" misplaced="YES" image="5s" translatesAutoresizingMaskIntoConstraints="NO" id="rji-cJ-JkA">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="580"/>
-                </imageView>
                 <view alpha="0.0" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MdP-mx-9SZ" customClass="SpringView" customModule="therewhere" customModuleProvider="target">
                     <rect key="frame" x="8" y="400" width="304" height="68"/>
                     <subviews>
