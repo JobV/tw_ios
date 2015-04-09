@@ -71,7 +71,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     func authenticationHandler(object: NSNotification){
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
-        self.presentViewController(controller, animated: true, completion: nil)
+        
+//        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
