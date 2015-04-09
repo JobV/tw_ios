@@ -22,13 +22,19 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // hide navigation bar
+        fbCounter = 0
+        //Register for authentication notifications
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector:"authenticationHandler:",
+            name: "authenticationNotification",
+            object: nil)
+        
+        //hidding navigation bar
         navigationController?.navigationBarHidden = true;
                 
         // Set FB settings
         fbloginView.delegate = self
-        fbloginView.readPermissions = ["public_profile", "email", "user_friends"]
+        fbloginView.readPermissions = ["public_profile", "email", "user_friends", "user_about_me", "user_activities"]
         
         // Animate the FB login button falling down
         fbButtonContainer.animation = "slideDown"
