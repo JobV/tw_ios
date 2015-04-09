@@ -115,13 +115,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         super.viewWillDisappear(true)
         self.myTimer.invalidate()
         self.mapView.removeFromSuperview()
-////        NSURLCache *sharedCache = [[NSURLCache alloc] initWithMemoryCapacity:0 diskCapacity:0 diskPath:nil];
-//        var sharedCache = NSURLCache(memoryCapacity: 0, diskCapacity: 0, diskPath: nil)
-//        NSURLCache.setSharedURLCache(sharedCache)
-//        sharedCache.removeAllCachedResponses()
-//        
-//  //      [NSURLCache setSharedURLCache:sharedCache];
-//   //     [sharedCache release];
     }
     
     override func viewDidLoad() {
