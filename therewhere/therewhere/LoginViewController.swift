@@ -1,4 +1,4 @@
-//
+
 //  LoginViewController.swift
 //  therewhere
 //
@@ -13,6 +13,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     var fbloginView: FBLoginView = FBLoginView()
     var fbCounter = 0
     
+    @IBOutlet var loginBackground: UIImageView!
+    @IBOutlet var fbButtonContainer: SpringView!
     @IBAction func friendListButton(sender: AnyObject) {
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         self.presentViewController(controller, animated: true, completion: nil)
@@ -29,12 +31,15 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
         
         //hidding navigation bar
         navigationController?.navigationBarHidden = true;
-        
+                
+        // Set FB settings
         fbloginView.delegate = self
         fbloginView.readPermissions = ["public_profile", "email", "user_friends", "user_about_me", "user_activities"]
-        fbloginView.center = self.view.center
         
-        self.view.addSubview(fbloginView)
+        // Animate the FB login button falling down
+        fbButtonContainer.animation = "slideDown"
+        fbButtonContainer.animate()
+        
     }
     
     // Callback function triggered when user successfully logs in
@@ -66,7 +71,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     func authenticationHandler(object: NSNotification){
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
-        self.presentViewController(controller, animated: true, completion: nil)
+        
+//        self.presentViewController(controller, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {

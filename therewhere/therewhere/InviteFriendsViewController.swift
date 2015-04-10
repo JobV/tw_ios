@@ -38,7 +38,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var tableView: UITableView!
     var items: [(String, Int, String, String)] = []
     var friendArray:[(String,Int, String)] = []
-    var colorArray = [UIColor.blackColor(), UIColor.blueColor(), UIColor.brownColor(), UIColor.cyanColor(),UIColor.darkGrayColor(), UIColor.grayColor(),UIColor.greenColor(), UIColor.lightGrayColor(), UIColor.magentaColor(), UIColor.orangeColor(),UIColor.purpleColor(),UIColor.redColor(),UIColor.whiteColor(), UIColor.yellowColor()]
+    var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
     
     @IBAction func backButton(sender: AnyObject) {
         let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
