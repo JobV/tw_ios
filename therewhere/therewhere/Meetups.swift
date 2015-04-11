@@ -29,8 +29,8 @@ class Meetups: NSObject {
                     var json = JSON(json!)
                     
                     if var ongoingMeetups = json["meetups"].array{
-                        println("meetups: \(ongoingMeetups.count)")
                         var userProfile = UserProfile.sharedInstance
+                        
                         userProfile.onGoingMeetups = ongoingMeetups.count
                     }
                 }
@@ -42,7 +42,7 @@ class Meetups: NSObject {
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/meetups"
         var success:Bool = false
-        let parameters = [
+        let parameters = [  
             "friend_id": friendID,
             "token": user.access_token
         ]

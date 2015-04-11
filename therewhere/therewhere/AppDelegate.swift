@@ -16,27 +16,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var window: UIWindow?
     var locationManager = CLLocationManager()
+    var getOnGoingMeetupsTimer = NSTimer()
     
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         // I know i should be using signification location option here. this is just for testing now.
+        getOnGoingMeetupsTimer.invalidate()
     }
+    
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         var userProfile = UserProfile.sharedInstance
-        println("trying to update: \(userProfile.onGoingMeetups)")
         // Only update background location if there's an ongoing meetup
         if(userProfile.onGoingMeetups > 0){
             var locValue:CLLocationCoordinate2D = manager.location.coordinate
             var user = User()
-        
+            
             user.setLocation(locValue)
         }
     }
     
+    func updateOnGoingMeetups(){
+        var meetups = Meetups()
+        
+        meetups.getPendingMeetups()
+    }
+    
     func applicationDidBecomeActive(application: UIApplication) {
+        getOnGoingMeetupsTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateOnGoingMeetups", userInfo: nil, repeats: true)
+        getOnGoingMeetupsTimer.fire()
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -135,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     // Handle remote notifications
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-
+        
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -179,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 var controller = MapViewController(nibName:"MapViewController",bundle:nil)
                 var friend = FriendProfile()
                 var userProfile = UserProfile.sharedInstance
-
+                
                 if var friendID:Int = userInfo["friend_id"] as? Int{
                     friend.friendID = friendID
                 }
@@ -221,7 +231,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         completionHandler(UIBackgroundFetchResult.NewData)
     }
-
+    
     
     // MARK: - Core Data stack
     

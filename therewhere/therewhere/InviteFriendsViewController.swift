@@ -39,6 +39,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var items: [(String, Int, String, String)] = []
     var friendArray:[(String,Int, String)] = []
     var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
+    var getFriendsTimer = NSTimer()
+    var getOnGoingMeetupsTimer = NSTimer()
     
     @IBAction func backButton(sender: AnyObject) {
         let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
@@ -47,37 +49,38 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
+        getFriendsTimer.invalidate()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         
-        var userProfile = UserProfile.sharedInstance
-        var user = User()
+        getFriendsTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "updateFriendsList", userInfo: nil, repeats: true)
+        getFriendsTimer.fire()
         
-        var meetups = Meetups()
+        var userProfile = UserProfile.sharedInstance
         
         //Register for updating friends list notifications
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
             object: nil)
-
-        meetups.getPendingMeetups()
+    }
+    
+    
+    func updateFriendsList(){
+        var user = User()
         
-        //Update list of friends
         user.getFriends()
-        
-        
     }
     
     func handleGetFriendsNotification(friends: NSNotification){
-
+        
         var friends = friends.object as Friends
         
         //Clear outdated friends' list
         items.removeAll(keepCapacity: false)
-
+        
         //Update list with new content
         for (name, id, status, phoneNumber) in friends.phoneNumberArray{
             items.append(name, id, status, phoneNumber)
@@ -104,7 +107,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
+        
         //Use custom cell
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
         
@@ -122,7 +125,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         var (title, id, status, phoneNumber) = items[indexPath.row]
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
-
+        
         switch cell.status {
         case "ready":
             // when cell status is "ready" a request meetup will be sent to selected friend
