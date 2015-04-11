@@ -38,12 +38,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var tableView: UITableView!
     var items: [(String, Int, String, String)] = []
     var friendArray:[(String,Int, String)] = []
-    var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
     
-    @IBAction func backButton(sender: AnyObject) {
-        let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
-        self.presentViewController(loginViewController, animated: true, completion: nil)
-    }
+    // Set the colors for the friendslist
+    var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
@@ -57,7 +54,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         var meetups = Meetups()
         
-        //Register for updating friends list notifications
+        // Register for updating friends list notifications
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
@@ -67,21 +64,23 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         //Update list of friends
         user.getFriends()
-        
-        
     }
     
     func handleGetFriendsNotification(friends: NSNotification){
-
         var friends = friends.object as Friends
         
-        //Clear outdated friends' list
+        // Clear outdated friends list
         items.removeAll(keepCapacity: false)
 
-        //Update list with new content
+        // Update list with new content
         for (name, id, status, phoneNumber) in friends.phoneNumberArray{
             items.append(name, id, status, phoneNumber)
         }
+        
+        for _ in 1...9 {
+            items.append("John Doe", 1123, "pending", "12312323")
+        }
+
         
         //Reload table with new data
         tableView.reloadData()
@@ -90,12 +89,40 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Load multitouch
+        let twoFingerTap = UITapGestureRecognizer(target: self, action: "twoFingerTap")
+        twoFingerTap.numberOfTapsRequired = 1
+        twoFingerTap.numberOfTouchesRequired = 2
+        view.addGestureRecognizer(twoFingerTap)
+        
+        let threeFingerTap = UITapGestureRecognizer(target: self, action: "threeFingerTap")
+        threeFingerTap.numberOfTouchesRequired = 1
+        threeFingerTap.numberOfTouchesRequired = 3
+        view.addGestureRecognizer(threeFingerTap)
+        twoFingerTap.requireGestureRecognizerToFail(threeFingerTap)
+        
         var nib = UINib(nibName: "CustomTableViewCell", bundle: nil)
+        
         //Specify custom row/cell properties
         tableView.registerNib(nib, forCellReuseIdentifier: "customCell")
         tableView.rowHeight = 60
         
         //Reload table with new data
+        tableView.reloadData()
+    }
+    
+    // Go back when tapping with two fingers
+    func twoFingerTap() {
+        println("Two finger tap detected. Going back.")
+        let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
+        self.presentViewController(loginViewController, animated: true, completion: nil)
+    }
+    
+    // Refresh when tapping with three fingers
+    func threeFingerTap() {
+        println("Three finger tap detected. Refreshing.")
+        var user = User()
+        user.getFriends()
         tableView.reloadData()
     }
     
@@ -111,25 +138,40 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         // this is how you extract values from a tuple
         var (fullName, id, status, phoneNumber) = items[indexPath.row]
         
-        cell.contentView.backgroundColor = getRandomColor(countElements(fullName))
+        
+        switch cell.status {
+        case "ready":
+            cell.backgroundColor = colorForIndex(indexPath.row)
+            cell.fullNameLabel?.textColor = UIColor.blackColor()
+        default:
+            cell.backgroundColor = UIColor.blackColor()
+            cell.fullNameLabel?.textColor = colorForIndex(indexPath.row)
+        }
+        
+        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        
+//        cell.contentView.backgroundColor = getRandomColor(countElements(fullName))
         cell.loadItem(fullName: fullName, id: id, status: status)
         
         return cell
     }
+
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
         var (title, id, status, phoneNumber) = items[indexPath.row]
         var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
 
         switch cell.status {
+            
         case "ready":
             // when cell status is "ready" a request meetup will be sent to selected friend
             var meetups = Meetups()
             var result = meetups.requestMeetup(String(self.items[indexPath.row].1))
             
             cell.updateMeetupStatus("pending")
+            
         case "accepted":
             // when cell status is "accepted" selecting this friend cell will open map with locations
             var controller = MapViewController(nibName:"MapViewController", bundle:nil)
@@ -191,13 +233,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    // Explicitly update friends list
-    @IBAction func refreshButton(sender: AnyObject) {
-        var user = User()
-        
-        user.getFriends()
-        tableView.reloadData()
-    }
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -211,6 +246,12 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         else{
             return getRandomColor(nameSize-colorArray.count)
         }
+    }
+    
+    func colorForIndex(index: Int) -> UIColor {
+        let itemsCount = items.count - 1
+        let colorVal = (CGFloat(index) / CGFloat(itemsCount)) * 0.6
+        return UIColor(red: 1.0, green: colorVal, blue: 0.0, alpha: 1.0)
     }
     
 }
