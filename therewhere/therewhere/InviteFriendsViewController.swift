@@ -76,7 +76,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     func handleGetFriendsNotification(friends: NSNotification){
         
-        var friends = friends.object as Friends
+        var friends = friends.object as! Friends
         
         //Clear outdated friends' list
         items.removeAll(keepCapacity: false)
@@ -109,12 +109,12 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         //Use custom cell
-        var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
+        var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as! CustomTableViewCell
         
         // this is how you extract values from a tuple
         var (fullName, id, status, phoneNumber) = items[indexPath.row]
         
-        cell.contentView.backgroundColor = getRandomColor(countElements(fullName))
+        cell.contentView.backgroundColor = getRandomColor(count(fullName))
         cell.loadItem(fullName: fullName, id: id, status: status)
         
         return cell
@@ -124,7 +124,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         
         var (title, id, status, phoneNumber) = items[indexPath.row]
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         switch cell.status {
         case "ready":
@@ -142,7 +142,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             friend.firstName = self.items[indexPath.row].0
             friend.phoneNumber = self.items[indexPath.row].3
             
-            controller.setColor(getRandomColor(countElements(title)))
+            controller.setColor(getRandomColor(count(title)))
             controller.setFriendProfile(friend)
             
             self.presentViewController(controller, animated: true, completion: nil)

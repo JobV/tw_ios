@@ -63,7 +63,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
             
             userProfile.firstName = user.first_name
             userProfile.lastName = user.last_name
-            userProfile.email = user.objectForKey("email") as String
+            userProfile.email = user.objectForKey("email") as! String
             userAPI.authenticate(token)
             fbCounter+=1
         }

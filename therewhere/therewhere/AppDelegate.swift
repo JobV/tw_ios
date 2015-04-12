@@ -89,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let requestedTypes = UIUserNotificationType.Alert | .Sound
         let categories = NSSet(object: category)
-        let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories)
+        let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories as Set<NSObject>)
         
         UIApplication.sharedApplication().registerUserNotificationSettings(settingsRequest)
         
@@ -156,16 +156,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             window.makeKeyAndVisible()
         }
         
-        var action = userInfo["action"] as NSNumber!
-        var aps = userInfo["aps"] as NSDictionary
-        var msg = aps["alert"] as String
+        var action = userInfo["action"] as! NSNumber!
+        var aps = userInfo["aps"] as! NSDictionary
+        var msg = aps["alert"] as! String
         let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
         
         switch action {
         case 1:
             // Receive meetup request
             let acceptActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                var friend_id:NSNumber = userInfo["friend_id"] as! NSNumber!
                 var userProfile = UserProfile.sharedInstance
                 var meetup = Meetups()
                 
@@ -174,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
             
             let declineActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                var friend_id:NSNumber = userInfo["friend_id"] as! NSNumber!
                 var meetup = Meetups()
                 
                 meetup.declineToMeetup(toString(friend_id))
@@ -238,7 +238,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "tw.therewhere" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -261,7 +261,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")

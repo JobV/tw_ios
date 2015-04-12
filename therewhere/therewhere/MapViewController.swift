@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SwiftSpinner
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -17,7 +18,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var locationManager = CLLocationManager()
     let userPin = MKPointAnnotation()
     let friendPin = MKPointAnnotation()
-    var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0)
+    var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0){
+        didSet {
+            SwiftSpinner.hide()
+        }
+    }
+    
     var myTimer = NSTimer()
     var showDirection:Bool = false
     var friendProfile = FriendProfile()
@@ -117,27 +123,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.mapView.removeFromSuperview()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func viewWillAppear(animated: Bool) {
         self.locationManager = CLLocationManager()
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"updateFriendLocation:",
             name: "friendLocationUpdate",
             object: nil)
-        
-        myTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "updateLocation", userInfo: nil, repeats: true)
-        myTimer.fire()
-        
-        callButton.backgroundColor = buttonColor
-        stopButton.backgroundColor = buttonColor
-        navigateButton.backgroundColor = buttonColor
-        
-        if(buttonColor == UIColor.whiteColor()){
-            callButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-            stopButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-            navigateButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-        }
         
         self.mapView.delegate = self
         
@@ -152,6 +143,45 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+        
+        myTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "updateLocation", userInfo: nil, repeats: true)
+        myTimer.fire()
+        
+        if(!(friendLocation.longitude == 0 && friendLocation.latitude == 0)){
+            println("centering map")
+            var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+            var region = MKCoordinateRegion(center: friendLocation, span: span)
+            
+            mapView.setRegion(region, animated: true)
+        }else{
+            println("not centering map")
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        callButton.backgroundColor = buttonColor
+        stopButton.backgroundColor = buttonColor
+        navigateButton.backgroundColor = buttonColor
+        
+        if(buttonColor == UIColor.whiteColor()){
+            callButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+            stopButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+            navigateButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
+        }
+        
+        if(!(friendLocation.longitude == 0 && friendLocation.latitude == 0)){
+            println("centering map")
+            var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+            var region = MKCoordinateRegion(center: friendLocation, span: span)
+            
+            mapView.setRegion(region, animated: true)
+        }else{
+            println("not centering map")
+        }
+        
+        SwiftSpinner.show("Connecting to satellite...")
     }
     
     override func didReceiveMemoryWarning() {
@@ -174,7 +204,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func updateFriendLocation(notification: NSNotification){
         let notification_coordinates : [NSObject : AnyObject] = notification.userInfo!
-        var coordinates = notification_coordinates["location"] as Friends.Coordinates
+        var coordinates = notification_coordinates["location"] as! Friends.Coordinates
         var coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
         
         friendLocation = coordinate
