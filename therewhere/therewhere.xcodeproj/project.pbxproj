@@ -10,6 +10,7 @@
 		A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A69F1A58303800D4D992 /* MixpanelHandler.swift */; };
 		A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */; };
 		A674F02F1AABB40500325CEF /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674F02E1AABB40500325CEF /* FriendProfile.swift */; };
+		A675AD851ADBE26D00BB812E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AD841ADBE26D00BB812E /* CustomTableViewCell.swift */; };
 		A680A39B1A5DE1270035B685 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39A1A5DE1270035B685 /* User.swift */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68F6BC21A98EBCA00D252BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F6BC01A98EBCA00D252BB /* MapViewController.swift */; };
@@ -99,6 +100,7 @@
 		A608A6AC1A5C8A5D00D4D992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhere_Tests.swift; sourceTree = "<group>"; };
 		A674F02E1AABB40500325CEF /* FriendProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
+		A675AD841ADBE26D00BB812E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = ../CustomTableViewCell.swift; sourceTree = "<group>"; };
 		A680A39A1A5DE1270035B685 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68F6BC01A98EBCA00D252BB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				A6A27DC51A3BACBA006F7ECD /* Supporting Files */,
 				A6A27DF41A3DDBDA006F7ECD /* TW.playground */,
 				A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */,
+				A675AD841ADBE26D00BB812E /* CustomTableViewCell.swift */,
 				A608A69F1A58303800D4D992 /* MixpanelHandler.swift */,
 				A68F6BC01A98EBCA00D252BB /* MapViewController.swift */,
 				A68F6BC11A98EBCA00D252BB /* MapViewController.xib */,
@@ -567,6 +570,7 @@
 				A6BD3C6D1ABEE4DA00B468B3 /* FacebookHandler.swift in Sources */,
 				CC2AFC7C1ACDF4D600DF7F25 /* SpringButton.swift in Sources */,
 				CC2AFC6B1ACDF4D600DF7F25 /* BlurView.swift in Sources */,
+				A675AD851ADBE26D00BB812E /* CustomTableViewCell.swift in Sources */,
 				CC2AFC7F1ACDF4D600DF7F25 /* SpringTextField.swift in Sources */,
 				CC2AFC841ACDF4D600DF7F25 /* UnwindSegue.swift in Sources */,
 				CC2AFC801ACDF4D600DF7F25 /* SpringTextView.swift in Sources */,
