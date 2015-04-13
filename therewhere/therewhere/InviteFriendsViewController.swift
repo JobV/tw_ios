@@ -9,28 +9,6 @@
 import Foundation
 import UIKit
 
-class CustomTableViewCell : UITableViewCell {
-    @IBOutlet weak var meetupicon: UIImageView!
-    @IBOutlet var meetupStatus: UILabel!
-    @IBOutlet var fullNameLabel: UILabel!
-    
-    var status: String = "idle"
-    
-    func loadItem(#fullName: String, id: Int, status: String) {
-        fullNameLabel?.text = fullName
-        meetupStatus.text = status
-        self.status = status
-    }
-    
-    func updateMeetupStatus(status:String){
-        meetupStatus.text = status
-        self.status = status;
-    }
-    
-    func sentMeetUp(){
-        meetupicon.hidden = false
-    }
-}
 
 class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -38,9 +16,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var tableView: UITableView!
     var items: [(String, Int, String, String)] = []
     var friendArray:[(String,Int, String)] = []
-    
-    // Set the colors for the friendslist
-    var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
@@ -138,18 +113,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         // this is how you extract values from a tuple
         var (fullName, id, status, phoneNumber) = items[indexPath.row]
         
-        
-        switch cell.status {
-        case "ready":
-            cell.backgroundColor = colorForIndex(indexPath.row)
-            cell.fullNameLabel?.textColor = UIColor.blackColor()
-        default:
-            cell.backgroundColor = UIColor.blackColor()
-            cell.fullNameLabel?.textColor = colorForIndex(indexPath.row)
-        }
-        
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
-        
 //        cell.contentView.backgroundColor = getRandomColor(countElements(fullName))
         cell.loadItem(fullName: fullName, id: id, status: status)
         
@@ -181,7 +144,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             friend.firstName = self.items[indexPath.row].0
             friend.phoneNumber = self.items[indexPath.row].3
             
-            controller.setColor(getRandomColor(countElements(title)))
+            controller.setColor(UIColor.greenColor())
             controller.setFriendProfile(friend)
             
             self.presentViewController(controller, animated: true, completion: nil)
@@ -238,20 +201,11 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         return true
     }
     
-    func getRandomColor(nameSize: Int) -> UIColor{
-        
-        if(nameSize < colorArray.count){
-            return colorArray[nameSize]
-        }
-        else{
-            return getRandomColor(nameSize-colorArray.count)
-        }
-    }
-    
+
     func colorForIndex(index: Int) -> UIColor {
         let itemsCount = items.count - 1
         let colorVal = (CGFloat(index) / CGFloat(itemsCount)) * 0.6
         return UIColor(red: 1.0, green: colorVal, blue: 0.0, alpha: 1.0)
     }
-    
+
 }
