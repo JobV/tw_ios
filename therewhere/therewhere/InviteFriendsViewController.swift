@@ -20,11 +20,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var getFriendsTimer = NSTimer()
     var getOnGoingMeetupsTimer = NSTimer()
     
-    @IBAction func backButton(sender: AnyObject) {
-        let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
-        self.presentViewController(loginViewController, animated: true, completion: nil)
-    }
-    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         getFriendsTimer.invalidate()
@@ -38,7 +33,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         var userProfile = UserProfile.sharedInstance
         
-        // Register for updating friends list notifications
+        //Register for updating friends list notifications
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
@@ -52,14 +47,13 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         user.getFriends()
     }
     
-    func handleGetFriendsNotification(friends: NSNotification){
+    func handleGetFriendsNotification(friendsObject: NSNotification){
+        var friends = friendsObject.object as! Friends
         
-        var friends = friends.object as! Friends
-        
-        // Clear outdated friends list
+        //Clear outdated friends' list
         items.removeAll(keepCapacity: false)
-        
-        //Update list with new content
+
+        // Update list with new content
         for (name, id, status, phoneNumber) in friends.phoneNumberArray{
             items.append(name, id, status, phoneNumber)
         }
@@ -125,7 +119,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         // this is how you extract values from a tuple
         var (fullName, id, status, phoneNumber) = items[indexPath.row]
         
-        cell.contentView.backgroundColor = getRandomColor(count(fullName))
+//        cell.contentView.backgroundColor = getRandomColor(countElements(fullName))
         cell.loadItem(fullName: fullName, id: id, status: status)
         
         return cell
@@ -156,7 +150,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             friend.firstName = self.items[indexPath.row].0
             friend.phoneNumber = self.items[indexPath.row].3
             
-            controller.setColor(getRandomColor(count(title)))
+            controller.setColor(UIColor.greenColor())
             controller.setFriend(friend)
             
             self.presentViewController(controller, animated: true, completion: nil)
