@@ -8,7 +8,7 @@
 
 import UIKit
 import MapKit
-import SwiftSpinner
+import JGProgressHUD
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
@@ -16,11 +16,29 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBOutlet
     var buttonColor: UIColor? = UIColor.greenColor()
     var locationManager = CLLocationManager()
-    let userPin = MKPointAnnotation()
+    var validLocations = false
+    var firstTimeOpeningMap = true
+    var userPin = MKPointAnnotation(){
+        didSet {
+            if(friendLocation.latitude != 0){
+                progressHUD.dismiss()
+            }
+        }
+    }
     let friendPin = MKPointAnnotation()
+    let progressHUD = JGProgressHUD(style: JGProgressHUDStyle.ExtraLight)
     var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0){
         didSet {
-            SwiftSpinner.hide()
+            if (firstTimeOpeningMap){
+                var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+                var region = MKCoordinateRegion(center: friendLocation, span: span)
+                
+                mapView.setRegion(region, animated: true)
+                firstTimeOpeningMap = false
+            }
+            if(userPin.coordinate.latitude != 0){
+                progressHUD.dismiss()
+            }
         }
     }
     
@@ -89,22 +107,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func navigateButton(sender: AnyObject) {
-        if(self.myRoute? != nil){
-            if showDirection {
-                showDirection = false
-                self.mapView.removeOverlay(self.myRoute?.polyline)
-            }
-            else{
-                showDirection = true
-                self.mapView.addOverlay(self.myRoute?.polyline)
-            }
-        }else{
-            var alertController = UIAlertController(title: "Friend Location!",
-                message: "Sorry, your friend's location isn't available.",
-                preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-            self.presentViewController(alertController, animated: true, completion: nil)
+        if showDirection {
+            showDirection = false
+            self.mapView.removeOverlay(self.myRoute?.polyline)
+        }
+        else{
+            showDirection = true
+            self.mapView.addOverlay(self.myRoute?.polyline)
         }
     }
     
@@ -113,7 +122,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     
-    func setFriendProfile(friend:FriendProfile){
+    func setFriend(friend:FriendProfile){
         friendProfile = friend
     }
     
@@ -149,10 +158,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         if(!(friendLocation.longitude == 0 && friendLocation.latitude == 0)){
             println("centering map")
-            var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
-            var region = MKCoordinateRegion(center: friendLocation, span: span)
             
-            mapView.setRegion(region, animated: true)
         }else{
             println("not centering map")
         }
@@ -181,7 +187,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             println("not centering map")
         }
         
-        SwiftSpinner.show("Connecting to satellite...")
+        progressHUD.textLabel.text = "fetching locations..."
+        progressHUD.showInView(view, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -213,6 +220,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let markC1 = MKPlacemark(coordinate: userPin.coordinate, addressDictionary: nil)
             let markC2 = MKPlacemark(coordinate: friendLocation, addressDictionary: nil)
             
+            println("markC1: \(markC1)")
+            println("markC2: \(markC2)")
+            
             friendPin.coordinate = friendLocation
             friendPin.title = friendProfile.firstName
             
@@ -223,14 +233,19 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             directionsRequest.setDestination(MKMapItem(placemark: markC2))
             directionsRequest.transportType = MKDirectionsTransportType.Automobile
             directions = MKDirections(request: directionsRequest)
-            
+            println("before directions")
             directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
                 if error == nil {
+                    println("updating Route")
                     self.mapView.removeOverlay(self.myRoute?.polyline)
                     self.myRoute = response.routes[0] as? MKRoute
                     self.mapView.addOverlay(self.myRoute?.polyline)
+                }else{
+                    println(error)
                 }
             }
+        }else{
+            println("bad location")
         }
     }
     

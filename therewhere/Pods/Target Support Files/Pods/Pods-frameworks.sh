@@ -49,15 +49,15 @@ code_sign() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework 'Alamofire.framework'
+  install_framework 'JGProgressHUD.framework'
   install_framework 'MKMapView_ZoomLevel.framework'
   install_framework 'Mixpanel.framework'
-  install_framework 'SwiftSpinner.framework'
   install_framework 'SwiftyJSON.framework'
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework 'Alamofire.framework'
+  install_framework 'JGProgressHUD.framework'
   install_framework 'MKMapView_ZoomLevel.framework'
   install_framework 'Mixpanel.framework'
-  install_framework 'SwiftSpinner.framework'
   install_framework 'SwiftyJSON.framework'
 fi

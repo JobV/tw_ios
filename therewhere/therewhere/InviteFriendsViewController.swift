@@ -143,7 +143,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             friend.phoneNumber = self.items[indexPath.row].3
             
             controller.setColor(getRandomColor(count(title)))
-            controller.setFriendProfile(friend)
+            controller.setFriend(friend)
             
             self.presentViewController(controller, animated: true, completion: nil)
             

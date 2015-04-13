@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_Alamofire 2
 #define COCOAPODS_VERSION_PATCH_Alamofire 0
 
+// JGProgressHUD
+#define COCOAPODS_POD_AVAILABLE_JGProgressHUD
+#define COCOAPODS_VERSION_MAJOR_JGProgressHUD 1
+#define COCOAPODS_VERSION_MINOR_JGProgressHUD 2
+#define COCOAPODS_VERSION_PATCH_JGProgressHUD 3
+
 // MKMapView-ZoomLevel
 #define COCOAPODS_POD_AVAILABLE_MKMapView_ZoomLevel
 #define COCOAPODS_VERSION_MAJOR_MKMapView_ZoomLevel 1
@@ -29,12 +35,6 @@
 #define COCOAPODS_VERSION_MAJOR_Mixpanel_MPCategoryHelpers 2
 #define COCOAPODS_VERSION_MINOR_Mixpanel_MPCategoryHelpers 7
 #define COCOAPODS_VERSION_PATCH_Mixpanel_MPCategoryHelpers 3
-
-// SwiftSpinner
-#define COCOAPODS_POD_AVAILABLE_SwiftSpinner
-#define COCOAPODS_VERSION_MAJOR_SwiftSpinner 0
-#define COCOAPODS_VERSION_MINOR_SwiftSpinner 6
-#define COCOAPODS_VERSION_PATCH_SwiftSpinner 6
 
 // SwiftyJSON
 #define COCOAPODS_POD_AVAILABLE_SwiftyJSON
