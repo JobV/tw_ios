@@ -223,7 +223,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     }
                 }
             }
-            
         }
     }
     

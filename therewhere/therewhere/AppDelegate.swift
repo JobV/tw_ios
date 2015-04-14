@@ -19,13 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var getOnGoingMeetupsTimer = NSTimer()
     
     func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
-        // I know i should be using signification location option here. this is just for testing now.
         getOnGoingMeetupsTimer.invalidate()
     }
-    
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         var userProfile = UserProfile.sharedInstance
@@ -99,7 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
     }
     
-
+    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
         
@@ -116,7 +111,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     
     // Push Notifications
-    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData!) {
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         // Transforming deviceToken from data to string type
         var user = UserProfile.sharedInstance
         var characterSet: NSCharacterSet = NSCharacterSet( charactersInString: "<>" )
@@ -139,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
     }
     
-    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError!) {
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         println("Couldn't register: \(error)")
     }
     
@@ -165,12 +160,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         case 1:
             // Receive meetup request
             let acceptActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = userInfo["friend_id"] as! NSNumber!
                 var userProfile = UserProfile.sharedInstance
                 var meetup = Meetups()
+                var mapViewController = MapViewController(nibName:"MapViewController",bundle:nil)
+                var friend = FriendProfile()
                 
-                meetup.acceptMeetup(toString(friend_id))
-                userProfile.incrementOnGoingMeetups()
+                if var friendID:Int = userInfo["friend_id"] as? Int{
+                    friend.friendID = friendID
+                    meetup.acceptMeetup(toString(friendID))
+                    userProfile.incrementOnGoingMeetups()
+                    
+                    if var firstName:String = userInfo["first_name"] as? String{
+                        friend.firstName = firstName
+                    }
+                    
+                    if var lastName:String = userInfo["last_name"] as? String{
+                        friend.lastName = lastName
+                    }
+                    
+                    if var phoneNumber:String = userInfo["phone_nr"] as? String{
+                        friend.phoneNumber = phoneNumber
+                    }
+                    
+                    mapViewController.setFriend(friend)
+                    self.window?.rootViewController?
+                        .presentViewController(mapViewController, animated: true, completion: nil)
+                }
             }
             
             let declineActionHandler = { (action:UIAlertAction!) -> Void in
