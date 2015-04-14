@@ -16,35 +16,41 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var tableView: UITableView!
     var items: [(String, Int, String, String)] = []
     var friendArray:[(String,Int, String)] = []
+    var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
+    var getFriendsTimer = NSTimer()
+    var getOnGoingMeetupsTimer = NSTimer()
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
+        getFriendsTimer.invalidate()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         
+        getFriendsTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "updateFriendsList", userInfo: nil, repeats: true)
+        getFriendsTimer.fire()
+        
         var userProfile = UserProfile.sharedInstance
-        var user = User()
         
-        var meetups = Meetups()
-        
-        // Register for updating friends list notifications
+        //Register for updating friends list notifications
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"handleGetFriendsNotification:",
             name: "getFriendsNotification",
             object: nil)
-
-        meetups.getPendingMeetups()
+    }
+    
+    
+    func updateFriendsList(){
+        var user = User()
         
-        //Update list of friends
         user.getFriends()
     }
     
-    func handleGetFriendsNotification(friends: NSNotification){
-        var friends = friends.object as Friends
+    func handleGetFriendsNotification(friendsObject: NSNotification){
+        var friends = friendsObject.object as! Friends
         
-        // Clear outdated friends list
+        //Clear outdated friends' list
         items.removeAll(keepCapacity: false)
 
         // Update list with new content
@@ -106,9 +112,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
+        
         //Use custom cell
-        var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as CustomTableViewCell
+        var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as! CustomTableViewCell
         
         // this is how you extract values from a tuple
         var (fullName, id, status, phoneNumber) = items[indexPath.row]
@@ -124,8 +130,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
         var (title, id, status, phoneNumber) = items[indexPath.row]
-        var cell = tableView.cellForRowAtIndexPath(indexPath) as CustomTableViewCell
-
+        var cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
+        
         switch cell.status {
             
         case "ready":
@@ -145,7 +151,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             friend.phoneNumber = self.items[indexPath.row].3
             
             controller.setColor(UIColor.greenColor())
-            controller.setFriendProfile(friend)
+            controller.setFriend(friend)
             
             self.presentViewController(controller, animated: true, completion: nil)
             

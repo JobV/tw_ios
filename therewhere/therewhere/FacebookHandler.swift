@@ -19,15 +19,15 @@ import UIKit
     func getFacebookFriends (path: String) {
         FBRequestConnection.startWithGraphPath(path, completionHandler: { (connection:FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
             if ((error) == nil) {
-                var resultdict = result as NSDictionary
-                var data : NSArray = resultdict.objectForKey("data") as NSArray
-                var paging : NSDictionary = resultdict.objectForKey("paging") as NSDictionary
-                var nextURL = paging.objectForKey("next") as String!
+                var resultdict = result as! NSDictionary
+                var data : NSArray = resultdict.objectForKey("data") as! NSArray
+                var paging : NSDictionary = resultdict.objectForKey("paging") as! NSDictionary
+                var nextURL = paging.objectForKey("next") as! String!
                 
                 if(data.count > 0){
                     var friendlist = FriendList.sharedInstance
                     
-                    friendlist.friendList.addObjectsFromArray(data)
+                    friendlist.friendList.addObjectsFromArray(data as [AnyObject])
                     
                     if(nextURL != nil ){
                         var nextPathSize = distance(nextURL.startIndex, nextURL.endIndex)

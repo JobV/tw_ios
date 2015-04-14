@@ -10,6 +10,6 @@
 #define therewhere_Bridging_Header_h
 
 #import <FacebookSDK/FacebookSDK.h>
-
+#import "JGProgressHUD/JGProgressHUD.h"
 
 #endif

@@ -10,6 +10,7 @@
 		A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A69F1A58303800D4D992 /* MixpanelHandler.swift */; };
 		A608A6AE1A5C8A5D00D4D992 /* therewhere_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */; };
 		A674F02F1AABB40500325CEF /* FriendProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A674F02E1AABB40500325CEF /* FriendProfile.swift */; };
+		A675AD851ADBE26D00BB812E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A675AD841ADBE26D00BB812E /* CustomTableViewCell.swift */; };
 		A680A39B1A5DE1270035B685 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A680A39A1A5DE1270035B685 /* User.swift */; };
 		A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */; };
 		A68F6BC21A98EBCA00D252BB /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68F6BC01A98EBCA00D252BB /* MapViewController.swift */; };
@@ -99,6 +100,7 @@
 		A608A6AC1A5C8A5D00D4D992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A608A6AD1A5C8A5D00D4D992 /* therewhere_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = therewhere_Tests.swift; sourceTree = "<group>"; };
 		A674F02E1AABB40500325CEF /* FriendProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendProfile.swift; sourceTree = "<group>"; };
+		A675AD841ADBE26D00BB812E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomTableViewCell.swift; path = ../CustomTableViewCell.swift; sourceTree = "<group>"; };
 		A680A39A1A5DE1270035B685 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A68F6BC01A98EBCA00D252BB /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				A6A27DC51A3BACBA006F7ECD /* Supporting Files */,
 				A6A27DF41A3DDBDA006F7ECD /* TW.playground */,
 				A6A27E641A3E4640006F7ECD /* CustomTableViewCell.xib */,
+				A675AD841ADBE26D00BB812E /* CustomTableViewCell.swift */,
 				A608A69F1A58303800D4D992 /* MixpanelHandler.swift */,
 				A68F6BC01A98EBCA00D252BB /* MapViewController.swift */,
 				A68F6BC11A98EBCA00D252BB /* MapViewController.xib */,
@@ -413,12 +416,12 @@
 				TargetAttributes = {
 					A608A6A81A5C8A5D00D4D992 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = N5P6JXZ9SD;
+						DevelopmentTeam = ZQVN84AH54;
 						TestTargetID = A6A27DC11A3BACBA006F7ECD;
 					};
 					A6A27DC11A3BACBA006F7ECD = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = N5P6JXZ9SD;
+						DevelopmentTeam = ZQVN84AH54;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -567,6 +570,7 @@
 				A6BD3C6D1ABEE4DA00B468B3 /* FacebookHandler.swift in Sources */,
 				CC2AFC7C1ACDF4D600DF7F25 /* SpringButton.swift in Sources */,
 				CC2AFC6B1ACDF4D600DF7F25 /* BlurView.swift in Sources */,
+				A675AD851ADBE26D00BB812E /* CustomTableViewCell.swift in Sources */,
 				CC2AFC7F1ACDF4D600DF7F25 /* SpringTextField.swift in Sources */,
 				CC2AFC841ACDF4D600DF7F25 /* UnwindSegue.swift in Sources */,
 				CC2AFC801ACDF4D600DF7F25 /* SpringTextView.swift in Sources */,
@@ -664,11 +668,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "53b893cb-3f37-449a-a56a-4f1231719498";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -705,10 +709,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "53b893cb-3f37-449a-a56a-4f1231719498";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -720,7 +724,8 @@
 			baseConfigurationReference = 00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Marcelo Silva (875N6435MT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -741,6 +746,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "therewhere/Bridging-Header.h";
 			};
 			name = Debug;
@@ -750,8 +756,8 @@
 			baseConfigurationReference = C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Marcelo Silva (875N6435MT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Marcelo Silva (875N6435MT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -771,6 +777,7 @@
 					"$(inherited)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "therewhere/Bridging-Header.h";
 			};
 			name = Release;

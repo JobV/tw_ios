@@ -16,27 +16,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     var window: UIWindow?
     var locationManager = CLLocationManager()
+    var getOnGoingMeetupsTimer = NSTimer()
     
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         
         // I know i should be using signification location option here. this is just for testing now.
+        getOnGoingMeetupsTimer.invalidate()
     }
+    
     
     func locationManager(manager: CLLocationManager!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         var userProfile = UserProfile.sharedInstance
-        println("trying to update: \(userProfile.onGoingMeetups)")
         // Only update background location if there's an ongoing meetup
         if(userProfile.onGoingMeetups > 0){
             var locValue:CLLocationCoordinate2D = manager.location.coordinate
             var user = User()
-        
+            
             user.setLocation(locValue)
         }
     }
     
+    func updateOnGoingMeetups(){
+        var meetups = Meetups()
+        
+        meetups.getPendingMeetups()
+    }
+    
     func applicationDidBecomeActive(application: UIApplication) {
+        getOnGoingMeetupsTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateOnGoingMeetups", userInfo: nil, repeats: true)
+        getOnGoingMeetupsTimer.fire()
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -79,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         let requestedTypes = UIUserNotificationType.Alert | .Sound
         let categories = NSSet(object: category)
-        let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories)
+        let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories as Set<NSObject>)
         
         UIApplication.sharedApplication().registerUserNotificationSettings(settingsRequest)
         
@@ -89,12 +99,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
+
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
         
         return wasHandled
     }
-    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -135,7 +145,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     // Handle remote notifications
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-
+        
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -146,16 +156,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             window.makeKeyAndVisible()
         }
         
-        var action = userInfo["action"] as NSNumber!
-        var aps = userInfo["aps"] as NSDictionary
-        var msg = aps["alert"] as String
+        var action = userInfo["action"] as! NSNumber!
+        var aps = userInfo["aps"] as! NSDictionary
+        var msg = aps["alert"] as! String
         let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
         
         switch action {
         case 1:
             // Receive meetup request
             let acceptActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                var friend_id:NSNumber = userInfo["friend_id"] as! NSNumber!
                 var userProfile = UserProfile.sharedInstance
                 var meetup = Meetups()
                 
@@ -164,7 +174,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
             
             let declineActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = userInfo["friend_id"] as NSNumber!
+                var friend_id:NSNumber = userInfo["friend_id"] as! NSNumber!
                 var meetup = Meetups()
                 
                 meetup.declineToMeetup(toString(friend_id))
@@ -179,7 +189,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 var controller = MapViewController(nibName:"MapViewController",bundle:nil)
                 var friend = FriendProfile()
                 var userProfile = UserProfile.sharedInstance
-
+                
                 if var friendID:Int = userInfo["friend_id"] as? Int{
                     friend.friendID = friendID
                 }
@@ -197,7 +207,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 }
                 
                 userProfile.incrementOnGoingMeetups()
-                controller.setFriendProfile(friend)
+                controller.setFriend(friend)
                 
                 self.window?.rootViewController?.presentViewController(controller, animated: true, completion: nil)
             }
@@ -221,14 +231,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         completionHandler(UIBackgroundFetchResult.NewData)
     }
-
+    
     
     // MARK: - Core Data stack
     
     lazy var applicationDocumentsDirectory: NSURL = {
         // The directory the application uses to store the Core Data store file. This code uses a directory named "tw.therewhere" in the application's documents Application Support directory.
         let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-        return urls[urls.count-1] as NSURL
+        return urls[urls.count-1] as! NSURL
         }()
     
     lazy var managedObjectModel: NSManagedObjectModel = {
@@ -251,7 +261,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
             dict[NSLocalizedFailureReasonErrorKey] = failureReason
             dict[NSUnderlyingErrorKey] = error
-            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict as [NSObject : AnyObject])
             // Replace this with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
             NSLog("Unresolved error \(error), \(error!.userInfo)")

@@ -6,17 +6,17 @@
 // project.
 
 
-// AFNetworking
-#define COCOAPODS_POD_AVAILABLE_AFNetworking
-#define COCOAPODS_VERSION_MAJOR_AFNetworking 1
-#define COCOAPODS_VERSION_MINOR_AFNetworking 3
-#define COCOAPODS_VERSION_PATCH_AFNetworking 4
-
 // Alamofire
 #define COCOAPODS_POD_AVAILABLE_Alamofire
 #define COCOAPODS_VERSION_MAJOR_Alamofire 1
-#define COCOAPODS_VERSION_MINOR_Alamofire 1
-#define COCOAPODS_VERSION_PATCH_Alamofire 4
+#define COCOAPODS_VERSION_MINOR_Alamofire 2
+#define COCOAPODS_VERSION_PATCH_Alamofire 0
+
+// JGProgressHUD
+#define COCOAPODS_POD_AVAILABLE_JGProgressHUD
+#define COCOAPODS_VERSION_MAJOR_JGProgressHUD 1
+#define COCOAPODS_VERSION_MINOR_JGProgressHUD 2
+#define COCOAPODS_VERSION_PATCH_JGProgressHUD 3
 
 // MKMapView-ZoomLevel
 #define COCOAPODS_POD_AVAILABLE_MKMapView_ZoomLevel
@@ -27,66 +27,18 @@
 // Mixpanel
 #define COCOAPODS_POD_AVAILABLE_Mixpanel
 #define COCOAPODS_VERSION_MAJOR_Mixpanel 2
-#define COCOAPODS_VERSION_MINOR_Mixpanel 6
-#define COCOAPODS_VERSION_PATCH_Mixpanel 2
+#define COCOAPODS_VERSION_MINOR_Mixpanel 7
+#define COCOAPODS_VERSION_PATCH_Mixpanel 3
 
 // Mixpanel/MPCategoryHelpers
 #define COCOAPODS_POD_AVAILABLE_Mixpanel_MPCategoryHelpers
 #define COCOAPODS_VERSION_MAJOR_Mixpanel_MPCategoryHelpers 2
-#define COCOAPODS_VERSION_MINOR_Mixpanel_MPCategoryHelpers 6
-#define COCOAPODS_VERSION_PATCH_Mixpanel_MPCategoryHelpers 2
-
-// RestKit
-#define COCOAPODS_POD_AVAILABLE_RestKit
-#define COCOAPODS_VERSION_MAJOR_RestKit 0
-#define COCOAPODS_VERSION_MINOR_RestKit 20
-#define COCOAPODS_VERSION_PATCH_RestKit 3
-
-// RestKit/Core
-#define COCOAPODS_POD_AVAILABLE_RestKit_Core
-#define COCOAPODS_VERSION_MAJOR_RestKit_Core 0
-#define COCOAPODS_VERSION_MINOR_RestKit_Core 20
-#define COCOAPODS_VERSION_PATCH_RestKit_Core 3
-
-// RestKit/CoreData
-#define COCOAPODS_POD_AVAILABLE_RestKit_CoreData
-#define COCOAPODS_VERSION_MAJOR_RestKit_CoreData 0
-#define COCOAPODS_VERSION_MINOR_RestKit_CoreData 20
-#define COCOAPODS_VERSION_PATCH_RestKit_CoreData 3
-
-// RestKit/Network
-#define COCOAPODS_POD_AVAILABLE_RestKit_Network
-#define COCOAPODS_VERSION_MAJOR_RestKit_Network 0
-#define COCOAPODS_VERSION_MINOR_RestKit_Network 20
-#define COCOAPODS_VERSION_PATCH_RestKit_Network 3
-
-// RestKit/ObjectMapping
-#define COCOAPODS_POD_AVAILABLE_RestKit_ObjectMapping
-#define COCOAPODS_VERSION_MAJOR_RestKit_ObjectMapping 0
-#define COCOAPODS_VERSION_MINOR_RestKit_ObjectMapping 20
-#define COCOAPODS_VERSION_PATCH_RestKit_ObjectMapping 3
-
-// RestKit/Support
-#define COCOAPODS_POD_AVAILABLE_RestKit_Support
-#define COCOAPODS_VERSION_MAJOR_RestKit_Support 0
-#define COCOAPODS_VERSION_MINOR_RestKit_Support 20
-#define COCOAPODS_VERSION_PATCH_RestKit_Support 3
-
-// SOCKit
-#define COCOAPODS_POD_AVAILABLE_SOCKit
-#define COCOAPODS_VERSION_MAJOR_SOCKit 1
-#define COCOAPODS_VERSION_MINOR_SOCKit 1
-#define COCOAPODS_VERSION_PATCH_SOCKit 0
+#define COCOAPODS_VERSION_MINOR_Mixpanel_MPCategoryHelpers 7
+#define COCOAPODS_VERSION_PATCH_Mixpanel_MPCategoryHelpers 3
 
 // SwiftyJSON
 #define COCOAPODS_POD_AVAILABLE_SwiftyJSON
 #define COCOAPODS_VERSION_MAJOR_SwiftyJSON 2
 #define COCOAPODS_VERSION_MINOR_SwiftyJSON 1
 #define COCOAPODS_VERSION_PATCH_SwiftyJSON 3
-
-// TransitionKit
-#define COCOAPODS_POD_AVAILABLE_TransitionKit
-#define COCOAPODS_VERSION_MAJOR_TransitionKit 1
-#define COCOAPODS_VERSION_MINOR_TransitionKit 1
-#define COCOAPODS_VERSION_PATCH_TransitionKit 1
 
