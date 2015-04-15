@@ -110,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             .stringByReplacingOccurrencesOfString( " ", withString: "" ) as String
         
         user.deviceToken = deviceTokenString
-        
+
         //only allow fb login to act after securing an APN token
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         

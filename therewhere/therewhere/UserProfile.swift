@@ -45,4 +45,5 @@ import UIKit
     var access_token = String();
     var deviceToken = String();
     var onGoingMeetups = 0;
+    var profileImage = UIImage();
 }

@@ -10,6 +10,10 @@ import UIKit
 import MapKit
 import JGProgressHUD
 
+class CustomPointAnnotation: MKPointAnnotation {
+    var imageName: String!
+}
+
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     
@@ -23,8 +27,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var friendProfile = FriendProfile()
     var directionsRequest = MKDirectionsRequest()
     var directions = MKDirections()
-    let friendPin = MKPointAnnotation()
-    var userPin = MKPointAnnotation()
+    let friendPin = CustomPointAnnotation()
+    var userPin = CustomPointAnnotation()
+    var userProfile = UserProfile.sharedInstance
+    
     var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0){
         didSet {
             if (firstTimeOpeningMap){
@@ -97,7 +103,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         buttonColor = color
     }
     
-    
     func setFriend(friend:FriendProfile){
         friendProfile = friend
     }
@@ -151,15 +156,15 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     class CustomPointAnnotation: MKPointAnnotation {
-        var imageName: String!
+        var image: UIImage!
     }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue:CLLocationCoordinate2D = manager.location.coordinate
-        
         mapView.removeAnnotation(userPin)
         userPin.coordinate = locValue
         userPin.title = "You"
+        userPin.image = userProfile.profileImage
         mapView.addAnnotation(userPin)
     }
     
@@ -172,10 +177,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         if(!(friendLocation.longitude == 0 && friendLocation.latitude == 0)){
             mapView.removeAnnotation(friendPin)
-            
             friendPin.coordinate = friendLocation
             friendPin.title = friendProfile.firstName
-            
+            friendPin.image = UIImage(named: "location_green")
             mapView.addAnnotation(friendPin)
         }
     }
@@ -188,23 +192,30 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        let identifier = "my_location"
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
+        if !(annotation is CustomPointAnnotation) {
+            return nil
+        }
         
-        if pinView == nil {
-            pinView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            pinView!.canShowCallout = true
-            
-            if pinView.annotation.title! == "You" {
-                pinView.image = UIImage(named: "location_green")
-            }else{
-                pinView.image = UIImage(named: "location_blue")
-            }
+        let reuseId = "location"
+        var annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseId)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            annotationView.canShowCallout = true
         }
         else {
-            pinView.annotation = annotation
+            annotationView.annotation = annotation
         }
         
-        return pinView
+        let customPointAnnotation = annotation as! CustomPointAnnotation
+        annotationView.image = customPointAnnotation.image
+        
+        annotationView.canShowCallout = false;
+        annotationView.frame = CGRectMake(0, 0, 40, 40);
+        annotationView.layer.cornerRadius = annotationView.frame.size.height / 2
+        annotationView.layer.masksToBounds = true;
+        annotationView.contentMode = UIViewContentMode.ScaleAspectFill;
+        
+        return annotationView
     }
 }
