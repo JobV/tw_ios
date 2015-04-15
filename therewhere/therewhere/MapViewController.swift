@@ -77,7 +77,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func stopButton(sender: AnyObject) {
-        
         let alertController = UIAlertController(title: "Meetup!",
             message: "Terminate Meetup?",
             preferredStyle: UIAlertControllerStyle.Alert)
@@ -223,7 +222,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                     }
                 }
             }
-            
         }
     }
     
@@ -235,7 +233,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-        
         let identifier = "my_location"
         var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(identifier)
         
