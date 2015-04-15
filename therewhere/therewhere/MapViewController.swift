@@ -23,9 +23,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var friendProfile = FriendProfile()
     var directionsRequest = MKDirectionsRequest()
     var directions = MKDirections()
-    var myRoute : MKRoute?
     let friendPin = MKPointAnnotation()
-    let progressHUD = JGProgressHUD(style: JGProgressHUDStyle.ExtraLight)
     var userPin = MKPointAnnotation()
     var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0){
         didSet {
@@ -40,7 +38,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBOutlet var callButton: UIButton!
-    @IBOutlet var navigateButton: UIButton!
     @IBOutlet var stopButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     
@@ -96,28 +93,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    @IBAction func navigateButton(sender: AnyObject) {
-        if showDirection {
-            showDirection = false
-            self.mapView.removeOverlay(self.myRoute?.polyline)
-        }
-        else{
-            if (self.myRoute != nil){
-                showDirection = true
-                self.mapView.addOverlay(self.myRoute?.polyline)
-            }else{
-                progressHUD.textLabel.text="fetching location info.."
-                progressHUD.showInView(self.view)
-            }
-        }
-    }
-    
-    func dismissHUDAndShowDirections(){
-        self.progressHUD.dismiss()
-        showDirection = true
-        self.mapView.addOverlay(self.myRoute?.polyline)
-    }
-    
     func setColor(color:UIColor){
         buttonColor = color
     }
@@ -164,12 +139,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         callButton.backgroundColor = buttonColor
         stopButton.backgroundColor = buttonColor
-        navigateButton.backgroundColor = buttonColor
         
         if(buttonColor == UIColor.whiteColor()){
             callButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
             stopButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-            navigateButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
         }
     }
     
@@ -198,30 +171,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         friendLocation = coordinate
         
         if(!(friendLocation.longitude == 0 && friendLocation.latitude == 0)){
-            var markC1 = MKPlacemark(coordinate: userPin.coordinate, addressDictionary: nil)
-            var markC2 = MKPlacemark(coordinate: friendLocation, addressDictionary: nil)
-            
             mapView.removeAnnotation(friendPin)
             
             friendPin.coordinate = friendLocation
             friendPin.title = friendProfile.firstName
             
             mapView.addAnnotation(friendPin)
-            directionsRequest.setSource(MKMapItem(placemark: markC1))
-            directionsRequest.setDestination(MKMapItem(placemark: markC2))
-            directionsRequest.transportType = MKDirectionsTransportType.Automobile
-            directions = MKDirections(request: directionsRequest)
-            
-            directions.calculateDirectionsWithCompletionHandler { (response:MKDirectionsResponse!, error: NSError!) -> Void in
-                if(error == nil){
-                    self.mapView.removeOverlay(self.myRoute?.polyline)
-                    self.myRoute = response.routes[0] as? MKRoute
-                    
-                    if(self.myRoute != nil){
-                        self.dismissHUDAndShowDirections()
-                    }
-                }
-            }
         }
     }
     
@@ -251,19 +206,5 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         return pinView
-    }
-    
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
-        if showDirection {
-            var myLineRenderer = MKPolylineRenderer(polyline: myRoute?.polyline!)
-            var color = UIColor.blueColor()
-            var colorWithAlpha = color.colorWithAlphaComponent(0.5)
-            
-            myLineRenderer.strokeColor = colorWithAlpha
-            myLineRenderer.lineWidth = 3
-            
-            return myLineRenderer
-        }
-        return nil
     }
 }

@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="therewhere" customModuleProvider="target">
             <connections>
                 <outlet property="callButton" destination="W7P-8c-E1X" id="crN-9M-bEW"/>
                 <outlet property="mapView" destination="IcG-7J-olG" id="vaW-5B-kzx"/>
-                <outlet property="navigateButton" destination="0Cf-Ng-yo4" id="u1z-5M-Y1E"/>
                 <outlet property="stopButton" destination="1jb-IY-QSb" id="gOZ-e5-hEX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -31,26 +30,6 @@
                         <action selector="stopButton:" destination="-1" eventType="touchUpInside" id="0Ay-FK-KEt"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7P-8c-E1X">
-                    <rect key="frame" x="0.0" y="449" width="160" height="60"/>
-                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Call">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="callFriendButton:" destination="-1" eventType="touchUpInside" id="WNv-c5-eaH"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Cf-Ng-yo4">
-                    <rect key="frame" x="160" y="449" width="160" height="60"/>
-                    <color key="backgroundColor" white="0.77556818179999998" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Navigate To">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="navigateButton:" destination="-1" eventType="touchUpInside" id="cY8-iB-NOT"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNl-rg-KHS">
                     <rect key="frame" x="20" y="24" width="71" height="30"/>
                     <state key="normal" title="friends list">
@@ -58,6 +37,16 @@
                     </state>
                     <connections>
                         <action selector="showFriendsList:" destination="-1" eventType="touchUpInside" id="MOZ-eq-7k0"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7P-8c-E1X">
+                    <rect key="frame" x="0.0" y="448" width="320" height="60"/>
+                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <state key="normal" title="Call">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="callFriendButton:" destination="-1" eventType="touchUpInside" id="WNv-c5-eaH"/>
                     </connections>
                 </button>
             </subviews>
