@@ -52,42 +52,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         MixpanelHandler.userOpensApplication()
-        
+
         // Registering for notifications
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
-        let acceptAction = UIMutableUserNotificationAction()
-        acceptAction.identifier = "accept"
-        acceptAction.destructive = false
-        acceptAction.title = "accept"
-        acceptAction.activationMode = .Background
-        acceptAction.authenticationRequired = false
+        var notificationActionOk :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionOk.identifier = "accept"
+        notificationActionOk.title = "Ok"
+        notificationActionOk.destructive = false
+        notificationActionOk.authenticationRequired = false
+        notificationActionOk.activationMode = UIUserNotificationActivationMode.Background
         
-        let declineAction = UIMutableUserNotificationAction()
-        declineAction.identifier = "decline"
-        declineAction.destructive = false
-        declineAction.title = "decline"
-        declineAction.activationMode = .Background
-        declineAction.authenticationRequired = false
+        var notificationActionCancel :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        notificationActionCancel.identifier = "decline"
+        notificationActionCancel.title = "Not Now"
+        notificationActionCancel.destructive = true
+        notificationActionCancel.authenticationRequired = false
+        notificationActionCancel.activationMode = UIUserNotificationActivationMode.Background
         
-        let delayAction = UIMutableUserNotificationAction()
-        delayAction.identifier = "delay"
-        delayAction.destructive = false
-        delayAction.title = "delay"
-        delayAction.activationMode = .Background
-        delayAction.authenticationRequired = false
+        var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        notificationCategory.identifier = "meetup"
+        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
+        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
         
-        let category = UIMutableUserNotificationCategory()
-        category.identifier = "meetup"
-        category.setActions([acceptAction, declineAction], forContext: .Minimal)
-        category.setActions([acceptAction, declineAction, delayAction], forContext: .Default)
-        
-        let requestedTypes = UIUserNotificationType.Alert | .Sound
-        let categories = NSSet(object: category)
-        let settingsRequest = UIUserNotificationSettings(forTypes: requestedTypes, categories: categories as Set<NSObject>)
-        
-        UIApplication.sharedApplication().registerUserNotificationSettings(settingsRequest)
-        
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert |
+            UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>
+            ))
+
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
         
@@ -132,6 +123,56 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             window.backgroundColor = UIColor.whiteColor()
             window.makeKeyAndVisible()
         }
+    }
+    
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+      
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
+        var userProfile = UserProfile.sharedInstance
+        var meetup = Meetups()
+        var mapViewController = MapViewController(nibName:"MapViewController",bundle:nil)
+        var friend = FriendProfile()
+        
+        switch identifier!{
+        case "accept":
+            if var friendID:Int = userInfo["friend_id"] as? Int{
+                friend.friendID = friendID
+                meetup.acceptMeetup(toString(friendID))
+                userProfile.incrementOnGoingMeetups()
+                
+                if var firstName:String = userInfo["first_name"] as? String{
+                    friend.firstName = firstName
+                }
+                
+                if var lastName:String = userInfo["last_name"] as? String{
+                    friend.lastName = lastName
+                }
+                
+                if var phoneNumber:String = userInfo["phone_nr"] as? String{
+                    friend.phoneNumber = phoneNumber
+                }
+                
+                mapViewController.setFriend(friend)
+                
+                var viewcontroller = mapViewController
+
+                completionHandler()
+            }
+
+        case "decline":
+            var meetup = Meetups()
+            
+            if var friendID:Int = userInfo["friend_id"] as? Int{
+                meetup.declineToMeetup(toString(friendID))
+            }
+            
+            completionHandler()
+        default:
+           println("action for notification not available")
+        }
+        
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
@@ -189,10 +230,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
             
             let declineActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = userInfo["friend_id"] as! NSNumber!
                 var meetup = Meetups()
                 
-                meetup.declineToMeetup(toString(friend_id))
+                if var friendID:Int = userInfo["friend_id"] as? Int{
+                    meetup.declineToMeetup(toString(friendID))
+                }
             }
             
             alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
