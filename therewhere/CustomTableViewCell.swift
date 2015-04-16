@@ -19,10 +19,10 @@ class CustomTableViewCell : UITableViewCell {
     
     var status: String = "idle"
     
-    func loadItem(#fullName: String, id: Int, status: String) {
-        fullNameLabel?.text = fullName
-        meetupStatus.text = status
-        self.status = status
+    func loadItem(#friendProfile: FriendProfile) {
+        fullNameLabel?.text = friendProfile.fullName
+        meetupStatus.text = friendProfile.statusWithFriend
+        self.status = friendProfile.statusWithFriend
         self.selectionStyle = UITableViewCellSelectionStyle.None
         styleCell(status, cell: self)
     }

@@ -182,8 +182,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
         if let window = window {
             window.rootViewController = inviteviewcontroller
             window.backgroundColor = UIColor.whiteColor()
@@ -203,7 +201,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 var meetup = Meetups()
                 var mapViewController = MapViewController(nibName:"MapViewController",bundle:nil)
                 var friend = FriendProfile()
-                
+
                 if var friendID:Int = userInfo["friend_id"] as? Int{
                     friend.friendID = friendID
                     meetup.acceptMeetup(toString(friendID))
@@ -215,10 +213,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     
                     if var lastName:String = userInfo["last_name"] as? String{
                         friend.lastName = lastName
+                        friend.fullName = friend.firstName + " " + lastName
                     }
                     
                     if var phoneNumber:String = userInfo["phone_nr"] as? String{
                         friend.phoneNumber = phoneNumber
+                    }
+                    
+                    if var provider = userInfo["provider"] as? String{
+                        friend.provider = provider
+                    }
+                    
+                    if var providerID = userInfo["provider_id"] as? String{
+                        friend.providerID = providerID
                     }
                     
                     mapViewController.setFriend(friend)
@@ -255,10 +262,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 
                 if var lastName:String = userInfo["last_name"] as? String{
                     friend.lastName = lastName
+                    friend.fullName = friend.firstName + " " + lastName
                 }
                 
                 if var phoneNumber:String = userInfo["phone_nr"] as? String{
                     friend.phoneNumber = phoneNumber
+                }
+                
+                if var provider = userInfo["provider"] as? String{
+                    friend.provider = provider
+                }
+                
+                if var providerID = userInfo["provider_id"] as? String{
+                    friend.providerID = providerID
                 }
                 
                 userProfile.incrementOnGoingMeetups()

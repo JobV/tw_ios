@@ -18,4 +18,7 @@ class FriendProfile: NSObject {
     var phoneNumber = String()
     var provider = String()
     var providerID = String()
+    var fullName = String()
+    var statusWithFriend = String()
+    var profileImage = UIImage()
 }

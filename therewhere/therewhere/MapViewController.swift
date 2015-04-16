@@ -114,10 +114,18 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     override func viewWillAppear(animated: Bool) {
+        var user = User()
+        user.getFriendProfilePicture(self.friendProfile.providerID)
+        
         self.locationManager = CLLocationManager()
         NSNotificationCenter.defaultCenter().addObserver(self,
             selector:"updateFriendLocation:",
             name: "friendLocationUpdate",
+            object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector:"getFriendProfileImage:",
+            name: "friendProfileImage",
             object: nil)
         
         self.mapView.delegate = self
@@ -136,7 +144,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         myTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "updateLocation", userInfo: nil, repeats: true)
         myTimer.fire()
-        
+    }
+    
+    func getFriendProfileImage(notification: NSNotification){
+        friendProfile.profileImage = notification.object as! UIImage
     }
     
     override func viewDidLoad() {
@@ -179,7 +190,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             mapView.removeAnnotation(friendPin)
             friendPin.coordinate = friendLocation
             friendPin.title = friendProfile.firstName
-            friendPin.image = UIImage(named: "location_green")
+            friendPin.image = friendProfile.profileImage
             mapView.addAnnotation(friendPin)
         }
     }

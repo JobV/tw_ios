@@ -23,6 +23,7 @@ import MapKit
             
             user.profileImage = UIImage(data: data)!
         }
+       
     }
     
     func getFriendProfilePicture(friendID: NSString){
@@ -31,9 +32,9 @@ import MapKit
         let urlRequest = NSURLRequest(URL: url!)
         
         NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
-            var user = UserProfile.sharedInstance
             
-            user.profileImage = UIImage(data: data)!
+            var profileImage = UIImage(data: data)!
+             NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: profileImage)
         }
     }
     
@@ -155,13 +156,16 @@ import MapKit
                 }
                 else {
                     var json = JSON(json!)
-                    var friends = Friends()
-                    
+                    var friends : [(FriendProfile)] = []
+
                     for (index: String, subJson: JSON) in json {
+                        var friendProfile = FriendProfile()
                         var fullName = ""
                         var friendID = 0
                         var statusWithFriend = ""
                         var friendPhoneNr = ""
+                        var provider = ""
+                        var providerID = ""
                         
                         if var firstName = subJson["first_name"].string{
                             fullName = firstName
@@ -182,11 +186,23 @@ import MapKit
                             friendPhoneNr = friendPhoneNrFromJson
                         }
                         
-                        let friendTuple:(String, Int, String, String) = (fullName, friendID, statusWithFriend, friendPhoneNr)
+                        if var providerFromJson = subJson["provider"].string{
+                            provider = providerFromJson
+                        }
                         
-                        friends.phoneNumberArray.append(friendTuple)
+                        if var providerIDFromJson = subJson["provider_id"].string{
+                            providerID = providerIDFromJson
+                        }
+                        
+                        friendProfile.fullName = fullName
+                        friendProfile.friendID = friendID
+                        friendProfile.provider = provider
+                        friendProfile.providerID = providerID
+                        friendProfile.phoneNumber = friendPhoneNr
+                        friendProfile.statusWithFriend = statusWithFriend
+                        
+                        friends.append(friendProfile)
                     }
-                    
                     NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
                 }
         }
