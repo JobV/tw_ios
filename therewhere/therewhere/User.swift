@@ -13,6 +13,31 @@ import MapKit
 
 @objc class User: NSObject {
     
+    func getProfilePicture(){
+        var accessToken = FBSession.activeSession().accessTokenData.accessToken
+        let url = NSURL(string: "https://graph.facebook.com/me/picture?type=large&return_ssl_resources=1&access_token=\(accessToken)")
+        let urlRequest = NSURLRequest(URL: url!)
+        
+        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+            var user = UserProfile.sharedInstance
+            
+            user.profileImage = UIImage(data: data)!
+        }
+       
+    }
+    
+    func getFriendProfilePicture(friendID: NSString){
+        var accessToken = FBSession.activeSession().accessTokenData.accessToken
+        let url = NSURL(string: "https://graph.facebook.com/\(friendID)/picture?type=small&return_ssl_resources=1&access_token=\(accessToken)")
+        let urlRequest = NSURLRequest(URL: url!)
+        
+        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+            
+            var profileImage = UIImage(data: data)!
+             NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: profileImage)
+        }
+    }
+    
     // POST Method - Log out
     func logout(){
         var user = UserProfile.sharedInstance
@@ -98,7 +123,7 @@ import MapKit
                     if var firstName = json_response["first_name"].string{
                         userProfile.firstName = firstName
                     }
-
+                    
                     if var lastName = json_response["last_name"].string{
                         userProfile.lastName = lastName
                     }
@@ -106,7 +131,7 @@ import MapKit
                     if var email = json_response["email"].string{
                         userProfile.email = email
                     }
-
+                    
                     if var phoneNumber = json_response["phone_nr"].string{
                         userProfile.phoneNumber = phoneNumber
                     }
@@ -131,13 +156,16 @@ import MapKit
                 }
                 else {
                     var json = JSON(json!)
-                    var friends = Friends()
-                    
+                    var friends : [(FriendProfile)] = []
+
                     for (index: String, subJson: JSON) in json {
+                        var friendProfile = FriendProfile()
                         var fullName = ""
                         var friendID = 0
                         var statusWithFriend = ""
                         var friendPhoneNr = ""
+                        var provider = ""
+                        var providerID = ""
                         
                         if var firstName = subJson["first_name"].string{
                             fullName = firstName
@@ -157,12 +185,24 @@ import MapKit
                         if var friendPhoneNrFromJson = subJson["phone_nr"].string{
                             friendPhoneNr = friendPhoneNrFromJson
                         }
-
-                        let friendTuple:(String, Int, String, String) = (fullName, friendID, statusWithFriend, friendPhoneNr)
                         
-                        friends.phoneNumberArray.append(friendTuple)
+                        if var providerFromJson = subJson["provider"].string{
+                            provider = providerFromJson
+                        }
+                        
+                        if var providerIDFromJson = subJson["provider_id"].string{
+                            providerID = providerIDFromJson
+                        }
+                        
+                        friendProfile.fullName = fullName
+                        friendProfile.friendID = friendID
+                        friendProfile.provider = provider
+                        friendProfile.providerID = providerID
+                        friendProfile.phoneNumber = friendPhoneNr
+                        friendProfile.statusWithFriend = statusWithFriend
+                        
+                        friends.append(friendProfile)
                     }
-                    
                     NSNotificationCenter.defaultCenter().postNotificationName("getFriendsNotification", object: friends)
                 }
         }
@@ -174,7 +214,7 @@ import MapKit
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/users/friends"
         
-      
+        
         let parameters = [
             "token": user.access_token,
             "phone_nrs": phoneNumberArray as NSObject

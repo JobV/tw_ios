@@ -14,8 +14,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet
     var tableView: UITableView!
-    var items: [(String, Int, String, String)] = []
-    var friendArray:[(String,Int, String)] = []
+    var items: [(FriendProfile)] = []
+    var friendArray:[(String, Int, String)] = []
     var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
     var getFriendsTimer = NSTimer()
     var getOnGoingMeetupsTimer = NSTimer()
@@ -48,18 +48,24 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func handleGetFriendsNotification(friendsObject: NSNotification){
-        var friends = friendsObject.object as! Friends
+        var friends = friendsObject.object as! [(FriendProfile)]
         
         //Clear outdated friends' list
         items.removeAll(keepCapacity: false)
 
         // Update list with new content
-        for (name, id, status, phoneNumber) in friends.phoneNumberArray{
-            items.append(name, id, status, phoneNumber)
+        for friend in friends{
+            items.append(friend)
         }
         
         for _ in 1...9 {
-            items.append("John Doe", 1123, "pending", "12312323")
+            var friendProfile = FriendProfile()
+            friendProfile.fullName = "John Doe"
+            friendProfile.friendID = 1123
+            friendProfile.statusWithFriend = "pending"
+            friendProfile.phoneNumber = "123123123"
+            
+            items.append(friendProfile)
         }
 
         
@@ -117,10 +123,10 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as! CustomTableViewCell
         
         // this is how you extract values from a tuple
-        var (fullName, id, status, phoneNumber) = items[indexPath.row]
+        var friendProfile = items[indexPath.row]
         
 //        cell.contentView.backgroundColor = getRandomColor(countElements(fullName))
-        cell.loadItem(fullName: fullName, id: id, status: status)
+        cell.loadItem(friendProfile: friendProfile)
         
         return cell
     }
@@ -129,7 +135,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
-        var (title, id, status, phoneNumber) = items[indexPath.row]
+        var friendProfile = items[indexPath.row]
         var cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
         
         switch cell.status {
@@ -137,7 +143,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         case "ready":
             // when cell status is "ready" a request meetup will be sent to selected friend
             var meetups = Meetups()
-            var result = meetups.requestMeetup(String(self.items[indexPath.row].1))
+            var result = meetups.requestMeetup(String(friendProfile.friendID))
             
             cell.updateMeetupStatus("pending")
             
@@ -146,12 +152,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             var controller = MapViewController(nibName:"MapViewController", bundle:nil)
             var friend = FriendProfile()
             
-            friend.friendID = self.items[indexPath.row].1
-            friend.firstName = self.items[indexPath.row].0
-            friend.phoneNumber = self.items[indexPath.row].3
-            
             controller.setColor(UIColor.greenColor())
-            controller.setFriend(friend)
+            controller.setFriend(friendProfile)
             
             self.presentViewController(controller, animated: true, completion: nil)
             
@@ -171,14 +173,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
             
             let acceptActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
+                var friend_id:NSNumber = friendProfile.friendID as NSNumber!
                 var meetup = Meetups()
                 meetup.acceptMeetup(toString(friend_id))
                 cell.updateMeetupStatus("accepted")
             }
             
             let declineActionHandler = { (action:UIAlertAction!) -> Void in
-                var friend_id:NSNumber = self.items[indexPath.row].1 as NSNumber!
+                var friend_id:NSNumber = friendProfile.friendID as NSNumber!
                 var meetup = Meetups()
                 meetup.declineToMeetup(toString(friend_id))
                 cell.updateMeetupStatus("ready")
