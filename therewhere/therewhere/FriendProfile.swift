@@ -11,9 +11,11 @@ import UIKit
 class FriendProfile: NSObject {
     // Friend Class representation
     
-    var friendID = Int();
-    var firstName = String();
-    var lastName = String();
-    var email = String();
-    var phoneNumber = String();
+    var friendID = Int()
+    var firstName = String()
+    var lastName = String()
+    var email = String()
+    var phoneNumber = String()
+    var provider = String()
+    var providerID = String()
 }

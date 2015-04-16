@@ -22,6 +22,5 @@ import UIKit
         
         return Static.instance!
     }
-    var friendList = NSMutableSet();
-    
+    var friendList = NSMutableSet()
 }
