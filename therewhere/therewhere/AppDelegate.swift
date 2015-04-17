@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationDidBecomeActive(application: UIApplication) {
         getOnGoingMeetupsTimer = NSTimer.scheduledTimerWithTimeInterval(30, target: self, selector: "updateOnGoingMeetups", userInfo: nil, repeats: true)
         getOnGoingMeetupsTimer.fire()
+        UIApplication.sharedApplication().applicationIconBadgeNumber = 0
     }
     
     func applicationWillTerminate(application: UIApplication) {
@@ -56,29 +57,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // Registering for notifications
         UIApplication.sharedApplication().registerForRemoteNotifications()
         
-        var notificationActionOk :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        notificationActionOk.identifier = "accept"
-        notificationActionOk.title = "Ok"
-        notificationActionOk.destructive = false
-        notificationActionOk.authenticationRequired = false
-        notificationActionOk.activationMode = UIUserNotificationActivationMode.Background
-        
-        var notificationActionCancel :UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        notificationActionCancel.identifier = "decline"
-        notificationActionCancel.title = "Not Now"
-        notificationActionCancel.destructive = true
-        notificationActionCancel.authenticationRequired = false
-        notificationActionCancel.activationMode = UIUserNotificationActivationMode.Background
-        
-        var notificationCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-        notificationCategory.identifier = "meetup"
-        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Default)
-        notificationCategory .setActions([notificationActionOk,notificationActionCancel], forContext: UIUserNotificationActionContext.Minimal)
-        
-        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: UIUserNotificationType.Sound | UIUserNotificationType.Alert |
-            UIUserNotificationType.Badge, categories: NSSet(array:[notificationCategory]) as Set<NSObject>
-            ))
-
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
         
@@ -128,48 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forRemoteNotification userInfo: [NSObject : AnyObject], completionHandler: () -> Void) {
-        var userProfile = UserProfile.sharedInstance
-        var meetup = Meetups()
-        var mapViewController = MapViewController(nibName:"MapViewController",bundle:nil)
-        var friend = FriendProfile()
         
-        switch identifier!{
-        case "accept":
-            if var friendID:Int = userInfo["friend_id"] as? Int{
-                friend.friendID = friendID
-                meetup.acceptMeetup(toString(friendID))
-                userProfile.incrementOnGoingMeetups()
-                
-                if var firstName:String = userInfo["first_name"] as? String{
-                    friend.firstName = firstName
-                }
-                
-                if var lastName:String = userInfo["last_name"] as? String{
-                    friend.lastName = lastName
-                }
-                
-                if var phoneNumber:String = userInfo["phone_nr"] as? String{
-                    friend.phoneNumber = phoneNumber
-                }
-                
-                mapViewController.setFriend(friend)
-                
-                var viewcontroller = mapViewController
-
-                completionHandler()
-            }
-
-        case "decline":
-            var meetup = Meetups()
-            
-            if var friendID:Int = userInfo["friend_id"] as? Int{
-                meetup.declineToMeetup(toString(friendID))
-            }
-            
-            completionHandler()
-        default:
-           println("action for notification not available")
-        }
         
     }
     
@@ -179,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     
     // Handle remote notifications
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-        
+
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
         if let window = window {
@@ -190,8 +127,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         var action = userInfo["action"] as! NSNumber!
         var aps = userInfo["aps"] as! NSDictionary
+        var badgeAmount = aps["badgecount"] as! NSNumber
         var msg = aps["alert"] as! String
         let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
+        UIApplication.sharedApplication().applicationIconBadgeNumber += badgeAmount.integerValue
         
         switch action {
         case 1:
