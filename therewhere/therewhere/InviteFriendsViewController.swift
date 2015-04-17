@@ -169,7 +169,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             
         case "waiting":
             // when cell status is "waiting" it means a friend sent you a request and you haven't responded yet
-            var msg = "\(self.items[indexPath.row].0) wants to meet!"
+            var friend = self.items[indexPath.row] as FriendProfile
+            var msg = "\(friend.firstName) wants to meet!"
             let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
             
             let acceptActionHandler = { (action:UIAlertAction!) -> Void in
