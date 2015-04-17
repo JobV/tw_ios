@@ -166,13 +166,16 @@ import MapKit
                         var friendPhoneNr = ""
                         var provider = ""
                         var providerID = ""
+                        var firstName = ""
+                        var lastName = ""
                         
-                        if var firstName = subJson["first_name"].string{
-                            fullName = firstName
+                        if var firstNameFromJson = subJson["first_name"].string{
+                            firstName = firstNameFromJson
                         }
                         
-                        if var lastName = subJson["last_name"].string{
-                            fullName += " " + lastName
+                        if var lastNameFromJson = subJson["last_name"].string{
+                            lastName = lastNameFromJson
+                            fullName = firstName + lastName
                         }
                         
                         if var friendIDFromJson = subJson["id"].int{
@@ -194,6 +197,8 @@ import MapKit
                             providerID = providerIDFromJson
                         }
                         
+                        friendProfile.firstName = firstName
+                        friendProfile.lastName = lastName
                         friendProfile.fullName = fullName
                         friendProfile.friendID = friendID
                         friendProfile.provider = provider
