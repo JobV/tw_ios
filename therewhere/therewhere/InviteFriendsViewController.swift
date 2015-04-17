@@ -15,7 +15,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet
     var tableView: UITableView!
     var items: [(FriendProfile)] = []
-    var friendArray:[(String, Int, String)] = []
     var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
     var getFriendsTimer = NSTimer()
     var getOnGoingMeetupsTimer = NSTimer()
@@ -170,7 +169,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         case "waiting":
             // when cell status is "waiting" it means a friend sent you a request and you haven't responded yet
             var friend = self.items[indexPath.row] as FriendProfile
-            var msg = "\(friend.firstName) wants to meet!"
+            var msg = "\(friend.fullName) wants to meet!"
             let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
             
             let acceptActionHandler = { (action:UIAlertAction!) -> Void in
