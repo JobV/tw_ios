@@ -159,10 +159,19 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         case "pending":
             // when cell status is "pending" it means a request was already sent and you need to wait for the result
             let alertController = UIAlertController(title: "Meetup!",
-                message: "Your friend was already notified, just wait :)",
+                message: "Your friend hasn't responded yet :)",
                 preferredStyle: UIAlertControllerStyle.Alert)
             
-            alertController.addAction(UIAlertAction(title: "Move Along", style: UIAlertActionStyle.Default,handler: nil))
+            let cancelActionHandler = { (action:UIAlertAction!) -> Void in
+                var friend_id:NSNumber = friendProfile.friendID as NSNumber!
+                var meetup = Meetups()
+                meetup.cancelMeetup(toString(friend_id))
+                
+                cell.updateMeetupStatus("ready")
+            }
+            
+            alertController.addAction(UIAlertAction(title: "Cancel Request", style: .Default, handler: cancelActionHandler))
+            alertController.addAction(UIAlertAction(title: "I'll wait", style: UIAlertActionStyle.Default,handler: nil))
             
             self.presentViewController(alertController, animated: true, completion: nil)
             
