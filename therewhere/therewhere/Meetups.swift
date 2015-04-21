@@ -37,6 +37,29 @@ class Meetups: NSObject {
         }
     }
     
+    // DELETE Method - Cancel meetup with friend
+    func cancelMeetup(friendID: String)->Bool{
+        var user = UserProfile.sharedInstance
+        let url = APIConnectionManager.serverAddress+"/api/v1/users/meetups"
+        var success:Bool = false
+        let parameters = [
+            "friend_id": friendID,
+            "token": user.access_token
+        ]
+        
+        Alamofire.request(.DELETE, url, parameters: parameters, encoding: .JSON)
+            .responseJSON { (request, response, json, error) in
+                if(error != nil){
+                    NSLog("Error: \(error)")
+                }else{
+                    var json = JSON(json!)
+                    
+                    println("canceled meetup")
+                }
+        }
+        return success
+    }
+    
     // POST Method - Creates meetup request with friend
     func requestMeetup(friendID: String)->Bool{
         var user = UserProfile.sharedInstance
