@@ -118,6 +118,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
 
         var inviteviewcontroller = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
+        var badgeAmount = 0
         
         if let window = window {
             window.rootViewController = inviteviewcontroller
@@ -127,10 +128,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         var action = userInfo["action"] as! NSNumber!
         var aps = userInfo["aps"] as! NSDictionary
-        var badgeAmount = aps["badgecount"] as! NSNumber
+        
+        if  var badges = aps["badgecount"] as? Int{
+            badgeAmount = badges
+        }
+        
         var msg = aps["alert"] as! String
         let alert = UIAlertController(title: "Meetup Request", message: msg, preferredStyle: .Alert)
-        UIApplication.sharedApplication().applicationIconBadgeNumber += badgeAmount.integerValue
+        UIApplication.sharedApplication().applicationIconBadgeNumber += badgeAmount
         
         switch action {
         case 1:
