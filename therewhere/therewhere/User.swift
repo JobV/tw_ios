@@ -22,12 +22,9 @@ import MapKit
         
         cache.fetch(key: user.providerID as String)
             .onSuccess { data in
-                println("user cached")
                 NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: data)
             }
             .onFailure { _ -> () in
-                println("user not cached")
-                
                 NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
                     var user = UserProfile.sharedInstance
                     cache.set(value: data, key: user.providerID as String)
@@ -44,12 +41,10 @@ import MapKit
         
         cache.fetch(key: friendID as String)
             .onSuccess { data in
-                println("cached")
                 NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: data)
 
             }
             .onFailure { _ -> () in
-                println("not cached")
                 NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
                     cache.set(value: data, key: friendID as String)
                     NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: data)
