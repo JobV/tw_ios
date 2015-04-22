@@ -159,8 +159,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             // when cell status is "accepted" selecting this friend cell will open map with locations
             var controller = MapViewController(nibName:"MapViewController", bundle:nil)
             var friend = FriendProfile()
-            
-            controller.setColor(UIColor.greenColor())
+    
             controller.setFriend(friendProfile)
             
             self.presentViewController(controller, animated: true, completion: nil)
