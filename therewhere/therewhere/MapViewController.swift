@@ -15,10 +15,7 @@ class CustomPointAnnotation: MKPointAnnotation {
 }
 
 class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
-    
-    
-    @IBOutlet
-    var buttonColor: UIColor? = UIColor.greenColor()
+
     var locationManager = CLLocationManager()
     var validLocations = false
     var firstTimeOpeningMap = true
@@ -33,41 +30,95 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet var optionsButton: UIButton!
     @IBAction func optionsButton(sender: AnyObject) {
-        // 1
+
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
         
-        // 2
-        let deleteAction = UIAlertAction(title: "Delete", style: .Default, handler: {
+        let callAction = UIAlertAction(title: "Call", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
-            println("File Deleted")
+            var alertController = UIAlertController()
+            
+            if(self.friendProfile.phoneNumber != ""){
+                alertController = UIAlertController(title: "Calling Friend!",
+                    message: "Do you want to call \(self.friendProfile.firstName)?",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                let callingActionHandler = { (action:UIAlertAction!) -> Void in
+                    UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.friendProfile.phoneNumber)")!)
+                    return Void()
+                }
+                
+                alertController.addAction(UIAlertAction(title: "Hum..nah", style: UIAlertActionStyle.Cancel, handler: nil))
+                alertController.addAction(UIAlertAction(title: "Yes please", style: UIAlertActionStyle.Destructive, handler: callingActionHandler))
+            }else{
+                alertController = UIAlertController(title: "Calling Friend!",
+                    message: "Sorry, your friend's number isn't available.",
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                
+                alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
+            }
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
         })
-        let saveAction = UIAlertAction(title: "Save", style: .Default, handler: {
+        let navigateAction = UIAlertAction(title: "Navigate to friend", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             println("File Saved")
         })
         
-        //
+        let shareAction = UIAlertAction(title: "Share", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            println("Cancelled")
+        })
+        
+        let stopAction = UIAlertAction(title: "Terminate Meetup", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            let alertController = UIAlertController(title: "Meetup!",
+                message: "Terminate Meetup?",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            let terminateActionHandler = { (action:UIAlertAction!) -> Void in
+                var meetup = Meetups()
+                
+                meetup.terminateMeetup(String(self.friendProfile.friendID))
+                self.myTimer.invalidate()
+                var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
+                self.presentViewController(friendsViewController, animated: true, completion: nil)
+            }
+            
+            alertController.addAction(UIAlertAction(title: "Not yet", style: UIAlertActionStyle.Cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Yeah!", style: UIAlertActionStyle.Destructive, handler: terminateActionHandler))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        })
+        
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
             (alert: UIAlertAction!) -> Void in
             println("Cancelled")
         })
         
-        
-        // 4
-        optionMenu.addAction(deleteAction)
-        optionMenu.addAction(saveAction)
+        optionMenu.addAction(callAction)
+        optionMenu.addAction(navigateAction)
+        optionMenu.addAction(shareAction)
+        optionMenu.addAction(stopAction)
         optionMenu.addAction(cancelAction)
         
-        // 5
         self.presentViewController(optionMenu, animated: true, completion: nil)
     }
 
     @IBOutlet var userProfilePictureButton: UIButton!
     @IBAction func userProfilePictureButton(sender: AnyObject) {
+        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        var region = MKCoordinateRegion(center: userPin.coordinate, span: span)
+        
+        mapView.setRegion(region, animated: true)
     }
     
     @IBOutlet var friendProfilePictureButton: UIButton!
     @IBAction func friendProfilePictureButton(sender: AnyObject) {
+        var span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+        var region = MKCoordinateRegion(center: friendPin.coordinate, span: span)
+        
+        mapView.setRegion(region, animated: true)
     }
     
     var friendLocation = CLLocationCoordinate2D(latitude: 0,longitude: 0){
@@ -82,8 +133,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
     }
     
-    @IBOutlet var callButton: UIButton!
-    @IBOutlet var stopButton: UIButton!
     @IBOutlet var mapView: MKMapView!
     
     @IBAction func showFriendsList(sender: AnyObject) {
@@ -93,53 +142,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     @IBAction func callFriendButton(sender: AnyObject) {
-        var alertController = UIAlertController()
         
-        if(self.friendProfile.phoneNumber != ""){
-            alertController = UIAlertController(title: "Calling Friend!",
-                message: "Do you want to call \(friendProfile.firstName)?",
-                preferredStyle: UIAlertControllerStyle.Alert)
-            
-            let callingActionHandler = { (action:UIAlertAction!) -> Void in
-                UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.friendProfile.phoneNumber)")!)
-                return Void()
-            }
-            
-            alertController.addAction(UIAlertAction(title: "Hum..nah", style: UIAlertActionStyle.Cancel, handler: nil))
-            alertController.addAction(UIAlertAction(title: "Yes please", style: UIAlertActionStyle.Destructive, handler: callingActionHandler))
-        }else{
-            alertController = UIAlertController(title: "Calling Friend!",
-                message: "Sorry, your friend's number isn't available.",
-                preferredStyle: UIAlertControllerStyle.Alert)
-            
-            alertController.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Cancel, handler: nil))
-        }
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     @IBAction func stopButton(sender: AnyObject) {
-        let alertController = UIAlertController(title: "Meetup!",
-            message: "Terminate Meetup?",
-            preferredStyle: UIAlertControllerStyle.Alert)
         
-        let terminateActionHandler = { (action:UIAlertAction!) -> Void in
-            var meetup = Meetups()
-            
-            meetup.terminateMeetup(String(self.friendProfile.friendID))
-            self.myTimer.invalidate()
-            var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
-            self.presentViewController(friendsViewController, animated: true, completion: nil)
-        }
-        
-        alertController.addAction(UIAlertAction(title: "Not yet", style: UIAlertActionStyle.Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Yeah!", style: UIAlertActionStyle.Destructive, handler: terminateActionHandler))
-        
-        self.presentViewController(alertController, animated: true, completion: nil)
-    }
-    
-    func setColor(color:UIColor){
-        buttonColor = color
     }
     
     func setFriend(friend:FriendProfile){
@@ -153,7 +160,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewWillAppear(animated: Bool) {
         var user = User()
-        
         
         self.locationManager = CLLocationManager()
         NSNotificationCenter.defaultCenter().addObserver(self,
@@ -184,12 +190,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         myTimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: "updateLocation", userInfo: nil, repeats: true)
         myTimer.fire()
+        
+        userProfilePictureButton.setImage(userProfile.profileImage, forState: UIControlState.Normal)
+        userProfilePictureButton.layer.cornerRadius = userProfilePictureButton.layer.frame.size.height / 2
+        userProfilePictureButton.layer.masksToBounds = true;
+        userProfilePictureButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill;
+        userProfilePictureButton.layer.borderColor = UIColor.whiteColor().CGColor
+        userProfilePictureButton.layer.borderWidth = 2
     }
     
     func getFriendProfileImage(notification: NSNotification){
         var data = notification.object as! NSData
         if var friendProfileImage:UIImage = UIImage(data: data) {
             friendProfile.profileImage = friendProfileImage
+            friendProfilePictureButton.setImage(friendProfile.profileImage, forState: UIControlState.Normal)
+            friendProfilePictureButton.layer.cornerRadius = friendProfilePictureButton.layer.frame.size.height / 2
+            friendProfilePictureButton.layer.masksToBounds = true;
+            friendProfilePictureButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill;
+            friendProfilePictureButton.layer.borderColor = UIColor.whiteColor().CGColor
+            friendProfilePictureButton.layer.borderWidth = 2
         }
         
     }
@@ -197,13 +216,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        callButton.backgroundColor = buttonColor
-        stopButton.backgroundColor = buttonColor
-        
-        if(buttonColor == UIColor.whiteColor()){
-            callButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-            stopButton.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
-        }
     }
     
     override func didReceiveMemoryWarning() {
