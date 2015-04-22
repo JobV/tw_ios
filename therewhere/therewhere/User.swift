@@ -13,7 +13,7 @@ import MapKit
 
 @objc class User: NSObject {
     
-    func getProfilePicture(){
+    func getUserProfilePicture(){
         var accessToken = FBSession.activeSession().accessTokenData.accessToken
         let url = NSURL(string: "https://graph.facebook.com/me/picture?type=large&return_ssl_resources=1&access_token=\(accessToken)")
         let urlRequest = NSURLRequest(URL: url!)
@@ -22,7 +22,7 @@ import MapKit
         
         cache.fetch(key: user.providerID as String)
             .onSuccess { data in
-                NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: data)
+                user.profileImage = UIImage(data: data)!
             }
             .onFailure { _ -> () in
                 NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
@@ -35,7 +35,7 @@ import MapKit
     
     func getFriendProfilePicture(friendID: NSString) {
         var accessToken = FBSession.activeSession().accessTokenData.accessToken
-        let url = NSURL(string: "https://graph.facebook.com/\(friendID)/picture?type=small&return_ssl_resources=1&access_token=\(accessToken)")
+        let url = NSURL(string: "https://graph.facebook.com/\(friendID)/picture?type=large&return_ssl_resources=1&access_token=\(accessToken)")
         let urlRequest = NSURLRequest(URL: url!)
         let cache = Shared.dataCache
         
@@ -54,7 +54,7 @@ import MapKit
     // Cache in all profile images
     func getProfilePicture(userID: NSString){
         var accessToken = FBSession.activeSession().accessTokenData.accessToken
-        let url = NSURL(string: "https://graph.facebook.com/\(userID)/picture?type=small&return_ssl_resources=1&access_token=\(accessToken)")
+        let url = NSURL(string: "https://graph.facebook.com/\(userID)/picture?type=large&return_ssl_resources=1&access_token=\(accessToken)")
         let urlRequest = NSURLRequest(URL: url!)
         let cache = Shared.dataCache
         
