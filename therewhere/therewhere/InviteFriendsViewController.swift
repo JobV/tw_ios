@@ -19,6 +19,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     var getFriendsTimer = NSTimer()
     var getOnGoingMeetupsTimer = NSTimer()
     
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         getFriendsTimer.invalidate()
@@ -26,6 +28,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
+        activityIndicator.hidden = false
+        activityIndicator.startAnimating()
         
         getFriendsTimer = NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: "updateFriendsList", userInfo: nil, repeats: true)
         getFriendsTimer.fire()
@@ -117,7 +121,12 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
+
+        if(!activityIndicator.hidden){
+            activityIndicator.hidden = true
+            activityIndicator.stopAnimating()
+        }
+
         //Use custom cell
         var cell:CustomTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("customCell") as! CustomTableViewCell
         
