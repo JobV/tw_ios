@@ -26,7 +26,7 @@ class Meetups: NSObject {
                     NSLog("Error: \(error)")
                 }
                 else {
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     
                     if var ongoingMeetups = json["meetups"].array{
                         var userProfile = UserProfile.sharedInstance
@@ -52,7 +52,7 @@ class Meetups: NSObject {
                 if(error != nil){
                     NSLog("Error: \(error)")
                 }else{
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     
                     println("canceled meetup")
                 }
@@ -75,7 +75,7 @@ class Meetups: NSObject {
                 if(error != nil){
                     NSLog("Error: \(error)")
                 }else{
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     
                     println("created meetup")
                 }
@@ -97,7 +97,7 @@ class Meetups: NSObject {
                 if(error != nil){
                     NSLog("Error: \(error)")
                 }else{
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     var userProfile = UserProfile.sharedInstance
                     
                     userProfile.incrementOnGoingMeetups()
@@ -120,7 +120,7 @@ class Meetups: NSObject {
                 if(error != nil){
                     NSLog("Error: \(error)")
                 }else{
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     
                     println("meetup declined")
                 }
@@ -141,7 +141,7 @@ class Meetups: NSObject {
                 if(error != nil){
                     NSLog("Error: \(error)")
                 }else{
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     var userProfile = UserProfile.sharedInstance
                     
                     userProfile.decreaseOnGoingMeetups()
