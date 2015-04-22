@@ -13,6 +13,7 @@ class CustomTableViewCell : UITableViewCell {
     @IBOutlet weak var meetupicon: UIImageView!
     @IBOutlet var meetupStatus: UILabel!
     @IBOutlet var fullNameLabel: UILabel!
+    @IBOutlet var profileImage: UIImageView!
     
     let baseColor: UIColor = UIColor(hex: "4A90E2")
     let inverseColor: UIColor = UIColor.whiteColor()
@@ -22,6 +23,16 @@ class CustomTableViewCell : UITableViewCell {
     func loadItem(#friendProfile: FriendProfile) {
         fullNameLabel?.text = friendProfile.fullName
         meetupStatus.text = friendProfile.statusWithFriend
+        let cache = Shared.dataCache
+        cache.fetch(key: friendProfile.providerID as String)
+            .onSuccess { data in
+                var profile = UIImage(data: data)!
+                self.profileImage.image = profile
+                self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height / 2
+                self.profileImage.layer.masksToBounds = true;
+                self.profileImage.contentMode = UIViewContentMode.ScaleAspectFill;
+        }
+        
         self.status = friendProfile.statusWithFriend
         self.selectionStyle = UITableViewCellSelectionStyle.None
         styleCell(status, cell: self)

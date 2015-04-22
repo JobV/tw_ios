@@ -34,7 +34,7 @@ class Friends: NSObject {
                     NSLog("Error: \(error)")
                 }
                 else {
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     
                     if json["x"]&&json["y"] {
                         var latitude = 0.0

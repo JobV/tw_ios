@@ -46,4 +46,5 @@ import UIKit
     var deviceToken = String();
     var onGoingMeetups = 0;
     var profileImage = UIImage();
+    var providerID = String();
 }
