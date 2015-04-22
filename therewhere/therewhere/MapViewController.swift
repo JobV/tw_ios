@@ -110,12 +110,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         self.myTimer.invalidate()
-        self.mapView.removeFromSuperview()
     }
     
     override func viewWillAppear(animated: Bool) {
         var user = User()
-        user.getFriendProfilePicture(self.friendProfile.providerID)
+        
         
         self.locationManager = CLLocationManager()
         NSNotificationCenter.defaultCenter().addObserver(self,
@@ -127,6 +126,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             selector:"getFriendProfileImage:",
             name: "friendProfileImage",
             object: nil)
+        
+        user.getFriendProfilePicture(self.friendProfile.providerID)
         
         self.mapView.delegate = self
         
@@ -147,7 +148,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func getFriendProfileImage(notification: NSNotification){
-        friendProfile.profileImage = notification.object as! UIImage
+        var data = notification.object as! NSData
+        if var friendProfileImage:UIImage = UIImage(data: data) {
+            friendProfile.profileImage = friendProfileImage
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -219,8 +224,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         }
         
         let customPointAnnotation = annotation as! CustomPointAnnotation
-        annotationView.image = customPointAnnotation.image
         
+        annotationView.image = customPointAnnotation.image
         annotationView.canShowCallout = false;
         annotationView.frame = CGRectMake(0, 0, 40, 40);
         annotationView.layer.cornerRadius = annotationView.frame.size.height / 2

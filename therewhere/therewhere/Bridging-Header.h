@@ -11,5 +11,5 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 #import "JGProgressHUD/JGProgressHUD.h"
-
+#import "Haneke/Haneke.h"
 #endif

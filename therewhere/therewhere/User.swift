@@ -17,25 +17,44 @@ import MapKit
         var accessToken = FBSession.activeSession().accessTokenData.accessToken
         let url = NSURL(string: "https://graph.facebook.com/me/picture?type=large&return_ssl_resources=1&access_token=\(accessToken)")
         let urlRequest = NSURLRequest(URL: url!)
+        let cache = Shared.dataCache
+        var user = UserProfile.sharedInstance
         
-        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
-            var user = UserProfile.sharedInstance
-            
-            user.profileImage = UIImage(data: data)!
+        cache.fetch(key: user.providerID as String)
+            .onSuccess { data in
+                println("user cached")
+                NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: data)
+            }
+            .onFailure { _ -> () in
+                println("user not cached")
+                
+                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+                    var user = UserProfile.sharedInstance
+                    cache.set(value: data, key: user.providerID as String)
+                    user.profileImage = UIImage(data: data)!
+                }
         }
-       
     }
     
-    func getFriendProfilePicture(friendID: NSString){
+    func getFriendProfilePicture(friendID: NSString) {
         var accessToken = FBSession.activeSession().accessTokenData.accessToken
         let url = NSURL(string: "https://graph.facebook.com/\(friendID)/picture?type=small&return_ssl_resources=1&access_token=\(accessToken)")
         let urlRequest = NSURLRequest(URL: url!)
+        let cache = Shared.dataCache
         
-        NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
-            
-            var profileImage = UIImage(data: data)!
-             NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: profileImage)
-        }
+        cache.fetch(key: friendID as String)
+            .onSuccess { data in
+                println("cached")
+                NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: data)
+
+            }
+            .onFailure { _ -> () in
+                println("not cached")
+                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
+                    cache.set(value: data, key: friendID as String)
+                    NSNotificationCenter.defaultCenter().postNotificationName("friendProfileImage", object: data)
+                }
+            }
     }
     
     // POST Method - Log out
@@ -82,7 +101,7 @@ import MapKit
                     NSLog("Error: Authentication Error")
                 }
                 else {
-                    var json_response = JSON(json!)
+                    var json_response = SwiftyJSON.JSON(json!)
                     
                     if let auth_token = json_response["auth_token"].string{
                         user.access_token = auth_token
@@ -113,7 +132,7 @@ import MapKit
                 }
                 else {
                     NSLog("getting user info")
-                    var json_response = JSON(json!)
+                    var json_response = SwiftyJSON.JSON(json!)
                     var userProfile = UserProfile.sharedInstance
                     
                     if var userID = json_response["id"].string{
@@ -155,10 +174,10 @@ import MapKit
                     NSLog("error: getFriends unsuccessful")
                 }
                 else {
-                    var json = JSON(json!)
+                    var json = SwiftyJSON.JSON(json!)
                     var friends : [(FriendProfile)] = []
-
-                    for (index: String, subJson: JSON) in json {
+                    
+                    for (index: String, subJson: SwiftyJSON.JSON) in json {
                         var friendProfile = FriendProfile()
                         var fullName = ""
                         var friendID = 0

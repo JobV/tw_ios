@@ -64,6 +64,8 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
             userProfile.firstName = user.first_name
             userProfile.lastName = user.last_name
             userProfile.email = user.objectForKey("email") as! String
+            userProfile.providerID = user.objectID
+            println("user id: \(userProfile.providerID)")
             userAPI.authenticate(token)
             userAPI.getProfilePicture()
             
