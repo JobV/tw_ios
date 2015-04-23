@@ -30,7 +30,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet var optionsButton: UIButton!
     @IBAction func optionsButton(sender: AnyObject) {
-
+        
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
         
         let callAction = UIAlertAction(title: "Call", style: .Default, handler: {
@@ -61,7 +61,39 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         })
         let navigateAction = UIAlertAction(title: "Navigate to friend", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
-            println("File Saved")
+
+            var start = self.userPin.coordinate
+            var destination = self.friendPin.coordinate
+            let alertController = UIAlertController(title: "Navigate with",
+                message: "Choose your maps app:",
+                preferredStyle: UIAlertControllerStyle.Alert)
+            
+            var googleMapsURLString = "comgooglemaps://?saddr=\(start.latitude),\(start.longitude)&daddr=\(destination.latitude),\(destination.longitude)&directionsmode=driving"
+            var googleURL = NSURL(string: googleMapsURLString)
+            
+            var appleMapsURLString = "http://maps.apple.com/?daddr=\(destination.latitude),\(destination.longitude)&saddr=\(start.latitude),\(start.longitude)"
+            var appleMapsURL = NSURL(string: appleMapsURLString)
+            
+            if(UIApplication.sharedApplication().canOpenURL(googleURL!)){
+                let googleMapsHandler = { (action:UIAlertAction!) -> Void in
+                    UIApplication.sharedApplication().openURL(googleURL!)
+                }
+                
+                alertController.addAction(UIAlertAction(title: "Google Maps!", style: UIAlertActionStyle.Default, handler: googleMapsHandler))
+            }
+            
+            if(UIApplication.sharedApplication().canOpenURL(appleMapsURL!)){
+                let appleMapsHandler = { (action:UIAlertAction!) -> Void in
+                    UIApplication.sharedApplication().openURL(appleMapsURL!)
+                }
+                
+                alertController.addAction(UIAlertAction(title: "Apple Maps!", style: UIAlertActionStyle.Default, handler: appleMapsHandler))
+            }
+            
+            alertController.addAction(UIAlertAction(title: "Nah! Forget it", style: UIAlertActionStyle.Cancel, handler: nil))
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+ 
         })
         
         let shareAction = UIAlertAction(title: "Share", style: .Default, handler: {
