@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class CustomTableViewCell : UITableViewCell {
-    @IBOutlet weak var meetupicon: UIImageView!
     @IBOutlet var meetupStatus: UILabel!
     @IBOutlet var fullNameLabel: UILabel!
     @IBOutlet var profileImage: UIImageView!
@@ -28,6 +27,7 @@ class CustomTableViewCell : UITableViewCell {
             .onSuccess { data in
                 var profile = UIImage(data: data)!
                 self.profileImage.image = profile
+                self.profileImage.frame = CGRectMake(0, 0, 50, 50);
                 self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height / 2
                 self.profileImage.layer.masksToBounds = true;
                 self.profileImage.contentMode = UIViewContentMode.ScaleAspectFill;
@@ -45,7 +45,6 @@ class CustomTableViewCell : UITableViewCell {
     }
     
     func sentMeetUp(){
-        meetupicon.hidden = false
     }
     
     

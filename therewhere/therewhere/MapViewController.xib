@@ -6,9 +6,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="therewhere" customModuleProvider="target">
             <connections>
-                <outlet property="callButton" destination="W7P-8c-E1X" id="crN-9M-bEW"/>
+                <outlet property="friendProfilePictureButton" destination="i8U-Ic-8Sk" id="TFf-rn-Gon"/>
                 <outlet property="mapView" destination="IcG-7J-olG" id="vaW-5B-kzx"/>
-                <outlet property="stopButton" destination="1jb-IY-QSb" id="gOZ-e5-hEX"/>
+                <outlet property="optionsButton" destination="4Ip-Ke-HIH" id="Pa6-ST-zw6"/>
+                <outlet property="userProfilePictureButton" destination="0xK-Iy-0L9" id="tgW-h7-jUa"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,16 +21,6 @@
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="IcG-7J-olG">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </mapView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1jb-IY-QSb">
-                    <rect key="frame" x="0.0" y="508" width="320" height="60"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Stop Sharing">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="stopButton:" destination="-1" eventType="touchUpInside" id="0Ay-FK-KEt"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNl-rg-KHS">
                     <rect key="frame" x="20" y="24" width="71" height="30"/>
                     <state key="normal" title="friends list">
@@ -39,14 +30,31 @@
                         <action selector="showFriendsList:" destination="-1" eventType="touchUpInside" id="MOZ-eq-7k0"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7P-8c-E1X">
-                    <rect key="frame" x="0.0" y="448" width="320" height="60"/>
-                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <state key="normal" title="Call">
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xK-Iy-0L9">
+                    <rect key="frame" x="131" y="427" width="90" height="90"/>
+                    <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="callFriendButton:" destination="-1" eventType="touchUpInside" id="WNv-c5-eaH"/>
+                        <action selector="userProfilePictureButton:" destination="-1" eventType="touchUpInside" id="3Iw-yx-X4i"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8U-Ic-8Sk">
+                    <rect key="frame" x="240" y="442" width="60" height="60"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="friendProfilePictureButton:" destination="-1" eventType="touchUpInside" id="Jog-uM-CbJ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ip-Ke-HIH">
+                    <rect key="frame" x="20" y="453" width="93" height="38"/>
+                    <state key="normal" image="options menu button copy small">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="optionsButton:" destination="-1" eventType="touchUpInside" id="G07-tv-Sng"/>
                     </connections>
                 </button>
             </subviews>
@@ -55,4 +63,7 @@
             <point key="canvasLocation" x="218" y="328"/>
         </view>
     </objects>
+    <resources>
+        <image name="options menu button copy small" width="64" height="16"/>
+    </resources>
 </document>

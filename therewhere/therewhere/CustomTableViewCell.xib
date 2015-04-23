@@ -13,21 +13,17 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Marcelo Lebre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-1q-ppv">
-                        <rect key="frame" x="0.0" y="22" width="320" height="21"/>
+                        <rect key="frame" x="82" y="15" width="188" height="29"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="meetupicon" translatesAutoresizingMaskIntoConstraints="NO" id="2Dj-bG-PMZ">
-                        <rect key="frame" x="276" y="20" width="20" height="20"/>
-                        <color key="tintColor" red="0.67467619243421051" green="0.67208588449331741" blue="0.9205106160287081" alpha="1" colorSpace="calibratedRGB"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-5i-OOj">
-                        <rect key="frame" x="8" y="10" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-5i-OOj">
+                        <rect key="frame" x="8" y="5" width="50" height="50"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7i-KT-akX">
-                        <rect key="frame" x="246" y="22" width="74" height="21"/>
+                        <rect key="frame" x="217" y="5" width="103" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -39,13 +35,9 @@
                 <outlet property="contentView" destination="WdS-qV-r00" id="Mt7-T2-phC"/>
                 <outlet property="fullNameLabel" destination="LKe-1q-ppv" id="IvY-wu-aGP"/>
                 <outlet property="meetupStatus" destination="h7i-KT-akX" id="Uvb-gM-pvn"/>
-                <outlet property="meetupicon" destination="2Dj-bG-PMZ" id="xZT-7P-yU8"/>
                 <outlet property="profileImage" destination="7ET-5i-OOj" id="PPW-Sg-vV4"/>
             </connections>
             <point key="canvasLocation" x="232" y="188"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="meetupicon" width="256" height="256"/>
-    </resources>
 </document>
