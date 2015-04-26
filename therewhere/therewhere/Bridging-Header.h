@@ -10,6 +10,9 @@
 #define therewhere_Bridging_Header_h
 
 #import <FacebookSDK/FacebookSDK.h>
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKShareKit/FBSDKShareKit.h>
 #import "JGProgressHUD/JGProgressHUD.h"
 #import "Haneke/Haneke.h"
+
 #endif

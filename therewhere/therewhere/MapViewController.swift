@@ -96,11 +96,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
  
         })
         
-        let shareAction = UIAlertAction(title: "Share", style: .Default, handler: {
-            (alert: UIAlertAction!) -> Void in
-            println("Cancelled")
-        })
-        
         let stopAction = UIAlertAction(title: "Terminate Meetup", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             let alertController = UIAlertController(title: "Meetup!",
@@ -130,7 +125,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         optionMenu.addAction(callAction)
         optionMenu.addAction(navigateAction)
-        optionMenu.addAction(shareAction)
         optionMenu.addAction(stopAction)
         optionMenu.addAction(cancelAction)
         

@@ -34,6 +34,30 @@
 		A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D620451A6ABC2200DB7B20 /* UserProfile.swift */; };
 		A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2B01A62C8BF002C0655 /* Friends.swift */; };
 		A6E6D2BB1A62EA0E002C0655 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6E6D2BA1A62EA0E002C0655 /* Friend.swift */; };
+		A6F555931AE69D9E003662B7 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5557E1AE69D9E003662B7 /* Cache.swift */; };
+		A6F555941AE69D9E003662B7 /* CGSize+Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5557F1AE69D9E003662B7 /* CGSize+Swift.swift */; };
+		A6F555951AE69D9E003662B7 /* CryptoSwiftMD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555801AE69D9E003662B7 /* CryptoSwiftMD5.swift */; };
+		A6F555961AE69D9E003662B7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555811AE69D9E003662B7 /* Data.swift */; };
+		A6F555971AE69D9E003662B7 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555821AE69D9E003662B7 /* DiskCache.swift */; };
+		A6F555981AE69D9E003662B7 /* DiskFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555831AE69D9E003662B7 /* DiskFetcher.swift */; };
+		A6F555991AE69D9E003662B7 /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555841AE69D9E003662B7 /* Fetch.swift */; };
+		A6F5559A1AE69D9E003662B7 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555851AE69D9E003662B7 /* Fetcher.swift */; };
+		A6F5559B1AE69D9E003662B7 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555861AE69D9E003662B7 /* Format.swift */; };
+		A6F5559C1AE69D9E003662B7 /* Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555881AE69D9E003662B7 /* Haneke.swift */; };
+		A6F5559D1AE69D9E003662B7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6F555891AE69D9E003662B7 /* Info.plist */; };
+		A6F5559E1AE69D9E003662B7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5558A1AE69D9E003662B7 /* Log.swift */; };
+		A6F5559F1AE69D9E003662B7 /* NetworkFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5558B1AE69D9E003662B7 /* NetworkFetcher.swift */; };
+		A6F555A01AE69D9E003662B7 /* NSFileManager+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5558C1AE69D9E003662B7 /* NSFileManager+Haneke.swift */; };
+		A6F555A11AE69D9E003662B7 /* NSHTTPURLResponse+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5558D1AE69D9E003662B7 /* NSHTTPURLResponse+Haneke.swift */; };
+		A6F555A21AE69D9E003662B7 /* String+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5558E1AE69D9E003662B7 /* String+Haneke.swift */; };
+		A6F555A31AE69D9E003662B7 /* UIButton+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F5558F1AE69D9E003662B7 /* UIButton+Haneke.swift */; };
+		A6F555A41AE69D9E003662B7 /* UIImage+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555901AE69D9E003662B7 /* UIImage+Haneke.swift */; };
+		A6F555A51AE69D9E003662B7 /* UIImageView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555911AE69D9E003662B7 /* UIImageView+Haneke.swift */; };
+		A6F555A61AE69D9E003662B7 /* UIView+Haneke.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555921AE69D9E003662B7 /* UIView+Haneke.swift */; };
+		A6F555AF1AEA2A32003662B7 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F555AE1AEA2A32003662B7 /* FBSDKShareKit.framework */; };
+		A6F555B11AEA2A73003662B7 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F555B01AEA2A73003662B7 /* FBSDKCoreKit.framework */; };
+		A6F555B41AEA9EFB003662B7 /* ShareTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F555B21AEA9EFB003662B7 /* ShareTableViewCell.swift */; };
+		A6F555B51AEA9EFB003662B7 /* ShareTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A6F555B31AEA9EFB003662B7 /* ShareTableViewCell.xib */; };
 		CC2AFC681ACDF4D600DF7F25 /* AsyncButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2AFC4A1ACDF4D600DF7F25 /* AsyncButton.swift */; };
 		CC2AFC691ACDF4D600DF7F25 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2AFC4B1ACDF4D600DF7F25 /* AsyncImageView.swift */; };
 		CC2AFC6A1ACDF4D600DF7F25 /* AutoTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2AFC4C1ACDF4D600DF7F25 /* AutoTextView.swift */; };
@@ -128,6 +152,33 @@
 		A6D620451A6ABC2200DB7B20 /* UserProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		A6E6D2B01A62C8BF002C0655 /* Friends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
 		A6E6D2BA1A62EA0E002C0655 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		A6F5557B1AE69CD2003662B7 /* Haneke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Haneke.framework; path = "Pods/../build/Debug-iphoneos/Pods/Haneke.framework"; sourceTree = "<group>"; };
+		A6F5557E1AE69D9E003662B7 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		A6F5557F1AE69D9E003662B7 /* CGSize+Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Swift.swift"; sourceTree = "<group>"; };
+		A6F555801AE69D9E003662B7 /* CryptoSwiftMD5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoSwiftMD5.swift; sourceTree = "<group>"; };
+		A6F555811AE69D9E003662B7 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		A6F555821AE69D9E003662B7 /* DiskCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCache.swift; sourceTree = "<group>"; };
+		A6F555831AE69D9E003662B7 /* DiskFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskFetcher.swift; sourceTree = "<group>"; };
+		A6F555841AE69D9E003662B7 /* Fetch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
+		A6F555851AE69D9E003662B7 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		A6F555861AE69D9E003662B7 /* Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		A6F555871AE69D9E003662B7 /* Haneke.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Haneke.h; sourceTree = "<group>"; };
+		A6F555881AE69D9E003662B7 /* Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haneke.swift; sourceTree = "<group>"; };
+		A6F555891AE69D9E003662B7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6F5558A1AE69D9E003662B7 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		A6F5558B1AE69D9E003662B7 /* NetworkFetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkFetcher.swift; sourceTree = "<group>"; };
+		A6F5558C1AE69D9E003662B7 /* NSFileManager+Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFileManager+Haneke.swift"; sourceTree = "<group>"; };
+		A6F5558D1AE69D9E003662B7 /* NSHTTPURLResponse+Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSHTTPURLResponse+Haneke.swift"; sourceTree = "<group>"; };
+		A6F5558E1AE69D9E003662B7 /* String+Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Haneke.swift"; sourceTree = "<group>"; };
+		A6F5558F1AE69D9E003662B7 /* UIButton+Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Haneke.swift"; sourceTree = "<group>"; };
+		A6F555901AE69D9E003662B7 /* UIImage+Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Haneke.swift"; sourceTree = "<group>"; };
+		A6F555911AE69D9E003662B7 /* UIImageView+Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Haneke.swift"; sourceTree = "<group>"; };
+		A6F555921AE69D9E003662B7 /* UIView+Haneke.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Haneke.swift"; sourceTree = "<group>"; };
+		A6F555A71AE9335E003662B7 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		A6F555AE1AEA2A32003662B7 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		A6F555B01AEA2A73003662B7 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		A6F555B21AEA9EFB003662B7 /* ShareTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareTableViewCell.swift; sourceTree = "<group>"; };
+		A6F555B31AEA9EFB003662B7 /* ShareTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShareTableViewCell.xib; sourceTree = "<group>"; };
 		C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CC2AFC4A1ACDF4D600DF7F25 /* AsyncButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncButton.swift; sourceTree = "<group>"; };
 		CC2AFC4B1ACDF4D600DF7F25 /* AsyncImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
@@ -174,7 +225,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A68BAEDF1A4638B500EC8B7E /* CoreLocation.framework in Frameworks */,
+				A6F555B11AEA2A73003662B7 /* FBSDKCoreKit.framework in Frameworks */,
 				A6BD3C691ABDF5D500B468B3 /* FacebookSDK.framework in Frameworks */,
+				A6F555AF1AEA2A32003662B7 /* FBSDKShareKit.framework in Frameworks */,
 				A6A27E6B1A3F8CC2006F7ECD /* MapKit.framework in Frameworks */,
 				DB89EF2464061B2AC7821EFA /* Pods.framework in Frameworks */,
 			);
@@ -186,6 +239,8 @@
 		9A611F3EB53A77AF75A9865E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6F555A71AE9335E003662B7 /* FBSDKShareKit.framework */,
+				A6F5557B1AE69CD2003662B7 /* Haneke.framework */,
 				A6BD3C681ABDF5D500B468B3 /* FacebookSDK.framework */,
 				A608A6961A580A7D00D4D992 /* Accelerate.framework */,
 				A68BAEDE1A4638B500EC8B7E /* CoreLocation.framework */,
@@ -215,6 +270,8 @@
 		A6A27DB91A3BACBA006F7ECD = {
 			isa = PBXGroup;
 			children = (
+				A6F555B01AEA2A73003662B7 /* FBSDKCoreKit.framework */,
+				A6F555AE1AEA2A32003662B7 /* FBSDKShareKit.framework */,
 				A6A27E6A1A3F8CC2006F7ECD /* MapKit.framework */,
 				A6A27DFB1A3DE0EB006F7ECD /* Default-568h@2x.png */,
 				A6A27DC41A3BACBA006F7ECD /* therewhere */,
@@ -237,6 +294,7 @@
 		A6A27DC41A3BACBA006F7ECD /* therewhere */ = {
 			isa = PBXGroup;
 			children = (
+				A6F5557D1AE69D9E003662B7 /* Haneke */,
 				CC2AFC491ACDF4D600DF7F25 /* Spring */,
 				A6BD3C6B1ABEE4BC00B468B3 /* Facebook */,
 				A6D620441A6ABC0100DB7B20 /* Models */,
@@ -256,6 +314,8 @@
 				A68F6BC01A98EBCA00D252BB /* MapViewController.swift */,
 				A68F6BC11A98EBCA00D252BB /* MapViewController.xib */,
 				A6BD3C6A1ABDF7D100B468B3 /* Bridging-Header.h */,
+				A6F555B21AEA9EFB003662B7 /* ShareTableViewCell.swift */,
+				A6F555B31AEA9EFB003662B7 /* ShareTableViewCell.xib */,
 			);
 			path = therewhere;
 			sourceTree = "<group>";
@@ -313,6 +373,34 @@
 				A6AB41231A7D82CA000CD00D /* APIConnectionManager.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		A6F5557D1AE69D9E003662B7 /* Haneke */ = {
+			isa = PBXGroup;
+			children = (
+				A6F5557E1AE69D9E003662B7 /* Cache.swift */,
+				A6F5557F1AE69D9E003662B7 /* CGSize+Swift.swift */,
+				A6F555801AE69D9E003662B7 /* CryptoSwiftMD5.swift */,
+				A6F555811AE69D9E003662B7 /* Data.swift */,
+				A6F555821AE69D9E003662B7 /* DiskCache.swift */,
+				A6F555831AE69D9E003662B7 /* DiskFetcher.swift */,
+				A6F555841AE69D9E003662B7 /* Fetch.swift */,
+				A6F555851AE69D9E003662B7 /* Fetcher.swift */,
+				A6F555861AE69D9E003662B7 /* Format.swift */,
+				A6F555871AE69D9E003662B7 /* Haneke.h */,
+				A6F555881AE69D9E003662B7 /* Haneke.swift */,
+				A6F555891AE69D9E003662B7 /* Info.plist */,
+				A6F5558A1AE69D9E003662B7 /* Log.swift */,
+				A6F5558B1AE69D9E003662B7 /* NetworkFetcher.swift */,
+				A6F5558C1AE69D9E003662B7 /* NSFileManager+Haneke.swift */,
+				A6F5558D1AE69D9E003662B7 /* NSHTTPURLResponse+Haneke.swift */,
+				A6F5558E1AE69D9E003662B7 /* String+Haneke.swift */,
+				A6F5558F1AE69D9E003662B7 /* UIButton+Haneke.swift */,
+				A6F555901AE69D9E003662B7 /* UIImage+Haneke.swift */,
+				A6F555911AE69D9E003662B7 /* UIImageView+Haneke.swift */,
+				A6F555921AE69D9E003662B7 /* UIView+Haneke.swift */,
+			);
+			path = Haneke;
 			sourceTree = "<group>";
 		};
 		B7C985CD860FB96A49D44150 /* Pods */ = {
@@ -462,7 +550,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6A27E0F1A3E11FC006F7ECD /* Default-568h@2x.png in Resources */,
+				A6F555B51AEA9EFB003662B7 /* ShareTableViewCell.xib in Resources */,
 				CC2AFC771ACDF4D600DF7F25 /* LoadingView.xib in Resources */,
+				A6F5559D1AE69D9E003662B7 /* Info.plist in Resources */,
 				A6A27E621A3E3124006F7ECD /* InviteFriendsViewController.xib in Resources */,
 				A68F6BC31A98EBCA00D252BB /* MapViewController.xib in Resources */,
 				A6A27DD21A3BACBA006F7ECD /* Images.xcassets in Resources */,
@@ -535,17 +625,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F555A51AE69D9E003662B7 /* UIImageView+Haneke.swift in Sources */,
 				CC2AFC781ACDF4D600DF7F25 /* Misc.swift in Sources */,
+				A6F555931AE69D9E003662B7 /* Cache.swift in Sources */,
+				A6F555A41AE69D9E003662B7 /* UIImage+Haneke.swift in Sources */,
+				A6F555A21AE69D9E003662B7 /* String+Haneke.swift in Sources */,
+				A6F5559F1AE69D9E003662B7 /* NetworkFetcher.swift in Sources */,
+				A6F5559E1AE69D9E003662B7 /* Log.swift in Sources */,
 				CC2AFC7B1ACDF4D600DF7F25 /* SpringAnimation.swift in Sources */,
 				CC2AFC6E1ACDF4D600DF7F25 /* DesignableLabel.swift in Sources */,
 				CC2AFC791ACDF4D600DF7F25 /* SoundPlayer.swift in Sources */,
 				CC2AFC751ACDF4D600DF7F25 /* KeyboardLayoutConstraint.swift in Sources */,
+				A6F555981AE69D9E003662B7 /* DiskFetcher.swift in Sources */,
 				CC2AFC7D1ACDF4D600DF7F25 /* SpringImageView.swift in Sources */,
 				A6A27E611A3E3124006F7ECD /* LoginViewController.swift in Sources */,
+				A6F555A01AE69D9E003662B7 /* NSFileManager+Haneke.swift in Sources */,
+				A6F555A61AE69D9E003662B7 /* UIView+Haneke.swift in Sources */,
 				CC2AFC701ACDF4D600DF7F25 /* DesignableTextField.swift in Sources */,
 				A694670D1A7557660038880D /* Meetup.swift in Sources */,
 				CC2AFC6C1ACDF4D600DF7F25 /* DesignableButton.swift in Sources */,
 				CC2AFC7E1ACDF4D600DF7F25 /* SpringLabel.swift in Sources */,
+				A6F5559C1AE69D9E003662B7 /* Haneke.swift in Sources */,
+				A6F555951AE69D9E003662B7 /* CryptoSwiftMD5.swift in Sources */,
 				CC2AFC681ACDF4D600DF7F25 /* AsyncButton.swift in Sources */,
 				A680A39B1A5DE1270035B685 /* User.swift in Sources */,
 				A6E6D2B11A62C8BF002C0655 /* Friends.swift in Sources */,
@@ -555,21 +656,30 @@
 				CC2AFC6F1ACDF4D600DF7F25 /* DesignableTabBarController.swift in Sources */,
 				A608A6A01A58303800D4D992 /* MixpanelHandler.swift in Sources */,
 				A694670B1A7552280038880D /* Meetups.swift in Sources */,
+				A6F555A11AE69D9E003662B7 /* NSHTTPURLResponse+Haneke.swift in Sources */,
 				CC2AFC821ACDF4D600DF7F25 /* TransitionManager.swift in Sources */,
+				A6F555991AE69D9E003662B7 /* Fetch.swift in Sources */,
+				A6F555941AE69D9E003662B7 /* CGSize+Swift.swift in Sources */,
 				CC2AFC731ACDF4D600DF7F25 /* ImageLoader.swift in Sources */,
 				A6A27DCB1A3BACBA006F7ECD /* therewhere.xcdatamodeld in Sources */,
+				A6F555971AE69D9E003662B7 /* DiskCache.swift in Sources */,
 				CC2AFC6D1ACDF4D600DF7F25 /* DesignableImageView.swift in Sources */,
 				CC2AFC6A1ACDF4D600DF7F25 /* AutoTextView.swift in Sources */,
 				A6BD3C6F1ABEF9AF00B468B3 /* FriendList.swift in Sources */,
+				A6F555B41AEA9EFB003662B7 /* ShareTableViewCell.swift in Sources */,
 				CC2AFC811ACDF4D600DF7F25 /* SpringView.swift in Sources */,
 				CC2AFC831ACDF4D600DF7F25 /* TransitionZoom.swift in Sources */,
+				A6F555961AE69D9E003662B7 /* Data.swift in Sources */,
 				A6A27DC81A3BACBA006F7ECD /* AppDelegate.swift in Sources */,
 				A6A27E631A3E3124006F7ECD /* InviteFriendsViewController.swift in Sources */,
+				A6F5559A1AE69D9E003662B7 /* Fetcher.swift in Sources */,
 				A6D620461A6ABC2200DB7B20 /* UserProfile.swift in Sources */,
+				A6F555A31AE69D9E003662B7 /* UIButton+Haneke.swift in Sources */,
 				CC2AFC761ACDF4D600DF7F25 /* LoadingView.swift in Sources */,
 				A6BD3C6D1ABEE4DA00B468B3 /* FacebookHandler.swift in Sources */,
 				CC2AFC7C1ACDF4D600DF7F25 /* SpringButton.swift in Sources */,
 				CC2AFC6B1ACDF4D600DF7F25 /* BlurView.swift in Sources */,
+				A6F5559B1AE69D9E003662B7 /* Format.swift in Sources */,
 				A675AD851ADBE26D00BB812E /* CustomTableViewCell.swift in Sources */,
 				CC2AFC7F1ACDF4D600DF7F25 /* SpringTextField.swift in Sources */,
 				CC2AFC841ACDF4D600DF7F25 /* UnwindSegue.swift in Sources */,
@@ -724,12 +834,15 @@
 			baseConfigurationReference = 00750A9461831B54CE16BFD4 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
+					/Users/marcelolebre/Documents/FacebookSDK,
 				);
 				"FRAMEWORK_SEARCH_PATHS[sdk=iphoneos8.0]" = "$(inherited)";
 				INFOPLIST_FILE = therewhere/Info.plist;
@@ -756,12 +869,15 @@
 			baseConfigurationReference = C023D4DC9AD816C5969E91AD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos/Pods",
+					/Users/marcelolebre/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = therewhere/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
