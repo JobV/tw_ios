@@ -100,6 +100,25 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         //Reload table with new data
         tableView.reloadData()
+        var user = User()
+        
+
+        tableView.addPullToRefreshWithAction {
+            NSOperationQueue().addOperationWithBlock {
+                sleep(1)
+                NSOperationQueue.mainQueue().addOperationWithBlock {
+                    user.getFriends()
+                    self.tableView.stopPullToRefresh()
+                }
+            }
+        }
+        
+
+    }
+    
+    func refresh(sender:AnyObject)
+    {
+        // Code to refresh table view
     }
     
     // Go back when tapping with two fingers
@@ -157,7 +176,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 var content = FBSDKShareLinkContent()
                 content.contentURL = NSURL(string:"www.google.com")
                 content.contentTitle = "google"
-                content.contentDescription = "this is google"
+                content.contentDescription = "this is google #google"
+                
+                
                 
                 var dialog = FBSDKShareDialog()
                 dialog.fromViewController = self
