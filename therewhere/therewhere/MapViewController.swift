@@ -30,19 +30,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBOutlet var optionsButton: UIButton!
     @IBAction func optionsButton(sender: AnyObject) {
+        MixpanelHandler.userOpenedOptions()
         
         let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
         
         let callAction = UIAlertAction(title: "Call", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             var alertController = UIAlertController()
-            
+
             if(self.friendProfile.phoneNumber != ""){
                 alertController = UIAlertController(title: "Calling Friend!",
                     message: "Do you want to call \(self.friendProfile.firstName)?",
                     preferredStyle: UIAlertControllerStyle.Alert)
                 
                 let callingActionHandler = { (action:UIAlertAction!) -> Void in
+                    MixpanelHandler.userCalledFriend()
                     UIApplication.sharedApplication().openURL(NSURL(string: "tel://\(self.friendProfile.phoneNumber)")!)
                     return Void()
                 }
@@ -61,7 +63,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         })
         let navigateAction = UIAlertAction(title: "Navigate to friend", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
-
+            MixpanelHandler.userOpenedNavigation()
+            
             var start = self.userPin.coordinate
             var destination = self.friendPin.coordinate
             let alertController = UIAlertController(title: "Navigate with",
@@ -76,6 +79,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             if(UIApplication.sharedApplication().canOpenURL(googleURL!)){
                 let googleMapsHandler = { (action:UIAlertAction!) -> Void in
+                    MixpanelHandler.userNavigatedWithGoogleMaps()
                     UIApplication.sharedApplication().openURL(googleURL!)
                 }
                 
@@ -85,6 +89,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             if(UIApplication.sharedApplication().canOpenURL(appleMapsURL!)){
                 let appleMapsHandler = { (action:UIAlertAction!) -> Void in
                     UIApplication.sharedApplication().openURL(appleMapsURL!)
+                    MixpanelHandler.userNavigatedWithAppleMaps()
                 }
                 
                 alertController.addAction(UIAlertAction(title: "Apple Maps!", style: UIAlertActionStyle.Default, handler: appleMapsHandler))
@@ -105,6 +110,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             let terminateActionHandler = { (action:UIAlertAction!) -> Void in
                 var meetup = Meetups()
                 
+                MixpanelHandler.userTerminatedMeetup()
                 meetup.terminateMeetup(String(self.friendProfile.friendID))
                 self.myTimer.invalidate()
                 var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
@@ -165,14 +171,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
         self.presentViewController(friendsViewController, animated: true, completion: nil)
-    }
-    
-    @IBAction func callFriendButton(sender: AnyObject) {
-        
-    }
-    
-    @IBAction func stopButton(sender: AnyObject) {
-        
     }
     
     func setFriend(friend:FriendProfile){
@@ -236,7 +234,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             friendProfilePictureButton.layer.borderColor = UIColor.whiteColor().CGColor
             friendProfilePictureButton.layer.borderWidth = 2
         }
-        
     }
     
     override func viewDidLoad() {
