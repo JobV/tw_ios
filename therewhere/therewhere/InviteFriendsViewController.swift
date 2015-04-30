@@ -145,8 +145,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        
+    
         if(indexPath.row == self.items.count){
             var cell:ShareTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("shareCell") as! ShareTableViewCell
             return cell
@@ -163,7 +162,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             cell.loadItem(friendProfile: friendProfile)
             return cell
         }
-        
     }
     
     
@@ -179,8 +177,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 content.contentURL = NSURL(string:"www.google.com")
                 content.contentTitle = "google"
                 content.contentDescription = "this is google #google"
-                
-                
                 
                 var dialog = FBSDKShareDialog()
                 dialog.fromViewController = self
@@ -278,11 +274,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         return true
     }
     
-    
     func colorForIndex(index: Int) -> UIColor {
         let itemsCount = items.count - 1
         let colorVal = (CGFloat(index) / CGFloat(itemsCount)) * 0.6
         return UIColor(red: 1.0, green: colorVal, blue: 0.0, alpha: 1.0)
     }
-    
 }
