@@ -16,76 +16,75 @@ struct MixpanelHandler{
     // App actions
     
     static func applicationWasClosed() {
-        mixpanel.track("app:closed")
+        mixpanel.track("app", properties:  ["callback":"closed"])
     }
     
     static func applicationWasOpened() {
-        mixpanel.track("app:opened")
+        mixpanel.track("app", properties:  ["callback":"opened"])
     }
     
     static func applicationEnteredBackground() {
-        mixpanel.track("app:background")
+        mixpanel.track("app", properties:  ["callback":"background"])
     }
     
     static func applicationBecameActive() {
-        mixpanel.track("app:active")
+        mixpanel.track("app", properties:  ["callback":"active"])
     }
     
     static func applicationEnteredForeground(){
-        mixpanel.track("app:foreground")
+        mixpanel.track("app", properties:  ["callback":"foreground"])
     }
     
     // User Actions
     
     // Login View
     static func userLogin(){
-        mixpanel.track("user:login")
+        mixpanel.track("user", properties:  ["action":"login"])
     }
     
     static func userLogout(){
-        mixpanel.track("user:logout")
+        mixpanel.track("user", properties:  ["action":"logout"])
     }
     
     // Friends List
-    
     static func userPulledToRefresh(){
-        mixpanel.track("user:pull_to_refresh")
+        mixpanel.track("user", properties:  ["action":"pull_to_refresh"])
     }
     
     static func userTappedWithTwoFingers(){
-        mixpanel.track("user:two_fingers_tap")
+        mixpanel.track("user", properties:  ["action":"two_fingers_tap"])
     }
     
     static func userTappedWithThreeFingers(){
-        mixpanel.track("user:three_fingers_tap")
+        mixpanel.track("user", properties:  ["action":"three_fingers_tap"])
     }
     
     static func userSharedOnFacebook(){
-        mixpanel.track("user:shared_facebook")
+        mixpanel.track("user", properties:  ["action":"share_on_facebook"])
     }
     
     // Map View
     static func userOpenedOptions(){
-        mixpanel.track("user:opened_options")
+        mixpanel.track("user", properties:  ["action":"opened_options"])
     }
     
     static func userOpenedNavigation(){
-        mixpanel.track("user:navigate_to")
+        mixpanel.track("user", properties:  ["action":"navigate_to"])
     }
     
     static func userNavigatedWithGoogleMaps(){
-        mixpanel.track("user:navigate_with_google")
+        mixpanel.track("user", properties:  ["action":"navigate_with_google"])
     }
     
     static func userNavigatedWithAppleMaps(){
-        mixpanel.track("user:navigate_with_apple")
+        mixpanel.track("user", properties:  ["action":"navigate_with_apple"])
     }
     
     static func userCalledFriend(){
-        mixpanel.track("user:called_friend")
+        mixpanel.track("user", properties:  ["action":"called_friend"])
     }
     
     static func userTerminatedMeetup(){
-        mixpanel.track("user:terminated_meetup")
+        mixpanel.track("user", properties:  ["action":"terminated_meetup"])
     }
 }
