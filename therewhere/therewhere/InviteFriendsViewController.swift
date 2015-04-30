@@ -173,6 +173,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 message: "Invite your friends",
                 preferredStyle: UIAlertControllerStyle.Alert)
             let shareHandler = { (action:UIAlertAction!) -> Void in
+                MixpanelHandler.userSharedOnFacebook()
+                
                 var content = FBSDKShareLinkContent()
                 content.contentURL = NSURL(string:"www.google.com")
                 content.contentTitle = "google"

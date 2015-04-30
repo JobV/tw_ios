@@ -37,7 +37,6 @@ struct MixpanelHandler{
     
     // User Actions
     
-    
     // Login View
     static func userLogin(){
         mixpanel.track("{user:login}")
@@ -61,4 +60,32 @@ struct MixpanelHandler{
         mixpanel.track("{user:three_fingers_tap}")
     }
     
+    static func userSharedOnFacebook(){
+        mixpanel.track("{user:shared_facebook}")
+    }
+    
+    // Map View
+    static func userOpenedOptions(){
+        mixpanel.track("{user:opened_options}")
+    }
+    
+    static func userOpenedNavigation(){
+        mixpanel.track("{user:navigate_to}")
+    }
+    
+    static func userNavigatedWithGoogleMaps(){
+        mixpanel.track("{user:navigate_with_google}")
+    }
+    
+    static func userNavigatedWithAppleMaps(){
+        mixpanel.track("{user:navigate_with_apple}")
+    }
+    
+    static func userCalledFriend(){
+        mixpanel.track("{user:called_friend}")
+    }
+    
+    static func userTerminatedMeetup(){
+        mixpanel.track("{user:terminated_meetup}")
+    }
 }
