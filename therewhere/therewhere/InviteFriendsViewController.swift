@@ -100,30 +100,30 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         //Reload table with new data
         tableView.reloadData()
-        var user = User()
         
-
         tableView.addPullToRefreshWithAction {
             NSOperationQueue().addOperationWithBlock {
                 sleep(1)
                 NSOperationQueue.mainQueue().addOperationWithBlock {
-                    user.getFriends()
-                    self.tableView.stopPullToRefresh()
+                    self.refreshFriendsTableView()
                 }
             }
         }
-        
-
     }
     
-    func refresh(sender:AnyObject)
+    func refreshFriendsTableView()
     {
-        // Code to refresh table view
+        var user = User()
+        
+        user.getFriends()
+        self.tableView.stopPullToRefresh()
+        MixpanelHandler.userPulledToRefresh()
     }
     
     // Go back when tapping with two fingers
     func twoFingerTap() {
         println("Two finger tap detected. Going back.")
+        MixpanelHandler.userTappedWithTwoFingers()
         let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
         self.presentViewController(loginViewController, animated: true, completion: nil)
     }
@@ -131,6 +131,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     // Refresh when tapping with three fingers
     func threeFingerTap() {
         println("Three finger tap detected. Refreshing.")
+        MixpanelHandler.userTappedWithThreeFingers()
+        
         var user = User()
         
         user.getFriends()
@@ -143,7 +145,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         
         if(indexPath.row == self.items.count){
             var cell:ShareTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("shareCell") as! ShareTableViewCell
@@ -161,7 +162,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             cell.loadItem(friendProfile: friendProfile)
             return cell
         }
-        
     }
     
     
@@ -173,12 +173,12 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 message: "Invite your friends",
                 preferredStyle: UIAlertControllerStyle.Alert)
             let shareHandler = { (action:UIAlertAction!) -> Void in
+                MixpanelHandler.userSharedOnFacebook()
+                
                 var content = FBSDKShareLinkContent()
                 content.contentURL = NSURL(string:"www.google.com")
                 content.contentTitle = "google"
                 content.contentDescription = "this is google #google"
-                
-                
                 
                 var dialog = FBSDKShareDialog()
                 dialog.fromViewController = self
@@ -276,11 +276,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         return true
     }
     
-    
     func colorForIndex(index: Int) -> UIColor {
         let itemsCount = items.count - 1
         let colorVal = (CGFloat(index) / CGFloat(itemsCount)) * 0.6
         return UIColor(red: 1.0, green: colorVal, blue: 0.0, alpha: 1.0)
     }
-    
 }
