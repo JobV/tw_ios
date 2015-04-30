@@ -100,26 +100,24 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         
         //Reload table with new data
         tableView.reloadData()
-        var user = User()
         
-
         tableView.addPullToRefreshWithAction {
             NSOperationQueue().addOperationWithBlock {
                 sleep(1)
                 NSOperationQueue.mainQueue().addOperationWithBlock {
-                    user.getFriends()
-                    self.tableView.stopPullToRefresh()
-                    MixpanelHandler.userPulledToRefresh()
+                    self.refreshFriendsTableView()
                 }
             }
         }
-        
-
     }
     
-    func refresh(sender:AnyObject)
+    func refreshFriendsTableView()
     {
-        // Code to refresh table view
+        var user = User()
+        
+        user.getFriends()
+        self.tableView.stopPullToRefresh()
+        MixpanelHandler.userPulledToRefresh()
     }
     
     // Go back when tapping with two fingers
