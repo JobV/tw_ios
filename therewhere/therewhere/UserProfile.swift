@@ -47,4 +47,5 @@ import UIKit
     var onGoingMeetups = 0;
     var profileImage = UIImage();
     var providerID = String();
+    var coverImage = UIImage();
 }
