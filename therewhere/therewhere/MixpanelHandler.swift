@@ -53,5 +53,12 @@ struct MixpanelHandler{
         mixpanel.track("{user:pull_to_refresh}")
     }
     
+    static func userTappedWithTwoFingers(){
+        mixpanel.track("{user:two_fingers_tap}")
+    }
+    
+    static func userTappedWithThreeFingers(){
+        mixpanel.track("{user:three_fingers_tap}")
+    }
     
 }

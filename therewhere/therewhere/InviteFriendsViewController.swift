@@ -123,6 +123,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     // Go back when tapping with two fingers
     func twoFingerTap() {
         println("Two finger tap detected. Going back.")
+        MixpanelHandler.userTappedWithTwoFingers()
         let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
         self.presentViewController(loginViewController, animated: true, completion: nil)
     }
@@ -130,6 +131,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     // Refresh when tapping with three fingers
     func threeFingerTap() {
         println("Three finger tap detected. Refreshing.")
+        MixpanelHandler.userTappedWithThreeFingers()
+        
         var user = User()
         
         user.getFriends()
