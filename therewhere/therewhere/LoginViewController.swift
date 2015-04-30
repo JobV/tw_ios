@@ -44,13 +44,15 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     // Callback function triggered when user successfully logs in
     func loginViewShowingLoggedInUser(loginView : FBLoginView!) {
-        
+        MixpanelHandler.userLogin()
     }
     
     // Callback function triggered when user successfully logs out
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
         var user = User()
+        
         user.logout()
+        MixpanelHandler.userLogout()
         fbCounter = 0
     }
     

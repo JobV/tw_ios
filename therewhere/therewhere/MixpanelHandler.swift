@@ -16,4 +16,12 @@ struct MixpanelHandler{
     static func userOpensApplication() {
         mixpanel.track("{user:application_openned}")
     }
+    
+    static func userLogin(){
+        mixpanel.track("{user:login}")
+    }
+    
+    static func userLogout(){
+        mixpanel.track("{user:logout}")
+    }
 }
