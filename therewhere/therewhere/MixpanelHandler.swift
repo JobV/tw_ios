@@ -37,6 +37,8 @@ struct MixpanelHandler{
     
     // User Actions
     
+    
+    // Login View
     static func userLogin(){
         mixpanel.track("{user:login}")
     }
@@ -44,4 +46,12 @@ struct MixpanelHandler{
     static func userLogout(){
         mixpanel.track("{user:logout}")
     }
+    
+    // Friends List
+    
+    static func userPulledToRefresh(){
+        mixpanel.track("{user:pull_to_refresh}")
+    }
+    
+    
 }

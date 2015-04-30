@@ -109,6 +109,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 NSOperationQueue.mainQueue().addOperationWithBlock {
                     user.getFriends()
                     self.tableView.stopPullToRefresh()
+                    MixpanelHandler.userPulledToRefresh()
                 }
             }
         }
