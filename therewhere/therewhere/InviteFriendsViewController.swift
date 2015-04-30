@@ -145,7 +145,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
+        
         if(indexPath.row == self.items.count){
             var cell:ShareTableViewCell = self.tableView.dequeueReusableCellWithIdentifier("shareCell") as! ShareTableViewCell
             return cell
