@@ -13,9 +13,29 @@ struct MixpanelHandler{
     static let mixpanelToken = "6ae05520085a72b10108fbae93cad415"
     static let mixpanel = Mixpanel.sharedInstanceWithToken(mixpanelToken)
     
-    static func userOpensApplication() {
-        mixpanel.track("{user:application_openned}")
+    // App actions
+    
+    static func applicationWasClosed() {
+        mixpanel.track("{app:closed}")
     }
+    
+    static func applicationWasOpened() {
+        mixpanel.track("{app:opened}")
+    }
+    
+    static func applicationEnteredBackground() {
+        mixpanel.track("{app:background}")
+    }
+    
+    static func applicationBecameActive() {
+        mixpanel.track("{app:active}")
+    }
+    
+    static func applicationEnteredForeground(){
+        mixpanel.track("{app:foreground}")
+    }
+    
+    // User Actions
     
     static func userLogin(){
         mixpanel.track("{user:login}")
