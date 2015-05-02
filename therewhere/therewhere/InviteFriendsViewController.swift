@@ -93,12 +93,12 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var customCellNib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         var shareCellNib = UINib(nibName: "ShareTableViewCell", bundle: nil)
         
-        //Specify custom row/cell properties
+        // Specify custom row/cell properties
         tableView.registerNib(customCellNib, forCellReuseIdentifier: "customCell")
         tableView.registerNib(shareCellNib, forCellReuseIdentifier: "shareCell")
-        tableView.rowHeight = 60
+        tableView.rowHeight = 110
         
-        //Reload table with new data
+        // Reload table with new data
         tableView.reloadData()
         
         tableView.addPullToRefreshWithAction {

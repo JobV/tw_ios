@@ -13,6 +13,7 @@ class CustomTableViewCell : UITableViewCell {
     @IBOutlet var meetupStatus: UILabel!
     @IBOutlet var fullNameLabel: UILabel!
     @IBOutlet var profileImage: UIImageView!
+    @IBOutlet var coverImage: UIImageView!
     
     let baseColor: UIColor = UIColor(hex: "4A90E2")
     let inverseColor: UIColor = UIColor.whiteColor()
@@ -32,6 +33,8 @@ class CustomTableViewCell : UITableViewCell {
                 self.profileImage.layer.masksToBounds = true;
                 self.profileImage.contentMode = UIViewContentMode.ScaleAspectFill;
         }
+        
+        self.coverImage.image = UserProfile.sharedInstance.coverImage
         
         self.status = friendProfile.statusWithFriend
         self.selectionStyle = UITableViewCellSelectionStyle.None

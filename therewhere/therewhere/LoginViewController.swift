@@ -29,9 +29,9 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
             name: "authenticationNotification",
             object: nil)
         
-        //hidding navigation bar
+        // hide navigation bar
         navigationController?.navigationBarHidden = true;
-                
+
         // Set FB settings
         fbloginView.delegate = self
         fbloginView.readPermissions = ["public_profile", "email", "user_friends", "user_about_me", "user_activities"]
@@ -69,6 +69,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
             userProfile.providerID = user.objectID
             userAPI.authenticate(token)
             userAPI.getUserProfilePicture()
+            userAPI.getUserCoverImage()
             
             fbCounter+=1
         }

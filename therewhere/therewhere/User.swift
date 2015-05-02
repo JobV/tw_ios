@@ -31,6 +31,38 @@ import MapKit
         }
     }
     
+    func getUserCoverImage(){
+        let urlRequest = callFacebook("me?fields=cover")
+        let cache = Shared.dataCache
+        var user = UserProfile.sharedInstance
+        var accessToken = FBSession.activeSession().accessTokenData.accessToken
+        let parameters = ["access_token" : accessToken]
+
+        cache.fetch(key: "\(user.providerID)_cover_image" as String)
+            .onSuccess { data in
+                user.coverImage = UIImage(data: data)!
+            }
+            .onFailure { _ -> () in
+                let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me?fields=cover", parameters: parameters)
+                graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+
+                    if ((error) == nil){
+                        if var coverData = result["cover"] as? NSDictionary{
+                            if var sourceData:String = coverData["source"] as? String{
+                                var user = UserProfile.sharedInstance
+                                var imageURL = NSURL(string: sourceData)
+                                var imageData: NSData = NSData(contentsOfURL: imageURL!)!
+
+                                cache.set(value: imageData, key: "\(user.providerID)_cover_image" as String)
+                                user.coverImage = UIImage(data: imageData)!
+                            }
+                        }
+                    }
+                })
+            }
+    }
+
+    
     func getFriendProfilePicture(friendID: String) {
         let urlRequest = callFacebook("\(friendID)/picture?type=large")
         let cache = Shared.dataCache
@@ -175,6 +207,7 @@ import MapKit
                     if var phoneNumber = json_response["phone_nr"].string{
                         userProfile.phoneNumber = phoneNumber
                     }
+
                 }
         }
     }
