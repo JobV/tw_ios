@@ -69,7 +69,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
             userProfile.providerID = user.objectID
             userAPI.authenticate(token)
             userAPI.getUserProfilePicture()
-            userAPI.getUserCoverImage()
             
             fbCounter+=1
         }

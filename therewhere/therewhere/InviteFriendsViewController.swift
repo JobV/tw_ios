@@ -59,18 +59,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         for friend in friends{
             items.append(friend)
         }
-        
-        for _ in 1...9 {
-            var friendProfile = FriendProfile()
-            friendProfile.fullName = "John Doe"
-            friendProfile.friendID = 1123
-            friendProfile.statusWithFriend = "pending"
-            friendProfile.phoneNumber = "123123123"
-            
-            items.append(friendProfile)
-        }
-        
-        
+
         //Reload table with new data
         tableView.reloadData()
     }

@@ -24,6 +24,8 @@ class CustomTableViewCell : UITableViewCell {
         fullNameLabel?.text = friendProfile.fullName
         meetupStatus.text = friendProfile.statusWithFriend
         let cache = Shared.dataCache
+        
+        // Get Profile Image from cache
         cache.fetch(key: friendProfile.providerID as String)
             .onSuccess { data in
                 var profile = UIImage(data: data)!
@@ -34,7 +36,13 @@ class CustomTableViewCell : UITableViewCell {
                 self.profileImage.contentMode = UIViewContentMode.ScaleAspectFill;
         }
         
-        self.coverImage.image = UserProfile.sharedInstance.coverImage
+        // Get cover image from cache
+        cache.fetch(key: "\(friendProfile.providerID)_cover_image" as String)
+            .onSuccess { data in
+                var coverImage = UIImage(data: data)!
+                NSLog("setting cover image")
+                self.coverImage.image = coverImage
+        }
         
         self.status = friendProfile.statusWithFriend
         self.selectionStyle = UITableViewCellSelectionStyle.None
