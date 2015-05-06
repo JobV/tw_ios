@@ -29,7 +29,7 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcelo Lebre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-1q-ppv">
-                                                <rect key="frame" x="55" y="66" width="210" height="20"/>
+                                                <rect key="frame" x="55" y="76" width="210" height="20"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -37,9 +37,9 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="centerX" secondItem="faT-nE-wkA" secondAttribute="centerX" id="TnF-RP-jBP"/>
-                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="leading" secondItem="faT-nE-wkA" secondAttribute="leading" constant="55" id="V86-Rn-nim"/>
-                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="top" secondItem="faT-nE-wkA" secondAttribute="top" constant="66" id="hqv-Lr-VMM"/>
+                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="centerX" secondItem="faT-nE-wkA" secondAttribute="centerX" id="3hL-5K-3rH"/>
+                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="top" secondItem="faT-nE-wkA" secondAttribute="top" constant="76" id="47h-Wj-cdS"/>
+                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="leading" secondItem="faT-nE-wkA" secondAttribute="leading" constant="55" id="FLi-mc-rZJ"/>
                                         </constraints>
                                     </view>
                                     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -49,34 +49,34 @@
                                 </visualEffectView>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="Zly-Tb-nbk" secondAttribute="trailing" id="J65-h7-Hmp"/>
-                                <constraint firstItem="Zly-Tb-nbk" firstAttribute="leading" secondItem="sjV-Gv-3ly" secondAttribute="leading" id="Wyi-nE-4Oc"/>
-                                <constraint firstItem="Zly-Tb-nbk" firstAttribute="top" secondItem="sjV-Gv-3ly" secondAttribute="top" id="e5H-CC-c1I"/>
-                                <constraint firstAttribute="bottom" secondItem="Zly-Tb-nbk" secondAttribute="bottom" constant="-1" id="qnC-8Y-ELS"/>
+                                <constraint firstAttribute="trailing" secondItem="Zly-Tb-nbk" secondAttribute="trailing" id="Squ-cu-vHO"/>
+                                <constraint firstAttribute="bottom" secondItem="Zly-Tb-nbk" secondAttribute="bottom" constant="-1" id="ekh-rG-EmN"/>
+                                <constraint firstItem="Zly-Tb-nbk" firstAttribute="top" secondItem="sjV-Gv-3ly" secondAttribute="top" id="iYb-mD-ecv"/>
+                                <constraint firstItem="Zly-Tb-nbk" firstAttribute="leading" secondItem="sjV-Gv-3ly" secondAttribute="leading" id="jU5-45-D6w"/>
                             </constraints>
                         </view>
                         <blurEffect style="light"/>
                     </visualEffectView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-5i-OOj">
-                        <rect key="frame" x="135" y="10" width="50" height="50"/>
+                        <rect key="frame" x="135" y="15" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="LCQ-9C-MDZ"/>
+                            <constraint firstAttribute="width" constant="50" id="Uzs-fP-all"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="PWV-Lo-KAQ" secondAttribute="bottom" id="31g-hd-Cpo"/>
-                    <constraint firstItem="7ET-5i-OOj" firstAttribute="top" secondItem="WdS-qV-r00" secondAttribute="topMargin" constant="2" id="4Zp-BL-NIU"/>
-                    <constraint firstItem="vF0-X0-AoW" firstAttribute="top" secondItem="PWV-Lo-KAQ" secondAttribute="top" id="AZg-vA-vyq"/>
-                    <constraint firstAttribute="trailing" secondItem="PWV-Lo-KAQ" secondAttribute="trailing" id="C1u-ID-50p"/>
-                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="trailing" secondItem="vF0-X0-AoW" secondAttribute="trailing" id="LnH-iO-kWu"/>
-                    <constraint firstItem="vF0-X0-AoW" firstAttribute="leading" secondItem="PWV-Lo-KAQ" secondAttribute="leading" id="MdG-sI-sM7"/>
-                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="top" secondItem="WdS-qV-r00" secondAttribute="top" id="VOz-IT-bdP"/>
-                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="leading" secondItem="WdS-qV-r00" secondAttribute="leading" id="f3j-4j-4OC"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="7ET-5i-OOj" secondAttribute="bottom" constant="41" id="fk6-Jk-Sg9"/>
-                    <constraint firstItem="7ET-5i-OOj" firstAttribute="centerX" secondItem="PWV-Lo-KAQ" secondAttribute="centerX" id="ow5-i8-Mfc"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="vF0-X0-AoW" secondAttribute="bottom" constant="-9" id="w8P-dT-bOV"/>
+                    <constraint firstAttribute="bottom" secondItem="PWV-Lo-KAQ" secondAttribute="bottom" id="0bO-zA-2j6"/>
+                    <constraint firstItem="7ET-5i-OOj" firstAttribute="centerX" secondItem="PWV-Lo-KAQ" secondAttribute="centerX" id="45x-5n-hY6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="vF0-X0-AoW" secondAttribute="bottom" constant="-9" id="7rJ-BI-a9q"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="leading" secondItem="vF0-X0-AoW" secondAttribute="leading" id="C12-8P-hmb"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="leading" secondItem="WdS-qV-r00" secondAttribute="leading" id="D7Y-OT-Q60"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="top" secondItem="WdS-qV-r00" secondAttribute="top" id="MPn-mp-xk4"/>
+                    <constraint firstItem="7ET-5i-OOj" firstAttribute="top" secondItem="WdS-qV-r00" secondAttribute="topMargin" constant="7" id="aQE-dU-y3E"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="top" secondItem="vF0-X0-AoW" secondAttribute="top" id="gdx-Is-95L"/>
+                    <constraint firstAttribute="trailing" secondItem="PWV-Lo-KAQ" secondAttribute="trailing" id="s0n-xW-tLa"/>
+                    <constraint firstItem="vF0-X0-AoW" firstAttribute="trailing" secondItem="PWV-Lo-KAQ" secondAttribute="trailing" id="v8h-I2-9ku"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7ET-5i-OOj" secondAttribute="bottom" constant="36" id="zBU-ce-AgJ"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
