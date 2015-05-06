@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class CustomTableViewCell : UITableViewCell {
-    @IBOutlet var meetupStatus: UILabel!
     @IBOutlet var fullNameLabel: UILabel!
     @IBOutlet var profileImage: UIImageView!
     @IBOutlet var coverImage: UIImageView!
@@ -22,7 +21,6 @@ class CustomTableViewCell : UITableViewCell {
     
     func loadItem(#friendProfile: FriendProfile) {
         fullNameLabel?.text = friendProfile.fullName
-        meetupStatus.text = friendProfile.statusWithFriend
         let cache = Shared.dataCache
         
         // Get Profile Image from cache
@@ -33,14 +31,12 @@ class CustomTableViewCell : UITableViewCell {
                 self.profileImage.frame = CGRectMake(0, 0, 50, 50);
                 self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height / 2
                 self.profileImage.layer.masksToBounds = true;
-                self.profileImage.contentMode = UIViewContentMode.ScaleAspectFill;
         }
         
         // Get cover image from cache
         cache.fetch(key: "\(friendProfile.providerID)_cover_image" as String)
             .onSuccess { data in
                 var coverImage = UIImage(data: data)!
-                NSLog("setting cover image")
                 self.coverImage.image = coverImage
         }
         
@@ -50,7 +46,6 @@ class CustomTableViewCell : UITableViewCell {
     }
     
     func updateMeetupStatus(status:String){
-        meetupStatus.text = status
         self.status = status;
         styleCell(status, cell: self)
     }
