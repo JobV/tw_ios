@@ -28,7 +28,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcelo Lebre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-1q-ppv">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcelo Lebre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-1q-ppv" customClass="SpringLabel" customModule="therewhere" customModuleProvider="target">
                                                 <rect key="frame" x="55" y="76" width="210" height="20"/>
                                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -57,7 +57,7 @@
                         </view>
                         <blurEffect style="light"/>
                     </visualEffectView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-5i-OOj">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-5i-OOj" customClass="SpringImageView" customModule="therewhere" customModuleProvider="target">
                         <rect key="frame" x="135" y="15" width="50" height="50"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="50" id="Uzs-fP-all"/>
@@ -81,6 +81,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="blurView" destination="PWV-Lo-KAQ" id="2Wy-BQ-sKf"/>
                 <outlet property="contentView" destination="WdS-qV-r00" id="Mt7-T2-phC"/>
                 <outlet property="coverImage" destination="vF0-X0-AoW" id="Bio-8Z-jH7"/>
                 <outlet property="fullNameLabel" destination="LKe-1q-ppv" id="IvY-wu-aGP"/>

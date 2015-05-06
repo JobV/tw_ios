@@ -184,6 +184,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             var cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
             var friendProfile = items[indexPath.row]
             
+            cell.profileImage.animation = "pop"
+            cell.profileImage.animate()
+            
             switch cell.status {
                 
             case "ready":

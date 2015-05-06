@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 class CustomTableViewCell : UITableViewCell {
-    @IBOutlet var fullNameLabel: UILabel!
-    @IBOutlet var profileImage: UIImageView!
+    @IBOutlet var fullNameLabel: SpringLabel!
+    @IBOutlet var profileImage: SpringImageView!
     @IBOutlet var coverImage: UIImageView!
+    @IBOutlet var blurView: UIVisualEffectView!
     
     let baseColor: UIColor = UIColor(hex: "4A90E2")
     let inverseColor: UIColor = UIColor.whiteColor()
@@ -57,25 +58,29 @@ class CustomTableViewCell : UITableViewCell {
     func styleCell(status: String, cell: CustomTableViewCell) {
         switch status {
         case "pending":
-            // On pending, the cell should be slightly lighter
-            cell.backgroundColor = self.baseColor.colorWithSaturationComponent(0.8)
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 0.8;
+            })
             
         case "ready":
-            // On ready, the cell should be default
-            setDefaultStyle(cell)
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 1;
+            })
             
         case "accepted":
-            // On accepted, the cell should be inverse colored
-            cell.backgroundColor = self.inverseColor
-            cell.fullNameLabel?.textColor = self.baseColor
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 0;
+            })
             
         case "waiting":
-            // On waiting, the cell should blink
-            makeCellBlink(cell)
-            
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 0.7;
+            })
+                
         default:
-            // By default, the cell should be default
-            setDefaultStyle(cell)
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 1;
+            })
         }
     }
     
