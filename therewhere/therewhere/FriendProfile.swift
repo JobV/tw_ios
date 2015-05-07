@@ -21,4 +21,5 @@ class FriendProfile: NSObject {
     var fullName = String()
     var statusWithFriend = String()
     var profileImage = UIImage()
+    var coverImage = UIImage()
 }

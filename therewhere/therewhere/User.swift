@@ -31,6 +31,35 @@ import MapKit
         }
     }
     
+    func getFriendCoverImage(userID: String){
+        let cache = Shared.dataCache
+        var user = UserProfile.sharedInstance
+        let parameters = ["access_token" : FBSession.activeSession().accessTokenData.accessToken]
+
+        cache.fetch(key: "\(userID)_cover_image" as String)
+//            .onSuccess { data in
+//                NSNotificationCenter.defaultCenter().postNotificationName("friendCoverImage", object: data)
+//            }
+            .onFailure { _ -> () in
+                let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "\(userID)?fields=cover", parameters: parameters)
+                graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+
+                    if ((error) == nil){
+                        if var coverData = result["cover"] as? NSDictionary{
+                            if var sourceData:String = coverData["source"] as? String{
+                                var imageURL = NSURL(string: sourceData)
+                                var imageData: NSData = NSData(contentsOfURL: imageURL!)!
+
+                                cache.set(value: imageData, key: "\(userID)_cover_image" as String)
+//                                NSNotificationCenter.defaultCenter().postNotificationName("friendCoverImage", object: imageData)
+                            }
+                        }
+                    }
+                })
+            }
+    }
+
+    
     func getFriendProfilePicture(friendID: String) {
         let urlRequest = callFacebook("\(friendID)/picture?type=large")
         let cache = Shared.dataCache
@@ -56,24 +85,6 @@ import MapKit
             .onFailure { _ -> () in
                 NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response:NSURLResponse!, data:NSData!, error:NSError!) -> Void in
                     cache.set(value: data, key: userID as String)
-                }
-        }
-    }
-    
-    func getCoverPicture(){
-        let urlRequest = callFacebook("/me/cover")
-        let cache = Shared.dataCache
-        var user = UserProfile.sharedInstance
-        
-        cache.fetch(key: user.providerID as String)
-            .onSuccess { data in
-                user.coverImage = UIImage(data: data)!
-            }
-            .onFailure { _ -> () in
-                NSURLConnection.sendAsynchronousRequest(urlRequest, queue: NSOperationQueue.mainQueue()) { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                    var user = UserProfile.sharedInstance
-                    cache.set(value: data, key: user.providerID as String)
-                    user.coverImage = UIImage(data: data)!
                 }
         }
     }
@@ -175,6 +186,7 @@ import MapKit
                     if var phoneNumber = json_response["phone_nr"].string{
                         userProfile.phoneNumber = phoneNumber
                     }
+
                 }
         }
     }
@@ -193,6 +205,7 @@ import MapKit
             .responseJSON { (req, res, json, error) in
                 if(error != nil) {
                     NSLog("error: getFriends unsuccessful")
+                    NSLog("\(error)")
                 }
                 else {
                     var json = SwiftyJSON.JSON(json!)
@@ -236,6 +249,7 @@ import MapKit
                         if var providerIDFromJson = subJson["provider_id"].string{
                             providerID = providerIDFromJson
                             self.getProfilePicture(providerID)
+                            self.getFriendCoverImage(providerID)
                         }
                         
                         friendProfile.firstName = firstName
@@ -246,6 +260,7 @@ import MapKit
                         friendProfile.providerID = providerID
                         friendProfile.phoneNumber = friendPhoneNr
                         friendProfile.statusWithFriend = statusWithFriend
+
                         
                         friends.append(friendProfile)
                     }

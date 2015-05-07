@@ -59,18 +59,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         for friend in friends{
             items.append(friend)
         }
-        
-        for _ in 1...9 {
-            var friendProfile = FriendProfile()
-            friendProfile.fullName = "John Doe"
-            friendProfile.friendID = 1123
-            friendProfile.statusWithFriend = "pending"
-            friendProfile.phoneNumber = "123123123"
-            
-            items.append(friendProfile)
-        }
-        
-        
+
         //Reload table with new data
         tableView.reloadData()
     }
@@ -93,12 +82,12 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         var customCellNib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         var shareCellNib = UINib(nibName: "ShareTableViewCell", bundle: nil)
         
-        //Specify custom row/cell properties
+        // Specify custom row/cell properties
         tableView.registerNib(customCellNib, forCellReuseIdentifier: "customCell")
         tableView.registerNib(shareCellNib, forCellReuseIdentifier: "shareCell")
-        tableView.rowHeight = 60
+        tableView.rowHeight = 110
         
-        //Reload table with new data
+        // Reload table with new data
         tableView.reloadData()
         
         tableView.addPullToRefreshWithAction {
@@ -194,6 +183,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         }else{
             var cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
             var friendProfile = items[indexPath.row]
+            
+            cell.profileImage.animation = "pop"
+            cell.profileImage.animate()
             
             switch cell.status {
                 

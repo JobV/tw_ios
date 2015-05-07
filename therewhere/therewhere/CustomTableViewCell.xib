@@ -1,57 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" placeholderIntrinsicWidth="269" placeholderIntrinsicHeight="60" selectionStyle="default" indentationWidth="10" id="Suj-JN-57h" customClass="CustomTableViewCell" customModule="therewhere" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Suj-JN-57h" id="WdS-qV-r00">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcelo Lebre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-1q-ppv">
-                        <rect key="frame" x="82" y="16" width="210" height="29"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7i-KT-akX">
-                        <rect key="frame" x="217" y="34" width="103" height="21"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vF0-X0-AoW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                    </imageView>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWV-Lo-KAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="320" verticalHuggingPriority="1" id="sjV-Gv-3ly">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zly-Tb-nbk">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="faT-nE-wkA">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcelo Lebre" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKe-1q-ppv" customClass="SpringLabel" customModule="therewhere" customModuleProvider="target">
+                                                <rect key="frame" x="55" y="76" width="210" height="20"/>
+                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="centerX" secondItem="faT-nE-wkA" secondAttribute="centerX" id="3hL-5K-3rH"/>
+                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="top" secondItem="faT-nE-wkA" secondAttribute="top" constant="76" id="47h-Wj-cdS"/>
+                                            <constraint firstItem="LKe-1q-ppv" firstAttribute="leading" secondItem="faT-nE-wkA" secondAttribute="leading" constant="55" id="FLi-mc-rZJ"/>
+                                        </constraints>
+                                    </view>
+                                    <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <vibrancyEffect>
+                                        <blurEffect style="light"/>
+                                    </vibrancyEffect>
+                                </visualEffectView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Zly-Tb-nbk" secondAttribute="trailing" id="Squ-cu-vHO"/>
+                                <constraint firstAttribute="bottom" secondItem="Zly-Tb-nbk" secondAttribute="bottom" constant="-1" id="ekh-rG-EmN"/>
+                                <constraint firstItem="Zly-Tb-nbk" firstAttribute="top" secondItem="sjV-Gv-3ly" secondAttribute="top" id="iYb-mD-ecv"/>
+                                <constraint firstItem="Zly-Tb-nbk" firstAttribute="leading" secondItem="sjV-Gv-3ly" secondAttribute="leading" id="jU5-45-D6w"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="light"/>
+                    </visualEffectView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-5i-OOj" customClass="SpringImageView" customModule="therewhere" customModuleProvider="target">
+                        <rect key="frame" x="135" y="15" width="50" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="103" id="rJS-12-H9z"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" white="1" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7ET-5i-OOj">
-                        <rect key="frame" x="0.0" y="5" width="50" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="50" id="Bdq-uG-zI5"/>
+                            <constraint firstAttribute="width" constant="50" id="Uzs-fP-all"/>
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="7ET-5i-OOj" secondAttribute="bottom" constant="-4" id="63y-1o-foe"/>
-                    <constraint firstItem="LKe-1q-ppv" firstAttribute="leading" secondItem="7ET-5i-OOj" secondAttribute="trailing" constant="32" id="9H4-vc-tMS"/>
-                    <constraint firstItem="LKe-1q-ppv" firstAttribute="centerY" secondItem="WdS-qV-r00" secondAttribute="centerY" constant="1" id="MFU-JV-GaW"/>
-                    <constraint firstItem="7ET-5i-OOj" firstAttribute="leading" secondItem="WdS-qV-r00" secondAttribute="leadingMargin" constant="-8" id="Wga-Iz-x5r"/>
-                    <constraint firstAttribute="trailing" secondItem="h7i-KT-akX" secondAttribute="trailing" id="lgK-Mh-Rza"/>
-                    <constraint firstItem="7ET-5i-OOj" firstAttribute="bottom" secondItem="h7i-KT-akX" secondAttribute="bottom" id="o0G-N9-fah"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="LKe-1q-ppv" secondAttribute="trailing" constant="20" id="qRo-CD-Nbe"/>
-                    <constraint firstItem="7ET-5i-OOj" firstAttribute="top" secondItem="WdS-qV-r00" secondAttribute="topMargin" constant="-3" id="rN0-7S-V0w"/>
+                    <constraint firstAttribute="bottom" secondItem="PWV-Lo-KAQ" secondAttribute="bottom" id="0bO-zA-2j6"/>
+                    <constraint firstItem="7ET-5i-OOj" firstAttribute="centerX" secondItem="PWV-Lo-KAQ" secondAttribute="centerX" id="45x-5n-hY6"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="vF0-X0-AoW" secondAttribute="bottom" constant="-9" id="7rJ-BI-a9q"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="leading" secondItem="vF0-X0-AoW" secondAttribute="leading" id="C12-8P-hmb"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="leading" secondItem="WdS-qV-r00" secondAttribute="leading" id="D7Y-OT-Q60"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="top" secondItem="WdS-qV-r00" secondAttribute="top" id="MPn-mp-xk4"/>
+                    <constraint firstItem="7ET-5i-OOj" firstAttribute="top" secondItem="WdS-qV-r00" secondAttribute="topMargin" constant="7" id="aQE-dU-y3E"/>
+                    <constraint firstItem="PWV-Lo-KAQ" firstAttribute="top" secondItem="vF0-X0-AoW" secondAttribute="top" id="gdx-Is-95L"/>
+                    <constraint firstAttribute="trailing" secondItem="PWV-Lo-KAQ" secondAttribute="trailing" id="s0n-xW-tLa"/>
+                    <constraint firstItem="vF0-X0-AoW" firstAttribute="trailing" secondItem="PWV-Lo-KAQ" secondAttribute="trailing" id="v8h-I2-9ku"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7ET-5i-OOj" secondAttribute="bottom" constant="36" id="zBU-ce-AgJ"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="blurView" destination="PWV-Lo-KAQ" id="2Wy-BQ-sKf"/>
                 <outlet property="contentView" destination="WdS-qV-r00" id="Mt7-T2-phC"/>
+                <outlet property="coverImage" destination="vF0-X0-AoW" id="Bio-8Z-jH7"/>
                 <outlet property="fullNameLabel" destination="LKe-1q-ppv" id="IvY-wu-aGP"/>
-                <outlet property="meetupStatus" destination="h7i-KT-akX" id="Uvb-gM-pvn"/>
                 <outlet property="profileImage" destination="7ET-5i-OOj" id="PPW-Sg-vV4"/>
             </connections>
             <point key="canvasLocation" x="232" y="188"/>

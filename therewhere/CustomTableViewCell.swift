@@ -10,9 +10,10 @@ import Foundation
 import UIKit
 
 class CustomTableViewCell : UITableViewCell {
-    @IBOutlet var meetupStatus: UILabel!
-    @IBOutlet var fullNameLabel: UILabel!
-    @IBOutlet var profileImage: UIImageView!
+    @IBOutlet var fullNameLabel: SpringLabel!
+    @IBOutlet var profileImage: SpringImageView!
+    @IBOutlet var coverImage: UIImageView!
+    @IBOutlet var blurView: UIVisualEffectView!
     
     let baseColor: UIColor = UIColor(hex: "4A90E2")
     let inverseColor: UIColor = UIColor.whiteColor()
@@ -21,8 +22,9 @@ class CustomTableViewCell : UITableViewCell {
     
     func loadItem(#friendProfile: FriendProfile) {
         fullNameLabel?.text = friendProfile.fullName
-        meetupStatus.text = friendProfile.statusWithFriend
         let cache = Shared.dataCache
+        
+        // Get Profile Image from cache
         cache.fetch(key: friendProfile.providerID as String)
             .onSuccess { data in
                 var profile = UIImage(data: data)!
@@ -30,7 +32,13 @@ class CustomTableViewCell : UITableViewCell {
                 self.profileImage.frame = CGRectMake(0, 0, 50, 50);
                 self.profileImage.layer.cornerRadius = self.profileImage.frame.size.height / 2
                 self.profileImage.layer.masksToBounds = true;
-                self.profileImage.contentMode = UIViewContentMode.ScaleAspectFill;
+        }
+        
+        // Get cover image from cache
+        cache.fetch(key: "\(friendProfile.providerID)_cover_image" as String)
+            .onSuccess { data in
+                var coverImage = UIImage(data: data)!
+                self.coverImage.image = coverImage
         }
         
         self.status = friendProfile.statusWithFriend
@@ -39,7 +47,6 @@ class CustomTableViewCell : UITableViewCell {
     }
     
     func updateMeetupStatus(status:String){
-        meetupStatus.text = status
         self.status = status;
         styleCell(status, cell: self)
     }
@@ -51,25 +58,29 @@ class CustomTableViewCell : UITableViewCell {
     func styleCell(status: String, cell: CustomTableViewCell) {
         switch status {
         case "pending":
-            // On pending, the cell should be slightly lighter
-            cell.backgroundColor = self.baseColor.colorWithSaturationComponent(0.8)
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 0.8;
+            })
             
         case "ready":
-            // On ready, the cell should be default
-            setDefaultStyle(cell)
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 1;
+            })
             
         case "accepted":
-            // On accepted, the cell should be inverse colored
-            cell.backgroundColor = self.inverseColor
-            cell.fullNameLabel?.textColor = self.baseColor
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 0;
+            })
             
         case "waiting":
-            // On waiting, the cell should blink
-            makeCellBlink(cell)
-            
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 0.7;
+            })
+                
         default:
-            // By default, the cell should be default
-            setDefaultStyle(cell)
+            UIView.animateWithDuration(1, animations: {
+                self.blurView.alpha = 1;
+            })
         }
     }
     
