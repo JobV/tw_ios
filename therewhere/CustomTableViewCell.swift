@@ -56,32 +56,32 @@ class CustomTableViewCell : UITableViewCell {
     
     
     func styleCell(status: String, cell: CustomTableViewCell) {
-        switch status {
-        case "pending":
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 0.8;
-            })
-            
-        case "ready":
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 1;
-            })
-            
-        case "accepted":
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 0;
-            })
-            
-        case "waiting":
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 0.7;
-            })
-                
-        default:
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 1;
-            })
-        }
+//        switch status {
+//        case "pending":
+//            UIView.animateWithDuration(1, animations: {
+//                self.blurView.alpha = 0.8;
+//            })
+//            
+//        case "ready":
+//            UIView.animateWithDuration(1, animations: {
+//                self.blurView.alpha = 1;
+//            })
+//            
+//        case "accepted":
+//            UIView.animateWithDuration(1, animations: {
+//                self.blurView.alpha = 0;
+//            })
+//            
+//        case "waiting":
+//            UIView.animateWithDuration(1, animations: {
+//                self.blurView.alpha = 0.7;
+//            })
+//                
+//        default:
+//            UIView.animateWithDuration(1, animations: {
+//                self.blurView.alpha = 1;
+//            })
+//        }
     }
     
     func setDefaultStyle(cell: CustomTableViewCell) {

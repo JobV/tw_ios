@@ -180,7 +180,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default,handler: nil))
             
             self.presentViewController(alertController, animated: true, completion: nil)
-        }else{
+        } else {
             var cell = tableView.cellForRowAtIndexPath(indexPath) as! CustomTableViewCell
             var friendProfile = items[indexPath.row]
             
