@@ -194,7 +194,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 var meetups = Meetups()
                 var result = meetups.requestMeetup(String(friendProfile.friendID))
                 
-                cell.updateMeetupStatus("pending")
+                cell.updateMeetupStatus("pending", friendProfile: friendProfile)
                 
             case "accepted":
                 // when cell status is "accepted" selecting this friend cell will open map with locations
@@ -216,7 +216,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                     var meetup = Meetups()
                     meetup.cancelMeetup(toString(friend_id))
                     
-                    cell.updateMeetupStatus("ready")
+                    cell.updateMeetupStatus("ready", friendProfile: friendProfile)
                 }
                 
                 alertController.addAction(UIAlertAction(title: "Cancel Request", style: .Default, handler: cancelActionHandler))
@@ -234,14 +234,14 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                     var friend_id:NSNumber = friendProfile.friendID as NSNumber!
                     var meetup = Meetups()
                     meetup.acceptMeetup(toString(friend_id))
-                    cell.updateMeetupStatus("accepted")
+                    cell.updateMeetupStatus("accepted", friendProfile: friendProfile)
                 }
                 
                 let declineActionHandler = { (action:UIAlertAction!) -> Void in
                     var friend_id:NSNumber = friendProfile.friendID as NSNumber!
                     var meetup = Meetups()
                     meetup.declineToMeetup(toString(friend_id))
-                    cell.updateMeetupStatus("ready")
+                    cell.updateMeetupStatus("ready", friendProfile: friendProfile)
                 }
                 
                 alert.addAction(UIAlertAction(title: "Accept", style: .Default, handler: acceptActionHandler))
