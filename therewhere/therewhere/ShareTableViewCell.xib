@@ -9,19 +9,59 @@
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ShareTableViewCell" customModule="therewhere" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" clearsContextBeforeDrawing="NO" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" invite your friends!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L59-Km-1Ww" userLabel="invite your friends!">
-                        <rect key="frame" x="48" y="44" width="224" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="0.68000000000000005" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v9j-tL-7w5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="NrD-4S-RAL">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NC2-3x-8Ne">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XmC-KX-5Jo">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite your friends" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN8-0c-FKI">
+                                                <rect key="frame" x="74" y="38" width="172" height="33"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="iN8-0c-FKI" firstAttribute="leading" secondItem="XmC-KX-5Jo" secondAttribute="leading" constant="74" id="3x1-jq-0RX"/>
+                                            <constraint firstItem="iN8-0c-FKI" firstAttribute="centerX" secondItem="XmC-KX-5Jo" secondAttribute="centerX" id="Qdg-io-XP4"/>
+                                            <constraint firstItem="iN8-0c-FKI" firstAttribute="top" secondItem="XmC-KX-5Jo" secondAttribute="top" constant="38" id="Ylf-cp-3y6"/>
+                                            <constraint firstItem="iN8-0c-FKI" firstAttribute="centerY" secondItem="XmC-KX-5Jo" secondAttribute="centerY" id="dO7-mz-Kou"/>
+                                        </constraints>
+                                    </view>
+                                    <vibrancyEffect>
+                                        <blurEffect style="dark"/>
+                                    </vibrancyEffect>
+                                </visualEffectView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="NC2-3x-8Ne" secondAttribute="bottom" id="Bb5-yK-7Nt"/>
+                                <constraint firstItem="NC2-3x-8Ne" firstAttribute="leading" secondItem="NrD-4S-RAL" secondAttribute="leading" id="DRY-44-qWW"/>
+                                <constraint firstItem="NC2-3x-8Ne" firstAttribute="top" secondItem="NrD-4S-RAL" secondAttribute="top" id="Ljf-mx-QDA"/>
+                                <constraint firstAttribute="trailing" secondItem="NC2-3x-8Ne" secondAttribute="trailing" id="qBy-wt-puJ"/>
+                            </constraints>
+                        </view>
+                        <blurEffect style="dark"/>
+                    </visualEffectView>
                 </subviews>
-                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                <constraints>
+                    <constraint firstItem="v9j-tL-7w5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2L2-W7-aKt"/>
+                    <constraint firstAttribute="trailing" secondItem="v9j-tL-7w5" secondAttribute="trailing" id="BbO-4R-EjH"/>
+                    <constraint firstItem="v9j-tL-7w5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CBv-dy-tQX"/>
+                    <constraint firstAttribute="bottom" secondItem="v9j-tL-7w5" secondAttribute="bottom" id="QVN-ht-e9y"/>
+                </constraints>
             </tableViewCellContentView>
+            <point key="canvasLocation" x="484" y="528"/>
         </tableViewCell>
     </objects>
 </document>
