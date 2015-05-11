@@ -43,44 +43,36 @@ class CustomTableViewCell : UITableViewCell {
         
         self.status = friendProfile.statusWithFriend
         self.selectionStyle = UITableViewCellSelectionStyle.None
-        styleCell(status, cell: self)
+        styleCell(status, cell: self, friendProfile: friendProfile)
     }
     
-    func updateMeetupStatus(status:String){
+    func updateMeetupStatus(status: String, friendProfile: FriendProfile){
         self.status = status;
-        styleCell(status, cell: self)
+        styleCell(status, cell: self, friendProfile: friendProfile)
     }
     
     func sentMeetUp(){
     }
     
     
-    func styleCell(status: String, cell: CustomTableViewCell) {
+    func styleCell(status: String, cell: CustomTableViewCell, friendProfile: FriendProfile) {
         switch status {
         case "pending":
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 0.8;
-            })
-            
+            self.fullNameLabel.text = "waiting for answer.."
+
         case "ready":
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 1;
-            })
+            self.fullNameLabel.text = friendProfile.fullName
             
         case "accepted":
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 0;
-            })
-            
+            self.fullNameLabel.text = "Location available!"
+
         case "waiting":
             UIView.animateWithDuration(1, animations: {
                 self.blurView.alpha = 0.7;
             })
-                
+ 
         default:
-            UIView.animateWithDuration(1, animations: {
-                self.blurView.alpha = 1;
-            })
+            self.fullNameLabel.text = friendProfile.fullName
         }
     }
     

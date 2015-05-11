@@ -16,10 +16,10 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vF0-X0-AoW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                     </imageView>
-                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWV-Lo-KAQ">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                    <visualEffectView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PWV-Lo-KAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="320" verticalHuggingPriority="1" id="sjV-Gv-3ly">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="109"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zly-Tb-nbk">
