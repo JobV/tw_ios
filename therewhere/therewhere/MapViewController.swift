@@ -170,7 +170,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBAction func showFriendsList(sender: AnyObject) {
         var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
-        self.presentViewController(friendsViewController, animated: true, completion: nil)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     func setFriend(friend:FriendProfile){

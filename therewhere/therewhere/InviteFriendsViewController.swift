@@ -35,14 +35,13 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             session.closeAndClearTokenInformation()
    
             var lgc = LoginViewController(nibName:"LoginViewController",bundle:nil)
-            self.presentViewController(lgc, animated: false, completion: nil)
+            self.navigationController?.popViewControllerAnimated(true)
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
             (alert: UIAlertAction!) -> Void in
         
         })
-        
         
         optionMenu.addAction(logoutAction)
         optionMenu.addAction(cancelAction)
@@ -195,8 +194,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 controller.setFriend(friendProfile)
                 
-                self.presentViewController(controller, animated: true, completion: nil)
                 
+                self.navigationController?.pushViewController(controller, animated: true)
             case "pending":
                 // when cell status is "pending" it means a request was already sent and you need to wait for the result
                 let alertController = UIAlertController(title: "Meetup!",
