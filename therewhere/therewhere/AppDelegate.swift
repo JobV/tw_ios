@@ -97,9 +97,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         
         if let window = window {
-            var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
+            var navController: UINavigationController=UINavigationController()
             
-            window.rootViewController = loginviewcontroller
+            
+            var loginviewcontroller = LoginViewController(nibName:"LoginViewController",bundle:nil)
+            navController.pushViewController(loginviewcontroller, animated: true)
+            
+            self.window!.rootViewController = navController
+            
+            
             window.backgroundColor = UIColor.whiteColor()
             window.makeKeyAndVisible()
         }

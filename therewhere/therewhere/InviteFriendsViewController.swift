@@ -14,7 +14,7 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet
     var tableView: UITableView!
     var items: [(FriendProfile)] = []
-    var colorArray = [UIColor(hex: "CB1E62"), UIColor(hex: "27BF59"), UIColor(hex: "7B24BF"), UIColor(hex: "E59F1D"), UIColor(hex: "50E3C2")]
+    
     var getFriendsTimer = NSTimer()
     var getOnGoingMeetupsTimer = NSTimer()
     
@@ -23,6 +23,30 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(true)
         getFriendsTimer.invalidate()
+    }
+    
+    @IBAction func logOutActionSheet(sender: AnyObject) {
+        let optionMenu = UIAlertController(title: nil, message: "Choose Option", preferredStyle: .ActionSheet)
+        
+
+        let logoutAction = UIAlertAction(title: "Logout", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            var session = FBSession.activeSession()
+            session.closeAndClearTokenInformation()
+   
+            var lgc = LoginViewController(nibName:"LoginViewController",bundle:nil)
+            self.navigationController?.popViewControllerAnimated(true)
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        
+        })
+        
+        optionMenu.addAction(logoutAction)
+        optionMenu.addAction(cancelAction)
+        
+        self.presentViewController(optionMenu, animated: true, completion: nil)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -41,7 +65,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             name: "getFriendsNotification",
             object: nil)
     }
-    
     
     func updateFriendsList(){
         var user = User()
@@ -66,18 +89,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Load multitouch
-        let twoFingerTap = UITapGestureRecognizer(target: self, action: "twoFingerTap")
-        twoFingerTap.numberOfTapsRequired = 1
-        twoFingerTap.numberOfTouchesRequired = 2
-        view.addGestureRecognizer(twoFingerTap)
-        
-        let threeFingerTap = UITapGestureRecognizer(target: self, action: "threeFingerTap")
-        threeFingerTap.numberOfTouchesRequired = 1
-        threeFingerTap.numberOfTouchesRequired = 3
-        view.addGestureRecognizer(threeFingerTap)
-        twoFingerTap.requireGestureRecognizerToFail(threeFingerTap)
         
         var customCellNib = UINib(nibName: "CustomTableViewCell", bundle: nil)
         var shareCellNib = UINib(nibName: "ShareTableViewCell", bundle: nil)
@@ -109,25 +120,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
         MixpanelHandler.userPulledToRefresh()
     }
     
-    // Go back when tapping with two fingers
-    func twoFingerTap() {
-        println("Two finger tap detected. Going back.")
-        MixpanelHandler.userTappedWithTwoFingers()
-        let loginViewController = LoginViewController(nibName:"LoginViewController",bundle:nil)
-        self.presentViewController(loginViewController, animated: true, completion: nil)
-    }
-    
-    // Refresh when tapping with three fingers
-    func threeFingerTap() {
-        println("Three finger tap detected. Refreshing.")
-        MixpanelHandler.userTappedWithThreeFingers()
-        
-        var user = User()
-        
-        user.getFriends()
-        tableView.reloadData()
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var rowCount = self.items.count+1
         return rowCount;
@@ -152,7 +144,6 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
             return cell
         }
     }
-    
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
@@ -203,8 +194,8 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 
                 controller.setFriend(friendProfile)
                 
-                self.presentViewController(controller, animated: true, completion: nil)
                 
+                self.navigationController?.pushViewController(controller, animated: true)
             case "pending":
                 // when cell status is "pending" it means a request was already sent and you need to wait for the result
                 let alertController = UIAlertController(title: "Meetup!",
@@ -266,11 +257,5 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func prefersStatusBarHidden() -> Bool {
         return true
-    }
-    
-    func colorForIndex(index: Int) -> UIColor {
-        let itemsCount = items.count - 1
-        let colorVal = (CGFloat(index) / CGFloat(itemsCount)) * 0.6
-        return UIColor(red: 1.0, green: colorVal, blue: 0.0, alpha: 1.0)
     }
 }

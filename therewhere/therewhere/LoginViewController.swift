@@ -15,10 +15,6 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     
     @IBOutlet var loginBackground: UIImageView!
     @IBOutlet var fbButtonContainer: SpringView!
-    @IBAction func friendListButton(sender: AnyObject) {
-        var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
-        self.presentViewController(controller, animated: true, completion: nil)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +73,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate{
     func authenticationHandler(object: NSNotification){
         var controller = InviteFriendsViewController(nibName:"InviteFriendsViewController",bundle:nil)
         
-//        self.presentViewController(controller, animated: true, completion: nil)
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
