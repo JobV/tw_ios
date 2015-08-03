@@ -121,7 +121,7 @@ import MapKit
         var user = UserProfile.sharedInstance
         let url = APIConnectionManager.serverAddress+"/api/v1/auth/login"
         let parameters = [
-            "login" : user.email,
+            "login" : user.providerID,
             "oauth_token": oauth_token,
             "device_token": user.deviceToken
         ]
