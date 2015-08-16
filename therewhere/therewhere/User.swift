@@ -58,7 +58,6 @@ import MapKit
                 })
             }
     }
-
     
     func getFriendProfilePicture(friendID: String) {
         let urlRequest = callFacebook("\(friendID)/picture?type=large")
