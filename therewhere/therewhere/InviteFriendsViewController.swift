@@ -156,9 +156,9 @@ class InviteFriendsViewController: UIViewController, UITableViewDelegate, UITabl
                 MixpanelHandler.userSharedOnFacebook()
                 
                 var content = FBSDKShareLinkContent()
-                content.contentURL = NSURL(string:"www.google.com")
-                content.contentTitle = "google"
-                content.contentDescription = "this is google #google"
+                content.contentURL = NSURL(string:"www.pushmeetup.com")
+                content.contentTitle = "www.pushmeetup.com"
+                content.contentDescription = "Join Pushmeetup!"
                 
                 var dialog = FBSDKShareDialog()
                 dialog.fromViewController = self
