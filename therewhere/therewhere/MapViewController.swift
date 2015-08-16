@@ -61,6 +61,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             
             self.presentViewController(alertController, animated: true, completion: nil)
         })
+        
         let navigateAction = UIAlertAction(title: "Navigate to friend", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             MixpanelHandler.userOpenedNavigation()
@@ -170,7 +171,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     @IBAction func showFriendsList(sender: AnyObject) {
         var friendsViewController = InviteFriendsViewController(nibName:"InviteFriendsViewController", bundle:nil)
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.presentViewController(friendsViewController, animated: true, completion: nil)
     }
     
     func setFriend(friend:FriendProfile){
@@ -225,9 +226,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     func getFriendProfileImage(notification: NSNotification){
         var data = notification.object as! NSData
+        
         if var friendProfileImage:UIImage = UIImage(data: data) {
             friendProfile.profileImage = friendProfileImage
-            friendProfilePictureButton.setImage(friendProfile.profileImage, forState: UIControlState.Normal)
+            friendProfilePictureButton.setImage(friendProfileImage, forState: UIControlState.Normal)
             friendProfilePictureButton.layer.cornerRadius = friendProfilePictureButton.layer.frame.size.height / 2
             friendProfilePictureButton.layer.masksToBounds = true;
             friendProfilePictureButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFill;
